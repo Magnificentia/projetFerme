@@ -1,0 +1,151 @@
+/*.root {
+    -fx-base: white;
+    -fx-color: -fx-base;
+
+    -fx-font-family: "Montserrat";
+    -fx-accent: rgb(246, 246, 246);
+    -fx-default-button: -fx-accent;
+    -jfx-primary-color: -fx-accent;
+    -jfx-light-primary-color: -fx-accent;
+    -jfx-dark-primary-color: -fx-accent;
+    -fx-focus-color: rgb(222, 222, 222);
+    -jfx-secondary-color: -fx-focus-color;
+    -jfx-light-secondary-color: -fx-focus-color;
+    -jfx-dark-secondary-color: -fx-focus-color;
+}
+*/
+
+.root{
+    -fx-font-size: 13pt;
+    -fx-font-family: "Courier New";
+    -fx-base: rgb(132, 145, 47);
+    -fx-background: rgb(225, 228, 203);
+}
+ /* JFX Tab Pane */
+.tab-pane .headers-region {
+    -fx-padding: 0 -1 -1 0;
+    -fx-background-color: -fx-accent;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: -fx-accent;
+}
+
+.tab-pane .tab-selected-line {
+    -fx-stroke: -fx-accent;
+}
+.tab{
+   -fx-padding: 0 30 0 30;
+}
+.tab-pane .headers-region {
+ -fx-background-color: yellow;
+ -fx-padding: 0;
+ -fx-background-insets: 0;
+ -fx-effect: null;
+}
+
+.tab-pane {
+ -fx-background-color: white;
+ -fx-background-insets:0;
+ -fx-padding: 0;
+}
+
+*.tab-header-background {
+ -fx-padding:0;
+ -fx-background-insets:0;
+}
+
+
+#options
+{
+    -fx-font-size: 8pt;
+    -fx-font-family: "Calibri";
+    -fx-base: rgb(132, 145, 47);
+    -fx-background: rgb(22, 228, 203);
+}
+/*
+.tab-pane *.tab-header-background {
+ -fx-padding:0;
+ -fx-background-insets:0;
+}
+
+.tab:selected {
+ -fx-background-color: white;
+ -fx-background-insets: 0;
+ -fx-background-radius: 0;
+}
+
+.tab {
+ -fx-background-color: white;
+ -fx-padding: 0;
+ -fx-background-insets: 0;
+}
+.tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: -fx-focus-color;
+}
+
+.tab-selected-line {
+    -fx-background-color: -fx-focus-color;
+}
+*/
+.tab {
+
+    -fx-pref-width: 100;
+    -fx-pref-height: 200;
+}
+/*label horizontal*/
+#menus .tab-label {
+    -fx-rotate: 90;
+}
+#options .tab-label{
+    -fx-rotate:0;
+}
+#options .tab {
+
+    -fx-pref-width: 200;
+    -fx-pref-height:70;
+}
+/*remove that annoying space*/
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0.0, 0.0 0.0 1.0 0.0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em;
+}
+/*fin*/
+//test
+/*
+.tab-pane .headers-region {
+ -fx-background-color: yellow;
+ -fx-padding: 0;
+ -fx-background-insets: 0;
+ -fx-effect: null;
+}
+
+.tab-pane {
+ -fx-background-color: white;
+ -fx-background-insets:0;
+ -fx-padding: 0;
+}
+
+*.tab-header-background {
+ -fx-padding:0;
+ -fx-background-insets:0;
+}
+
+.tab-pane *.tab-header-background {
+ -fx-padding:0;
+ -fx-background-insets:0;
+}
+
+.tab:selected {
+ -fx-background-color: white;
+ -fx-background-insets: 0;
+ -fx-background-radius: 0;
+}
+
+.tab {
+ -fx-background-color: white;
+ -fx-padding: 0;
+ -fx-background-insets: 0;
+}*/
+
+/*---*/
