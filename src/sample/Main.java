@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.views.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
