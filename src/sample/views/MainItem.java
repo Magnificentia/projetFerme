@@ -1,6 +1,8 @@
 package sample.views;
 
+import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,7 +20,7 @@ public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
     private Parent header=new HBox();
     private Parent footer=new HBox();
-    private TabPane menus;
+    private JFXTabPane menus;
     private Pane container;
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
@@ -26,7 +28,7 @@ public class MainItem extends Item {
     public MainItem(String name,List menus)
     {
         super(name);
-        this.menus=new TabPane();
+        this.menus=new JFXTabPane();
         this.menus.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         this.menus.setId("menus");
         this.menus.setRotateGraphic(true);
@@ -42,6 +44,10 @@ public class MainItem extends Item {
         this.container.setPrefSize(500,500);
         if (this.header!=null) {((BorderPane)this.container).setTop(this.header);}
         ((BorderPane)this.container).setCenter(this.menus);
+
+        /*modification par le mouen*/
+        ((BorderPane)this.container).setMargin(this.menus,new Insets(0,15,45,10));
+
         if (this.footer!=null){((BorderPane)this.container).setBottom(this.footer);}
         //if (this.footer!=null){((BorderPane)this.container).setRight(this.footer);}
     }
