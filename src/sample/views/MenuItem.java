@@ -34,20 +34,20 @@ public class MenuItem extends Item implements IMenu {
     private void displayOptions()
     {
         visible=false;
-        if (optionsList !=null)
+        if (optionsList ==null) {
+            return;
+        }
+        for(IOption option: optionsList)
         {
-            for(IOption option: optionsList)
+            if (option.isVisible())
             {
-                if (option.isVisible())
-                {
-                    Tab tab=new Tab();
-                    tab.setContent(option.getItem());
-                    tab.setGraphic(new Label(option.toString()));
-                    tp.getTabs().addAll(tab);
-                    visible=true;
-                }
-                //ajout de menus
+                Tab tab=new Tab();
+                tab.setContent(option.getItem());
+                tab.setGraphic(new Label(option.toString()));
+                tp.getTabs().addAll(tab);
+                visible=true;
             }
+            //ajout de menus
         }
     }
 
