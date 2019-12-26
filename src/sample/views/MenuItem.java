@@ -1,5 +1,6 @@
 package sample.views;
 
+import com.jfoenix.controls.JFXTabPane;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -10,10 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem extends Item implements IMenu {
+
     private boolean visible=true;
     private ArrayList<IOption> optionsList;
     private BorderPane options;
-    private TabPane tp=new TabPane();
+    private JFXTabPane tp=new JFXTabPane();
     public static String _DEFAULT_MENU_NAME_="defaultMenu";
 
     public MenuItem(String name,List options)

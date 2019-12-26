@@ -30,7 +30,7 @@ public class TestController implements Initializable, IController {
         Map nodeRoles=new HashMap<Node,List<userType>>();
         table.setEditable(false);
         List<userType> liste=new ArrayList<>();
-        liste.add(userType._ADMIN_);
+        //liste.add(userType._ADMIN_);
         liste.add(userType._SELLER_);
         nodeRoles.put((Node)table, liste);
         System.err.println(nodeRoles.get(table));

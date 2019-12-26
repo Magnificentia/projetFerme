@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.views.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class Main extends Application {
         //main.getItem().setDisable(true);
 
         primaryStage.setTitle("Hello World");
-        Scene scene=new Scene(main.getItem(), 300, 275);
+        Scene scene=new Scene(main.getItem(), 1400, 775);
         scene.getStylesheets().add(MainItem.class.getResource("global.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();

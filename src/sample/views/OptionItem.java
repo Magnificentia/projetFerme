@@ -17,7 +17,9 @@ public class OptionItem extends Item implements IOption {
     private Parent item;
     private boolean visible=true;
     protected Map<Node, List<userType>> nodeRoles;
+
     public static String _DEFAULT_OPTION_NAME="defaultoption";
+
     public OptionItem()
     {
         super("default");
