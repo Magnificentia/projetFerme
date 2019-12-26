@@ -1,6 +1,7 @@
 package sample.views.test.bonjour;
 
 
+import com.jfoenix.controls.JFXTreeTableView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -15,7 +16,7 @@ import java.util.*;
 //putain
 public class TestController implements Initializable, IController {
     @FXML
-    TableView table;
+    JFXTreeTableView table;
 
     @FXML
     VBox modify;

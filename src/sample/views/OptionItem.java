@@ -41,7 +41,7 @@ public class OptionItem extends Item implements IOption {
             System.err.println(root);
             e.printStackTrace();
         }
-        manageRoles();
+        //manageRoles();
     }
 
 
