@@ -19,17 +19,23 @@
 -fx-background-radius:0.0;
 -fx-font-size: 20px;
 
--fx-background-color: #000000, tab-border-color , tab-color;
+/*-fx-background-color: #000000, tab-border-color , tab-color;
        tab-color:#696969;
        tab-border-color :#0000000 ;
        -fx-background-insets: 0, 0 5 0 0, 1 6 0 0 ;
 
-       -fx-padding: 4 10 4 4 ;
+       -fx-padding: 4 10 4 4 ;*/
+       -fx-background-color:  tab-border-color , tab-color;
+                  tab-color:#696969;
+                  tab-border-color : #000000;
+                  -fx-background-insets:  0,0 0 0 0.5, 1 6 0 0 ;
+                  -fx-padding: 4 10 4 4 ;
 
 }
 #menus .tab-header-area .jfx-rippler
 {
     -jfx-rippler-fill: #FFD700;
+    -fx-cursor:hand;
 }
 
 
@@ -50,21 +56,28 @@
     -fx-font-weight:bold;
     -fx-font-size:15px;
 }
+#menus .tab:hover{
 
+-fx-background-color:F0E68C;
+}
 
+#menus .tab:selected{
+
+-fx-background-color:FFD700;
+}
 
 #options .tab {
 
     -fx-pref-width: 200;
     -fx-pref-height:40;
     -fx-font-size:20px;
-    /*-fx-background-color: #F8F8FF;
+    -fx-background-color: #F8F8FF;
 
-      -fx-background-color: transparent, tab-border-color , tab-color;
-           tab-color:#FFD700;
-           tab-border-color : #F8F8FF;
-           -fx-background-insets: 0, 0 5 0 0, 1 6 0 0 ;
-           -fx-padding: 4 10 4 4 ;*/
+      -fx-background-color:  tab-border-color , tab-color;
+           tab-color:#696969;
+           tab-border-color : #000000;
+           -fx-background-insets:  0,0 0.5 0 0, 1 6 0 0 ;
+           -fx-padding: 4 10 4 4 ;
 }
 
 
