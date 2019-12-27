@@ -1,7 +1,7 @@
 
 .root{
 
-    	-fx-background-color:  #1E90FF;
+    	-fx-background-color:  #F8F8FF;
     	-fx-font-size:15px;
     	-fx-spacing:15px;
 
@@ -29,7 +29,7 @@
 
 
 
-.tab-header-background{
+#menus .tab-header-background{
  -fx-background-color:#1E90FF;
  -fx-alignment:center_left;
 
