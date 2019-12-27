@@ -46,7 +46,7 @@ public class MainItem extends Item {
         ((BorderPane)this.container).setCenter(this.menus);
 
         /*modification par le mouen*/
-        ((BorderPane)this.container).setMargin(this.menus,new Insets(0,15,45,10));
+        ((BorderPane)this.container).setMargin(this.menus,new Insets(0,15,0,0));
 
         if (this.footer!=null){((BorderPane)this.container).setBottom(this.footer);}
         //if (this.footer!=null){((BorderPane)this.container).setRight(this.footer);}
