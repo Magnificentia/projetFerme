@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.ClientEntity" table="client" schema="volailledor">
+        <id name="idClient">
+            <column name="idClient" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="adresse">
+            <column name="adresse" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="tel">
+            <column name="tel" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

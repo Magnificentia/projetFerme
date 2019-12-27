@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">
+        <![CDATA[jdbc:mysql://localhost:3306/volailledor?zeroDateTimeBehavior=convertToNUll&serverTimezone=UTC]]></property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+      <mapping class="model.AlimentEntity"/>
+      <mapping resource="model/AlimentEntity.hbm.xml"/>
+      <mapping class="model.BandeEntity"/>
+      <mapping resource="model/BandeEntity.hbm.xml"/>
+      <mapping class="model.BandemaladeEntity"/>
+      <mapping resource="model/BandemaladeEntity.hbm.xml"/>
+      <mapping class="model.BandevaccineEntity"/>
+      <mapping resource="model/BandevaccineEntity.hbm.xml"/>
+      <mapping class="model.BatimentEntity"/>
+      <mapping resource="model/BatimentEntity.hbm.xml"/>
+      <mapping class="model.ClientEntity"/>
+      <mapping resource="model/ClientEntity.hbm.xml"/>
+      <mapping class="model.CollecteoeufEntity"/>
+      <mapping resource="model/CollecteoeufEntity.hbm.xml"/>
+      <mapping class="model.EmployesEntity"/>
+      <mapping resource="model/EmployesEntity.hbm.xml"/>
+      <mapping class="model.FournisseurEntity"/>
+      <mapping resource="model/FournisseurEntity.hbm.xml"/>
+      <mapping class="model.IncubationEntity"/>
+      <mapping resource="model/IncubationEntity.hbm.xml"/>
+      <mapping class="model.MaladieEntity"/>
+      <mapping resource="model/MaladieEntity.hbm.xml"/>
+      <mapping class="model.ProduirepoussinEntity"/>
+      <mapping resource="model/ProduirepoussinEntity.hbm.xml"/>
+      <mapping class="model.RaceEntity"/>
+      <mapping resource="model/RaceEntity.hbm.xml"/>
+      <mapping class="model.RationEntity"/>
+      <mapping resource="model/RationEntity.hbm.xml"/>
+      <mapping class="model.StockalimentEntity"/>
+      <mapping resource="model/StockalimentEntity.hbm.xml"/>
+      <mapping class="model.TypeoeufEntity"/>
+      <mapping resource="model/TypeoeufEntity.hbm.xml"/>
+      <mapping resource="model/VaccinEntity.hbm.xml"/>
+      <mapping class="model.VaccinEntity"/>
+      <mapping class="model.VenduEntity"/>
+      <mapping resource="model/VenduEntity.hbm.xml"/>
+      <mapping resource="model/VenduoeufEntity.hbm.xml"/>
+      <mapping class="model.VenduoeufEntity"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
