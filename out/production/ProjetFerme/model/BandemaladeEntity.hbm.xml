@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.BandemaladeEntity" table="bandemalade" schema="volailledor">
+        <id name="idBandeMalade">
+            <column name="idBandeMalade" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="qteMalade">
+            <column name="qteMalade" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="qtePrise">
+            <column name="qtePrise" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+        <property name="dateM">
+            <column name="dateM" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="totalMort">
+            <column name="totalMort" sql-type="int(10) unsigned" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
