@@ -34,10 +34,10 @@ public class Main extends Application {
         List options2=new ArrayList<IOption>();//deuxieme menu
         options2.add(option3);
 
-        IMenu menu=new MenuItem("elevage",options);//liste des menus
-        IMenu menu2=new MenuItem("fournisseur",options2);
+        IMenu menu=new MenuItem("Elevage",options);//liste des menus
+        IMenu menu2=new MenuItem("Fournisseur",options2);
         IMenu menu3=new MenuItem("Accueil" ,options2);
-        IMenu menu4=new MenuItem("statistiques",options2);
+        IMenu menu4=new MenuItem("Statistiques",options2);
         List menus=new ArrayList<IMenu>();
         menus.add(menu3);
         menus.add(menu);
@@ -54,7 +54,7 @@ public class Main extends Application {
         //main.getItem().setDisable(true);
 
         primaryStage.setTitle("Hello World");
-        Scene scene=new Scene(main.getItem(), 1400, 775);
+        Scene scene=new Scene(main.getItem(), 1400, 905);
         scene.getStylesheets().add(MainItem.class.getResource("global.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();

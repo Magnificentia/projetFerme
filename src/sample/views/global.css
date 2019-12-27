@@ -6,11 +6,14 @@
     	-fx-spacing:15px;
 
 }
+.test{
+
+}
 
 #menus .tab{
 
 -fx-pref-width:110;
--fx-pref-height:300;
+-fx-pref-height:200;
 -fx-background-insets: 0.0;
 -fx-background-radius:0.0;
 -fx-font-size: 20px;
@@ -22,6 +25,8 @@
        -fx-padding: 4 10 4 4 ;
 
 }
+
+
 
 .tab-header-background{
  -fx-background-color:#F8F8FF;
@@ -49,7 +54,7 @@
 #menus .tab-label{
     -fx-rotate: 90;
     -fx-font-weight:bold;
-    -fx-font-size:25px;
+    -fx-font-size:15px;
 }
 #options .tab-label{
     -fx-rotate:0;
@@ -58,6 +63,8 @@
 .tab-pane .headers-region {
  -fx-alignment:center;
 }
+
+
 
 
 
