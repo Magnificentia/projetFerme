@@ -10,6 +10,12 @@
     -fx-padding: 0 0 0 50;
 
 }
+.tabPane{
+ -fx-pref-width:100
+ -fx-pref-height:45
+}
+
+/*menus*/
 
 #menus .tab{
 
@@ -19,16 +25,11 @@
 -fx-background-radius:0.0;
 -fx-font-size: 20px;
 
-/*-fx-background-color: #000000, tab-border-color , tab-color;
-       tab-color:#696969;
-       tab-border-color :#0000000 ;
-       -fx-background-insets: 0, 0 5 0 0, 1 6 0 0 ;
 
-       -fx-padding: 4 10 4 4 ;*/
        -fx-background-color:  tab-border-color , tab-color;
                   tab-color:#696969;
-                  tab-border-color : #000000;
-                  -fx-background-insets:  0,0 0 0 0.5, 1 6 0 0 ;
+                  tab-border-color : #808080;
+                  -fx-background-insets:  0,0 0 0 1.5, 1 6 0 0 ;
                   -fx-padding: 4 10 4 4 ;
 
 }
@@ -75,8 +76,8 @@
 
       -fx-background-color:  tab-border-color , tab-color;
            tab-color:#696969;
-           tab-border-color : #000000;
-           -fx-background-insets:  0,0 0.5 0 0, 1 6 0 0 ;
+           tab-border-color : #808080;
+           -fx-background-insets:  0,0 1.5 0 0, 1 6 0 0 ;
            -fx-padding: 4 10 4 4 ;
 }
 
@@ -104,8 +105,4 @@
 {
        -fx-font-weight:bold;
       -fx-font-size:60px;
-}
-.tabPane{
- -fx-pref-width:100
- -fx-pref-height:45
 }
