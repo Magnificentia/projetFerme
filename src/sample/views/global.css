@@ -6,7 +6,8 @@
     	-fx-spacing:15px;
 
 }
-.test{
+.tab .tab-header-area {
+    -fx-padding: 0 0 0 50;
 
 }
 
@@ -18,26 +19,39 @@
 -fx-background-radius:0.0;
 -fx-font-size: 20px;
 
-/*-fx-background-color: transparent, tab-border-color , tab-color;
-       tab-color:#FFD700;
-       tab-border-color :#F8F8FF ;
+-fx-background-color: #000000, tab-border-color , tab-color;
+       tab-color:#696969;
+       tab-border-color :#0000000 ;
        -fx-background-insets: 0, 0 5 0 0, 1 6 0 0 ;
 
-       -fx-padding: 4 10 4 4 ;*/
+       -fx-padding: 4 10 4 4 ;
 
 }
-
+#menus .tab-header-area .jfx-rippler
+{
+    -jfx-rippler-fill: #FFD700;
+}
 
 
 #menus .tab-header-background{
- -fx-background-color:#1E90FF;
+ -fx-background-color:#696969;
  -fx-alignment:center_left;
 
 }
-.tab .tab-header-area {
-    -fx-padding: 0 0 0 50;
-
+#menus .tab-selected-line
+{
+    -fx-background-color:#FFD700;
 }
+#menus .headers-region {
+    -fx-background-color: #696969;
+}
+#menus .tab-label{
+    -fx-rotate: 90;
+    -fx-font-weight:bold;
+    -fx-font-size:15px;
+}
+
+
 
 #options .tab {
 
@@ -53,11 +67,7 @@
            -fx-padding: 4 10 4 4 ;*/
 }
 
-#menus .tab-label{
-    -fx-rotate: 90;
-    -fx-font-weight:bold;
-    -fx-font-size:15px;
-}
+
 #options .tab-label{
     -fx-rotate:0;
 }
