@@ -26,6 +26,8 @@
 
 }
 
+
+
 .tab-header-background{
  -fx-background-color:#F8F8FF;
  -fx-alignment:center_left;
@@ -61,6 +63,8 @@
 .tab-pane .headers-region {
  -fx-alignment:center;
 }
+
+
 
 
 
