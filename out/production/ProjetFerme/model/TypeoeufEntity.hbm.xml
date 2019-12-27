@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.TypeoeufEntity" table="typeoeuf" schema="volailledor">
+        <id name="idTypeOeuf">
+            <column name="idTypeOeuf" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="nomTf">
+            <column name="nomTf" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="prixAlveole">
+            <column name="prix_alveole" sql-type="decimal(9,2)" precision="9" scale="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

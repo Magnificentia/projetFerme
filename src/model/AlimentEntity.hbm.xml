@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.AlimentEntity" table="aliment" schema="volailledor">
+        <id name="idAli">
+            <column name="idAli" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="nomAli">
+            <column name="nomAli" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="text"/>
+        </property>
+        <property name="prix">
+            <column name="prix" sql-type="decimal(8,2)" precision="8" scale="2"/>
+        </property>
+    </class>
+</hibernate-mapping>

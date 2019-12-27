@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.ProduirepoussinEntity" table="produirepoussin" schema="volailledor">
+        <id name="idProduirePoussin">
+            <column name="idProduirePoussin" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="qte">
+            <column name="qte" sql-type="int(10) unsigned"/>
+        </property>
+        <property name="taux">
+            <column name="taux" sql-type="decimal(4,2)" precision="4" scale="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.EmployesEntity" table="employes" schema="volailledor">
+        <id name="idEm">
+            <column name="idEm" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="nom">
+            <column name="nom" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="user">
+            <column name="user" sql-type="varchar(15)" length="15" not-null="true"/>
+        </property>
+        <property name="login">
+            <column name="login" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="typeEm">
+            <column name="typeEm" sql-type="varchar(4)" length="4" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
