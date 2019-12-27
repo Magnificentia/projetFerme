@@ -18,6 +18,5 @@ public class headerController implements Initializable {
         imageViewHeader.setImage(
                 new Image(getClass().getResource("poussin.jpg").toString())
         );
-
     }
 }

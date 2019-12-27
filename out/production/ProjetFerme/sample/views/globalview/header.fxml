@@ -9,9 +9,9 @@
 <AnchorPane prefHeight="128.0" prefWidth="762.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.views.globalview.headerController">
 
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="158.0" prefWidth="762.0" stylesheets="@../global.css">
+      <HBox alignment="CENTER_LEFT" prefHeight="110.0" prefWidth="762.0" stylesheets="@../global.css">
          <children>
-            <ImageView fx:id="imageViewHeader" fitHeight="148.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewHeader" fitHeight="113.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets left="100.0" />
                </HBox.margin>
