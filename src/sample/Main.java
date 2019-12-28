@@ -34,10 +34,10 @@ public class Main extends Application {
         List options2=new ArrayList<IOption>();//deuxieme menu
         options2.add(option3);
 
-        IMenu menu=new MenuItem("Elevage",options);//liste des menus
-        IMenu menu2=new MenuItem("Fournisseur",options2);
-        IMenu menu3=new MenuItem("Accueil" ,options2);
-        IMenu menu4=new MenuItem("Statistiques",options2);
+        IMenu menu=new MenuItem("Elevage","icons8-chicken-32.png",options);//liste des menus
+        IMenu menu2=new MenuItem("Fournisseur","image.png",options2);
+        IMenu menu3=new MenuItem("Accueil" ,"icons8-home-32.png",options2);
+        IMenu menu4=new MenuItem("Statistiques","progress.png",options2);
         List menus=new ArrayList<IMenu>();
         menus.add(menu3);
         menus.add(menu);

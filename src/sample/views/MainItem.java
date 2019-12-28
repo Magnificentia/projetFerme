@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
@@ -25,6 +27,7 @@ public class MainItem extends Item {
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
 
+
     public MainItem(String name,List menus)
     {
         super(name);
@@ -34,7 +37,6 @@ public class MainItem extends Item {
         this.menus.setRotateGraphic(true);
         this.menus.setSide(Side.LEFT);
         this.menus.setPrefSize(500,500);
-
         this.reload();
         loadMenus(menus);
     }
@@ -75,8 +77,16 @@ public class MainItem extends Item {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
+                VBox content=new VBox();
+                Label label = new Label(menu.toString());
+                //label.setAlignment(Pos.BOTTOM_CENTER)
+                System.out.println(getClass().getResource(menu.getIconPath()));
+                ImageView icon = new ImageView(new Image(getClass().getResource(menu.getIconPath()).toString())); // for example
+                icon.setFitWidth(25); icon.setFitHeight(25);
+
+                content.getChildren().addAll(icon, label);
                 Tab tab=new Tab();
-                tab.setGraphic(new Label(menu.toString()));
+                tab.setGraphic(content);
                 tab.setContent(menu.getItem());
                 menus.getTabs().addAll(tab);
             }
