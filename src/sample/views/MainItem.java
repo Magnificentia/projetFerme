@@ -1,5 +1,6 @@
 package sample.views;
 
+
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;

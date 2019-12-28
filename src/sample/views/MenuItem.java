@@ -1,5 +1,6 @@
 package sample.views;
 
+
 import com.jfoenix.controls.JFXTabPane;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;

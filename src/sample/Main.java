@@ -9,20 +9,39 @@ import sample.views.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.DbManager;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        
+        
+       String nom="nnane";
+       String user="nprime";
+       String login="nprime"; 
+       String typeEm="f";
+       if (DbManager.addEmployee(1, nom, user, login, typeEm))
+       {
+           System.out.println("Employee successfully added");
+       }
+       else
+       {
+           System.err.println("Error when registering employee");
+       }
+                           
+              
+        
+        ///
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         //ParentTest root=new ParentTest();
-        IOption option=new OptionItem("oeufs","test\\bonjour\\Test.fxml");
-        IOption option2=new OptionItem("poulets","test\\bonjour\\Test.fxml");
-        IOption option3=new OptionItem("factures","test\\goodnight\\goodnight.fxml");
-        IOption option4=new OptionItem("autre chose","test\\goodnight\\goodnight.fxml");
-        IOption option5=new OptionItem("je sais pas trop","test\\goodnight\\goodnight.fxml");
+        IOption option=new OptionItem("oeufs","test/bonjour/Test.fxml");
+        IOption option2=new OptionItem("poulets","test/bonjour/Test.fxml");
+        IOption option3=new OptionItem("factures","test/goodnight/goodnight.fxml");
+        IOption option4=new OptionItem("autre chose","test/goodnight/goodnight.fxml");
+        IOption option5=new OptionItem("je sais pas trop","test/goodnight/goodnight.fxml");
 
         List options=new ArrayList<IOption>();//premier menu
         options.add(option);
@@ -48,9 +67,9 @@ public class Main extends Application {
 
 
         MainItem main=new MainItem(menus);
-        main.setHeader("globalview\\header.fxml");
+        main.setHeader("globalview/header.fxml");
         //Parent root2 = FXMLLoader.load(getClass().getResource("hd.fxml"));
-        main.setFooter("globalview\\footer.fxml");
+        main.setFooter("globalview/footer.fxml");
         //main.getItem().setDisable(true);
 
         primaryStage.setTitle("Hello World");

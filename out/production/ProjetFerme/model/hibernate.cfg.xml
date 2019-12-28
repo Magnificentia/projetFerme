@@ -2,8 +2,11 @@
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
+
   <session-factory>
+
     <property name="connection.url">
         <![CDATA[jdbc:mysql://localhost:3306/volailledor?zeroDateTimeBehavior=convertToNUll&serverTimezone=UTC]]></property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>

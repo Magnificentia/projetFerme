@@ -94,11 +94,11 @@
 
 .tab:selected
 {
--fx-background-color:#FFD700
--fx-background-radius: 0;
+-fx-background-color:#FFD700;
+-fx-background-radius: #0;
 -fx-background-insets:0;
--fx-border-width: 5 0 0 0;
--fx- border -color:#FFD700;
+-fx-border-width: #5000;
+-fx-border-color:#FFD700;
 
 
 }
