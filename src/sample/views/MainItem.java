@@ -77,7 +77,7 @@ public class MainItem extends Item {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
-                VBox content=new VBox();
+                HBox content=new HBox();
                 Label label = new Label(menu.toString());
                 //label.setAlignment(Pos.BOTTOM_CENTER)
                 System.out.println(getClass().getResource(menu.getIconPath()));

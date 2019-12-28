@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/views/accueil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/views/icons8-chicken-32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/views/icons8-home-32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/views/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/views/progress.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetFerme/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetFerme/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/IMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/IMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/MainItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/MainItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/MenuItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjetFerme/sample/views/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/views/IMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/views/IMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/views/MainItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/views/MainItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/views/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/views/MenuItem.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +73,8 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/views/globalview/header.fxml">
-          <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -107,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/views/MainItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
+            <state relative-caret-position="1326">
               <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
             </state>
           </provider>
@@ -137,8 +119,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+            <state relative-caret-position="316">
+              <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -210,8 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,6 +250,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,17 +391,18 @@
       <workItem from="1577460272823" duration="2021000" />
       <workItem from="1577469599458" duration="2996000" />
       <workItem from="1577525260787" duration="1167000" />
+      <workItem from="1577526561364" duration="546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10572000" />
+    <option name="totallyTimeSpent" value="11118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9056225" visible="true" weight="0.20308483" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9056225" visible="true" weight="0.20565553" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -429,7 +412,7 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30417228" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30417228" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -570,13 +553,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/views/globalview/header.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/views/globalview/headerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/views/MainItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -606,17 +596,10 @@
     <entry file="file://$PROJECT_DIR$/src/sample/views/globalview/header.fxml.orig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/views/MainItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="97" column="8" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+        <state relative-caret-position="316">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
         </state>
       </provider>
     </entry>
