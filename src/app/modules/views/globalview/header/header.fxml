@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="128.0" prefWidth="762.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
+
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="110.0" prefWidth="762.0" stylesheets="@../../global.css">
+         <children>
+            <ImageView fx:id="imageViewHeader" fitHeight="113.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../../ressources/poussin.jpg" />
+               </image></ImageView>
+            <Label styleClass="label-farm" stylesheets="@../../global.css" text="farm">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+            <Label styleClass="label-manager" stylesheets="@../../global.css" text="MANAGER" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
