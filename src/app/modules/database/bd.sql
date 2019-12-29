@@ -1,14 +1,14 @@
 ﻿CREATE TABLE RACE(
-	idRace INT UNSIGNED AUTO_INCREMENT,
+	idRace INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nom VARCHAR(15) NOT NULL,
 	description TEXT NOT NULL,
-	prix_race DECIMAL(7,2),
-	PRIMARY KEY(idRace)
+	prix_race DECIMAL(7,2)
+
 );
 
 
 CREATE TABLE Bande(
-	idBande INT UNSIGNED AUTO_INCREMENT,
+	idBande INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	qte INT UNSIGNED NOT NULL,
 	age INT UNSIGNED NOT NULL,
 	race_id INT UNSIGNED,
@@ -16,32 +16,27 @@ CREATE TABLE Bande(
 	prix_vente DECIMAL(10,2), 
 	dateDemarrage DATETIME,
 	fourn_id INT UNSIGNED,
-	bat_id INT UNSIGNED,
-	PRIMARY KEY(idBande)
+	bat_id INT UNSIGNED
 );
 
 
 CREATE TABLE Fournisseur(
-	idFourn INT UNSIGNED AUTO_INCREMENT,
+	idFourn INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nomFourn VARCHAR(20) NOT NULL,
 	adresse VARCHAR(20) NOT NULL,
 	tel INT UNSIGNED NOT NULL,
-	email VARCHAR(20),
+	email VARCHAR(20) UNIQUE,
 	siteweb VARCHAR(20),
-	typeFourn INT(1),
-	PRIMARY KEY(idFourn),
-	UNIQUE ind_uni_email (email)
+	typeFourn INT(1)
 );
 
 
 
 CREATE TABLE Aliment(
-	idAli INT UNSIGNED AUTO_INCREMENT,
+	idAli INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nomAli VARCHAR(15) NOT NULL,
 	description TEXT NOT NULL,
 	prix DECIMAL(8,2) NOT NULL,
-	PRIMARY KEY(idAli),
-	CHECK(prix >0)
 );
 
 
@@ -129,98 +124,82 @@ CREATE TABLE TypeOeuf(
 
 
 CREATE TABLE VenduOeuf(
-	idVenduOeuf INT UNSIGNED AUTO_INCREMENT,
+	idVenduOeuf INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	collect_id INT UNSIGNED,
 	client_id INT UNSIGNED,
 	dateVente DATETIME,
 	total_prix DECIMAL(8,2),
 	qte INT UNSIGNED NOT NULL,
-	employe_id INT UNSIGNED,
-	PRIMARY KEY(idVenduOeuf),
-	CHECK(total_prix>0),
-	INDEX ind_date_vente_oeuf (dateVente),
-	UNIQUE ind_uni_collect_client_id (collect_id,client_id)
+	employe_id INT UNSIGNED
 );
 
 
 
 CREATE TABLE incubation(
-	idInc INT UNSIGNED AUTO_INCREMENT,
+	idInc INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 	dateInc DATETIME,
 	ProduirePoussin_id INT UNSIGNED,
-	collect_id INT UNSIGNED,
-	PRIMARY KEY(idInc),
-	INDEX ind_date_inc (dateInc)
+	collect_id INT UNSIGNED
 );
 
 
 CREATE TABLE ProduirePoussin(
-	idProduirePoussin INT UNSIGNED AUTO_INCREMENT,
+	idProduirePoussin INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	qte INT UNSIGNED NOT NULL,
 	taux DECIMAL(4,2),
 	incubation_id INT UNSIGNED,
-	PRIMARY KEY(idProduirePoussin)
 	
 );
 
 
 
 CREATE TABLE Maladie(
-	idM INT UNSIGNED AUTO_INCREMENT,
+	idM INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nomM VARCHAR(20) NOT NULL,
 	descriptionTraitement TEXT ,
-	descriptionMaladie TEXT ,
-	duree VARCHAR(10),
-	PRIMARY KEY(idM)
+	descriptionMaladie TEXT
 );
 
 
 CREATE TABLE BandeMalade(
-	idBandeMalade INT UNSIGNED AUTO_INCREMENT,
+	idBandeMalade INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	maladie_id INT UNSIGNED,
 	bande_id INT UNSIGNED,
 	qteMalade INT UNSIGNED,
 	qtePrise INT UNSIGNED,
 	dateM DATETIME,
-	totalMort INT UNSIGNED,
-	PRIMARY KEY(idBandeMalade),
-	UNIQUE ind_uni_bande_maladie_id (bande_id,maladie_id)
+	totalMort INT UNSIGNED
 );
 
 
 CREATE TABLE Vaccin(
-	idVac INT UNSIGNED AUTO_INCREMENT,
+	idVac INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nomVac VARCHAR(15) NOT NULL,
 	periode VARCHAR(15) NOT NULL,
 	qteVac INT NOT NULL,
 	qtePoule INT NOT NULL,
 	description VARCHAR(200),
-	prix DECIMAL(8,2),
-	PRIMARY KEY(idVac)
+	prix DECIMAL(8,2)
 );
 
 
 
 CREATE TABLE BandeVaccine(
-	idBandeVaccine INT UNSIGNED AUTO_INCREMENT,
+	idBandeVaccine INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	bande_id INT UNSIGNED,
 	vaccin_id INT UNSIGNED,
-	dateVac DATETIME,
-	PRIMARY KEY(idBandeVaccine),
-	UNIQUE ind_uni_vacc_datevac_id (bande_id,vaccin_id)
+	dateVac DATETIME
 
 );
 
 
 
 CREATE TABLE Employes(
-	idEm INT UNSIGNED AUTO_INCREMENT,
+	idEm INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nom VARCHAR(15),
 	user VARCHAR(15),
 	login VARCHAR(20),
-	typeEm VARCHAR(4),
-	PRIMARY KEY(idEm),
-	UNIQUE ind_uni_user (user)
+	typeEm VARCHAR(4)
 );
 
 

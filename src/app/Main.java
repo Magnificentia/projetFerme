@@ -5,6 +5,7 @@ import app.modules.IOption;
 import app.modules.MainItem;
 import app.modules.MenuItem;
 import app.modules.OptionItem;
+import app.modules.model.DAO;
 import app.modules.model.DbManager;
 import app.modules.model.Employes;
 import javafx.application.Application;
@@ -24,20 +25,15 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         
         
-       String nom="mouen";
-       String user="mouen";
-       String login="mouen"; 
+       String nom="mou7n";
+       String user="mouen0";
+       String login="mou8en"; 
        String typeEm="f";
-       Employes emp=new Employes(5, nom, user, login, typeEm);
-       Employes emp2=new Employes(7, nom, user, login, typeEm);
-       if (DbManager.create(emp) && DbManager.create(emp2))
-       {
-           System.out.println("Employee successfully added");
-       }
-       else
-       {
-           System.err.println("Error when registering employee");
-       }
+       Employes emp=new Employes(7, nom, user, login, typeEm);
+       //Employes emp2=new Employes(9, nom, user, login, typeEm);
+       DAO<Employes> empl=new DAO(Employes.class);
+       empl.persist(emp);
+       //empl.persist(emp2);
                         
         ///
         Parent root = FXMLLoader.load(getClass().getResource("modules/views/globalview/main/sample.fxml"));
