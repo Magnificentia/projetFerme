@@ -24,7 +24,7 @@ public class MainItem extends Item {
     private Parent header=new HBox();
     private Parent footer=new HBox();
     private JFXTabPane menus;
-    private Pane container;
+    private static Pane container;
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
 

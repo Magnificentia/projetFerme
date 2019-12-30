@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 import app.modules.userType;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
@@ -24,18 +27,33 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         
-        
-       String nom="mou7n";
-       String user="mouen0";
-       String login="mou8en"; 
-       String typeEm="f";
-       Employes emp=new Employes(7, nom, user, login, typeEm);
-       //Employes emp2=new Employes(9, nom, user, login, typeEm);
-       DAO<Employes> empl=new DAO(Employes.class);
-       empl.persist(emp);
-       //empl.persist(emp2);
-                        
+        /*String nom="mou897n";
+        String user="moun00";
+        String login="mou8en"; 
+        String typeEm="f";
+        Employes emp=new Employes(190, nom, user, login, typeEm);
+        //Employes emp2=new Employes(9, nom, user, login, typeEm);
+        DAO<Employes> empl=new DAO(Employes.class);
+        empl.persist(emp);
+        System.out.println(empl.findAll());
+        //System.out.println(empl.findAll());
+        System.err.println("");
+        //empl.persist(emp2);
+        empl.closeCurrentSessionwithTransaction();
         ///
+        
+ 
+*/
+        //pas important d'essayer de comprendre
+        //ca sert à s'assurer que l'appli se ferme convenablement
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        //
         Parent root = FXMLLoader.load(getClass().getResource("modules/views/globalview/main/sample.fxml"));
 
         //ParentTest root=new ParentTest();

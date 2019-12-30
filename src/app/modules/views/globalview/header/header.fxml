@@ -2,12 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="128.0" prefWidth="762.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
+<AnchorPane opacity="0.99" prefHeight="128.0" prefWidth="1387.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
 
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="110.0" prefWidth="762.0" stylesheets="@../../global.css">
@@ -26,5 +29,24 @@
             <Label styleClass="label-manager" stylesheets="@../../global.css" text="MANAGER" />
          </children>
       </HBox>
+      <ImageView fitHeight="61.0" fitWidth="104.0" layoutX="1312.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../ressources/user2.jpg" />
+         </image>
+         <effect>
+            <Lighting bumpInput="$null">
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <VBox layoutX="1204.0" layoutY="33.0" prefHeight="61.0" prefWidth="100.0">
+         <children>
+            <Label prefHeight="28.0" prefWidth="135.0" text="username" />
+            <Label text="login" />
+            <Label text="attributions" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

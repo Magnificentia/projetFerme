@@ -18,71 +18,17 @@ import org.hibernate.cfg.Configuration;
  */
 public class DAO<T> {
 
-    private final static Session session=HibernateUtil.getSessionFactory().openSession();
+
     private final Class parameterClass;
+    private Session currentSession;
+     
+    private Transaction currentTransaction;
     public DAO (Class c)
     {
         this.parameterClass=c;
         this.openCurrentSessionwithTransaction();
     }
-    
-    public static boolean addEmployee(int idEm, String nom, String user, String login, String typeEm)
-    {
-        int empId=0;
-        Transaction tx=null;
-        try
-        {
-            tx=session.beginTransaction();
-            Employes emp=new Employes(idEm,nom,user,login,typeEm);
-            empId=(Integer)session.save(emp);
-            tx.commit();
-        }
-        catch(Exception e)
-        {
-            System.out.println("exception");
-            System.err.println(e.getMessage());
-            if(tx!=null)
-            {
-                tx.rollback();
-            }
-        }
-        finally
-        {
-            //session.close();
-        }
-        return empId>0;
-    }
-    public static boolean create(Object object)
-    {
-        int empId=0;
-        Transaction tx=null;
-        try
-        {
-            tx=session.beginTransaction();
-            empId=(Integer)session.save(object);
-            tx.commit();
-        }
-        catch(Exception e)
-        {
-            System.out.println("exception");
-            System.err.println(e.getMessage());
-            if(tx!=null)
-            {
-                tx.rollback();
-            }
-        }
-        finally
-        {
-            //session.close();
-        }
-        return empId>0;
-    }
-    private Session currentSession;
      
-    private Transaction currentTransaction;
- 
-
- 
     public Session openCurrentSession() {
         currentSession = getSessionFactory().openSession();
         return currentSession;
@@ -104,7 +50,7 @@ public class DAO<T> {
     }
      
     private static SessionFactory getSessionFactory() {
-        Configuration configuration = new Configuration().configure();
+        Configuration configuration = new Configuration().configure("app/modules/model/config/hibernate.cfg.xml");
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties());
         SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
@@ -128,6 +74,7 @@ public class DAO<T> {
     }
  
     public void persist(Object entity) {
+        System.out.println("saving "+entity);
         getCurrentSession().save(entity);
     }
  
@@ -147,13 +94,13 @@ public class DAO<T> {
     }
  
     @SuppressWarnings("unchecked")
-    public List<T> findAll(String table) {
-        List<T> books = (List<T>) getCurrentSession().createQuery("from "+table).list();
+    public List<T> findAll() {
+        List<T> books = (List<T>) getCurrentSession().createQuery("from "+this.parameterClass.getSimpleName()).list();
         return books;
     }
  
-    public void deleteAll(String table) {
-        List<T> entityList = findAll(table);
+    public void deleteAll() {
+        List<T> entityList = findAll();
         for (T entity : entityList) {
             delete(entity);
         }
