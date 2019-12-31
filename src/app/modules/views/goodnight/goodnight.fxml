@@ -14,7 +14,7 @@
       <JFXDatePicker layoutX="234.0" layoutY="139.0" />
       <JFXPasswordField layoutX="233.0" layoutY="188.0" />
       <JFXSlider layoutX="234.0" layoutY="253.0" />
-      <JFXTextArea layoutX="1.0" layoutY="51.0" prefHeight="335.0" prefWidth="215.0" />
+      <JFXTextArea focusColor="#755959" layoutX="1.0" layoutY="51.0" prefHeight="335.0" prefWidth="215.0" />
       <AreaChart layoutX="223.0" layoutY="287.0" prefHeight="162.0" prefWidth="365.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
