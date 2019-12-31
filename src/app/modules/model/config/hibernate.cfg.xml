@@ -42,7 +42,7 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost/volailledor?zeroDateTimeBehavior=convertToNUll&amp;serverTimezone=UTC</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/volailleDor?useLegacyDatetimezone=false&amp;serverTimezone=UTC</property>
     <property name="hibernate.connection.username">normal</property>
     <property name="hibernate.connection.password">123</property>
     <property name="hibernate.hbm2ddl.auto">update</property>

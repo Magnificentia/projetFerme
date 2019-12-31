@@ -23,6 +23,9 @@ import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
+    public  double pref_width=1700;
+    public  double pref_height=1000;
+    
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -73,10 +76,10 @@ public class Main extends Application {
         List options2=new ArrayList<>();//deuxieme menu
         options2.add(option3);
 
-        IMenu menu=new MenuItem("Elevage","ressources/icons8-chicken-32.png",options);//liste des menus
-        IMenu menu2=new MenuItem("Fournisseur","ressources/image.png",options2);
-        IMenu menu3=new MenuItem("Accueil" ,"ressources/icons8-home-32.png",options2);
-        IMenu menu4=new MenuItem("Statistiques","ressources/progress.png",options2);
+        IMenu menu=new MenuItem("Elevage","ressources/elevage.png",options);//liste des menus
+        IMenu menu2=new MenuItem("Fournisseur","ressources/fournisseur.png",options2);
+        IMenu menu3=new MenuItem("Accueil" ,"ressources/home.png",options2);
+        IMenu menu4=new MenuItem("Statistiques","ressources/statistiques.png",options2);
         List menus=new ArrayList<>();
         menus.add(menu3);
         menus.add(menu);
@@ -89,13 +92,17 @@ public class Main extends Application {
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");
         //Parent root2 = FXMLLoader.load(getClass().getResource("hd.fxml"));
-        main.setFooter("views/globalview/footer/footer.fxml");
+        //main.setFooter("views/globalview/footer/footer.fxml");
         //main.getItem().setDisable(true);
 
         primaryStage.setTitle("Hello World");
-        Scene scene=new Scene(main.getItem(), 1400, 905);
+        Scene scene=new Scene(main.getItem());
         scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
         primaryStage.setScene(scene);
+        primaryStage.setMaxHeight(pref_height);
+        primaryStage.setMinHeight(pref_height);
+        primaryStage.setMaxWidth(pref_width);
+        primaryStage.setMinWidth(pref_width);
         primaryStage.show();
     }
 

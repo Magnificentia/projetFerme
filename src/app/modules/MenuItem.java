@@ -41,6 +41,7 @@ public class MenuItem extends Item implements IMenu {
     public void setIcon(String path)
     {
         VBox content=new VBox();
+        
         Label label = new Label("Text");
         //label.setAlignment(Pos.BOTTOM_CENTER);
 
@@ -48,6 +49,7 @@ public class MenuItem extends Item implements IMenu {
         icon.setFitWidth(25); icon.setFitHeight(25);
 
         content.getChildren().addAll(icon, label);
+        
     }
     public MenuItem(List options)
     {
