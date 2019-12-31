@@ -1,44 +1,55 @@
-﻿CREATE TABLE RACE(
-	idRace INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+DROP DATABASE IF EXISTS volailleDor;
+
+CREATE DATABASE volailleDor CHARACTER SET'utf8';
+
+USE volailleDor;
+
+CREATE TABLE RACE(
+	idRace INT UNSIGNED AUTO_INCREMENT,
 	nom VARCHAR(15) NOT NULL,
 	description TEXT NOT NULL,
-	prix_race DECIMAL(7,2)
-
-);
-
+	prix_race DECIMAL(7,2),
+	PRIMARY KEY(idRace)
+)
+ENGINE=INNODB;
 
 CREATE TABLE Bande(
-	idBande INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idBande INT UNSIGNED AUTO_INCREMENT,
 	qte INT UNSIGNED NOT NULL,
 	age INT UNSIGNED NOT NULL,
 	race_id INT UNSIGNED,
-	prix_achat DECIMAL(10,2),
-	prix_vente DECIMAL(10,2), 
+	prix_achat DECIMAL(10,2),# prix d'achat du poussin
+	prix_vente DECIMAL(10,2), # prix de vente à age mature
 	dateDemarrage DATETIME,
 	fourn_id INT UNSIGNED,
-	bat_id INT UNSIGNED
-);
-
+	bat_id INT UNSIGNED,
+	PRIMARY KEY(idBande)
+)
+ENGINE=INNODB;
 
 CREATE TABLE Fournisseur(
-	idFourn INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idFourn INT UNSIGNED AUTO_INCREMENT,
 	nomFourn VARCHAR(20) NOT NULL,
 	adresse VARCHAR(20) NOT NULL,
 	tel INT UNSIGNED NOT NULL,
-	email VARCHAR(20) UNIQUE,
+	email VARCHAR(20),
 	siteweb VARCHAR(20),
-	typeFourn INT(1)
-);
-
+	typeFourn INT(1),
+	PRIMARY KEY(idFourn),
+	UNIQUE ind_uni_email (email)
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Aliment(
-	idAli INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idAli INT UNSIGNED AUTO_INCREMENT,
 	nomAli VARCHAR(15) NOT NULL,
 	description TEXT NOT NULL,
 	prix DECIMAL(8,2) NOT NULL,
-);
-
+	PRIMARY KEY(idAli),
+	CHECK(prix >0)
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Ration(
@@ -50,8 +61,8 @@ CREATE TABLE Ration(
 	eau DECIMAL(5,2) NOT NULL,
 	PRIMARY KEY(idRation),
 	UNIQUE ind_uni_ali_bande_id (ali_id,bande_id)
-);
-
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE StockAliment(
@@ -63,7 +74,7 @@ CREATE TABLE StockAliment(
 	fourn_id INT UNSIGNED,
 	PRIMARY KEY(idStock)
 )
-;
+ENGINE=INNODB;
 
 
 CREATE TABLE Vendu(
@@ -78,7 +89,8 @@ CREATE TABLE Vendu(
 	CHECK(total_prix>0),
 	INDEX ind_datevente(dateVente),
 	UNIQUE ind_uni_client_bande_id (client_id,bande_id)
-);
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Client(
@@ -86,8 +98,8 @@ CREATE TABLE Client(
 	adresse VARCHAR(15),
 	tel INT UNSIGNED,
 	PRIMARY KEY(idClient)
-);
-
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Batiment(
@@ -95,8 +107,8 @@ CREATE TABLE Batiment(
 	surface DECIMAL(5,2) NOT NULL,
 	nomBat VARCHAR(10) NOT NULL,
 	PRIMARY KEY(idBat)
-);
-
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE CollecteOeuf(
@@ -112,96 +124,112 @@ CREATE TABLE CollecteOeuf(
 	CHECK(incubation=0 OR incubation=1),
 	INDEX ind_date_collect(dateCollect)
 
-);
-
+)
+ENGINE=INNODB;
 
 CREATE TABLE TypeOeuf(
 	idTypeOeuf INT UNSIGNED AUTO_INCREMENT,
 	nomTf VARCHAR(10),
 	prix_alveole DECIMAL(9,2),
 	PRIMARY KEY(idTypeOeuf)
-);
-
+)
+ENGINE=INNODB;
 
 CREATE TABLE VenduOeuf(
-	idVenduOeuf INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idVenduOeuf INT UNSIGNED AUTO_INCREMENT,
 	collect_id INT UNSIGNED,
 	client_id INT UNSIGNED,
 	dateVente DATETIME,
 	total_prix DECIMAL(8,2),
 	qte INT UNSIGNED NOT NULL,
-	employe_id INT UNSIGNED
-);
-
+	employe_id INT UNSIGNED,
+	PRIMARY KEY(idVenduOeuf),
+	CHECK(total_prix>0),
+	INDEX ind_date_vente_oeuf (dateVente),
+	UNIQUE ind_uni_collect_client_id (collect_id,client_id)
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE incubation(
-	idInc INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+	idInc INT UNSIGNED AUTO_INCREMENT,
 	dateInc DATETIME,
 	ProduirePoussin_id INT UNSIGNED,
-	collect_id INT UNSIGNED
-);
-
+	collect_id INT UNSIGNED,
+	PRIMARY KEY(idInc),
+	INDEX ind_date_inc (dateInc)
+)
+ENGINE=INNODB;
 
 CREATE TABLE ProduirePoussin(
-	idProduirePoussin INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idProduirePoussin INT UNSIGNED AUTO_INCREMENT,
 	qte INT UNSIGNED NOT NULL,
 	taux DECIMAL(4,2),
 	incubation_id INT UNSIGNED,
+	PRIMARY KEY(idProduirePoussin)
 	
-);
-
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Maladie(
-	idM INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idM INT UNSIGNED AUTO_INCREMENT,
 	nomM VARCHAR(20) NOT NULL,
 	descriptionTraitement TEXT ,
-	descriptionMaladie TEXT
-);
-
+	descriptionMaladie TEXT ,
+	duree VARCHAR(10),
+	PRIMARY KEY(idM)
+)
+ENGINE=INNODB;
 
 CREATE TABLE BandeMalade(
-	idBandeMalade INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idBandeMalade INT UNSIGNED AUTO_INCREMENT,
 	maladie_id INT UNSIGNED,
 	bande_id INT UNSIGNED,
 	qteMalade INT UNSIGNED,
 	qtePrise INT UNSIGNED,
 	dateM DATETIME,
-	totalMort INT UNSIGNED
-);
-
+	totalMort INT UNSIGNED,
+	PRIMARY KEY(idBandeMalade),
+	UNIQUE ind_uni_bande_maladie_id (bande_id,maladie_id)
+)
+ENGINE=INNODB;
 
 CREATE TABLE Vaccin(
-	idVac INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idVac INT UNSIGNED AUTO_INCREMENT,
 	nomVac VARCHAR(15) NOT NULL,
 	periode VARCHAR(15) NOT NULL,
 	qteVac INT NOT NULL,
 	qtePoule INT NOT NULL,
 	description VARCHAR(200),
-	prix DECIMAL(8,2)
-);
-
+	prix DECIMAL(8,2),
+	PRIMARY KEY(idVac)
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE BandeVaccine(
-	idBandeVaccine INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idBandeVaccine INT UNSIGNED AUTO_INCREMENT,
 	bande_id INT UNSIGNED,
 	vaccin_id INT UNSIGNED,
-	dateVac DATETIME
+	dateVac DATETIME,
+	PRIMARY KEY(idBandeVaccine),
+	UNIQUE ind_uni_vacc_datevac_id (bande_id,vaccin_id)
 
-);
-
+)
+ENGINE=INNODB;
 
 
 CREATE TABLE Employes(
-	idEm INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	idEm INT UNSIGNED AUTO_INCREMENT,
 	nom VARCHAR(15),
 	user VARCHAR(15),
 	login VARCHAR(20),
-	typeEm VARCHAR(4)
-);
-
+	typeEm VARCHAR(4),
+	PRIMARY KEY(idEm),
+	UNIQUE ind_uni_user (user)
+)
+ENGINE=INNODB;
 
 
 

@@ -18,13 +18,14 @@ import javafx.scene.layout.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
 
 public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
     private Parent header=new HBox();
     private Parent footer=new HBox();
     private JFXTabPane menus;
-    private Pane container;
+    private static Pane container;
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
 
@@ -78,14 +79,17 @@ public class MainItem extends Item {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
-                HBox content=new HBox();
+                VBox content=new VBox();//mouen change le hbox initial en vbox
                 Label label = new Label(menu.toString());
+          
                 //label.setAlignment(Pos.BOTTOM_CENTER)
                 System.out.println(getClass().getResource(menu.getIconPath()));
                 ImageView icon = new ImageView(new Image(getClass().getResource(menu.getIconPath()).toString())); // for example
-                icon.setFitWidth(25); icon.setFitHeight(25);
+                icon.setFitWidth(50); icon.setFitHeight(50);//mouen augmente la taille des icones
+               
 
                 content.getChildren().addAll(icon, label);
+                content.setAlignment(Pos.CENTER);// je change la position dans le pane;
                 Tab tab=new Tab();
                 tab.setGraphic(content);
                 tab.setContent(menu.getItem());

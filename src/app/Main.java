@@ -5,6 +5,7 @@ import app.modules.IOption;
 import app.modules.MainItem;
 import app.modules.MenuItem;
 import app.modules.OptionItem;
+import app.modules.model.DAO;
 import app.modules.model.DbManager;
 import app.modules.model.Employes;
 import javafx.application.Application;
@@ -16,30 +17,46 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 import app.modules.userType;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
+    public  double pref_width=1700;
+    public  double pref_height=1000;
+    
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         
-        
-       String nom="mouen";
-       String user="mouen";
-       String login="mouen"; 
-       String typeEm="f";
-       Employes emp=new Employes(5, nom, user, login, typeEm);
-       Employes emp2=new Employes(7, nom, user, login, typeEm);
-       if (DbManager.create(emp) && DbManager.create(emp2))
-       {
-           System.out.println("Employee successfully added");
-       }
-       else
-       {
-           System.err.println("Error when registering employee");
-       }
-                        
+        /*String nom="mou897n";
+        String user="moun00";
+        String login="mou8en"; 
+        String typeEm="f";
+        Employes emp=new Employes(190, nom, user, login, typeEm);
+        //Employes emp2=new Employes(9, nom, user, login, typeEm);
+        DAO<Employes> empl=new DAO(Employes.class);
+        empl.persist(emp);
+        System.out.println(empl.findAll());
+        //System.out.println(empl.findAll());
+        System.err.println("");
+        //empl.persist(emp2);
+        empl.closeCurrentSessionwithTransaction();
         ///
+        
+ 
+*/
+        //pas important d'essayer de comprendre
+        //ca sert à s'assurer que l'appli se ferme convenablement
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        //
         Parent root = FXMLLoader.load(getClass().getResource("modules/views/globalview/main/sample.fxml"));
 
         //ParentTest root=new ParentTest();
@@ -59,10 +76,10 @@ public class Main extends Application {
         List options2=new ArrayList<>();//deuxieme menu
         options2.add(option3);
 
-        IMenu menu=new MenuItem("Elevage","ressources/icons8-chicken-32.png",options);//liste des menus
-        IMenu menu2=new MenuItem("Fournisseur","ressources/image.png",options2);
-        IMenu menu3=new MenuItem("Accueil" ,"ressources/icons8-home-32.png",options2);
-        IMenu menu4=new MenuItem("Statistiques","ressources/progress.png",options2);
+        IMenu menu=new MenuItem("Elevage","ressources/elevage.png",options);//liste des menus
+        IMenu menu2=new MenuItem("Fournisseur","ressources/fournisseur.png",options2);
+        IMenu menu3=new MenuItem("Accueil" ,"ressources/home.png",options2);
+        IMenu menu4=new MenuItem("Statistiques","ressources/statistiques.png",options2);
         List menus=new ArrayList<>();
         menus.add(menu3);
         menus.add(menu);
@@ -75,13 +92,17 @@ public class Main extends Application {
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");
         //Parent root2 = FXMLLoader.load(getClass().getResource("hd.fxml"));
-        main.setFooter("views/globalview/footer/footer.fxml");
+        //main.setFooter("views/globalview/footer/footer.fxml");
         //main.getItem().setDisable(true);
 
         primaryStage.setTitle("Hello World");
-        Scene scene=new Scene(main.getItem(), 1400, 905);
+        Scene scene=new Scene(main.getItem());
         scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
         primaryStage.setScene(scene);
+        primaryStage.setMaxHeight(pref_height);
+        primaryStage.setMinHeight(pref_height);
+        primaryStage.setMaxWidth(pref_width);
+        primaryStage.setMinWidth(pref_width);
         primaryStage.show();
     }
 
