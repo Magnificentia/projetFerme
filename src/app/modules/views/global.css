@@ -1,9 +1,11 @@
 
 .root{
 
-    	-fx-background-color:  #eae7e3;/*#f1e8df*/;
+    	-fx-background-color:  #d0dfff;/*#f1e8df*/;
     	-fx-font-size:15px;
+        -fx-font-weight:bold;
     	-fx-spacing:15px;
+        -fx-text-fill: white;
 
 }
 
@@ -20,13 +22,14 @@
 
 .tab-header-area .jfx-rippler
 {
-    -jfx-rippler-fill: #FFD700;
+    -jfx-rippler-fill: #daad86;
     -fx-cursor:hand;
 }
 
 
 .tab-header-background{
- -fx-background-color:#756a6a;
+ -fx-background-color:#daad86;
+ /*vert #417842*/
  -fx-alignment:center_left;
 
 }
@@ -35,43 +38,47 @@
     -fx-background-color:#00FF7F;
 }*/
 .headers-region {
-    -fx-background-color:#756a6a;
+    -fx-background-color:#417842;
 }
+
 
 /*menus*/
 
 #menus .tab{
 
--fx-pref-width:115;
--fx-pref-height:225;
--fx-background-insets: 0.0;
--fx-background-radius:0.0;
--fx-font-size: 20px;
+    -fx-pref-width:115;
+    -fx-pref-height:225;
+    -fx-background-insets: 0.0;
+    -fx-background-radius:0.0;
+    -fx-font-size: 20px;
 
-
-
-       -fx-background-color:  tab-border-color , tab-color;
-                  tab-color:#756a6a;
-                  tab-border-color : #756a6a;/*#808080;*/
-                  -fx-background-insets:  0,0 0 0 1.5, 1 6 0 0 ;
-                  -fx-padding: 4 10 4 4 ;
+    -fx-background-color:  tab-border-color , tab-color;
+    tab-color:#daad86;
+    tab-border-color : #daad86;/*#808080;*/
+    -fx-background-insets:  0,0 0 0 1.5, 1 6 0 0 ;
+    -fx-padding: 4 10 4 4 ;
 
 }
 
+
+#menus .tab .label
+{
+    -fx-text-fill: white;
+}
 #menus .tab-label{
     -fx-rotate: 90;
     -fx-font-weight:bold;
     -fx-font-size:15px;
-    
 }
+
 #menus .tab:hover{
 
--fx-background-color:F0E68C;
+-fx-background-color:#fbeec1;
 }
 
 #menus .tab:selected{
 
--fx-background-color:#fb7060;
+-fx-background-color:#bc986a;
 }
 /*options of menus*/
 #options .tab {
@@ -79,43 +86,43 @@
     -fx-pref-width: 200;
     -fx-pref-height:40;
     -fx-font-size:20px;
-    -fx-background-color: #F8F8FF;
+    -fx-background-color: #daad86;
 
-      -fx-background-color:  tab-border-color , tab-color;
-           tab-color:#756a6a;
-           tab-border-color : #756a6a;/*#808080;*/
-           -fx-background-insets:  0,0 1.5 0 0, 1 6 0 0 ;
-           -fx-padding: 4 10 4 4 ;
+      /*-fx-background-color:  tab-border-color , tab-color;*/
+    /*tab-color:#756a6a;
+    tab-border-color : #756a6a;/*#808080;*/
+    -fx-background-insets:  0,0 1.5 0 0, 1 6 0 0 ;
+    -fx-padding: 4 10 4 4 ;
 }
 
 
 #options .tab-label{
     -fx-rotate:0;
-    -fx-text-fill:#FFFAFA;
+    -fx-graphic: white;
+    /*-fx-text-fill:#FFFAFA;*/
 }
-
 
 /*label*/
 
 .label-farm
 {
-            -fx-font-weight:bold;
-         	-fx-font-size:60px;
-         	//-fx-text-fill: #FFD700;
+    -fx-font-weight:bold;
+    -fx-font-size:60px
+    /*-fx-text-fill: #FFD700;*/
 }
 
 .label-manager
 {
-       -fx-font-weight:bold;
-      -fx-font-size:60px;
-      -fx-text-fill:#fb7060;
+    -fx-font-weight:bold;
+    -fx-font-size:60px;
+    /*-fx-text-fill:#fb7060;*/
 }
 
 .button
 {
-        -fx-background-color:#FFD700;/*F0E68C*/
-     	-fx-font-size:15px;
-     	-fx-text-fill: black;
+    -fx-background-color:#FFD700;/*F0E68C*/
+    -fx-font-size:15px;
+    /*-fx-text-fill: black;*/
 }
 
 .textField
@@ -125,8 +132,19 @@
     -fx-font-size:16px;
 
 }
+#options .tab .label
+{
+    -fx-text-fill: white;
+}
 
-
+#options {
+    -fx-rotate:0;
+    -fx-text-fill: white;
+    /*-fx-text-fill:#FFFAFA;*/
+}
+#options .headers-region {
+    -fx-background-color:#daad86;
+}
 
 
 /*******************************************************************************
@@ -167,9 +185,12 @@
 
 .table-view .column-header-background, .tree-table-view .column-header-background
 {
-    -fx-background-color: transparent;
+    -fx-background-color: #bc986a;
 }
-
+#farm
+{
+    -fx-text-fill:#FFD700;
+}
 .table-row-cell, .tree-table-row-cell {
     -fx-cell-size: 40px;
 }

@@ -5,9 +5,6 @@ import app.modules.IOption;
 import app.modules.MainItem;
 import app.modules.MenuItem;
 import app.modules.OptionItem;
-import app.modules.model.DAO;
-import app.modules.model.DbManager;
-import app.modules.model.Employes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,12 +16,13 @@ import java.util.List;
 import app.modules.userType;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
-    public  double pref_width=1700;
-    public  double pref_height=1000;
+    public  double pref_width=1400;
+    public  double pref_height=800;
     
 
     @Override
@@ -78,7 +76,7 @@ public class Main extends Application {
 
         IMenu menu=new MenuItem("Elevage","ressources/elevage.png",options);//liste des menus
         IMenu menu2=new MenuItem("Fournisseur","ressources/fournisseur.png",options2);
-        IMenu menu3=new MenuItem("Accueil" ,"ressources/home.png",options2);
+        IMenu menu3=new MenuItem("Accueil" ,"ressources/white-home.png",options2);
         IMenu menu4=new MenuItem("Statistiques","ressources/statistiques.png",options2);
         List menus=new ArrayList<>();
         menus.add(menu3);
@@ -91,14 +89,13 @@ public class Main extends Application {
 
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");
-        //Parent root2 = FXMLLoader.load(getClass().getResource("hd.fxml"));
-        //main.setFooter("views/globalview/footer/footer.fxml");
-        //main.getItem().setDisable(true);
+
 
         primaryStage.setTitle("Hello World");
         Scene scene=new Scene(main.getItem());
         scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image(getClass().getResource("modules/ressources/chicken.png").toString()));
         primaryStage.setMaxHeight(pref_height);
         primaryStage.setMinHeight(pref_height);
         primaryStage.setMaxWidth(pref_width);
@@ -107,6 +104,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        
         launch(args);
     }
 }

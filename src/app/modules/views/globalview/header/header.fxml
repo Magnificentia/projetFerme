@@ -15,14 +15,14 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="812.0" stylesheets="@../../global.css">
          <children>
-            <ImageView fx:id="imageViewHeader" fitHeight="127.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewHeader" fitHeight="115.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
                <image>
-                  <Image url="@../../../ressources/icons8-poulet-80.png" />
+                  <Image url="@../../../ressources/chicken.png" />
                </image></ImageView>
-            <Label styleClass="label-farm" stylesheets="@../../global.css" text="farm">
+            <Label fx:id="farm" styleClass="label-farm" stylesheets="@../../global.css" text="farm">
                <HBox.margin>
                   <Insets left="45.0" />
                </HBox.margin></Label>

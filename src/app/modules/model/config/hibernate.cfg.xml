@@ -42,20 +42,30 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-<<<<<<< HEAD
-    <property name="hibernate.connection.url">jdbc:mysql://localhost/volailledor?useLegacyDatetimezone=false&amp;serverTimezone=UTC</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost/ferme?zeroDateTimeBehavior=convertToNUll&amp;serverTimezone=UTC</property>
     <property name="hibernate.connection.username">normal</property>
     <property name="hibernate.connection.password">123</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="app.modules.model.DbManager"/>
+    <mapping class="app.modules.model.Collecteoeuf"/>
+    <mapping class="app.modules.model.Stockaliment"/>
+    <mapping class="app.modules.model.Bandemalade"/>
+    <mapping class="app.modules.model.Batiment"/>
+    <mapping class="app.modules.model.Employes"/>
+    <mapping class="app.modules.model.DAO"/>
+    <mapping class="app.modules.model.Bandevaccine"/>
+    <mapping class="app.modules.model.Maladie"/>
+    <mapping class="app.modules.model.Incubation"/>
     <mapping class="app.modules.model.Aliment"/>
     <mapping class="app.modules.model.Client"/>
     <mapping class="app.modules.model.Vaccin"/>
-    <mapping class="app.modules.model.DbManager"/>
-    <mapping class="app.modules.model.Batiment"/>
-    <mapping class="app.modules.model.Employes"/>
-    <mapping class="app.modules.model.Maladie"/>
+    <mapping class="app.modules.model.Venduoeuf"/>
+    <mapping class="app.modules.model.Vendu"/>
+    <mapping class="app.modules.model.Ration"/>
+    <mapping class="app.modules.model.Bande"/>
+    <mapping class="app.modules.model.HibernateUtil"/>
     <mapping class="app.modules.model.Typeoeuf"/>
     <mapping class="app.modules.model.Race"/>
+    <mapping class="app.modules.model.Produirepoussin"/>
     <mapping class="app.modules.model.Fournisseur"/>
   </session-factory>
 </hibernate-configuration>

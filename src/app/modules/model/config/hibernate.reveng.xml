@@ -40,14 +40,24 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="volailledor"/>
-  <table-filter match-name="employes"/>
+  <schema-selection match-catalog="ferme"/>
+  <table-filter match-name="vendu"/>
   <table-filter match-name="vaccin"/>
-  <table-filter match-name="client"/>
   <table-filter match-name="race"/>
+  <table-filter match-name="incubation"/>
+  <table-filter match-name="ration"/>
+  <table-filter match-name="venduoeuf"/>
+  <table-filter match-name="bandevaccine"/>
   <table-filter match-name="maladie"/>
+  <table-filter match-name="bandemalade"/>
+  <table-filter match-name="client"/>
   <table-filter match-name="fournisseur"/>
   <table-filter match-name="aliment"/>
-  <table-filter match-name="typeoeuf"/>
+  <table-filter match-name="collecteoeuf"/>
+  <table-filter match-name="stockaliment"/>
   <table-filter match-name="batiment"/>
+  <table-filter match-name="typeoeuf"/>
+  <table-filter match-name="employes"/>
+  <table-filter match-name="produirepoussin"/>
+  <table-filter match-name="bande"/>
 </hibernate-reverse-engineering>
