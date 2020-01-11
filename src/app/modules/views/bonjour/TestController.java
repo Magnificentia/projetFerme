@@ -9,9 +9,12 @@ import javafx.scene.layout.VBox;
 import app.modules.IController;
 
 import app.modules.userType;
+import app.modules.views.Popup;
+import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
 import java.util.*;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,6 +37,9 @@ public class TestController implements Initializable, IController {
 
     @FXML
     private TableColumn<?,?> col_type;
+    
+    @FXML
+    private JFXButton buttonSupprimer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,4 +66,11 @@ public class TestController implements Initializable, IController {
         System.err.println(nodeRoles.keySet());
         return nodeRoles;
     }
+    
+    @FXML
+    void ButtonSupprimerOnClick(ActionEvent event) {
+       boolean bool= Popup.show("Veuillez entrez les informations", "Editer");
+    }
+    
+    
 }
