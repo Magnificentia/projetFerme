@@ -28,23 +28,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         
-        /*String nom="mou897n";
-        String user="moun00";
-        String login="mou8en"; 
-        String typeEm="f";
-        Employes emp=new Employes(190, nom, user, login, typeEm);
-        //Employes emp2=new Employes(9, nom, user, login, typeEm);
-        DAO<Employes> empl=new DAO(Employes.class);
-        empl.persist(emp);
-        System.out.println(empl.findAll());
-        //System.out.println(empl.findAll());
-        System.err.println("");
-        //empl.persist(emp2);
-        empl.closeCurrentSessionwithTransaction();
-        ///
-        
- 
-*/
         //pas important d'essayer de comprendre
         //ca sert à s'assurer que l'appli se ferme convenablement
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -60,36 +43,33 @@ public class Main extends Application {
         //ParentTest root=new ParentTest();
         IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
         IOption option2=new OptionItem("poulets","views/bonjour/Test.fxml");
-        IOption option3=new OptionItem("factures","views/goodnight/goodnight.fxml");
-        IOption option4=new OptionItem("autre chose","views/goodnight/goodnight.fxml");
-        IOption option5=new OptionItem("je sais pas trop","views/goodnight/goodnight.fxml");
+        IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
+        IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
+        IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
 
-        List options=new ArrayList<>();//premier menu
-        options.add(option);
-        options.add(option2);
-        options.add(option3);
-        options.add(option4);
-        options.add(option5);
+        List elevage=new ArrayList<>();//premier menu
+        elevage.add(option);
+        elevage.add(option2);
+        
+        elevage.add(aliment);
+        elevage.add(statsElevage);
 
-        List options2=new ArrayList<>();//deuxieme menu
-        options2.add(option3);
+        List vente=new ArrayList<>();//deuxieme menu
+        vente.add(statsVente);
+        
 
-        IMenu menu=new MenuItem("Elevage","ressources/elevage.png",options);//liste des menus
-        IMenu menu2=new MenuItem("Fournisseur","ressources/fournisseur.png",options2);
-        IMenu menu3=new MenuItem("Accueil" ,"ressources/white-home.png",options2);
-        IMenu menu4=new MenuItem("Statistiques","ressources/statistiques.png",options2);
+        IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
+        IMenu fournisseurMenu=new MenuItem("Fournisseur","ressources/fournisseur.png",vente);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/white-home.png",vente);
+        IMenu menu4=new MenuItem("Statistiques","ressources/statistiques.png",vente);
         List menus=new ArrayList<>();
-        menus.add(menu3);
-        menus.add(menu);
-        menus.add(menu2);
+        menus.add(accueilMenu);
+        menus.add(elevageMenu);
+        menus.add(fournisseurMenu);
         menus.add(menu4);
-
-
-
 
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");
-
 
         primaryStage.setTitle("Hello World");
         Scene scene=new Scene(main.getItem());

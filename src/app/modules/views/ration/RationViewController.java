@@ -1,7 +1,8 @@
-package app.modules.views.bonjour;
+package app.modules.views.ration;
 
 
 
+import app.modules.views.bonjour.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -16,7 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class TestController implements Initializable, IController {
+public class RationViewController implements Initializable, IController {
     @FXML
     TableView<?> table;
 
