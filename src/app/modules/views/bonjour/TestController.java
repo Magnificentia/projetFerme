@@ -133,7 +133,7 @@ public class TestController implements Initializable, IController {
        
        //Border.getCenter().se;
         System.out.println("click");
-        Formulaire f=new Formulaire("ok","Cancel","elevage.png",250,500);
+        Formulaire f=new Formulaire("ok","Cancel","/app/Ressources/elevage.png",250,500);
         
         Label nom=new Label("nom");
         Label prenom=new Label("prenom");
