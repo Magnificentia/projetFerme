@@ -14,9 +14,13 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 import app.modules.userType;
+import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 public class Main extends Application {
@@ -44,7 +48,7 @@ public class Main extends Application {
         //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
         IOption test=new OptionItem("poulets","views/bonjour/Test.fxml");
         IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
-        IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
+        //IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
         IOption bandeVaccine=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
         IOption ration=new OptionItem("Ration","views/ration/rationView.fxml");
@@ -55,6 +59,7 @@ public class Main extends Application {
         IOption stockAliment=new OptionItem("Stock Aliment","views/stockAliment/stockAlimentView.fxml");
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
+        IOption statsElevage=new OptionItem("Elevage","views/statselevage/statsElevageView.fxml");
 
 
         
@@ -64,13 +69,13 @@ public class Main extends Application {
         elevage.add(ration);
         //elevage.add(incubation);  
         elevage.add(aliment);
-        elevage.add(statsElevage);
+        //elevage.add(statsElevage);
         elevage.add(stockAliment);
         elevage.add(collecteoeuf);
                
 
         List vente=new ArrayList<>();//options menu vente
-        vente.add(statsVente);
+        //vente.add(statsVente);
         vente.add(fournissseurs);
         
         
@@ -83,11 +88,13 @@ public class Main extends Application {
         utilisateur.add(employes);
         utilisateur.add(incubation);
         
+        List statistiques=new ArrayList<>();
+        statistiques.add(statsElevage);
 
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
         IMenu fournisseurMenu=new MenuItem("Fournisseur","ressources/fournisseur.png",vente);
         IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/white-home.png",null);
-        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/statistiques.png",null);
+        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/statistiques.png",statistiques);
         IMenu santeMenu=new MenuItem("Santé","ressources/statistiques.png",sante);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/statistiques.png",utilisateur);
         List menus=new ArrayList<>();
@@ -116,5 +123,24 @@ public class Main extends Application {
     public static void main(String[] args) {
         
         launch(args);
+    }
+    
+    public static void infoBox(String infoMessage, String headerText, String title) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
+
+    public static boolean showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        //alert.show();
+        Optional<ButtonType> result = alert.showAndWait();
+        return (result.get() == ButtonType.OK);
     }
 }

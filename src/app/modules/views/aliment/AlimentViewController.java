@@ -2,6 +2,7 @@ package app.modules.views.aliment;
 
 
 
+import app.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -10,13 +11,17 @@ import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
 import app.modules.model.Bande;
+import app.modules.model.StockAliment;
 
 import app.modules.userType;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,6 +60,21 @@ public class AlimentViewController implements Initializable, IController {
         table.setItems(liste);
     }
 
+    @FXML
+    public void handleDelete(ActionEvent event) throws SQLException {
+
+        Aliment mat=table.getSelectionModel().getSelectedItem();
+
+        if (mat!=null) {
+            if(Main.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
+                "voulez-vous supprimer cet aliment ?"))
+            {
+                DbManagerNnane.suppAliment(mat);
+                populateTableAliment();
+            }
+            return;
+        }
+    }
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
         Map nodeRoles=new HashMap<Node,List<userType>>();

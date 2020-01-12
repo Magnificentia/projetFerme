@@ -2,6 +2,7 @@ package app.modules.views.stockAliment;
 
 
 
+import app.Main;
 import app.modules.views.ration.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,9 +17,12 @@ import app.modules.model.StockAliment;
 import app.modules.userType;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -64,7 +68,23 @@ public class StockAlimentViewController implements Initializable, IController {
         ObservableList<StockAliment> liste=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
         table.setItems(liste);
     }
+    
+    @FXML
+    public void handleDelete(ActionEvent event) throws SQLException {
 
+        StockAliment mat=table.getSelectionModel().getSelectedItem();
+
+        if (mat!=null) {
+            if(Main.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
+                "voulez-vous supprimer cet utilisateur?"))
+            {
+                System.out.println("suppression");
+                DbManagerNnane.suppStockAliment(mat);
+                populateTableRation();
+            }
+            return;
+        }
+    }
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

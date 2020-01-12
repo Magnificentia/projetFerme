@@ -150,6 +150,7 @@ public class TestController implements Initializable, IController {
         
         
         f.addElement(list);
+        //f.setVisible(false);
         Border.setRight(f);
         
         hboxTest.setAlignment(Pos.CENTER_LEFT);

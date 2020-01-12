@@ -21,6 +21,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 /**
  *
@@ -233,7 +235,68 @@ public class DbManagerNnane {
         }
         return stockList;
     }
-
+    
+    public static boolean suppRation(Ration ration)
+    {
+        
+        try{
+            Statement state=connection.createStatement();
+            int r=state.executeUpdate("delete from ration where idmaterials="+ration.getIdration());
+            return r==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;    
+    }
+    
+    public static boolean suppAliment(Aliment aliment)
+    {
+        
+        try{
+            Statement state=connection.createStatement();
+            int r=state.executeUpdate("delete from aliment where idali="+aliment.getIdali());
+            return r==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;    
+    }
+    
+    public static boolean suppStockAliment(StockAliment aliment)
+    {
+        
+        try{
+            Statement state=connection.createStatement();
+            int r=state.executeUpdate("delete from stockaliment where idstock="+aliment.getIdStock());
+            return r==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        return false;    
+    }
+    
+    public static ObservableList<Pair<String,Integer>> getStatsBandedate()
+    {
+        ObservableList<Pair<String,Integer>> stockList = FXCollections.observableArrayList();
+        Pair man;
+        try{
+            Statement state=connection.createStatement();
+            String query="select date_format(datedemarrage,'%Y-%m-%d') date,sum(qte) qte from bande group by datedemarrage";
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    man = new Pair(result.getString("date"),result.getInt("qte"));
+                    stockList.add(man);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;     
+        
+    }
+    
+    
 }
 
 //dfadfdadsf
