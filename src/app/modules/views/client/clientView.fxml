@@ -37,9 +37,8 @@
             <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
               <columns>
                 <TableColumn fx:id="col_nom" prefWidth="129.0" text="Nom" />
-                <TableColumn fx:id="col_user" prefWidth="122.0" text="User" />
-                  <TableColumn fx:id="col_password" minWidth="0.0" prefWidth="140.0" text="password" />
-                  <TableColumn fx:id="col_type" prefWidth="75.0" text="Type" />
+                <TableColumn fx:id="col_adresse" prefWidth="122.0" text="adresse" />
+                  <TableColumn fx:id="col_tel" minWidth="0.0" prefWidth="140.0" text="Télephone" />
               </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">

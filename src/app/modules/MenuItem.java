@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Insets;
 import javafx.scene.layout.Pane;
 
 
@@ -40,6 +39,16 @@ public class MenuItem extends Item implements IMenu {
         this.iconPath=iconPath;
         loadMenus(optionsList);
     }
+    public MenuItem(String name,String iconPath,IOption option,int a)
+    {
+        super(name);
+        this.options=new BorderPane();
+        tp.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        this.options.setCenter(option.getItem());
+        this.options.setId("options");
+        this.iconPath=iconPath;
+    }
+    
     public void setIcon(String path)
     {
         VBox content=new VBox();

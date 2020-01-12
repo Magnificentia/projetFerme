@@ -1,4 +1,4 @@
-package app.modules.views.statselevage;
+package app.modules.views.accueil;
 
 
 import app.modules.views.statsSante.*;
@@ -30,7 +30,7 @@ import javafx.util.Pair;
  *
  * @author _Nprime496_
  */
-public class StatsElevageViewController implements Initializable,IController {
+public class AccueilViewController implements Initializable,IController {
 
     @FXML
     private LineChart<String,Integer> grah_qte_date;
@@ -41,8 +41,8 @@ public class StatsElevageViewController implements Initializable,IController {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        createLineChart();
-        createPiechartAchatFournisseur();
+        //createLineChart();
+        //createPiechartAchatFournisseur();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

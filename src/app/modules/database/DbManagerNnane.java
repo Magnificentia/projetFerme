@@ -8,6 +8,7 @@ package app.modules.database;
 import app.modules.model.Aliment;
 import app.modules.model.Bande;
 import app.modules.model.BandeVaccine;
+import app.modules.model.Client;
 import app.modules.model.CollecteOeuf;
 import app.modules.model.Employes;
 import app.modules.model.Fournisseur;
@@ -236,6 +237,26 @@ public class DbManagerNnane {
         return stockList;
     }
     
+    public static List<Client> selectClients()
+    {
+        List<Client> stockList = FXCollections.observableArrayList();
+        
+        Client emp;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from client";//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    emp = new Client(result.getInt("idClient"),result.getString("adresse"),result.getInt("tel"),result.getString("nomclient"));
+                    stockList.add(emp);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;
+    }
+    
     public static boolean suppRation(Ration ration)
     {
         
@@ -294,6 +315,25 @@ public class DbManagerNnane {
         }
         return stockList;     
         
+    }
+
+    public static List<Pair<String, Integer>> getBar() {
+                ObservableList<Pair<String,Integer>> stockList = FXCollections.observableArrayList();
+        Pair man;
+        try{
+            Statement state=connection.createStatement();
+            String query="select nomfourn,count(qte) c from bande join fournisseur on bande.fourn_id=fournisseur.idfourn";
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    man = new Pair(result.getString("nomfourn"),result.getInt("c"));
+                    stockList.add(man);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;  
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

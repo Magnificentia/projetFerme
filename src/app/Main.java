@@ -60,7 +60,8 @@ public class Main extends Application {
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
         IOption statsElevage=new OptionItem("Elevage","views/statselevage/statsElevageView.fxml");
-
+        IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
+        IOption client=new OptionItem("Client","views/client/clientView.fxml");
 
         
         List elevage=new ArrayList<>();//options menu elevage
@@ -74,10 +75,10 @@ public class Main extends Application {
         elevage.add(collecteoeuf);
                
 
-        List vente=new ArrayList<>();//options menu vente
+        List tiers=new ArrayList<>();//options menu vente
         //vente.add(statsVente);
-        vente.add(fournissseurs);
-        
+        tiers.add(fournissseurs);
+        tiers.add(client);
         
         List sante=new ArrayList<>();//options menu veterinaire
         sante.add(bandeVaccine);
@@ -92,15 +93,16 @@ public class Main extends Application {
         statistiques.add(statsElevage);
 
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
-        IMenu fournisseurMenu=new MenuItem("Fournisseur","ressources/fournisseur.png",vente);
-        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/white-home.png",null);
+        IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/white-home.png",accueil,1);
         IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/statistiques.png",statistiques);
         IMenu santeMenu=new MenuItem("Santé","ressources/statistiques.png",sante);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/statistiques.png",utilisateur);
+
         List menus=new ArrayList<>();
         menus.add(accueilMenu);
         menus.add(elevageMenu);
-        menus.add(fournisseurMenu);
+        menus.add(tiersMenu);
         menus.add(santeMenu);
         menus.add(statistiquesMenu);
         menus.add(utilisateurMenu);

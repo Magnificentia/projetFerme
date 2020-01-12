@@ -7,51 +7,59 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
+import app.modules.database.DbManagerNnane;
+import app.modules.model.Client;
+import app.modules.model.CollecteOeuf;
 
 import app.modules.userType;
 import app.modules.views.Popup;
 import com.jfoenix.controls.JFXButton;
 
+
 import java.net.URL;
 import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
 public class ClientViewController implements Initializable, IController {
-    @FXML
-    TableView<?> table;
+   
+        @FXML
+    private TableView<Client> table;
 
     @FXML
-    VBox modify;
-    
-    @FXML
-    private TableColumn<?,?> col_nom;
+    private TableColumn<?, ?> col_nom;
 
     @FXML
-    private TableColumn<?,?> col_user;
+    private TableColumn<?, ?> col_adresse;
 
     @FXML
-    private TableColumn<?,?> col_password;
+    private TableColumn<?, ?> col_tel;
 
-    @FXML
-    private TableColumn<?,?> col_type;
-    
     @FXML
     private JFXButton buttonSupprimer;
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
-        col_password.setCellValueFactory(new PropertyValueFactory<>("login"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("typeEm"));
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+        col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        
+        populateTableClient();
         table.setPrefWidth(800);
     }
 
+    
+    public void populateTableClient()
+    {
+        ObservableList<Client> liste=FXCollections.observableArrayList(DbManagerNnane.selectClients());
+        table.setItems(liste);
+    }
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

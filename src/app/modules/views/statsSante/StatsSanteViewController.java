@@ -1,7 +1,6 @@
-package app.modules.views.statselevage;
+package app.modules.views.statsSante;
 
 
-import app.modules.views.statsSante.*;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.userType;
@@ -30,7 +29,7 @@ import javafx.util.Pair;
  *
  * @author _Nprime496_
  */
-public class StatsElevageViewController implements Initializable,IController {
+public class StatsSanteViewController implements Initializable,IController {
 
     @FXML
     private LineChart<String,Integer> grah_qte_date;
