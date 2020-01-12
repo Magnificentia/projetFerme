@@ -76,9 +76,9 @@ public class Main extends Application {
         scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResource("modules/ressources/chicken.png").toString()));
-        primaryStage.setMaxHeight(pref_height);
+        //primaryStage.setMaxHeight(pref_height);
         primaryStage.setMinHeight(pref_height);
-        primaryStage.setMaxWidth(pref_width);
+        //primaryStage.setMaxWidth(pref_width);
         primaryStage.setMinWidth(pref_width);
         primaryStage.show();
     }
