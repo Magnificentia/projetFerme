@@ -35,6 +35,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.scene.control.TextField;
 
 //putain
 public class TestController implements Initializable, IController {
@@ -43,6 +46,9 @@ public class TestController implements Initializable, IController {
 
     @FXML
     private AnchorPane root;
+    
+    @FXML
+    private HBox ParentHbox;
     
     /*@FXML
     private VBox VboxRight;
@@ -63,9 +69,14 @@ public class TestController implements Initializable, IController {
     @FXML
     private StackPane parentContainer;
     */
-     @FXML
-    private VBox hboxTest;    
+    @FXML
+    private TextField filterTextField;
+    
+    @FXML
+    private VBox VBoxTest;   
             
+    @FXML
+    private VBox VBoxFormular;
     
     @FXML
     private TableColumn<Utilisateur,String> col_nom;
@@ -78,6 +89,8 @@ public class TestController implements Initializable, IController {
 
     @FXML
     private TableColumn<Utilisateur,String> col_type;
+    
+    private ObservableList<Utilisateur> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,13 +107,15 @@ public class TestController implements Initializable, IController {
         
         
         table.setItems(loadData());
+        table.setPrefWidth(1800);
+        this.Search();
         
         //table.setPrefWidth(800);
     }
     
     public ObservableList<Utilisateur> loadData()
     {
-         ObservableList<Utilisateur> data =FXCollections.observableArrayList();
+        this.data =FXCollections.observableArrayList();
          
          data.add(new Utilisateur("nnane","Client","!mkdfkdjf","ADMIN"));
          data.add(new Utilisateur("test","Client","!mkdfkdjf","invite"));
@@ -116,23 +131,9 @@ public class TestController implements Initializable, IController {
     void buttonAjouterUtilisateur(ActionEvent event) {
        
         
-       /* Scene scene=table.getScene();
-        
-        
-        parentContainer.translateYProperty().set(scene.getWidth());
-        //root.getChildren().add(parentContainer);
-        
-        /*Timeline timeline=new Timeline();
-        KeyValue kv=new KeyValue(parentContainer.translateYProperty(),0, Interpolator.EASE_IN);
-        KeyFrame kf;
-        kf = new KeyFrame(Duration.seconds(1),kv);
-        timeline.getKeyFrames().add(kf);
-           System.out.println("sliiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiide");
-        timeline.play();*/
-       
-       
-       //Border.getCenter().se;
+     
         System.out.println("click");
+        
         Formulaire f=new Formulaire("ok","Cancel","elevage.png",250,500);
         
         Label nom=new Label("nom");
@@ -150,26 +151,73 @@ public class TestController implements Initializable, IController {
         
         
         f.addElement(list);
-        //f.setVisible(false);
-        Border.setRight(f);
+
+        ParentHbox.getChildren().add(f);
+        ParentHbox.setSpacing(10);
         
-        hboxTest.setAlignment(Pos.CENTER_LEFT);
+        
         
        // table.setPrefWidth(250);
         TranslateTransition slide=new TranslateTransition();
         slide.setDuration(Duration.seconds(1));
         slide.setNode(f);
-        hboxTest.setPrefWidth(hboxTest.getPrefWidth()-f.getPrefWidth()-55);
-        slide.setToX(-100);
+        //slide.get
+        VBoxTest.setPrefWidth(VBoxTest.getPrefWidth() - f.getPrefWidth()-55);
+        slide.setToX(-50);
         slide.play();
         
-        f.setTranslateX(0);
+        f.setTranslateY(12);
         
 //slide.setOnFinished(e->)
         
         //parentContainer.setTranslateX(0);
-          
     }
+     @FXML
+    void Search() {
+
+        this.loadData();
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Utilisateur> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterTextField.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(utilisateur -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (utilisateur.getUser().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (utilisateur.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (utilisateur.getPassword().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (utilisateur.getType().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Utilisateur> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+        
+    
 
 
     /*
