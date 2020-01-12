@@ -68,10 +68,10 @@ public class MenuItem extends Item implements IMenu {
         {
             if (option.isVisible())
             {
-                Insets insets = new Insets(20,20,20,20);
+                //Insets insets = new Insets(20,20,20,20);
                 Tab tab=new Tab();
                 tab.setContent(option.getItem());
-                ((Pane) tab.getContent()).setPadding(insets);
+                //((Pane) tab.getContent()).setPadding(insets);
                 tab.setGraphic(new Label(option.toString()));
                 tp.getTabs().addAll(tab);
                 visible=true;
