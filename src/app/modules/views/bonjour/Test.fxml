@@ -1,54 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="536.0" prefWidth="797.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.bonjour.TestController">
+<AnchorPane fx:id="root" prefHeight="746.0" prefWidth="1288.0" stylesheets="@../../../ProjetMbinkeu/projetpoo/src/app/modules/views/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.bonjour.TestController">
    <children>
-      <VBox prefHeight="536.0" prefWidth="797.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+      <BorderPane fx:id="Border" layoutX="-2.0" layoutY="-2.0" prefHeight="758.0" prefWidth="1340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-52.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-12.0">
+         <center>
+            <AnchorPane fx:id="PaneTable" prefHeight="733.0" prefWidth="1281.0" BorderPane.alignment="TOP_LEFT">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
-               <children>
-                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
-                  <HBox prefHeight="50.0" prefWidth="348.0">
+                  <VBox fx:id="hboxTest" alignment="TOP_CENTER" layoutY="-2.0" prefHeight="748.0" prefWidth="1290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TextField />
-                        <JFXButton>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
-                           </graphic>
-                        </JFXButton>
+                        <HBox prefHeight="36.0" prefWidth="1075.0">
+                           <children>
+                              <Label prefHeight="58.0" prefWidth="104.0" text="Users">
+                                 <HBox.margin>
+                                    <Insets left="105.0" top="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="30.0" prefWidth="1290.0">
+                           <children>
+                              <JFXButton onAction="#buttonAjouterUtilisateur" prefHeight="30.0" prefWidth="251.0" text="Ajouter Utilisateur">
+                                 <HBox.margin>
+                                    <Insets left="105.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <TextField prefHeight="27.0" prefWidth="257.0">
+                                 <HBox.margin>
+                                    <Insets left="400.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <JFXButton prefHeight="31.0" prefWidth="149.0" text="rechercher">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="647.0" prefWidth="1290.0">
+                           <children>
+                              <TableView fx:id="table" prefHeight="535.0" prefWidth="1059.0">
+                                <columns>
+                                  <TableColumn fx:id="col_nom" prefWidth="165.99996948242188" text="Nom" />
+                                  <TableColumn fx:id="col_user" prefWidth="218.0" text="User" />
+                                    <TableColumn fx:id="col_password" minWidth="0.0" prefWidth="200.0" text="password" />
+                                    <TableColumn fx:id="col_type" prefWidth="282.0" text="Type" />
+                                </columns>
+                                 <HBox.margin>
+                                    <Insets left="105.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="134.0" prefWidth="1290.0" spacing="50.0" stylesheets="@../global.css">
+                           <children>
+                              <JFXButton prefHeight="48.0" prefWidth="158.0" text="supprimer">
+                                 <HBox.margin>
+                                    <Insets left="105.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton prefHeight="48.0" prefWidth="183.0" text="éditer" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </HBox>
-            <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
-              <columns>
-                <TableColumn fx:id="col_nom" prefWidth="129.0" text="Nom" />
-                <TableColumn fx:id="col_user" prefWidth="122.0" text="User" />
-                  <TableColumn fx:id="col_password" minWidth="0.0" prefWidth="140.0" text="password" />
-                  <TableColumn fx:id="col_type" prefWidth="75.0" text="Type" />
-              </columns>
-            </TableView>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-               <children>
-                  <JFXButton fx:id="buttonSupprimer" onAction="#ButtonSupprimerOnClick" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </children>
+   <padding>
+      <Insets left="50.0" top="10.0" />
+   </padding>
 </AnchorPane>
