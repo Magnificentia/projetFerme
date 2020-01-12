@@ -67,7 +67,7 @@ public class StatsElevageViewController implements Initializable,IController {
         grah_qte_date.setTitle("expences per manufactuer"); 
     }
     
-    public void createPiechartAchatFournisseur()
+    /*public void createPiechartAchatFournisseur()
     {
         //Preparing ObservbleList object         
       ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(getListChart()); 
@@ -87,7 +87,7 @@ public class StatsElevageViewController implements Initializable,IController {
       //Setting the labels of the pie chart visible  
       pieChart.setLabelsVisible(true); 
    
-    }
+    }*/
     @Override
     public Map<Node, List<userType>> getNodeRoles() {
         return null;

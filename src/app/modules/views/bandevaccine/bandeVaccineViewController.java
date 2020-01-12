@@ -13,7 +13,7 @@ import app.modules.model.Aliment;
 import app.modules.model.BandeVaccine;
 
 import app.modules.userType;
-import app.modules.views.Popup;
+import app.modules.model.Popup;
 import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
@@ -77,7 +77,7 @@ public class bandeVaccineViewController implements Initializable, IController {
     
     @FXML
     void ButtonSupprimerOnClick(ActionEvent event) {
-       boolean bool= Popup.show("Veuillez entrez les informations", "Editer");
+       boolean bool= Popup.show("Veuillez entrez les informations", "Editer",null);
     }
     
     
