@@ -37,7 +37,7 @@ public class DbManagerNnane {
             // db parameters  
             String user="normal";
             String password="123";
-            String url = "jdbc:mysql://localhost/volailledor?zeroDateTimeBehavior=convertToNUll&serverTimezone=UTC";  
+            String url = "jdbc:mysql://localhost/volailledor?useLegacyDatetimezone=false&serverTimezone=UTC";  
             // create a connection to the database  
             connect= DriverManager.getConnection(url,user,password);  
               
