@@ -42,7 +42,7 @@ public class Main extends Application {
 
         //ParentTest root=new ParentTest();
         //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
-        //IOption option2=new OptionItem("poulets","views/bonjour/Test.fxml");
+        IOption test=new OptionItem("poulets","views/bonjour/Test.fxml");
         IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
@@ -73,9 +73,11 @@ public class Main extends Application {
         vente.add(statsVente);
         vente.add(fournissseurs);
         
+        
         List sante=new ArrayList<>();//options menu veterinaire
         sante.add(bandeVaccine);
         sante.add(vaccins);
+        sante.add(test);
         
         List utilisateur=new ArrayList<>();
         utilisateur.add(employes);
