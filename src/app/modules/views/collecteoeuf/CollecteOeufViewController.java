@@ -1,15 +1,16 @@
-package app.modules.views.ration;
+package app.modules.views.collecteoeuf;
 
 
 
+import app.modules.views.employes.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Ration;
+import app.modules.model.CollecteOeuf;
+import app.modules.model.Fournisseur;
 
 import app.modules.userType;
 
@@ -21,49 +22,53 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class RationViewController implements Initializable, IController {
+public class CollecteOeufViewController implements Initializable, IController {
         @FXML
-    private TableView<Ration> table;
+    private TableView<CollecteOeuf> table;
 
-    @FXML
-    private TableColumn<?, ?> col_nom;
 
     @FXML
     private TableColumn<?, ?> col_bande;
 
     @FXML
-    private TableColumn<?, ?> col_aliment;
-
-    @FXML
-    private TableColumn<?, ?> col_date;
+    private TableColumn<?, ?> col_typeoeuf;
 
     @FXML
     private TableColumn<?, ?> col_quantite;
 
     @FXML
-    private TableColumn<?, ?> col_eau;
+    private TableColumn<?, ?> col_incubation;
+
+    @FXML
+    private TableColumn<?, ?> col_prix;
+
+    @FXML
+    private TableColumn<?, ?> col_quantitecasse;
+    
+        @FXML
+    private TableColumn<?, ?> col_date;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomRation"));
-        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
-        col_eau.setCellValueFactory(new PropertyValueFactory<>("eau"));
-        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateRation"));
 
-        populateTableRation();
+        col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
+        col_prix.setCellValueFactory(new PropertyValueFactory<>("prix_alveole"));
+        col_incubation.setCellValueFactory(new PropertyValueFactory<>("incubation"));
+        col_quantitecasse.setCellValueFactory(new PropertyValueFactory<>("qteCasse"));
+        col_typeoeuf.setCellValueFactory(new PropertyValueFactory<>("nomTypeOeuf"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("dateCollect"));
+        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        populateTableCollecteOeuf();
         table.setPrefWidth(800);
     }
-    
-    public void populateTableRation()
+
+    public void populateTableCollecteOeuf()
     {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        ObservableList<CollecteOeuf> liste=FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs());
         table.setItems(liste);
     }
-
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

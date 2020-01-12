@@ -1,4 +1,4 @@
-package app.modules.views.ration;
+package app.modules.views.employes;
 
 
 
@@ -8,8 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Ration;
+import app.modules.model.CollecteOeuf;
+import app.modules.model.Employes;
 
 import app.modules.userType;
 
@@ -21,49 +21,40 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class RationViewController implements Initializable, IController {
-        @FXML
-    private TableView<Ration> table;
+public class EmployesViewController implements Initializable, IController {
+
+    @FXML
+    private TableView<Employes> table;
 
     @FXML
     private TableColumn<?, ?> col_nom;
 
     @FXML
-    private TableColumn<?, ?> col_bande;
+    private TableColumn<?, ?> col_user;
 
     @FXML
-    private TableColumn<?, ?> col_aliment;
+    private TableColumn<?, ?> col_password;
 
     @FXML
-    private TableColumn<?, ?> col_date;
-
-    @FXML
-    private TableColumn<?, ?> col_quantite;
-
-    @FXML
-    private TableColumn<?, ?> col_eau;
+    private TableColumn<?, ?> col_type;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomRation"));
-        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
-        col_eau.setCellValueFactory(new PropertyValueFactory<>("eau"));
-        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateRation"));
-
-        populateTableRation();
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
+        col_password.setCellValueFactory(new PropertyValueFactory<>("login"));
+        col_type.setCellValueFactory(new PropertyValueFactory<>("typeEm"));
+        populateTableEmployes();
         table.setPrefWidth(800);
     }
-    
-    public void populateTableRation()
+
+    public void populateTableEmployes()
     {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        ObservableList<Employes> liste=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
         table.setItems(liste);
     }
-
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

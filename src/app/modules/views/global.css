@@ -46,8 +46,8 @@
 
 #menus .tab{
 
-    -fx-pref-width:115;
-    -fx-pref-height:225;
+    -fx-pref-width:100;
+    -fx-pref-height:210;
     -fx-background-insets: 0.0;
     -fx-background-radius:0.0;
     -fx-font-size: 20px;
@@ -83,9 +83,9 @@
 /*options of menus*/
 #options .tab {
 
-    -fx-pref-width: 200;
+    -fx-pref-width: 150;
     -fx-pref-height:40;
-    -fx-font-size:20px;
+    -fx-font-size:15px;
     -fx-background-color: #daad86;
 
       /*-fx-background-color:  tab-border-color , tab-color;*/
@@ -99,6 +99,7 @@
 #options .tab-label{
     -fx-rotate:0;
     -fx-graphic: white;
+    -fx-font-size:13px;
     /*-fx-text-fill:#FFFAFA;*/
 }
 

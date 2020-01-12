@@ -1,7 +1,8 @@
-package app.modules.views.ration;
+package app.modules.views.stockAliment;
 
 
 
+import app.modules.views.ration.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -10,6 +11,7 @@ import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
 import app.modules.model.Ration;
+import app.modules.model.StockAliment;
 
 import app.modules.userType;
 
@@ -21,38 +23,37 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class RationViewController implements Initializable, IController {
-        @FXML
-    private TableView<Ration> table;
+public class StockAlimentViewController implements Initializable, IController {
+
+    
+    @FXML
+    private TableView<StockAliment> table;
 
     @FXML
     private TableColumn<?, ?> col_nom;
 
     @FXML
-    private TableColumn<?, ?> col_bande;
-
-    @FXML
-    private TableColumn<?, ?> col_aliment;
+    private TableColumn<?, ?> col_qte;
 
     @FXML
     private TableColumn<?, ?> col_date;
 
     @FXML
-    private TableColumn<?, ?> col_quantite;
+    private TableColumn<?, ?> col_aliment;
 
     @FXML
-    private TableColumn<?, ?> col_eau;
+    private TableColumn<?, ?> col_fournisseur;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomRation"));
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomStock"));
         col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
-        col_eau.setCellValueFactory(new PropertyValueFactory<>("eau"));
-        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateRation"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
+        col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
+        col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
+
 
         populateTableRation();
         table.setPrefWidth(800);
@@ -60,7 +61,7 @@ public class RationViewController implements Initializable, IController {
     
     public void populateTableRation()
     {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        ObservableList<StockAliment> liste=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
         table.setItems(liste);
     }
 

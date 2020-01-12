@@ -1,7 +1,8 @@
-package app.modules.views.ration;
+package app.modules.views.vaccin;
 
 
 
+import app.modules.views.aliment.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -9,7 +10,8 @@ import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
-import app.modules.model.Ration;
+import app.modules.model.Bande;
+import app.modules.model.Vaccin;
 
 import app.modules.userType;
 
@@ -21,49 +23,39 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class RationViewController implements Initializable, IController {
-        @FXML
-    private TableView<Ration> table;
+public class VaccinViewController implements Initializable, IController {
+    @FXML
+    private TableView<Vaccin> table;
 
     @FXML
     private TableColumn<?, ?> col_nom;
 
     @FXML
-    private TableColumn<?, ?> col_bande;
+    private TableColumn<?, ?> col_periode;
 
     @FXML
-    private TableColumn<?, ?> col_aliment;
+    private TableColumn<?, ?> col_description;
 
     @FXML
-    private TableColumn<?, ?> col_date;
-
-    @FXML
-    private TableColumn<?, ?> col_quantite;
-
-    @FXML
-    private TableColumn<?, ?> col_eau;
+    private TableColumn<?, ?> col_prix;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomRation"));
-        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
-        col_eau.setCellValueFactory(new PropertyValueFactory<>("eau"));
-        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateRation"));
-
-        populateTableRation();
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomVac"));
+        col_description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        col_prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        col_periode.setCellValueFactory(new PropertyValueFactory<>("periode"));
+        populateTableVaccin();
         table.setPrefWidth(800);
     }
-    
-    public void populateTableRation()
+
+    public void populateTableVaccin()
     {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        ObservableList<Vaccin> liste=FXCollections.observableArrayList(DbManagerNnane.selectVaccins());
         table.setItems(liste);
     }
-
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

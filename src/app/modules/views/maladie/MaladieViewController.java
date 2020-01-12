@@ -1,59 +1,58 @@
-package app.modules.views.aliment;
+package app.modules.views.maladie;
 
 
 
+import app.modules.views.bonjour.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Bande;
 
 import app.modules.userType;
+import app.modules.views.Popup;
+import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
 import java.util.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
-public class AlimentViewController implements Initializable, IController {
+public class MaladieViewController implements Initializable, IController {
     @FXML
-    private TableView<Aliment> table;
+    TableView<?> table;
 
     @FXML
-    private TableColumn<?, ?> col_nom;
+    VBox modify;
+    
+    @FXML
+    private TableColumn<?,?> col_nom;
 
     @FXML
-    private TableColumn<?, ?> col_prix;
+    private TableColumn<?,?> col_user;
 
     @FXML
-    private TableColumn<?, ?> col_unite;
+    private TableColumn<?,?> col_password;
 
     @FXML
-    private TableColumn<?, ?> col_description;
+    private TableColumn<?,?> col_type;
+    
+    @FXML
+    private JFXButton buttonSupprimer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        col_prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
-        
-        populateTableAliment();
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
+        col_password.setCellValueFactory(new PropertyValueFactory<>("login"));
+        col_type.setCellValueFactory(new PropertyValueFactory<>("typeEm"));
         table.setPrefWidth(800);
     }
 
-    public void populateTableAliment()
-    {
-        ObservableList<Aliment> liste=FXCollections.observableArrayList(DbManagerNnane.selectAliments());
-        table.setItems(liste);
-    }
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
@@ -68,4 +67,11 @@ public class AlimentViewController implements Initializable, IController {
         System.err.println(nodeRoles.keySet());
         return nodeRoles;
     }
+    
+    @FXML
+    void ButtonSupprimerOnClick(ActionEvent event) {
+       boolean bool= Popup.show("Veuillez entrez les informations", "Editer");
+    }
+    
+    
 }
