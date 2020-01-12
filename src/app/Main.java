@@ -55,6 +55,8 @@ public class Main extends Application {
         IOption stockAliment=new OptionItem("Stock Aliment","views/stockAliment/stockAlimentView.fxml");
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
+
+
         
         List elevage=new ArrayList<>();//options menu elevage
         elevage.add(bandes);
