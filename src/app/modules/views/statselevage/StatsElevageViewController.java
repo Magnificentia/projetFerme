@@ -73,6 +73,7 @@ public class StatsElevageViewController implements Initializable,IController {
         grah_qte_date.setTitle("expences per manufactuer"); 
     }
     
+
     private List<PieChart.Data> getListChart()
     {
         List<Pair<String,Integer>> l=DbManagerNnane.getBar();
@@ -84,7 +85,10 @@ public class StatsElevageViewController implements Initializable,IController {
         return lr;
     }
     
+    
     public void createPiechartAchatFournisseur()
+
+
     {
         //Preparing ObservbleList object         
       ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(getListChart()); 

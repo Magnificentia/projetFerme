@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.modules.views;
+package app.modules.model;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Popup  {
    private static boolean confirmation;
    private static Stage stage;
 	
-	public static boolean show(String message,String title){
+	public static boolean show(String message,String title,VBox formulaire){
 		
 		
 		stage=new Stage();
@@ -52,7 +52,7 @@ public class Popup  {
 		
 		
 		VBox pane=new VBox (20);
-		pane.getChildren().addAll(lab,paneH);
+		pane.getChildren().addAll(lab,formulaire,paneH);
 		pane.setAlignment(Pos.CENTER);
 		
 		Scene scene=new Scene(pane);
@@ -80,5 +80,7 @@ public class Popup  {
 		stage.close();
 		
 	}
+
+   
     
 }

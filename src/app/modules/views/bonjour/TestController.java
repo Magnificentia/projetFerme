@@ -4,6 +4,7 @@ package app.modules.views.bonjour;
 
 import app.modules.IController;
 import app.modules.userType;
+import app.modules.model.Popup;
 import app.modules.views.bonjour.Utilisateur;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -106,6 +107,8 @@ public class TestController implements Initializable, IController {
         
         
         
+        
+        
         table.setItems(loadData());
         table.setPrefWidth(1800);
         this.Search();
@@ -129,12 +132,7 @@ public class TestController implements Initializable, IController {
     
        @FXML
     void buttonAjouterUtilisateur(ActionEvent event) {
-       
-        
-     
-        System.out.println("click");
-        
-        Formulaire f=new Formulaire("ok","Cancel","elevage.png",250,500);
+       Formulaire f=new Formulaire("elevage.png",600,500);
         
         Label nom=new Label("nom");
         Label prenom=new Label("prenom");
@@ -149,28 +147,41 @@ public class TestController implements Initializable, IController {
         list.add(prenom);
         list.add(textPrenom);
         
+        f.addElement(list);
+
+        Popup.show("Etes vous sur de votre choix?","Confirmation",f);
+       /* System.out.println("click");
+        Formulaire f=new Formulaire("ok","Cancel","elevage.png",600,500);
+        
+        Label nom=new Label("nom");
+        Label prenom=new Label("prenom");
+        
+        JFXTextField textNom=new JFXTextField();
+        JFXTextField textPrenom=new JFXTextField();
+        System.out.println("before array");
+        
+        ArrayList<Node> list=new ArrayList<Node>();
+        list.add(nom);
+        list.add(textNom);
+        list.add(prenom);
+        list.add(textPrenom);
         
         f.addElement(list);
 
         ParentHbox.getChildren().add(f);
-        ParentHbox.setSpacing(10);
-        
-        
-        
-       // table.setPrefWidth(250);
+        //ParentHbox.setSpacing(0.5);
+
+        //table.setPrefWidth(250);
         TranslateTransition slide=new TranslateTransition();
-        slide.setDuration(Duration.seconds(1));
+        slide.setDuration(Duration.seconds(2));
         slide.setNode(f);
         //slide.get
-        VBoxTest.setPrefWidth(VBoxTest.getPrefWidth() - f.getPrefWidth()-55);
+        //VBoxTest.setPrefWidth(VBoxTest.getPrefWidth() - f.getPrefWidth()-10);
         slide.setToX(-50);
         slide.play();
         
-        f.setTranslateY(12);
-        
-//slide.setOnFinished(e->)
-        
-        //parentContainer.setTranslateX(0);
+        f.setTranslateY(-5);
+        */
     }
      @FXML
     void Search() {

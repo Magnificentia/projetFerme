@@ -12,7 +12,7 @@ import app.modules.model.Client;
 import app.modules.model.CollecteOeuf;
 
 import app.modules.userType;
-import app.modules.views.Popup;
+import app.modules.model.Popup;
 import com.jfoenix.controls.JFXButton;
 
 
@@ -77,7 +77,7 @@ public class ClientViewController implements Initializable, IController {
     
     @FXML
     void ButtonSupprimerOnClick(ActionEvent event) {
-       boolean bool= Popup.show("Veuillez entrez les informations", "Editer");
+       boolean bool= Popup.show("Veuillez entrez les informations", "Editer",null);
     }
     
     
