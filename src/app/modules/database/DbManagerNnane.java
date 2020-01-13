@@ -8,13 +8,16 @@ package app.modules.database;
 import app.modules.model.Aliment;
 import app.modules.model.Bande;
 import app.modules.model.BandeVaccine;
+import app.modules.model.Batiment;
 import app.modules.model.Client;
 import app.modules.model.CollecteOeuf;
 import app.modules.model.Employes;
 import app.modules.model.Fournisseur;
+import app.modules.model.Race;
 import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 import app.modules.model.Vaccin;
+import app.modules.model.VenteOeuf;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -218,6 +221,24 @@ public class DbManagerNnane {
         return stockList;
     }
     
+    public static List<Race> selectRaces()
+    {
+        List<Race> stockList = FXCollections.observableArrayList();
+        Race col;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from race";//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    col = new Race(result.getInt("idrace"),result.getString("nom"),result.getString("description"));
+                    stockList.add(col);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;
+    }
     public static List<Employes> selectEmployes()
     {
         List<Employes> stockList = FXCollections.observableArrayList();
@@ -336,7 +357,46 @@ public class DbManagerNnane {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public static List<Batiment> selectBatiments()
+    {
+        List<Batiment> stockList = FXCollections.observableArrayList();
+        
+        Batiment emp;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from batiment";//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    emp = new Batiment(result.getInt("idbat"),result.getDouble("surface"),result.getString("nombat"));
+                    stockList.add(emp);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;
+    }
     
+    
+    public static List<VenteOeuf> selectVenteOeuf()
+    {
+        List<VenteOeuf> stockList = FXCollections.observableArrayList();
+        
+        VenteOeuf emp;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select idvenduoeuf,collect_id,concat('venteOeuf',collect_id),client_id,nomclient,idcollect,datevente,total_prix,venduoeuf.qte,employe_id,nom from venduoeuf join client on venduoeuf.client_id=client.idclient join collecteoeuf on collecteoeuf.idcollect=venduoeuf.collect_id join employes on employes.idem=venduoeuf.employe_id";//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    emp = new VenteOeuf(result.getInt("collect_id"),result.getInt("idvenduoeuf"),result.getInt("client_id"),result.getString("datevente"),result.getDouble("total_prix"),result.getInt("qte"),result.getInt("employe_id"),result.getString("nom"),result.getString("nomclient"));
+                    stockList.add(emp);
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;
+    }
 }
 
 //dfadfdadsf
