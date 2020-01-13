@@ -65,14 +65,10 @@ public class RationViewController implements Initializable, IController {
         this.Search();
         populateTableRation();
         table.setPrefWidth(800);
-    }
     
-    public void populateTableRation()
-    {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
-        table.setItems(liste);
+              this.Search();
+        
     }
-
     
     @FXML
     void Search() {
@@ -84,7 +80,7 @@ public class RationViewController implements Initializable, IController {
         // 2. Set the filter Predicate whenever the filter changes.
         recherche.textProperty().
         addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(utilisateur -> {
+            filteredData.setPredicate(rat -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -93,18 +89,26 @@ public class RationViewController implements Initializable, IController {
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (utilisateur.getNomAli().toLowerCase().contains(lowerCaseFilter)) {
+                if (rat.getNomAli().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
-                } else if (utilisateur.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (rat.getDateRation().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
-                else if (utilisateur.getNomRation().toLowerCase().contains(lowerCaseFilter)) {
+                else if (rat.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
-                else if (Integer.toString(utilisateur.getIdration()).toLowerCase().contains(lowerCaseFilter)) {
+                else if (Integer.toString(rat.getIdration()).toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (rat.getNomRation().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (Integer.toString((int) rat.getQte()).toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
-                
+
                 return false; // Does not match.
             });
         });
@@ -119,6 +123,14 @@ public class RationViewController implements Initializable, IController {
         table.setItems(sortedData);
     }
 
+    public void populateTableRation()
+    {
+        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        table.setItems(liste);
+    }
+
+    
+   
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
         Map nodeRoles=new HashMap<Node,List<userType>>();

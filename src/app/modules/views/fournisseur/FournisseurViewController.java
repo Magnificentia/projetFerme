@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
+import app.modules.model.CollecteOeuf;
 import app.modules.model.Fournisseur;
 import app.modules.model.StockAliment;
 
@@ -19,14 +20,20 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
 public class FournisseurViewController implements Initializable, IController {
     @FXML
     private TableView<Fournisseur> table;
+    
+     @FXML
+    private TextField rechercher;
 
     @FXML
     private TableColumn<?, ?> col_nom;
@@ -45,6 +52,8 @@ public class FournisseurViewController implements Initializable, IController {
 
     @FXML
     private TableColumn<?, ?> col_type;
+    
+    private ObservableList<Fournisseur> data;
 
     @FXML
     private JFXButton buttonSupprimer;
@@ -60,7 +69,57 @@ public class FournisseurViewController implements Initializable, IController {
         populateTableFournisseur();
         table.setPrefWidth(800);
         System.out.println("FOURNISSEUR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
+        
+         this.Search();
+        
     }
+    
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Fournisseur> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        rechercher.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(four -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (four.getAdresse().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (four.getEmail().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString(four.getTel()).toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (Integer.toString(four.getTypeFourn()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Fournisseur> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+
 
     public void populateTableFournisseur()
     {

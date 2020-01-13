@@ -199,7 +199,7 @@ public class ClientViewController implements Initializable, IController {
         // 2. Set the filter Predicate whenever the filter changes.
         recherche.textProperty().
         addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(utilisateur -> {
+            filteredData.setPredicate(client -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -208,12 +208,12 @@ public class ClientViewController implements Initializable, IController {
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (utilisateur.getAdresse().toLowerCase().contains(lowerCaseFilter)) {
+                if (client.getAdresse().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
-                } else if (utilisateur.getNomClient().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (client.getNomClient().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
-                else if (Integer.toString(utilisateur.getTel()).toLowerCase().contains(lowerCaseFilter)) {
+                else if (Integer.toString(client.getTel()).toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 }
 

@@ -23,6 +23,8 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,6 +32,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -39,7 +42,8 @@ import javafx.stage.Stage;
 public class CollecteOeufViewController implements Initializable, IController {
         @FXML
     private TableView<CollecteOeuf> table;
-
+   @FXML
+    private TextField recherche;
 
     @FXML
     private TableColumn<?, ?> col_bande;
@@ -73,6 +77,7 @@ public class CollecteOeufViewController implements Initializable, IController {
     private JFXComboBox<String> bande;
     private  JFXComboBox<String> Incubation;
     private JFXDatePicker date;
+    private ObservableList<CollecteOeuf> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,7 +95,7 @@ public class CollecteOeufViewController implements Initializable, IController {
         table.setPrefWidth(800);
         
         
-        this.image = new ImageView(Main.class.getResource("modules/ressources/icons8-chicken-32.png").toString());
+       /* this.image = new ImageView(Main.class.getResource("modules/ressources/icons8-chicken-32.png").toString());
         this.paneElements.setMargin(image,new Insets(0,0,25,0));
         HBox paneImage=new HBox();
         paneImage.getChildren().addAll(image);
@@ -164,8 +169,8 @@ public class CollecteOeufViewController implements Initializable, IController {
 		btn2.setOnAction(e->btnNo_clicked());
                 btn2.setPrefSize(105, 51);
 		
-		/*Label lab=new Label();
-		lab.setText(message);*/
+		Label lab=new Label();
+		lab.setText(message);
 		
 		HBox paneH=new HBox(15);
 		paneH.getChildren().addAll(btn1,btn2);
@@ -175,8 +180,56 @@ public class CollecteOeufViewController implements Initializable, IController {
      
         
          paneElements.setSpacing(35);
+        */
+       
+       this.Search();
         
+    }
+    
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<CollecteOeuf> filteredData = new FilteredList<>(data, p -> true);
         
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(collecte -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (collecte.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (collecte.getNomTypeOeuf().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString(collecte.getIncubation()).toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (Integer.toString(collecte.getQte()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<CollecteOeuf> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
     }
 
     public void populateTableCollecteOeuf()

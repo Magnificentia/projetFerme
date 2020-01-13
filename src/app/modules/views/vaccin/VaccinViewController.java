@@ -19,11 +19,17 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
 public class VaccinViewController implements Initializable, IController {
+    
+    @FXML
+    private TextField rechercher;
     @FXML
     private TableView<Vaccin> table;
 
@@ -38,6 +44,8 @@ public class VaccinViewController implements Initializable, IController {
 
     @FXML
     private TableColumn<?, ?> col_prix;
+    
+    private ObservableList<Vaccin> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,6 +57,59 @@ public class VaccinViewController implements Initializable, IController {
         col_periode.setCellValueFactory(new PropertyValueFactory<>("periode"));
         populateTableVaccin();
         table.setPrefWidth(800);
+        
+        
+        this.Search();
+        
+    }
+    
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectVaccins());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Vaccin> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        rechercher.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(vacc -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (vacc.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (vacc.getDate().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if(vacc.getNomVac().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if(vacc.getPeriode().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString((int) vacc.getPrix()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Vaccin> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
     }
 
     public void populateTableVaccin()
