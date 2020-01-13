@@ -30,6 +30,14 @@ public class Bande {
     public Bande(int idBande) {
         this.idBande = idBande;
     }
+
+    public int getBat_id() {
+        return bat_id;
+    }
+
+    public void setBat_id(int bat_id) {
+        this.bat_id = bat_id;
+    }
     
     
 
@@ -48,6 +56,20 @@ public class Bande {
         this.bat_id=batid;
     }
 
+    public Bande(int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, int bat_id) {
+
+        this.qte = qte;
+        this.age = age;
+        this.race_id = race_id;
+        this.prix_achat = prix_achat;
+        this.dateDemarrage = dateDemarrage;
+        this.fourn_id = fourn_id;
+        this.bat_id = bat_id;
+    }
+
+    
+    
+    
     public String getNomBande() {
         return nomBande;
     }

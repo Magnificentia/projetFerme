@@ -24,6 +24,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
@@ -291,6 +293,21 @@ public class DbManagerNnane {
         return false;    
     }
     
+
+    
+    public static boolean suppBande(Bande bande)
+    {
+        
+        try{
+            Statement state=connection.createStatement();
+            int r=state.executeUpdate("delete from bande where idbande="+bande.getIdBande());
+            return r==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;    
+    }
+    
     public static boolean suppAliment(Aliment aliment)
     {
         
@@ -303,7 +320,6 @@ public class DbManagerNnane {
         }
         return false;    
     }
-    
     public static boolean suppStockAliment(StockAliment aliment)
     {
         
@@ -422,6 +438,49 @@ public class DbManagerNnane {
             ex.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean saveStockAliment(StockAliment stockAliment) {
+        
+        Statement st;
+        try {
+            st = getConnection().createStatement();
+            //System.out.println("everything went fine"+"INSERT INTO USER(user_name,contact) VALUES (\""+user.getUsername()+"\","+user.getContact()+");");
+            String query="INSERT INTO stockaliment(qte,datearrivage,ali_id,fourn_id) VALUES ("+stockAliment.getQte()+",\""+stockAliment.getDateArrivage()+"\","+stockAliment.getAli_id()+","+stockAliment.getFourn_id()+" );";
+            st.executeUpdate(query);
+            
+            st.close();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
+            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    public static boolean saveBande(Bande bande) {
+        
+        Statement st;
+        try {
+            st = getConnection().createStatement();
+            //System.out.println("everything went fine"+"INSERT INTO USER(user_name,contact) VALUES (\""+user.getUsername()+"\","+user.getContact()+");");
+            String query="INSERT INTO bande(qte,age,race_id,prix_achat,datedemarrage,fourn_id,bat_id) VALUES ("+bande.getQte()+","+bande.getAge()+","+bande.getRace_id()+","+bande.getPrix_achat()+",\""+bande.getDateDemarrage()+"\","+bande.getFourn_id()+","+bande.getBat_id()+" );";
+            System.out.println(query);
+            st.executeUpdate(query);
+            st.close();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
+            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
