@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -70,7 +71,7 @@ public class StatsElevageViewController implements Initializable,IController {
         grah_qte_date.setVisible(true);
               
       //Setting the title of the Pie chart 
-        grah_qte_date.setTitle("expences per manufactuer"); 
+        grah_qte_date.setTitle("nombre d'achats par période"); 
     }
     
 
@@ -97,7 +98,7 @@ public class StatsElevageViewController implements Initializable,IController {
        fournAchat.setData(pieChartData);
               
       //Setting the title of the Pie chart 
-      fournAchat.setTitle("Sales per manufactuer"); 
+      fournAchat.setTitle("Nombre d'achats par fournisseur"); 
        
       //setting the direction to arrange the data 
       fournAchat.setClockwise(true); 
@@ -114,5 +115,12 @@ public class StatsElevageViewController implements Initializable,IController {
         return null;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    @FXML
+    public void handleRefresh(ActionEvent event)
+    {
+        fournAchat.getData().clear();
+        grah_qte_date.getData().clear();
+        createPiechartAchatFournisseur();
+        createLineChart();
+    }
 }

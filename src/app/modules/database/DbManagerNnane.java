@@ -359,7 +359,7 @@ public class DbManagerNnane {
         Pair man;
         try{
             Statement state=connection.createStatement();
-            String query="select nomfourn,count(qte) c from bande join fournisseur on bande.fourn_id=fournisseur.idfourn";
+            String query="select nomfourn,count(qte) c from bande join fournisseur on bande.fourn_id=fournisseur.idfourn group by nomfourn";
             ResultSet result=state.executeQuery(query);
             while(result.next()){
                     man = new Pair(result.getString("nomfourn"),result.getInt("c"));
