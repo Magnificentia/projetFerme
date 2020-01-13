@@ -21,10 +21,10 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
                <children>
-                  <JFXButton onAction="#ajouterElementOnclick" prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
-                        <TextField />
+                        <TextField fx:id="recherche" />
                         <JFXButton>
                            <graphic>
                               <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />

@@ -97,8 +97,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Main.class.getResource("modules/views/login/Login.fxml"));
         Scene scene=new Scene(root,500,600);
         mainStage.setScene(scene);
-        mainStage.setHeight(700);
-        mainStage.setWidth(500);
+        mainStage.setHeight(800);
+        mainStage.setWidth(850);
         
         //scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
         
@@ -171,13 +171,13 @@ public class Main extends Application {
         ventes.add(venteOeuf);
         
         
-        IMenu elevageMenu=new MenuItem("Elevage","ressources/fowl.png",elevage);//liste des menus
+        IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
         IMenu tiersMenu=new MenuItem("Tiers","ressources/tiers2.png",tiers);
-        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home2.png",accueil,1);
-        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/statistiques.png",statistiques);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
+        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/stats.png",statistiques);
         IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
-        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/users1.png",utilisateur);
-        IMenu venteMenu=new MenuItem("Vente","ressources/buy.png",ventes);
+        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
+        IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
 
         List menus=new ArrayList<>();
         menus.add(accueilMenu);

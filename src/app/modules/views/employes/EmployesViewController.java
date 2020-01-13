@@ -17,14 +17,20 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
 public class EmployesViewController implements Initializable, IController {
 
     @FXML
     private TableView<Employes> table;
+    
+      @FXML
+    private TextField recherche;
 
     @FXML
     private TableColumn<?, ?> col_nom;
@@ -37,6 +43,8 @@ public class EmployesViewController implements Initializable, IController {
 
     @FXML
     private TableColumn<?, ?> col_type;
+    
+    private ObservableList<Employes> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,7 +56,58 @@ public class EmployesViewController implements Initializable, IController {
         col_type.setCellValueFactory(new PropertyValueFactory<>("typeEm"));
         populateTableEmployes();
         table.setPrefWidth(800);
+    
+    
+         this.Search();
+        
     }
+    
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Employes> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(emp -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (emp.getLogin().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (emp.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if(emp.getTypeEm().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if(emp.getUser().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Employes> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+
 
     public void populateTableEmployes()
     {
