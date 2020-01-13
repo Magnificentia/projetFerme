@@ -4,7 +4,7 @@ package app.modules.views.bonjour;
 
 import app.modules.IController;
 import app.modules.userType;
-import app.modules.model.Popup;
+
 import app.modules.views.bonjour.Utilisateur;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -132,9 +132,9 @@ public class TestController implements Initializable, IController {
     
        @FXML
     void buttonAjouterUtilisateur(ActionEvent event) {
-       Formulaire f=new Formulaire("elevage.png",600,500);
         
-        Label nom=new Label("nom");
+        
+       /* Label nom=new Label("nom");
         Label prenom=new Label("prenom");
         
         JFXTextField textNom=new JFXTextField();
@@ -147,9 +147,8 @@ public class TestController implements Initializable, IController {
         list.add(prenom);
         list.add(textPrenom);
         
-        f.addElement(list);
 
-        Popup.show("Etes vous sur de votre choix?","Confirmation",f);
+        Popup.show("Confirmation",f);*/
        /* System.out.println("click");
         Formulaire f=new Formulaire("ok","Cancel","elevage.png",600,500);
         

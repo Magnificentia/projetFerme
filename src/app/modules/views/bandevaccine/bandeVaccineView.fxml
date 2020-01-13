@@ -44,7 +44,7 @@
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <JFXButton fx:id="buttonSupprimer" onAction="#ButtonSupprimerOnClick" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
+                  <JFXButton fx:id="buttonSupprimer" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
                   <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
                </children>
             </HBox>

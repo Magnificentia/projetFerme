@@ -27,6 +27,12 @@ public class Bande {
     private String nomFournisseur;
     private String nomBatiment;
 
+    public Bande(int idBande) {
+        this.idBande = idBande;
+    }
+    
+    
+
     public Bande(String nomBande,int idBande, int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, String nomRace, String nomFournisseur, String nomBatiment,int batid) {
         this.nomBande=nomBande;
         this.idBande = idBande;
