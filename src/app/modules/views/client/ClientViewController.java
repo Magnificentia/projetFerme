@@ -11,6 +11,7 @@ import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Client;
 import app.modules.model.CollecteOeuf;
+import app.modules.model.Ration;
 
 import app.modules.userType;
 
@@ -22,6 +23,8 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -36,17 +39,23 @@ import javafx.stage.Stage;
 //putain
 public class ClientViewController implements Initializable, IController {
    
-        @FXML
+    @FXML
+    private TextField recherche;
+
+    @FXML
     private TableView<Client> table;
 
     @FXML
     private TableColumn<?, ?> col_nom;
 
     @FXML
-    private TableColumn<?, ?> col_adresse;
+    private TableColumn<?, ?> col_user;
 
     @FXML
-    private TableColumn<?, ?> col_tel;
+    private TableColumn<?, ?> col_password;
+
+    @FXML
+    private TableColumn<?, ?> col_type;
 
     @FXML
     private JFXButton buttonSupprimer;
@@ -57,14 +66,21 @@ public class ClientViewController implements Initializable, IController {
     private TextField nom;
     private TextField Telephone;
     private TextField adresse;
+    private ObservableList<Client> data;
+    
+
+
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
-        col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        col_user.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col_type.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        
         populateTableClient();
         table.setPrefWidth(800);
+        
+        /*
         paneElements=new VBox();
         
         this.image = new ImageView(Main.class.getResource("modules/ressources/Users.png").toString());
@@ -114,7 +130,7 @@ public class ClientViewController implements Initializable, IController {
                 btn2.setPrefSize(105, 51);
 		
 		/*Label lab=new Label();
-		lab.setText(message);*/
+		lab.setText(message);
 		
 		HBox paneH=new HBox(15);
 		paneH.getChildren().addAll(btn1,btn2);
@@ -123,8 +139,8 @@ public class ClientViewController implements Initializable, IController {
                 paneElements.getChildren().add(paneH);
      
         
-         paneElements.setSpacing(35);
-        
+         paneElements.setSpacing(35);*/
+        this.Search();
         
         
     }
@@ -172,14 +188,56 @@ public class ClientViewController implements Initializable, IController {
 		stage.show();
                 
     }
+     
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectClients());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Client> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(utilisateur -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (utilisateur.getAdresse().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (utilisateur.getNomClient().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString(utilisateur.getTel()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Client> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+
     
     
      private void btnYes_clicked()
     {
         
     }
-    
-       
+           
     
      
     private void btnNo_clicked()

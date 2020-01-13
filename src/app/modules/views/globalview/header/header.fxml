@@ -12,22 +12,6 @@
 <AnchorPane opacity="0.99" prefHeight="128.0" prefWidth="1445.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
 
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="548.0" stylesheets="@../../global.css">
-         <children>
-            <ImageView fx:id="imageViewHeader" fitHeight="115.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../ressources/chicken.png" />
-               </image></ImageView>
-            <Label prefHeight="88.0" prefWidth="239.0" styleClass="label-manager" stylesheets="@../../global.css" text="Volaille" />
-            <Label fx:id="farm" prefHeight="128.0" prefWidth="183.0" styleClass="label-farm" stylesheets="@../../global.css" text="d'or">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Label>
-         </children>
-      </HBox>
       <HBox layoutX="1128.0" layoutY="7.0" prefHeight="144.0" prefWidth="303.0">
          <children>
             <VBox id="important" prefHeight="127.0" prefWidth="202.0" spacing="5.0">
@@ -44,5 +28,28 @@
             </ImageView>
          </children>
       </HBox>
+      <VBox layoutX="14.0" layoutY="2.0" prefHeight="155.0" prefWidth="539.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="548.0" stylesheets="@../../global.css">
+               <children>
+                  <ImageView fx:id="imageViewHeader" fitHeight="115.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../ressources/chicken.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="88.0" prefWidth="239.0" styleClass="label-manager" stylesheets="@../../global.css" text="Volaille" />
+                  <Label fx:id="farm" prefHeight="128.0" prefWidth="183.0" styleClass="label-farm" stylesheets="@../../global.css" text="d'or">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="539.0" style="-fx-font-size: 20; -fx-font-style: italic;" text="Le meilleur de la ferme pour vous!          " />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

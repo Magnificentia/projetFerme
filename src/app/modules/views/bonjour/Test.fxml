@@ -27,7 +27,7 @@
                   </HBox>
                   <HBox prefHeight="30.0" prefWidth="1290.0">
                      <children>
-                        <JFXButton onAction="#buttonAjouterUtilisateur" prefHeight="30.0" prefWidth="251.0" text="Ajouter Utilisateur">
+                        <JFXButton prefHeight="30.0" prefWidth="251.0" text="Ajouter Utilisateur">
                            <HBox.margin>
                               <Insets left="105.0" />
                            </HBox.margin>

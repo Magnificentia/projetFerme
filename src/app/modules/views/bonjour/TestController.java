@@ -96,24 +96,15 @@ public class TestController implements Initializable, IController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     
-   
-        
-        
         col_nom.setCellValueFactory(new PropertyValueFactory<Utilisateur,String>("nom"));
         col_user.setCellValueFactory( new PropertyValueFactory<Utilisateur,String>("user") );
         col_password.setCellValueFactory( new PropertyValueFactory<Utilisateur,String>("password") );
         col_type.setCellValueFactory(new PropertyValueFactory<Utilisateur,String>("type"));
-        
-        
-        
-        
-        
-        
+
         table.setItems(loadData());
         table.setPrefWidth(1800);
         this.Search();
-        
-        //table.setPrefWidth(800);
+
     }
     
     public ObservableList<Utilisateur> loadData()
@@ -123,66 +114,12 @@ public class TestController implements Initializable, IController {
          data.add(new Utilisateur("nnane","Client","!mkdfkdjf","ADMIN"));
          data.add(new Utilisateur("test","Client","!mkdfkdjf","invite"));
          data.add(new Utilisateur("mouen","Client"," ","user"));
-         
-         
-         
+       
          return data;
         
     }
-    
-       @FXML
-    void buttonAjouterUtilisateur(ActionEvent event) {
-        
-        
-       /* Label nom=new Label("nom");
-        Label prenom=new Label("prenom");
-        
-        JFXTextField textNom=new JFXTextField();
-        JFXTextField textPrenom=new JFXTextField();
-        System.out.println("before array");
-        
-        ArrayList<Node> list=new ArrayList<Node>();
-        list.add(nom);
-        list.add(textNom);
-        list.add(prenom);
-        list.add(textPrenom);
-        
 
-        Popup.show("Confirmation",f);*/
-       /* System.out.println("click");
-        Formulaire f=new Formulaire("ok","Cancel","elevage.png",600,500);
-        
-        Label nom=new Label("nom");
-        Label prenom=new Label("prenom");
-        
-        JFXTextField textNom=new JFXTextField();
-        JFXTextField textPrenom=new JFXTextField();
-        System.out.println("before array");
-        
-        ArrayList<Node> list=new ArrayList<Node>();
-        list.add(nom);
-        list.add(textNom);
-        list.add(prenom);
-        list.add(textPrenom);
-        
-        f.addElement(list);
-
-        ParentHbox.getChildren().add(f);
-        //ParentHbox.setSpacing(0.5);
-
-        //table.setPrefWidth(250);
-        TranslateTransition slide=new TranslateTransition();
-        slide.setDuration(Duration.seconds(2));
-        slide.setNode(f);
-        //slide.get
-        //VBoxTest.setPrefWidth(VBoxTest.getPrefWidth() - f.getPrefWidth()-10);
-        slide.setToX(-50);
-        slide.play();
-        
-        f.setTranslateY(-5);
-        */
-    }
-     @FXML
+    @FXML
     void Search() {
 
         this.loadData();
@@ -227,23 +164,6 @@ public class TestController implements Initializable, IController {
         table.setItems(sortedData);
     }
         
-    
-
-
-    /*
-    @Override
-    public Map<Node,List<userType>> getNodeRoles() {
-        Map nodeRoles=new HashMap<Node,List<userType>>();
-        table.setEditable(false);
-        List<userType> liste=new ArrayList<>();
-        //liste.add(userType._ADMIN_);
-        liste.add(userType._SELLER_);
-        nodeRoles.put((Node)table, liste);
-        System.err.println(nodeRoles.get(table));
-        System.err.println(nodeRoles);
-        System.err.println(nodeRoles.keySet());
-        return nodeRoles;
-    }*/
 
 
     @Override

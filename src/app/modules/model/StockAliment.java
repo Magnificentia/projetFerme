@@ -5,11 +5,21 @@
  */
 package app.modules.model;
 
+import app.modules.database.DbManagerNnane;
+import app.modules.views.bonjour.Utilisateur;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author _Nprime496_
  */
 public class StockAliment {
+    private ObservableList<StockAliment> data;
     
     private int idStock;
     private int qte;
@@ -22,6 +32,7 @@ public class StockAliment {
     private String nomStock;
     private String nomAli;
     private String nomFournisseur;
+
 
     public int getEmploye_id() {
         return employe_id;
@@ -127,6 +138,6 @@ public class StockAliment {
         this.nomFournisseur = nomFournisseur;
     }
     
-    
+
     
 }

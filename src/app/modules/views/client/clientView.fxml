@@ -21,10 +21,10 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
                <children>
-                  <JFXButton onAction="#ajouterClientOnclick" prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
-                        <TextField />
+                        <TextField fx:id="recherche" />
                         <JFXButton>
                            <graphic>
                               <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
@@ -37,13 +37,14 @@
             <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
               <columns>
                 <TableColumn fx:id="col_nom" prefWidth="129.0" text="Nom" />
-                <TableColumn fx:id="col_adresse" prefWidth="122.0" text="adresse" />
-                  <TableColumn fx:id="col_tel" minWidth="0.0" prefWidth="140.0" text="Télephone" />
+                <TableColumn fx:id="col_user" prefWidth="122.0" text="User" />
+                  <TableColumn fx:id="col_password" minWidth="0.0" prefWidth="140.0" text="password" />
+                  <TableColumn fx:id="col_type" prefWidth="75.0" text="Type" />
               </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <JFXButton fx:id="buttonSupprimer" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
+                  <JFXButton prefHeight="31.0" prefWidth="158.0" text="supprimer" />
                   <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
                </children>
             </HBox>

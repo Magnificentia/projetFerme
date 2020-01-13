@@ -15,21 +15,26 @@ import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
+import app.modules.views.bonjour.Utilisateur;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 //putain
 public class StockAlimentViewController implements Initializable, IController {
 
-    
+    @FXML
+    private TextField recherche;
     @FXML
     private TableView<StockAliment> table;
 
@@ -47,6 +52,9 @@ public class StockAlimentViewController implements Initializable, IController {
 
     @FXML
     private TableColumn<?, ?> col_fournisseur;
+    
+    
+    private ObservableList<StockAliment> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,8 +65,7 @@ public class StockAlimentViewController implements Initializable, IController {
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
         col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
         col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
-
-
+        this.Search();
         populateTableRation();
         table.setPrefWidth(800);
     }
@@ -85,6 +92,52 @@ public class StockAlimentViewController implements Initializable, IController {
             return;
         }
     }
+    
+        @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<StockAliment> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(utilisateur -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (utilisateur.getNomAli().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (utilisateur.getNomFournisseur().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (utilisateur.getNomStock().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString(utilisateur.getQte()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<StockAliment> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+    
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {

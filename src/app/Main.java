@@ -42,8 +42,6 @@ public class Main extends Application {
     }
     
     
-    
-    
     private static Employes emp;
 
     public static Employes getEmp() {
@@ -71,8 +69,14 @@ public class Main extends Application {
             }
         });
         mainStage=primaryStage;
-        mainStage.initStyle(StageStyle.UTILITY);
         
+        mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
         loadLogin();
         //
 
@@ -82,6 +86,7 @@ public class Main extends Application {
 
     public static void loadLogin() throws IOException
     {
+        
         mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
@@ -141,6 +146,7 @@ public class Main extends Application {
         //elevage.add(statsElevage);
         elevage.add(stockAliment);
         elevage.add(collecteoeuf);
+        elevage.add(incubation);
                
 
         List tiers=new ArrayList<>();//options menu vente
@@ -155,7 +161,7 @@ public class Main extends Application {
         
         List utilisateur=new ArrayList<>();
         utilisateur.add(employes);
-        utilisateur.add(incubation);
+        
         
         List statistiques=new ArrayList<>();
         statistiques.add(statsElevage);
@@ -165,13 +171,13 @@ public class Main extends Application {
         ventes.add(venteOeuf);
         
         
-        IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
-        IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
-        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/white-home.png",accueil,1);
+        IMenu elevageMenu=new MenuItem("Elevage","ressources/fowl.png",elevage);//liste des menus
+        IMenu tiersMenu=new MenuItem("Tiers","ressources/tiers2.png",tiers);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home2.png",accueil,1);
         IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/statistiques.png",statistiques);
-        IMenu santeMenu=new MenuItem("Santé","ressources/statistiques.png",sante);
-        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/statistiques.png",utilisateur);
-        IMenu venteMenu=new MenuItem("Vente","ressources/statistiques.png",ventes);
+        IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
+        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/users1.png",utilisateur);
+        IMenu venteMenu=new MenuItem("Vente","ressources/buy.png",ventes);
 
         List menus=new ArrayList<>();
         menus.add(accueilMenu);

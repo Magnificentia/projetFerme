@@ -17,7 +17,7 @@
       <HBox alignment="CENTER" prefHeight="664.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
-            <VBox alignment="CENTER" prefHeight="726.0" prefWidth="1144.0" spacing="1.0">
+            <VBox alignment="CENTER" prefHeight="726.0" prefWidth="1144.0" spacing="1.0" style="-fx-background-color: white;">
                <children>
                   <HBox alignment="CENTER" prefHeight="114.0" prefWidth="941.0">
                      <children>
@@ -66,7 +66,7 @@
                      <children>
                         <ImageView fitHeight="61.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ressources/user2.jpg" />
+                              <Image url="@../../ressources/user3.jpg" />
                            </image></ImageView>
                         <JFXTextField fx:id="textFieldUserName" focusColor="#f2d415" onAction="#NameTextField" prefHeight="24.0" prefWidth="242.0" promptText="Enter your name" styleClass="textField">
                            <opaqueInsets>
