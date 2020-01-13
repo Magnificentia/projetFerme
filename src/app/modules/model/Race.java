@@ -56,5 +56,9 @@ public class Race {
         this.prix_race = prix_race;
     }
     
+    public String toString()
+    {
+        return this.nom;
+    }
     
 }

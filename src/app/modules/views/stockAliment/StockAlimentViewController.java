@@ -16,6 +16,7 @@ import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.bonjour.Utilisateur;
+import java.io.IOException;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -25,11 +26,16 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 //putain
 public class StockAlimentViewController implements Initializable, IController {
 
@@ -136,6 +142,33 @@ public class StockAlimentViewController implements Initializable, IController {
         
         // 5. Add sorted (and filtered) data to the table.
         table.setItems(sortedData);
+    }
+    
+    @FXML
+    public void showAddStockAlimentrWindow(ActionEvent event) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("options/addStockAlimentOptions.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
+            dialogStage.setTitle("Ajouter un nouveau stock");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(Main.getMainStage());
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+            populateTableRation();
+
+            //
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 

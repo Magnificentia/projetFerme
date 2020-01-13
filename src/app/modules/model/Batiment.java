@@ -46,7 +46,10 @@ public class Batiment {
     public void setNomBat(String nomBat) {
         this.nomBat = nomBat;
     }
-    
+    public String toString()
+    {
+        return this.nomBat;
+    }
     
     
 }

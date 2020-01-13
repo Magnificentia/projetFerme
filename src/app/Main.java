@@ -132,7 +132,7 @@ public class Main extends Application {
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
         IOption statsElevage=new OptionItem("Elevage","views/statselevage/statsElevageView.fxml");
-        IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
+        //IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
         IOption venteOeuf=new OptionItem("Vente des Oeufs","views/vente/venteView.fxml");
 
@@ -173,14 +173,16 @@ public class Main extends Application {
         
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
         IMenu tiersMenu=new MenuItem("Tiers","ressources/tiers2.png",tiers);
-        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
+
+        //IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
         IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/stats.png",statistiques);
+
         IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
         IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
 
         List menus=new ArrayList<>();
-        menus.add(accueilMenu);
+        //menus.add(accueilMenu);
         menus.add(elevageMenu);
         menus.add(venteMenu);
         menus.add(tiersMenu);

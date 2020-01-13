@@ -88,6 +88,9 @@ public class Fournisseur {
         this.typeFourn = typeFourn;
     }
     
-    
+    public String toString()
+    {
+        return this.nomFourn;
+    }
     
 }

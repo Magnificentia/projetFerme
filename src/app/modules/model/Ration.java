@@ -108,5 +108,10 @@ public class Ration {
         this.nomBande = nomBande;
     }
     
+    public String toString()
+    {
+        return this.nomRation;
+    }
     
 }
+

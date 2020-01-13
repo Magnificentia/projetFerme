@@ -49,7 +49,18 @@ public class StockAliment {
     public void setNomAli(String nomAli) {
         this.nomAli = nomAli;
     }
+
+    public StockAliment(int qte, String dateArrivage, int ali_id, int fourn_id) {
+        this.qte = qte;
+        this.dateArrivage = dateArrivage;
+        this.ali_id = ali_id;
+        this.fourn_id = fourn_id;
+    }
     
+    public String toString()
+    {
+        return this.nomStock;
+    }
     
 
     public StockAliment(int idStock, int qte, String dateArrivage, int ali_id, int emploeye_id, int fourn_id, String nomStock, String nomAliment, String nomFournisseur) {

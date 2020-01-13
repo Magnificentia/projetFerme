@@ -56,7 +56,10 @@ public class Aliment {
         this.prix = prix;
     }
     
-    
+    public String toString()
+    {
+        return this.nomAli;
+    }
     
     
 }
