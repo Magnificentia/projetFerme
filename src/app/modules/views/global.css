@@ -9,6 +9,11 @@
 
 }
 
+#important
+{
+    -fx-font-size:25px;
+}
+
 /*tabs of tabpane generally*/
 .tab .tab-header-area {
     -fx-padding: 0 0 0 50;

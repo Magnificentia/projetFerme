@@ -397,6 +397,32 @@ public class DbManagerNnane {
         }
         return stockList;
     }
+    
+    
+    public static Employes connecter(String nom,String login)
+    {
+        Employes user;
+        System.out.println("CONNECTION");
+        try{
+            Statement state=getConnection().createStatement();
+            String query=" select * from employes";
+            ResultSet result=state.executeQuery(query);
+            while(result.next()){
+                    System.out.println("test user");
+                    user = new Employes(result.getInt("idEm"),result.getString("nom"),result.getString("user"),result.getString("login"),result.getString("typeEm"));
+
+                    if(user.getUser().equals(nom) && user.getLogin().equals(login))
+                    {
+                        System.out.println("test  ok");
+                        return user;
+                    }
+            }
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }
 
 //dfadfdadsf

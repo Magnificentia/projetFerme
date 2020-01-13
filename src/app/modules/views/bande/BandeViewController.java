@@ -104,7 +104,7 @@ public class BandeViewController implements Initializable, IController {
         
        
         this.image = new ImageView(Main.class.getResource("modules/ressources/elevage.png").toString());
-        
+        System.out.println(this.image);
         this.paneElements.setMargin(image,new Insets(0,0,25,0));
         HBox paneImage=new HBox();
         paneImage.getChildren().addAll(image);
@@ -252,7 +252,7 @@ public class BandeViewController implements Initializable, IController {
         
         //HBoxpaneImage.setMargin(this.,new Insets(18,0,0,0));
                 Scene scene=new Scene(paneElements);
-                scene.getStylesheets().add(getClass().getResource("/modules/global.css").toExternalForm());
+                scene.getStylesheets().add(Main.class.getResource("modules/views/global.css").toExternalForm());
 		Stage stage=new Stage();
 		stage.setScene(scene);
                 

@@ -5,6 +5,7 @@ import app.modules.IOption;
 import app.modules.MainItem;
 import app.modules.MenuItem;
 import app.modules.OptionItem;
+import app.modules.model.Employes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,30 +15,47 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 import app.modules.userType;
+import java.io.IOException;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 public class Main extends Application {
     public userType typeUser=userType._ADMIN_;
-    public  double pref_width=1500;
-    public  double pref_height=900;
+    public  static double pref_width=1500;
+    public  static double pref_height=900;
     
-    
-    private static Object tampon;
+    private static Stage mainStage;
 
-    public Object getTampon() {
-        return tampon;
+    public static Stage getMainStage() {
+        return mainStage;
     }
 
-    public void setTampon(Object tampon) {
-        this.tampon = tampon;
+    public static void setMainStage(Stage mainStage) {
+        Main.mainStage = mainStage;
     }
+    
+    
+    
+    
+    private static Employes emp;
+
+    public static Employes getEmp() {
+        return emp;
+    }
+
+    public static void setEmp(Employes emp) {
+        Main.emp = emp;
+    }
+
+
+    
     
 
     @Override
@@ -52,8 +70,46 @@ public class Main extends Application {
                 System.exit(0);
             }
         });
+        mainStage=primaryStage;
+        mainStage.initStyle(StageStyle.UTILITY);
+        
+        loadLogin();
         //
-        Parent root = FXMLLoader.load(getClass().getResource("modules/views/globalview/main/sample.fxml"));
+
+
+        primaryStage.show();
+    }
+
+    public static void loadLogin() throws IOException
+    {
+        mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        Parent root = FXMLLoader.load(Main.class.getResource("modules/views/login/Login.fxml"));
+        Scene scene=new Scene(root,500,600);
+        mainStage.setScene(scene);
+        mainStage.setHeight(700);
+        mainStage.setWidth(500);
+        
+        //scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
+        
+        
+    }
+    public static void loadApplication(Employes employe) throws IOException
+    {
+        mainStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+        emp=employe;
+        Parent root = FXMLLoader.load(Main.class.getResource("modules/views/globalview/main/sample.fxml"));
 
         //ParentTest root=new ParentTest();
         //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
@@ -130,18 +186,15 @@ public class Main extends Application {
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");
 
-        primaryStage.setTitle("Hello World");
+        mainStage.setTitle("Hello World");
         Scene scene=new Scene(main.getItem());
         scene.getStylesheets().add(MainItem.class.getResource("views/global.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image(getClass().getResource("modules/ressources/chicken.png").toString()));
-        //primaryStage.setMaxHeight(pref_height);
-        primaryStage.setMinHeight(pref_height);
+        mainStage.setScene(scene);
+        mainStage.setMinHeight(pref_height);
         //primaryStage.setMaxWidth(pref_width);
-        primaryStage.setMinWidth(pref_width);
-        primaryStage.show();
+        mainStage.setMinWidth(pref_width);
+        //primaryStage.setMaxHeight(pref_height);
     }
-
     public static void main(String[] args) {
         
         launch(args);

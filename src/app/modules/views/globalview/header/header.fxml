@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane opacity="0.99" prefHeight="128.0" prefWidth="1387.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
+<AnchorPane opacity="0.99" prefHeight="128.0" prefWidth="1445.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
 
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="548.0" stylesheets="@../../global.css">
@@ -29,24 +28,21 @@
                </HBox.margin></Label>
          </children>
       </HBox>
-      <ImageView fitHeight="61.0" fitWidth="104.0" layoutX="1312.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../ressources/user2.jpg" />
-         </image>
-         <effect>
-            <Lighting bumpInput="$null">
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
-      </ImageView>
-      <VBox layoutX="1204.0" layoutY="33.0" prefHeight="61.0" prefWidth="100.0">
+      <HBox layoutX="1128.0" layoutY="7.0" prefHeight="144.0" prefWidth="303.0">
          <children>
-            <Label prefHeight="28.0" prefWidth="135.0" text="username" />
-            <Label text="login" />
-            <Label text="attributions" />
+            <VBox id="important" prefHeight="127.0" prefWidth="202.0" spacing="5.0">
+               <children>
+                  <Label fx:id="username" prefHeight="28.0" prefWidth="135.0" text="username" />
+                  <Label fx:id="typeEmp" text="attributions" />
+                  <Hyperlink fx:id="deconnecter" text="se déconnecter" />
+               </children>
+            </VBox>
+            <ImageView fitHeight="101.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../ressources/Boss-icon.png" />
+               </image>
+            </ImageView>
          </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>
