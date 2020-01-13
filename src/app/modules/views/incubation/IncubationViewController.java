@@ -9,7 +9,6 @@ import javafx.scene.layout.VBox;
 import app.modules.IController;
 
 import app.modules.userType;
-import app.modules.model.Popup;
 import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
@@ -67,10 +66,6 @@ public class IncubationViewController implements Initializable, IController {
         return nodeRoles;
     }
     
-    @FXML
-    void ButtonSupprimerOnClick(ActionEvent event) {
-       boolean bool= Popup.show("Veuillez entrez les informations", "Editer",null);
-    }
-    
+   
     
 }

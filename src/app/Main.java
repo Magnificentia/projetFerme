@@ -28,6 +28,17 @@ public class Main extends Application {
     public  double pref_width=1500;
     public  double pref_height=900;
     
+    
+    private static Object tampon;
+
+    public Object getTampon() {
+        return tampon;
+    }
+
+    public void setTampon(Object tampon) {
+        this.tampon = tampon;
+    }
+    
 
     @Override
     public void start(Stage primaryStage) throws Exception{

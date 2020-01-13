@@ -11,23 +11,15 @@ package app.modules.views.bonjour;
  */
 public class Utilisateur {
     
-    private String nom;
+     private String nom;
     private String user;
     private String password;
     private String type;
-
-    public Utilisateur(String nom, String user, String password, String type) {
-        this.nom = nom;
+    
+    public Utilisateur(String user, String password, String type, String nom) {
         this.user = user;
         this.password = password;
         this.type = type;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -54,10 +46,15 @@ public class Utilisateur {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     
-    
-    
-    
-  
-    
+   
 }
