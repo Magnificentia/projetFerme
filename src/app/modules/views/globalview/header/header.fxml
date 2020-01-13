@@ -21,9 +21,9 @@
                   <Hyperlink fx:id="deconnecter" text="se déconnecter" />
                </children>
             </VBox>
-            <ImageView fitHeight="101.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="185.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ressources/Boss-icon.png" />
+                  <Image url="@../../../ressources/icons8-utilisateur-masculin-240.png" />
                </image>
             </ImageView>
          </children>

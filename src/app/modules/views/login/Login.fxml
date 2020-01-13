@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,12 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="757.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.login.LoginController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.login.LoginController">
    <children>
       <HBox alignment="CENTER" prefHeight="664.0" prefWidth="754.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="707.0" prefWidth="0.0" />
-            <VBox alignment="CENTER" prefHeight="707.0" prefWidth="910.0" spacing="1.0" style="-fx-background-color: white;">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+            <VBox alignment="CENTER" prefHeight="726.0" prefWidth="1144.0" spacing="1.0" style="-fx-background-color: white;">
                <children>
                   <HBox alignment="CENTER" prefHeight="114.0" prefWidth="941.0">
                      <children>
@@ -31,9 +32,9 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="757.0">
+                  <HBox alignment="CENTER" prefHeight="57.0" prefWidth="941.0">
                      <children>
-                        <Label prefHeight="53.0" prefWidth="211.0" styleClass="label-farm" text="Vollaile">
+                        <Label prefHeight="88.0" prefWidth="217.0" styleClass="label-farm" text="Volaille">
                            <font>
                               <Font size="36.0" />
                            </font></Label>
@@ -62,13 +63,13 @@
                            </HBox.margin></Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="55.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="61.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../ressources/icons8-utilisateur-masculin-240.png" />
                            </image></ImageView>
-                        <JFXTextField fx:id="textFieldUserName" focusColor="#f2d415" onAction="#NameTextField" prefHeight="31.0" prefWidth="252.0" promptText="Enter your name" styleClass="textField">
+                        <JFXTextField fx:id="textFieldUserName" focusColor="#f2d415" onAction="#NameTextField" prefHeight="24.0" prefWidth="242.0" promptText="Enter your name" styleClass="textField">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -89,22 +90,22 @@
                            </HBox.margin></Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="30.0">
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../ressources/Cadenas.png" />
                            </image></ImageView>
-                        <JFXTextField fx:id="textFieldPassword" focusColor="#f2d415" onAction="#passwordTextField" prefHeight="31.0" prefWidth="258.0" promptText="Enter your password" styleClass="textField" />
+                        <JFXTextField fx:id="textFieldPassword" focusColor="#f2d415" onAction="#passwordTextField" prefHeight="24.0" prefWidth="242.0" promptText="Enter your password" styleClass="textField" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="612.0" spacing="75.0">
                      <children>
-                        <JFXButton fx:id="buttonCancel" onAction="#buttonCancelOnClick" prefHeight="51.0" prefWidth="105.0" text="Login" />
-                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Cancel">
+                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Login">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin></JFXButton>
+                        <JFXButton fx:id="buttonCancel" onAction="#buttonCancelOnClick" prefHeight="51.0" prefWidth="105.0" text="Cancel" />
                      </children>
                      <VBox.margin>
                         <Insets top="55.0" />
@@ -112,14 +113,15 @@
                   </HBox>
                   <HBox prefHeight="36.0" prefWidth="612.0">
                      <children>
-                        <Hyperlink text="mot de passe oublié? ">
-                           <HBox.margin>
-                              <Insets left="35.0" />
-                           </HBox.margin></Hyperlink>
+                        <Hyperlink text="mot de passe oublié? " />
                      </children></HBox>
                </children>
             </VBox>
          </children>
       </HBox>
    </children>
+   <stylesheets>
+      <URL value="@global.css" />
+      <URL value="@../global.css" />
+   </stylesheets>
 </AnchorPane>
