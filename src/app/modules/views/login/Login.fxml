@@ -100,8 +100,8 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="612.0" spacing="75.0">
                      <children>
-                        <JFXButton fx:id="buttonCancel" onAction="#buttonCancelOnClick" prefHeight="51.0" prefWidth="105.0" text="Cancel" />
-                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Login">
+                        <JFXButton fx:id="buttonCancel" onAction="#buttonCancelOnClick" prefHeight="51.0" prefWidth="105.0" text="Login" />
+                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin></JFXButton>
