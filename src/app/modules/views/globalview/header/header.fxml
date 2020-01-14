@@ -9,47 +9,50 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane opacity="0.99" prefHeight="128.0" prefWidth="1445.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
+<AnchorPane prefHeight="119.0" prefWidth="1498.0" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
 
    <children>
-      <HBox layoutX="1128.0" layoutY="7.0" prefHeight="144.0" prefWidth="303.0">
+      <HBox layoutY="7.0" prefHeight="93.0" prefWidth="1498.0">
          <children>
-            <VBox id="important" prefHeight="127.0" prefWidth="202.0" spacing="5.0">
+            <VBox prefHeight="144.0" prefWidth="644.0">
                <children>
-                  <Label fx:id="username" prefHeight="28.0" prefWidth="135.0" text="username" />
-                  <Label fx:id="typeEmp" text="attributions" />
-                  <Hyperlink fx:id="deconnecter" text="se déconnecter" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="539.0" stylesheets="@../../global.css">
+                     <children>
+                        <ImageView fx:id="imageViewHeader" fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../../../ressources/chicken.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="62.0" prefWidth="229.0" styleClass="label-manager" stylesheets="@../../global.css" text="Volaille" />
+                        <Label fx:id="farm" prefHeight="74.0" prefWidth="155.0" styleClass="label-farm" stylesheets="@../../global.css" text="d'or">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="0.0" prefWidth="539.0" style="-fx-font-size: 20; -fx-font-style: italic;" text="Le meilleur de la ferme pour vous!          " />
                </children>
             </VBox>
-            <ImageView fitHeight="185.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+            <VBox id="important" alignment="CENTER" prefHeight="106.0" prefWidth="202.0" spacing="5.0">
+               <children>
+                  <Label fx:id="username" alignment="CENTER" prefHeight="36.0" prefWidth="137.0" text="username" textFill="#000000de" />
+                  <Label fx:id="typeEmp" prefHeight="13.0" prefWidth="139.0" text="attributions" />
+                  <Hyperlink fx:id="deconnecter" prefHeight="15.0" prefWidth="193.0" text="se déconnecter" />
+               </children>
+               <HBox.margin>
+                  <Insets left="500.0" />
+               </HBox.margin>
+            </VBox>
+            <ImageView fitHeight="101.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../ressources/icons8-utilisateur-masculin-240.png" />
+                  <Image url="@../../../ressources/user3.png" />
                </image>
             </ImageView>
          </children>
       </HBox>
-      <VBox layoutX="14.0" layoutY="2.0" prefHeight="155.0" prefWidth="539.0">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="128.0" prefWidth="548.0" stylesheets="@../../global.css">
-               <children>
-                  <ImageView fx:id="imageViewHeader" fitHeight="115.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                     <image>
-                        <Image url="@../../../ressources/chicken.png" />
-                     </image>
-                  </ImageView>
-                  <Label prefHeight="88.0" prefWidth="239.0" styleClass="label-manager" stylesheets="@../../global.css" text="Volaille" />
-                  <Label fx:id="farm" prefHeight="128.0" prefWidth="183.0" styleClass="label-farm" stylesheets="@../../global.css" text="d'or">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="54.0" prefWidth="539.0" style="-fx-font-size: 20; -fx-font-style: italic;" text="Le meilleur de la ferme pour vous!          " />
-         </children>
-      </VBox>
    </children>
 </AnchorPane>

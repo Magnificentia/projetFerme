@@ -241,7 +241,7 @@ public class BandeViewController implements Initializable, IController {
     @FXML
     void ajouterElementOnclick(ActionEvent event) {
         
-        this.afficherPopup(500,500);
+        this.afficherPopup(900,1500);
         
         
      
@@ -250,14 +250,16 @@ public class BandeViewController implements Initializable, IController {
         
      }
     
-    private void afficherPopup (double Widthsize,double Heightsize)
+    private void afficherPopup (int Widthsize,int Heightsize)
     {
         
         
         //HBoxpaneImage.setMargin(this.,new Insets(18,0,0,0));
-                Scene scene=new Scene(paneElements);
+                Scene scene=new Scene(paneElements,Widthsize,Heightsize);
                 scene.getStylesheets().add(Main.class.getResource("modules/views/global.css").toExternalForm());
 		Stage stage=new Stage();
+                //stage.setWidth(Widthsize);
+                //stage.setHeight(Heightsize);
 		stage.setScene(scene);
                 
 		stage.show();
@@ -288,7 +290,7 @@ public class BandeViewController implements Initializable, IController {
             dialogStage.setTitle("Ajouter un nouveau stock");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(Main.getMainStage());
-            Scene scene = new Scene(page);
+            Scene scene = new Scene(page,600,500);
             dialogStage.setScene(scene);
 
             // Show the dialog and wait until the user closes it

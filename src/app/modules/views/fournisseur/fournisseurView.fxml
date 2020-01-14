@@ -25,7 +25,7 @@
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
                         <TextField fx:id="rechercher" />
-                        <JFXButton text="Button">
+                        <JFXButton>
                            <graphic>
                               <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
                            </graphic>
