@@ -134,7 +134,7 @@ public class Main extends Application {
         IOption statsElevage=new OptionItem("Elevage","views/statselevage/statsElevageView.fxml");
         //IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
-        IOption venteOeuf=new OptionItem("Vente des Oeufs","views/vente/venteView.fxml");
+        IOption venteOeuf=new OptionItem("Vente des Oeufs","views/venteOeuf/venteOeufView.fxml");
 
         
         List elevage=new ArrayList<>();//options menu elevage
@@ -182,7 +182,7 @@ public class Main extends Application {
         IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
         IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
-        IMenu magasinMenu=new MenuItem("Magasin","ressources/panier.png",magasin);
+        IMenu magasinMenu=new MenuItem("Magasin","ressources/entrepot.png",magasin);
 
         List menus=new ArrayList<>();
         //menus.add(accueilMenu);

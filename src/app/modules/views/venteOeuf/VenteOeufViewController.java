@@ -88,7 +88,7 @@ public class VenteOeufViewController implements Initializable, IController {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("options/VenteOeufViewOptionsView.fxml"));
+            loader.setLocation(getClass().getResource("options/venteOeufOptionsView.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.

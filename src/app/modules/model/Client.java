@@ -56,6 +56,10 @@ public class Client {
         this.nomClient = nomClient;
     }
     
+    public String toString()
+    {
+        return this.nomClient;
+    }
     
     
 }
