@@ -12,9 +12,12 @@ import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
 import app.modules.model.Bande;
 import app.modules.model.Batiment;
+import app.modules.model.Client;
+import app.modules.model.CollecteOeuf;
 import app.modules.model.Fournisseur;
 import app.modules.model.Race;
 import app.modules.model.StockAliment;
+import app.modules.model.VenteOeuf;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -39,29 +42,26 @@ public class VenteViewOptionscontroller implements Initializable{
     
     
 
-       @FXML
-    private JFXComboBox<Race> race;
-       
-           @FXML
-    private JFXTextField age;
+    @FXML
+    private JFXComboBox<Client> client;
 
     @FXML
-    private JFXTextField qte;
-
-    @FXML
-    private JFXTextField achat;
+    private JFXComboBox<CollecteOeuf> collecte;
 
     @FXML
     private JFXDatePicker date;
 
     @FXML
-    private JFXComboBox<Fournisseur> fournisseur;
+    private JFXTextField qte;
 
     @FXML
-    private JFXComboBox<Batiment> batiment;
+    private JFXTextField prix;
 
     @FXML
     private JFXButton submitButton;
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,9 +73,9 @@ public class VenteViewOptionscontroller implements Initializable{
 
         Window owner = submitButton.getScene().getWindow();
 
-        if (fournisseur.getSelectionModel().isEmpty()) {
+        if (client.getSelectionModel().isEmpty() || collecte.getSelectionModel().isEmpty()) {
             Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Entrer un fournisseur");
+                "Champ manquant");
             return;
         }
         if (qte.getText().isEmpty()) {
@@ -83,13 +83,10 @@ public class VenteViewOptionscontroller implements Initializable{
                 "entrer une quantité");
             return;
         }
-        if (batiment.getSelectionModel().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Entrer un fournisseur");
-            return;
-        }
+
         // boolean flag=true;
-        boolean flag =DbManagerNnane.saveBande(new Bande(new Integer(qte.getText()),new Integer(age.getText()),race.getSelectionModel().getSelectedItem().getIdrace(),new Integer(achat.getText()),date.getValue().toString(),fournisseur.getSelectionModel().getSelectedItem().getIdfourn(),batiment.getSelectionModel().getSelectedItem().getIdbat()));
+        //boolean flag =DbManagerNnane.saveVenteOeuf(new VenteOeuf(collecte.getSelectionModel().getSelectedItem().getIdCollect(),client.getSelectionModel().getSelectedItem().getIdClient(),date.getValue().toString(),new Integer(prix.getText()),date.getValue().toString(),new Integer(qte.getText())));
+        boolean flag=true;
         if (!flag) {
             Main.infoBox("Please enter correct name or information", null, "Failed");
         } else {
@@ -100,10 +97,10 @@ public class VenteViewOptionscontroller implements Initializable{
     public void initialize()
     {
 
-        fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
+        /*fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
         batiment.setItems(FXCollections.observableArrayList(DbManagerNnane.selectBatiments()));
         race.setItems(FXCollections.observableArrayList(DbManagerNnane.selectRaces()));
-        //choixtype.setValue(t.get(0));
+        //choixtype.setValue(t.get(0));*/
         
     }
 }
