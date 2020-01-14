@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.modules.views.aliment.options;
+package app.modules.views.venteOeuf.options;
 
 import app.modules.views.bande.options.*;
 import app.modules.views.stockAliment.options.*;
@@ -85,8 +85,7 @@ public class VenteViewOptionscontroller implements Initializable{
         }
 
         // boolean flag=true;
-        //boolean flag =DbManagerNnane.saveVenteOeuf(new VenteOeuf(collecte.getSelectionModel().getSelectedItem().getIdCollect(),client.getSelectionModel().getSelectedItem().getIdClient(),date.getValue().toString(),new Integer(prix.getText()),date.getValue().toString(),new Integer(qte.getText())));
-        boolean flag=true;
+        boolean flag =DbManagerNnane.saveVenteOeuf(new VenteOeuf(collecte.getSelectionModel().getSelectedItem().getIdCollect(),client.getSelectionModel().getSelectedItem().getIdClient(),date.getValue().toString(),new Integer(prix.getText()),date.getValue().toString(),new Integer(qte.getText())));
         if (!flag) {
             Main.infoBox("Please enter correct name or information", null, "Failed");
         } else {
@@ -97,9 +96,8 @@ public class VenteViewOptionscontroller implements Initializable{
     public void initialize()
     {
 
-        /*fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
-        batiment.setItems(FXCollections.observableArrayList(DbManagerNnane.selectBatiments()));
-        race.setItems(FXCollections.observableArrayList(DbManagerNnane.selectRaces()));
+        collecte.setItems(FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs()));
+        client.setItems(FXCollections.observableArrayList(DbManagerNnane.selectClients()));
         //choixtype.setValue(t.get(0));*/
         
     }

@@ -482,6 +482,26 @@ public class DbManagerNnane {
         return false;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public static boolean saveVenteOeuf(VenteOeuf venteOeuf) {
+                Statement st;
+        try {
+            st = getConnection().createStatement();
+            //System.out.println("everything went fine"+"INSERT INTO USER(user_name,contact) VALUES (\""+user.getUsername()+"\","+user.getContact()+");");
+            String query="INSERT INTO venduoeuf(collect_id,client_id,datevente,total_prix,qte,employe_id) VALUES ("+venteOeuf.getCollecte_id()+","+venteOeuf.getClient_id()+","+venteOeuf.getDateVente()+","+venteOeuf.getTotal_prix()+","+venteOeuf.getIdVente()+" );";
+            System.out.println(query);
+            st.executeUpdate(query);
+            st.close();
+            return true;
+            
+        } catch (SQLException ex) {
+            System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
+            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
 //dfadfdadsf

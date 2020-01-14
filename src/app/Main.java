@@ -142,13 +142,15 @@ public class Main extends Application {
         //elevage.add(option2);
         elevage.add(ration);
         //elevage.add(incubation);  
-        elevage.add(aliment);
         //elevage.add(statsElevage);
         elevage.add(stockAliment);
-        elevage.add(collecteoeuf);
         elevage.add(incubation);
                
 
+        
+        List magasin=new ArrayList<>();
+        magasin.add(aliment);
+        magasin.add(collecteoeuf);
         List tiers=new ArrayList<>();//options menu vente
         //vente.add(statsVente);
         tiers.add(fournissseurs);
@@ -180,14 +182,17 @@ public class Main extends Application {
         IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
         IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
+        IMenu magasinMenu=new MenuItem("Magasin","ressources/panier.png",magasin);
 
         List menus=new ArrayList<>();
         //menus.add(accueilMenu);
         menus.add(elevageMenu);
         menus.add(venteMenu);
+        menus.add(magasinMenu);
         menus.add(tiersMenu);
         menus.add(santeMenu);
         menus.add(statistiquesMenu);
+        
         
         menus.add(utilisateurMenu);
 
