@@ -28,37 +28,37 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="race" prefHeight="25.0" prefWidth="302.0" promptText="race" />
+                        <JFXComboBox fx:id="race" labelFloat="true" prefHeight="25.0" prefWidth="302.0" promptText="race" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField fx:id="qte" prefHeight="31.0" prefWidth="312.0" promptText="qte" />
+                        <JFXTextField fx:id="qte" labelFloat="true" prefHeight="31.0" prefWidth="312.0" promptText="qte" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField fx:id="age" prefHeight="31.0" prefWidth="304.0" promptText="age" />
+                        <JFXTextField fx:id="age" labelFloat="true" prefHeight="31.0" prefWidth="304.0" promptText="age" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField fx:id="achat" prefHeight="31.0" prefWidth="299.0" promptText="achat" />
+                        <JFXTextField fx:id="achat" labelFloat="true" prefHeight="31.0" prefWidth="299.0" promptText="achat" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXDatePicker fx:id="date" defaultColor="#cd8e53" prefHeight="31.0" prefWidth="294.0" promptText="entrez la date" />
+                        <JFXDatePicker fx:id="date" defaultColor="#cd8e53" overLay="true" prefHeight="31.0" prefWidth="294.0" promptText="entrez la date" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="fournisseur" prefHeight="25.0" prefWidth="295.0" promptText="choisir le fournisseur" />
+                        <JFXComboBox fx:id="fournisseur" labelFloat="true" prefHeight="25.0" prefWidth="295.0" promptText="choisir le fournisseur" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXComboBox fx:id="batiment" prefHeight="25.0" prefWidth="297.0" promptText="batiment" />
+                        <JFXComboBox fx:id="batiment" labelFloat="true" prefHeight="25.0" prefWidth="297.0" promptText="batiment" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="148.0" prefWidth="700.0" spacing="150.0">
