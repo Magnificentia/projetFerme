@@ -65,7 +65,7 @@ public class addStockAlimentOptionscontroller implements Initializable{
 
         Window owner = submitButton.getScene().getWindow();
 
-        if (aliment.getSelectionModel().isEmpty()) {
+        if (fournisseur.getSelectionModel().isEmpty()) {
             Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "Entrer un aliment");
             return;

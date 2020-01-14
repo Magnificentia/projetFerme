@@ -172,7 +172,7 @@ public class Main extends Application {
         
         
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
-        IMenu tiersMenu=new MenuItem("Tiers","ressources/tiers2.png",tiers);
+        IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
 
         //IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
         IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/stats.png",statistiques);

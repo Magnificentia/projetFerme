@@ -38,6 +38,8 @@ public class headerController implements Initializable {
         deconnecter.setOnMouseClicked(e->{try {
             Main.getMainStage().hide();
             Main.loadLogin();
+            Main.getMainStage().setHeight(800);
+            Main.getMainStage().setWidth(850);
             Main.getMainStage().show();
                     
             } catch (IOException ex) {
