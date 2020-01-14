@@ -11,9 +11,16 @@ package app.modules.model;
  */
 public class VenteOeuf extends Vente{
     private int collecte_id;
+    private String date;
 
     public VenteOeuf(int collecte_id, int idVente, int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
         super(idVente, client_id, dateVente, total_prix, qte, employe_id, nomEmploye, nomClient);
+        this.collecte_id = collecte_id;
+    }
+    
+    public VenteOeuf(int collecte_id, int client_id, String dateVente, double total_prix,String date, int qte) {  
+        super(0, client_id, dateVente, total_prix, qte, 0, "","");
+        this.date=date; 
         this.collecte_id = collecte_id;
     }
 
