@@ -17,7 +17,7 @@
                <children>
                   <ImageView fitHeight="102.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../GCFire/src/ressource/services.png" />
+                        <Image url="@../../../ressources/egg.png" />
                      </image>
                   </ImageView>
                   <JFXComboBox fx:id="client" prefHeight="25.0" prefWidth="302.0" promptText="client" />
