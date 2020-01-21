@@ -204,6 +204,7 @@ public class BandeViewController implements Initializable, IController {
 
     public void populateTableBande()
     {
+        table.getItems().clear();//importaant sinon les changements ne vont pas être éffectués lorsqu'on fait de simples modificatioobs
         ObservableList<Bande> liste=FXCollections.observableArrayList(DbManagerNnane.selectBandes());
         table.setItems(liste);
     }
@@ -278,6 +279,9 @@ public class BandeViewController implements Initializable, IController {
     
     @FXML
     public void showAddStockAlimentrWindow(ActionEvent event) {
+        
+        //cette fonction est superflue, il faut trouver un moyen plus rapide de le faire
+        
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();

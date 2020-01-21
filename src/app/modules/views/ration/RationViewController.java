@@ -2,6 +2,7 @@ package app.modules.views.ration;
 
 
 
+import app.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,6 +14,10 @@ import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
+import app.modules.views.Form;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.*;
@@ -20,10 +25,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 //putain
 public class RationViewController implements Initializable, IController {
         @FXML
@@ -145,5 +157,50 @@ public class RationViewController implements Initializable, IController {
         return nodeRoles;
     }
     
+    @FXML
+    public void showAddRationWindow(ActionEvent event) {
+        
+        //cette fonction est superflue, il faut trouver un moyen plus rapide de le faire
+
+
+        FormRation page=new FormRation();
+
+
+        // Create the dialog Stage.
+        Stage dialogStage = new Stage();
+        //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
+        dialogStage.setTitle("Ajouter un nouveau stock");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(Main.getMainStage());
+        Scene scene = new Scene(page,600,500);
+        dialogStage.setScene(scene);
+
+        // Show the dialog and wait until the user closes it
+        dialogStage.showAndWait();
+
+    }
+    
+}
+
+
+
+class FormRation extends Form
+{
+
+    public FormRation() {
+        super();
+        List<Node> liste=new ArrayList();
+        liste.add(new JFXTextField());
+        JFXComboBox fournisseur=new JFXComboBox();
+        fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
+        liste.add(fournisseur);
+        this.addFields(liste);
+    }    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("appel de la bonne fonction");
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -24,7 +24,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import sun.net.www.protocol.mailto.MailToURLConnection;
 
 public class LoginController implements Initializable {
 

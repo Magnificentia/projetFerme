@@ -5,15 +5,12 @@
  */
 package app.modules.views.bande.options;
 
-import app.modules.views.stockAliment.options.*;
 import app.Main;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
 import app.modules.model.Bande;
 import app.modules.model.Batiment;
 import app.modules.model.Fournisseur;
 import app.modules.model.Race;
-import app.modules.model.StockAliment;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -98,7 +95,6 @@ public class BandeViewOptionscontroller implements Initializable{
     
     public void initialize()
     {
-
         fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
         batiment.setItems(FXCollections.observableArrayList(DbManagerNnane.selectBatiments()));
         race.setItems(FXCollections.observableArrayList(DbManagerNnane.selectRaces()));

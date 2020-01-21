@@ -2,16 +2,16 @@
 .root{
 
     	-fx-background-color:  #d0dfff;/*#f1e8df*/;
-    	-fx-font-size:15px;
+    	-fx-font-size:12px;
         -fx-font-weight:bold;
-    	-fx-spacing:15px;
+    	/*-fx-spacing:10px;*/
         -fx-text-fill: white;
 
 }
 
 #important
 {
-    -fx-font-size:25px;
+    -fx-font-size:15px;
 }
 
 /*tabs of tabpane generally*/
@@ -73,7 +73,7 @@
 #menus .tab-label{
     -fx-rotate: 90;
     -fx-font-weight:bold;
-    -fx-font-size:15px;
+    -fx-font-size:12px;
 }
 
 #menus .tab:hover{
@@ -90,13 +90,13 @@
 
     -fx-pref-width: 150;
     -fx-pref-height:40;
-    -fx-font-size:15px;
+    -fx-font-size:12px;
     -fx-background-color: #daad86;
 
       /*-fx-background-color:  tab-border-color , tab-color;*/
     /*tab-color:#756a6a;
     tab-border-color : #756a6a;/*#808080;*/
-    -fx-background-insets:  0,0 1.5 0 0, 1 6 0 0 ;
+    -fx-background-insets:  0,0 1.5 0 0, 1 2 0 0 ;
     -fx-padding: 4 10 4 4 ;
 }
 
@@ -113,14 +113,14 @@
 .label-farm
 {
     -fx-font-weight:bold;
-    -fx-font-size:60px
+    -fx-font-size:30px
     /*-fx-text-fill: #FFD700;*/
 }
 
 .label-manager
 {
     -fx-font-weight:bold;
-    -fx-font-size:60px;
+    -fx-font-size:30px;
     /*-fx-text-fill:#fb7060;*/
 }
 

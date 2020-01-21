@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -25,7 +24,7 @@ public class MainItem extends Item {
     private Parent header=new HBox();
     private Parent footer=new HBox();
     private JFXTabPane menus;
-    private static Pane container;
+    private Pane container;
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
 

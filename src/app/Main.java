@@ -80,7 +80,6 @@ public class Main extends Application {
         loadLogin();
         //
 
-
         primaryStage.show();
     }
 

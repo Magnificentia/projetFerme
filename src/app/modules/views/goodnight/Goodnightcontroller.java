@@ -2,12 +2,8 @@ package app.modules.views.goodnight;
 
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import app.modules.IController;
-import app.modules.IOption;
-import app.modules.OptionItem;
 import app.modules.userType;
-import sun.misc.GC;
 
 import java.net.URL;
 import java.util.*;

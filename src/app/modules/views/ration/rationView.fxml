@@ -21,7 +21,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton onAction="#showAddRationWindow" prefHeight="31.0" prefWidth="156.0" text="Enregistrer une nouvelle ration" />
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
                         <TextField fx:id="recherche" />
