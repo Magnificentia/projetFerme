@@ -160,8 +160,8 @@ public class RationViewController implements Initializable, IController {
     @FXML
     public void showAddRationWindow(ActionEvent event) {
         //automatisation de la création de formulaires
-        FormRation page=new FormRation();
-        page.show();
+        FormRation formulaire=new FormRation();
+        formulaire.show();
     }
     
 }

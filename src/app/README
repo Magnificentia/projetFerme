@@ -1,8 +1,16 @@
-un fichier java form.java a été fait pour faciliter la création des formulaires (premier problème que nous avons eu pendant la fameuse nuit)
+Premièrement,un fichier java form.java a été fait pour faciliter la création des formulaires (premier problème que nous avons eu pendant la fameuse nuit)
 un exemple d'application est visible à la fin du fichier rationView.java dans le dossier views/ration. 
+une prochaine étape est l'ajout des regex validator aux champs et l'ajout d'une selection des champs obligatoires.
 
-Aussi, je vais me renseigner sur comment faire le slide avec le CSS.
+Aussi, il faut se renseigner sur comment faire le slide avec le CSS.
+
+En outre, la gestion des droits des utilisateurs est un problème fondamental puisque l'administrateur doit pouvoir les changer à sa guise
+
+
+
 
 L'application a besoin de retouches côté design mais les fonctionnalités seront le premier axe à couvrir.
+
+
 
 

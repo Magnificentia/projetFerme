@@ -13,6 +13,7 @@ import app.Projet;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Employes;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class LoginController implements Initializable {
     private JFXTextField textFieldUserName;
 
     @FXML
-    private JFXTextField textFieldPassword;
+    private JFXPasswordField textFieldPassword;
         @FXML
     private Label information;
 

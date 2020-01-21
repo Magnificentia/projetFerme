@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
@@ -82,7 +83,7 @@
                            <image>
                               <Image url="@../../ressources/Cadenas.png" />
                            </image></ImageView>
-                        <JFXTextField fx:id="textFieldPassword" focusColor="#e1c10c" labelFloat="true" onAction="#passwordTextField" prefHeight="31.0" prefWidth="258.0" promptText="Enter your password" styleClass="textField" />
+                        <JFXPasswordField id="t" fx:id="textFieldPassword" labelFloat="true" prefHeight="25.0" prefWidth="240.0" promptText="Enter your password" style="-fx-font-size: 16;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="612.0" spacing="75.0">
