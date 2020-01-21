@@ -2,7 +2,7 @@ package app.modules.views.ration;
 
 
 
-import app.Main;
+import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -159,25 +159,9 @@ public class RationViewController implements Initializable, IController {
     
     @FXML
     public void showAddRationWindow(ActionEvent event) {
-        
-        //cette fonction est superflue, il faut trouver un moyen plus rapide de le faire
-
-
+        //automatisation de la création de formulaires
         FormRation page=new FormRation();
-
-
-        // Create the dialog Stage.
-        Stage dialogStage = new Stage();
-        //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
-        dialogStage.setTitle("Ajouter un nouveau stock");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(Main.getMainStage());
-        Scene scene = new Scene(page,600,500);
-        dialogStage.setScene(scene);
-
-        // Show the dialog and wait until the user closes it
-        dialogStage.showAndWait();
-
+        page.show();
     }
     
 }
@@ -186,8 +170,10 @@ public class RationViewController implements Initializable, IController {
 
 class FormRation extends Form
 {
+    //voici un exemple création de formulaire
 
     public FormRation() {
+        //on spécifie les différents champs
         super();
         List<Node> liste=new ArrayList();
         liste.add(new JFXTextField());
@@ -199,6 +185,7 @@ class FormRation extends Form
 
     @Override
     public void onValidateClick() {
+        //on spécifie l'action à faire pour chaque bouton
         System.out.println("appel de la bonne fonction");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

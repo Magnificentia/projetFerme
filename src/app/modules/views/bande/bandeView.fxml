@@ -20,7 +20,7 @@
             </HBox>
             <HBox prefHeight="26.0" prefWidth="992.0" spacing="300.0">
                <children>
-                  <JFXButton onAction="#showAddStockAlimentrWindow" prefHeight="31.0" prefWidth="270.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton prefHeight="31.0" prefWidth="270.0" text="Ajouter un nouvel utilisateur" />
                   <HBox prefHeight="31.0" prefWidth="385.0">
                      <children>
                         <TextField prefHeight="31.0" prefWidth="235.0" />

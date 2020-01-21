@@ -26,7 +26,7 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
-public class Main extends Application {
+public class Projet extends Application {
     public userType typeUser=userType._ADMIN_;
     public  static double pref_width=1500;
     public  static double pref_height=900;
@@ -38,7 +38,7 @@ public class Main extends Application {
     }
 
     public static void setMainStage(Stage mainStage) {
-        Main.mainStage = mainStage;
+        Projet.mainStage = mainStage;
     }
     
     
@@ -49,7 +49,7 @@ public class Main extends Application {
     }
 
     public static void setEmp(Employes emp) {
-        Main.emp = emp;
+        Projet.emp = emp;
     }
 
 
@@ -93,7 +93,7 @@ public class Main extends Application {
                 System.exit(0);
             }
         });
-        Parent root = FXMLLoader.load(Main.class.getResource("modules/views/login/Login.fxml"));
+        Parent root = FXMLLoader.load(Projet.class.getResource("modules/views/login/Login.fxml"));
         Scene scene=new Scene(root,500,600);
         mainStage.setScene(scene);
         mainStage.setHeight(800);
@@ -113,7 +113,7 @@ public class Main extends Application {
             }
         });
         emp=employe;
-        Parent root = FXMLLoader.load(Main.class.getResource("modules/views/globalview/main/sample.fxml"));
+        Parent root = FXMLLoader.load(Projet.class.getResource("modules/views/globalview/main/sample.fxml"));
 
         //ParentTest root=new ParentTest();
         //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");

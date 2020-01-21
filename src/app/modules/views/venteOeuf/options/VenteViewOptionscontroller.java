@@ -7,7 +7,7 @@ package app.modules.views.venteOeuf.options;
 
 import app.modules.views.bande.options.*;
 import app.modules.views.stockAliment.options.*;
-import app.Main;
+import app.Projet;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
 import app.modules.model.Bande;
@@ -74,12 +74,12 @@ public class VenteViewOptionscontroller implements Initializable{
         Window owner = submitButton.getScene().getWindow();
 
         if (client.getSelectionModel().isEmpty() || collecte.getSelectionModel().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            Projet.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "Champ manquant");
             return;
         }
         if (qte.getText().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            Projet.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "entrer une quantité");
             return;
         }
@@ -87,9 +87,9 @@ public class VenteViewOptionscontroller implements Initializable{
         // boolean flag=true;
         boolean flag =DbManagerNnane.saveVenteOeuf(new VenteOeuf(collecte.getSelectionModel().getSelectedItem().getIdCollect(),client.getSelectionModel().getSelectedItem().getIdClient(),date.getValue().toString(),new Integer(prix.getText()),date.getValue().toString(),new Integer(qte.getText())));
         if (!flag) {
-            Main.infoBox("Please enter correct name or information", null, "Failed");
+            Projet.infoBox("Please enter correct name or information", null, "Failed");
         } else {
-            Main.infoBox("Registered Successful!", null, "SUCCEDED");
+            Projet.infoBox("Registered Successful!", null, "SUCCEDED");
         }
     }
     

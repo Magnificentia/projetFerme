@@ -5,7 +5,7 @@
  */
 package app.modules.views.stockAliment.options;
 
-import app.Main;
+import app.Projet;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Aliment;
 import app.modules.model.Batiment;
@@ -66,26 +66,26 @@ public class addStockAlimentOptionscontroller implements Initializable{
         Window owner = submitButton.getScene().getWindow();
 
         if (fournisseur.getSelectionModel().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            Projet.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "Entrer un aliment");
             return;
         }
         if (qte.getText().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            Projet.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "entrer une quantité");
             return;
         }
         if (fournisseur.getSelectionModel().isEmpty()) {
-            Main.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+            Projet.showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
                 "Entrer un fournisseur");
             return;
         }
 
         boolean flag =DbManagerNnane.saveStockAliment(new StockAliment(new Integer(qte.getText()),date.getValue().toString(),aliment.getSelectionModel().getSelectedItem().getIdali(),fournisseur.getSelectionModel().getSelectedItem().getIdfourn()));
         if (!flag) {
-            Main.infoBox("Please enter correct name or information", null, "Failed");
+            Projet.infoBox("Please enter correct name or information", null, "Failed");
         } else {
-            Main.infoBox("Registered Successful!", null, "SUCCEDED");
+            Projet.infoBox("Registered Successful!", null, "SUCCEDED");
         }
     }
     

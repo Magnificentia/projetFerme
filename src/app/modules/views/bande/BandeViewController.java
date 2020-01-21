@@ -2,7 +2,7 @@ package app.modules.views.bande;
 
 
 
-import app.Main;
+import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -104,102 +104,6 @@ public class BandeViewController implements Initializable, IController {
         populateTableBande();
         table.setPrefWidth(800);
         
-        paneElements=new VBox();
-        
-       
-        this.image = new ImageView(Main.class.getResource("modules/ressources/elevage.png").toString());
-        System.out.println(this.image);
-        this.paneElements.setMargin(image,new Insets(0,0,25,0));
-        HBox paneImage=new HBox();
-        paneImage.getChildren().addAll(image);
-        paneImage.setAlignment(Pos.CENTER);
-        
-        textQuantite=new JFXTextField();
-        textQuantite.setPromptText("veuillez entrez la quantite");
-        textQuantite.setPrefSize(242,24);
-        textAge=new JFXTextField();
-        textAge.setPromptText("veuillez entrez l'age");
-        textAge.setPrefSize(242, 24);
-        
-          
-        
-        
-        comboRace = new JFXComboBox<String>();
-        comboRace.setPromptText("choisir Race");
-        comboRace.getItems().addAll("pouletJaune");
-        comboRace.setPrefSize(242, 24);
-        
-        comboBatiment = new JFXComboBox<String>();
-        comboBatiment.getItems().addAll("pouletJaune");
-        comboBatiment.setPromptText("choisir Batiment");
-        comboBatiment.setPrefSize(242, 24);
-        
-        comboFournisseur = new JFXComboBox<String>();
-        comboFournisseur.getItems().addAll("pouletJaune");
-        comboFournisseur.setPromptText("choisir Fournisseur");
-        comboFournisseur.setPrefSize(242, 24);
-        
-        this.paneElements=new VBox();
-        System.out.println("before array");
-        
-        //list.add(Quantite);
-        
-        
-        
-        
-        HBox hboxNode0=new HBox();
-        hboxNode0.getChildren().addAll(textQuantite);
-        hboxNode0.setAlignment(Pos.CENTER);
-        paneElements.getChildren().add(hboxNode0);
-        
-       
-        HBox hboxNode1=new HBox();
-        hboxNode1.getChildren().addAll(textAge);
-        hboxNode1.setAlignment(Pos.CENTER);
-        paneElements.getChildren().add(hboxNode1);
-        
-        
-        HBox hboxNode2=new HBox();
-        hboxNode2.getChildren().addAll(comboRace);
-        hboxNode2.setAlignment(Pos.CENTER);
-        paneElements.getChildren().add(hboxNode2);
-     
-       
-        HBox hboxNode3=new HBox();
-        hboxNode3.getChildren().addAll(comboBatiment);
-        hboxNode3.setAlignment(Pos.CENTER);
-        paneElements.getChildren().add(hboxNode3);
-        
-        
-        HBox hboxNode4=new HBox();
-        hboxNode4.getChildren().addAll(comboFournisseur);
-        hboxNode4.setAlignment(Pos.CENTER);
-        paneElements.getChildren().add(hboxNode4);
-        //f.addElement(list);
-        
-                JFXButton btn1=new JFXButton();
-		btn1.setText("Ok");
-		btn1.setOnAction(e->btnYes_clicked());
-                btn1.setPrefSize(105, 51);
-                
-                JFXButton btn2=new JFXButton();
-		btn2.setText("Cancel");
-		btn2.setOnAction(e->btnNo_clicked());
-                btn2.setPrefSize(105, 51);
-		
-		/*Label lab=new Label();
-		lab.setText(message);*/
-		
-		HBox paneH=new HBox(15);
-		paneH.getChildren().addAll(btn1,btn2);
-		paneH.setAlignment(Pos.CENTER);
-                
-                paneElements.getChildren().add(paneH);
-        
-        
-        
-         paneElements.setSpacing(35);
-        
     }
 
     public void populateTableBande()
@@ -215,7 +119,7 @@ public class BandeViewController implements Initializable, IController {
         Bande mat=table.getSelectionModel().getSelectedItem();
 
         if (mat!=null) {
-            if(Main.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
+            if(Projet.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
@@ -239,72 +143,6 @@ public class BandeViewController implements Initializable, IController {
         return nodeRoles;
     }
     
-    @FXML
-    void ajouterElementOnclick(ActionEvent event) {
-        
-        this.afficherPopup(900,1500);
-        
-        
-     
 
-        //(new Popup(){public Object returnItem(){return new Bande(1);}}).show("Confirmation",f);   
-        
-     }
     
-    private void afficherPopup (int Widthsize,int Heightsize)
-    {
-        
-        
-        //HBoxpaneImage.setMargin(this.,new Insets(18,0,0,0));
-                Scene scene=new Scene(paneElements,Widthsize,Heightsize);
-                scene.getStylesheets().add(Main.class.getResource("modules/views/global.css").toExternalForm());
-		Stage stage=new Stage();
-                //stage.setWidth(Widthsize);
-                //stage.setHeight(Heightsize);
-		stage.setScene(scene);
-                
-		stage.show();
-                
-    }
-    
-    private void btnYes_clicked()
-    {
-        
-    }
-    
-    private void btnNo_clicked()
-    {
-        
-    }
-    
-    @FXML
-    public void showAddStockAlimentrWindow(ActionEvent event) {
-        
-        //cette fonction est superflue, il faut trouver un moyen plus rapide de le faire
-        
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("options/BandeViewOptionsView.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
-            dialogStage.setTitle("Ajouter un nouveau stock");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Main.getMainStage());
-            Scene scene = new Scene(page,600,500);
-            dialogStage.setScene(scene);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-            populateTableBande();
-
-            //
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

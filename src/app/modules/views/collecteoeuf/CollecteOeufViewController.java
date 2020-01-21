@@ -2,7 +2,7 @@ package app.modules.views.collecteoeuf;
 
 
 
-import app.Main;
+import app.Projet;
 import app.modules.views.employes.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

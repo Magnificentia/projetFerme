@@ -2,7 +2,7 @@ package app.modules.views.aliment;
 
 
 
-import app.Main;
+import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -66,7 +66,7 @@ public class AlimentViewController implements Initializable, IController {
         Aliment mat=table.getSelectionModel().getSelectedItem();
 
         if (mat!=null) {
-            if(Main.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
+            if(Projet.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
                 "voulez-vous supprimer cet aliment ?"))
             {
                 DbManagerNnane.suppAliment(mat);

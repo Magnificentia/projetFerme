@@ -9,7 +9,7 @@ package app.modules.views.login;
  *
  * @author HP
  */
-import app.Main;
+import app.Projet;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Employes;
 import com.jfoenix.controls.JFXButton;
@@ -48,11 +48,11 @@ public class LoginController implements Initializable {
 
         if(emp!=null)
         {
-            Main.getMainStage().hide();
+            Projet.getMainStage().hide();
             
-            Main.loadApplication(emp);
+            Projet.loadApplication(emp);
             
-            Main.getMainStage().show();
+            Projet.getMainStage().show();
         }
         else
         {

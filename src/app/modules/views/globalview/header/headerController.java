@@ -1,6 +1,6 @@
 package app.modules.views.globalview.header;
 
-import app.Main;
+import app.Projet;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,15 +32,15 @@ public class headerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        username.setText(Main.getEmp().getNom());
-        typeEmp.setText(Main.getEmp().getTypeEm());
+        username.setText(Projet.getEmp().getNom());
+        typeEmp.setText(Projet.getEmp().getTypeEm());
         
         deconnecter.setOnMouseClicked(e->{try {
-            Main.getMainStage().hide();
-            Main.loadLogin();
-            Main.getMainStage().setHeight(800);
-            Main.getMainStage().setWidth(850);
-            Main.getMainStage().show();
+            Projet.getMainStage().hide();
+            Projet.loadLogin();
+            Projet.getMainStage().setHeight(800);
+            Projet.getMainStage().setWidth(850);
+            Projet.getMainStage().show();
                     
             } catch (IOException ex) {
                 Logger.getLogger(headerController.class.getName()).log(Level.SEVERE, null, ex);

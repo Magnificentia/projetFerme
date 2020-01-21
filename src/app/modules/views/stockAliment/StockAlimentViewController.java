@@ -2,7 +2,7 @@ package app.modules.views.stockAliment;
 
 
 
-import app.Main;
+import app.Projet;
 import app.modules.views.ration.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -88,7 +88,7 @@ public class StockAlimentViewController implements Initializable, IController {
         StockAliment mat=table.getSelectionModel().getSelectedItem();
 
         if (mat!=null) {
-            if(Main.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
+            if(Projet.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
@@ -157,7 +157,7 @@ public class StockAlimentViewController implements Initializable, IController {
             //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
             dialogStage.setTitle("Ajouter un nouveau stock");
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Main.getMainStage());
+            dialogStage.initOwner(Projet.getMainStage());
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 

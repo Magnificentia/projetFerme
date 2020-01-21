@@ -2,7 +2,7 @@ package app.modules.views.venteOeuf;
 
 
 
-import app.Main;
+import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -96,7 +96,7 @@ public class VenteOeufViewController implements Initializable, IController {
             //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
             dialogStage.setTitle("Ajouter une nouvelle vente");
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Main.getMainStage());
+            dialogStage.initOwner(Projet.getMainStage());
             Scene scene = new Scene(page,600,500);
             dialogStage.setScene(scene);
 
