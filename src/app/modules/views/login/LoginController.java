@@ -14,7 +14,6 @@ import app.modules.database.DbManagerNnane;
 import app.modules.model.Employes;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -45,8 +44,8 @@ public class LoginController implements Initializable {
     
     public Employes connnecter() throws IOException
     {
-        Employes emp=DbManagerNnane.connecter(textFieldUserName.getText(),textFieldPassword.getText());
-
+        //Employes emp=DbManagerNnane.connecter(textFieldUserName.getText(),textFieldPassword.getText());
+        Employes emp=new Employes(0,"conception","conception","notimportant","administrateur");
         if(emp!=null)
         {
             Projet.getMainStage().hide();

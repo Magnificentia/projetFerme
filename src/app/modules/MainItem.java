@@ -78,12 +78,14 @@ public class MainItem extends Item {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
-                VBox content=new VBox();//mouen change le hbox initial en vbox
+                HBox content=new HBox();//mouen change le hbox initial en vbox
                 Label label = new Label(menu.toString());
           
                 //label.setAlignment(Pos.BOTTOM_CENTER)
                 System.out.println(getClass().getResource(menu.getIconPath()));
-                ImageView icon = new ImageView(new Image(getClass().getResource(menu.getIconPath()).toString())); // for example
+                Image im=new Image(getClass().getResource(menu.getIconPath()).toString(),20,20,false,false);
+                ImageView icon = new ImageView(im); // for example
+                icon.setPreserveRatio(true);
                 icon.setFitWidth(50); icon.setFitHeight(50);//mouen augmente la taille des icones
                
 

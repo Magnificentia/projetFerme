@@ -56,12 +56,13 @@
     -fx-background-insets: 0.0;
     -fx-background-radius:0.0;
     -fx-font-size: 20px;
+    -fx-text-alignment: left;
 
     -fx-background-color:  tab-border-color , tab-color;
     tab-color:#daad86;
     tab-border-color : #daad86;/*#808080;*/
     -fx-background-insets:  0,0 0 0 1.5, 1 6 0 0 ;
-    -fx-padding: 4 10 4 4 ;
+    /*-fx-padding: 4 10 4 4 ;*/
 
 }
 
@@ -69,11 +70,13 @@
 #menus .tab .label
 {
     -fx-text-fill: white;
+
 }
 #menus .tab-label{
     -fx-rotate: 90;
     -fx-font-weight:bold;
     -fx-font-size:12px;
+    -fx-text-alignment: left;
 }
 
 #menus .tab:hover{
@@ -103,7 +106,6 @@
 
 #options .tab-label{
     -fx-rotate:0;
-    -fx-graphic: white;
     -fx-font-size:13px;
     /*-fx-text-fill:#FFFAFA;*/
 }
@@ -171,7 +173,7 @@
 .table-view .filler, .tree-table-view .filler, .table-view .column-header,
 .tree-table-view .column-header {
     -fx-size: 65;
-    -fx-border-style: null;
+    /*-fx-border-style: null;*/
     /*-fx-border-color: -swatch-grey;*/
     -fx-border-width: 0 0 2 0;
     -fx-background-color: transparent;

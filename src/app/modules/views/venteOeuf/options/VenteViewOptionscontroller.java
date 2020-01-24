@@ -5,18 +5,10 @@
  */
 package app.modules.views.venteOeuf.options;
 
-import app.modules.views.bande.options.*;
-import app.modules.views.stockAliment.options.*;
 import app.Projet;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Bande;
-import app.modules.model.Batiment;
 import app.modules.model.Client;
 import app.modules.model.CollecteOeuf;
-import app.modules.model.Fournisseur;
-import app.modules.model.Race;
-import app.modules.model.StockAliment;
 import app.modules.model.VenteOeuf;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanel.CollapsedPanel?>
+<?import com.gluonhq.charm.glisten.control.ExpansionPanelContainer?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +15,7 @@
 <AnchorPane prefHeight="81.0" prefWidth="1498.0" style="-fx-background-color: #47ed74;" stylesheets="@../../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.globalview.header.headerController">
 
    <children>
-      <HBox layoutY="7.0" prefHeight="95.0" prefWidth="1498.0" spacing="450.0">
+      <HBox layoutY="7.0" prefHeight="121.0" prefWidth="1498.0" spacing="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="114.0" prefWidth="364.0">
                <children>
@@ -37,6 +40,30 @@
                   <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="343.0" style="-fx-font-size: 20; -fx-font-style: italic;" text="Le meilleur de la ferme pour vous!" />
                </children>
             </VBox>
+            <ExpansionPanelContainer>
+                <items>
+                    <ExpansionPanel>
+                        <collapsedContent>
+                            <ExpansionPanel.CollapsedPanel>
+                                <titleNodes>
+                                    <Label text="TripName" />
+                                    <Label text="Caribbean cruise" />
+                                </titleNodes>
+                            </ExpansionPanel.CollapsedPanel>
+                        </collapsedContent>
+                    </ExpansionPanel>
+                    <ExpansionPanel>
+                        <collapsedContent>
+                            <ExpansionPanel.CollapsedPanel>
+                                <titleNodes>
+                                    <Label text="Location" />
+                                    <Label text="Barbados" />
+                                </titleNodes>
+                            </ExpansionPanel.CollapsedPanel>
+                        </collapsedContent>
+                    </ExpansionPanel>
+                </items>
+            </ExpansionPanelContainer>
             <HBox alignment="CENTER">
                <HBox.margin>
                   <Insets left="500.0" />

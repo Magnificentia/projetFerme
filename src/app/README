@@ -12,5 +12,15 @@ En outre, la gestion des droits des utilisateurs est un problème fondamental pui
 L'application a besoin de retouches côté design mais les fonctionnalités seront le premier axe à couvrir.
 
 
+pour les animations, le slide de Mouen feront l'affaire. on va les utiliser pour faire des notifications
+
+pour la gestion des validator, on va laisser tomber mais utiliser les regex pour la validation des formulaires.
+textField1To6.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")
+par exemple: adresse email valide
+
+
+
+
+
 
 
