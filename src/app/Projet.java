@@ -142,7 +142,7 @@ public class Projet extends Application {
         elevage.add(ration);
         //elevage.add(incubation);  
         //elevage.add(statsElevage);
-        elevage.add(stockAliment);
+        
         elevage.add(incubation);
                
 
@@ -150,6 +150,8 @@ public class Projet extends Application {
         List magasin=new ArrayList<>();
         magasin.add(aliment);
         magasin.add(collecteoeuf);
+        magasin.add(stockAliment);
+        
         List tiers=new ArrayList<>();//options menu vente
         //vente.add(statsVente);
         tiers.add(fournissseurs);

@@ -25,6 +25,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import tray.notification.TrayNotification;
+import tray.notification.NotificationType;
 public class LoginController implements Initializable {
 
     @FXML
@@ -48,6 +50,15 @@ public class LoginController implements Initializable {
         Employes emp=new Employes(0,"conception","conception","notimportant","administrateur");
         if(emp!=null)
         {
+        String title = "Congratulations sir";
+        String message = "You've successfully created your first Tray Notification";
+        //Notification notification = Notifications.SUCCESS;
+        
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        //tray.setNotification(notification);
+        tray.showAndWait();
             Projet.getMainStage().hide();
             
             Projet.loadApplication(emp);

@@ -1,58 +1,65 @@
 package app.modules;
 
 
-import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTreeView;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Pos;
+import javafx.scene.control.TreeItem;
 
 public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
     private Parent header=new HBox();
     private Parent footer=new HBox();
-    private JFXTabPane menus;
+
+    private JFXTreeView menus;
     private Pane container;
+    private Pane view;
+
+    
     public static double _FOOTER_WIDTH_=30;
     public static double _HEADER_HEIGHT_=30;
+    
+    private GridPane gridpane;
 
 
     public MainItem(String name,List menus)
     {
         super(name);
-        this.menus=new JFXTabPane();
-        this.menus.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        this.menus.setId("menus");
-        this.menus.setRotateGraphic(true);
-        this.menus.setSide(Side.LEFT);
-        this.menus.setPrefSize(500,500);
+        
+        gridpane=new GridPane();//pour la mise en page
+        gridpane.getColumnConstraints().add(new ColumnConstraints(150));//specifie la longueur (horizontalement) de l'espace pour menus et icone
+        gridpane.getRowConstraints().add(new RowConstraints(80));//specifie la largeur (verticalement) de l'espace pour le header
+        
+        gridpane.add(new Label("zone qui va contenir l'icone de l'utilisateur"), 0, 0);
+        gridpane.add(new Label("icone et label"), 1, 0);
+        
+        view=new AnchorPane();        
+        
         this.reload();
         loadMenus(menus);
     }
     public void reload()
     {
+        //j'ai enlevé le header pour changer le design
         this.container=new BorderPane();
         this.container.setPrefSize(500,500);
-        if (this.header!=null) {((BorderPane)this.container).setTop(this.header);}
-        ((BorderPane)this.container).setCenter(this.menus);
+        //if (this.header!=null) {((BorderPane)this.container).setTop(this.header);}
+        ((BorderPane)this.container).setCenter(this.gridpane);
+        ((BorderPane)this.container).prefWidthProperty().bind(this.gridpane.widthProperty());
 
         /*modification par le mouen*/
-        ((BorderPane)this.container).setMargin(this.menus,new Insets(0,15,0,0));
+        //((BorderPane)this.container).setMargin(this.menus,new Insets(0,15,0,0));
 
         if (this.footer!=null){((BorderPane)this.container).setBottom(this.footer);}
-        //if (this.footer!=null){((BorderPane)this.container).setRight(this.footer);}
+
     }
     public void setHeader(String path) throws IOException {
         this.header=FXMLLoader.load(getClass().getResource(path));
@@ -74,29 +81,46 @@ public class MainItem extends Item {
     }
     private void displayMenus()
     {
+        //creation du treeview
+        TreeItem<IItem> rootItem=new TreeItem<IItem>(new MenuItem(menusList));
         for(IMenu menu: menusList) {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
                 HBox content=new HBox();//mouen change le hbox initial en vbox
                 Label label = new Label(menu.toString());
-          
-                //label.setAlignment(Pos.BOTTOM_CENTER)
-                System.out.println(getClass().getResource(menu.getIconPath()));
-                Image im=new Image(getClass().getResource(menu.getIconPath()).toString(),20,20,false,false);
-                ImageView icon = new ImageView(im); // for example
-                icon.setPreserveRatio(true);
-                icon.setFitWidth(50); icon.setFitHeight(50);//mouen augmente la taille des icones
-               
+                //essai de mettre un tree view
+                
+                TreeItem<IItem> subrootItem = new TreeItem<>(menu);
+                
+                for(IOption option: menu.getOptionsList())
+                {
+                    //Hyperlink op=new Hyperlink(option.toString());
+                    TreeItem<IItem> item = new TreeItem<>(option);
+                    subrootItem.getChildren().add(item);
+                }
+                if(subrootItem.getChildren().size()==1)
+                {
+                    rootItem.getChildren().add(subrootItem.getChildren().get(0));
+                }
+                else
+                {
+                    rootItem.getChildren().add(subrootItem);
+                }
 
-                content.getChildren().addAll(icon, label);
-                content.setAlignment(Pos.CENTER);// je change la position dans le pane;
-                Tab tab=new Tab();
-                tab.setGraphic(content);
-                tab.setContent(menu.getItem());
-                menus.getTabs().addAll(tab);
             }
         }
+        System.out.println("rootItem="+rootItem.getChildren());
+        menus=new JFXTreeView(rootItem);
+        menus.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> handle((TreeItem<IItem>)newValue)
+        );
+        menus.setShowRoot(false);
+
+        gridpane.add(menus, 0, 1);
+        gridpane.add(view,1,1);
+        System.out.println(menus.getChildrenUnmodifiable());
+
     }
     private void loadMenus(List menus)
     {
@@ -106,11 +130,25 @@ public class MainItem extends Item {
 
     @Override
     public Parent getItem() {
+        System.out.println("container"+container.getChildren());
         return this.container;
     }
 
     @Override
     public boolean isVisible() {
         return false;
+    }
+
+    private void handle(TreeItem<IItem> newValue) {
+        
+        System.out.println(newValue.getChildren());
+        if(newValue.getChildren().size()==0)//si l'élement n'a pas de sous element alors c'est une option
+        {
+            System.out.println("click on "+newValue.getValue());
+            view.getChildren().clear();
+            view.getChildren().add(newValue.getValue().getItem());
+        }
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

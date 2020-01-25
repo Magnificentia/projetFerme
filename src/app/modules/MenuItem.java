@@ -88,6 +88,12 @@ public class MenuItem extends Item implements IMenu {
             //ajout de menus
         }
     }
+
+    public ArrayList<IOption> getOptionsList() {
+        return optionsList;
+    }
+    
+    
     public String getIconPath()
     {
         System.out.println("retourne _"+this.iconPath);
