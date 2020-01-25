@@ -47,8 +47,8 @@ public class LoginController implements Initializable {
         Employes emp=new Employes(0,"conception","conception","notimportant","administrateur");
         if(emp!=null)
         {
-        String title = "Congratulations sir";
-        String message = "You've successfully created your first Tray Notification";
+        //String title = "Congratulations sir";
+        //String message = "You've successfully created your first Tray Notification";
         //Notification notification = Notifications.SUCCESS;
         
         //TrayNotification tray = new TrayNotification();

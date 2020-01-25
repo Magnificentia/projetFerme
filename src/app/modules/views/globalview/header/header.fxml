@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
-<?import com.gluonhq.charm.glisten.control.ExpansionPanel.CollapsedPanel?>
-<?import com.gluonhq.charm.glisten.control.ExpansionPanelContainer?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -40,30 +37,6 @@
                   <Label alignment="BASELINE_RIGHT" contentDisplay="RIGHT" prefHeight="30.0" prefWidth="343.0" style="-fx-font-size: 20; -fx-font-style: italic;" text="Le meilleur de la ferme pour vous!" />
                </children>
             </VBox>
-            <ExpansionPanelContainer>
-                <items>
-                    <ExpansionPanel>
-                        <collapsedContent>
-                            <ExpansionPanel.CollapsedPanel>
-                                <titleNodes>
-                                    <Label text="TripName" />
-                                    <Label text="Caribbean cruise" />
-                                </titleNodes>
-                            </ExpansionPanel.CollapsedPanel>
-                        </collapsedContent>
-                    </ExpansionPanel>
-                    <ExpansionPanel>
-                        <collapsedContent>
-                            <ExpansionPanel.CollapsedPanel>
-                                <titleNodes>
-                                    <Label text="Location" />
-                                    <Label text="Barbados" />
-                                </titleNodes>
-                            </ExpansionPanel.CollapsedPanel>
-                        </collapsedContent>
-                    </ExpansionPanel>
-                </items>
-            </ExpansionPanelContainer>
             <HBox alignment="CENTER">
                <HBox.margin>
                   <Insets left="500.0" />
