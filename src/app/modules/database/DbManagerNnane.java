@@ -204,6 +204,28 @@ public class DbManagerNnane {
         return stockList;
     }
     
+    public static Fournisseur selectFournisseurById(int id)
+    {
+        List<Fournisseur> stockList = FXCollections.observableArrayList();
+        Fournisseur bv=null;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from fournisseur where idfourn="+id;//bandeview est une vue crée sur la table bande
+            
+            ResultSet result=state.executeQuery(query);
+            result.next();
+
+            bv = new Fournisseur(result.getInt("idfourn"),result.getString("nomfourn"),result.getString("adresse"),result.getInt("tel"),result.getString("email"),result.getString("siteweb"),result.getInt("typefourn"));
+
+
+            
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return bv;
+    }
+    
     public static List<CollecteOeuf> selectCollecteOeufs()
     {
         List<CollecteOeuf> stockList = FXCollections.observableArrayList();
@@ -240,6 +262,22 @@ public class DbManagerNnane {
             ex.printStackTrace();
         }
         return stockList;
+    }
+    
+    public static Race selectRaceById(int id)
+    {
+        Race col=null;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from race where idrace="+id;//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            result.next();
+            col = new Race(result.getInt("idrace"),result.getString("nom"),result.getString("description"));
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return col;
     }
     public static List<Employes> selectEmployes()
     {
@@ -391,6 +429,24 @@ public class DbManagerNnane {
             ex.printStackTrace();
         }
         return stockList;
+    }
+    
+    public static Batiment selectBatimentById(int id)
+    {
+        List<Batiment> stockList = FXCollections.observableArrayList();
+        
+        Batiment emp=null;
+        try{
+            Statement state=getConnection().createStatement();
+            String query="select * from batiment where idbat="+id;//bandeview est une vue crée sur la table bande
+            ResultSet result=state.executeQuery(query);
+            result.next();
+            emp = new Batiment(result.getInt("idbat"),result.getDouble("surface"),result.getString("nombat"));
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return emp;
     }
     
     

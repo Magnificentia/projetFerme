@@ -93,4 +93,10 @@ public class Fournisseur {
         return this.nomFourn;
     }
     
+    public boolean equals(Object o)
+    {
+        if (o==null) return false;
+        return (((Fournisseur)o).getIdfourn()==this.idfourn);
+    }
+    
 }

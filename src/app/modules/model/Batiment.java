@@ -51,5 +51,9 @@ public class Batiment {
         return this.nomBat;
     }
     
-    
+    public boolean equals(Object o)
+    {
+        if (o==null) return false;
+        return ((Batiment)o).getIdbat()==this.idbat;
+    }
 }

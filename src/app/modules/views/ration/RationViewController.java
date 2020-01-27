@@ -2,22 +2,17 @@ package app.modules.views.ration;
 
 
 
-import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
 import app.modules.model.Ration;
-import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.Form;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
 
 import java.net.URL;
 import java.util.*;
@@ -26,16 +21,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 //putain
 public class RationViewController implements Initializable, IController {
         @FXML

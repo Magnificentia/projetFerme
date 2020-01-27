@@ -61,4 +61,10 @@ public class Race {
         return this.nom;
     }
     
+    public boolean equals(Object o)
+    {
+        if (o==null) return false;
+        return ((Race)o).getIdrace()==this.idrace;
+    }
+    
 }

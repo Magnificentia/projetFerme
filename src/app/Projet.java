@@ -121,7 +121,7 @@ public class Projet extends Application {
         //IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         //IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         //IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
-        IOption parametres=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
+        //IOption parametres=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
         IOption ration=new OptionItem("Ration","views/ration/rationView.fxml");
         IOption employes=new OptionItem("utilisateurs","views/employes/employesView.fxml");
         
@@ -138,7 +138,8 @@ public class Projet extends Application {
         IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
         IOption catalogue=new OptionItem("Catalogue","views/venteOeuf/venteOeufView.fxml");
-
+        IOption commande=new OptionItem("commande","views/commande/commandeView.fxml");
+        IOption parametres=new OptionItem("commande","views/parametres/parametresView.fxml");
         
         List elevage=new ArrayList<>();//options menu elevage
         elevage.add(bandes);
@@ -176,6 +177,7 @@ public class Projet extends Application {
         List ventes=new ArrayList<>();
         ventes.add(catalogue);
         ventes.add(enregisterfacture);
+        ventes.add(commande);
         
         
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus

@@ -10,104 +10,59 @@ import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
 import app.modules.model.Bande;
+import app.modules.model.Batiment;
+import app.modules.model.Fournisseur;
+import app.modules.model.Race;
 
-import app.modules.model.StockAliment;
 
 import app.modules.userType;
-import app.modules.views.Form;
+import app.modules.views.BaseView;
 //import app.modules.views.bonjour.Formulaire;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-import java.io.IOException;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
-import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Pagination;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 
 //putain
-public class BandeViewController implements Initializable, IController {
-
-    
-
-    private TableView<Bande> table;
+public class BandeViewController extends BaseView<Bande> implements Initializable, IController  {
 
 
-
-    //Popup
-   
-    private ImageView image;
-    private VBox paneElements;
-    private Boolean Confirmation;
-    private JFXButton btn1;
-    private JFXButton btn2;
-    private JFXTextField textQuantite;
-    private JFXTextField textAge;        
-    private JFXComboBox<String> comboRace ;        
-    private JFXComboBox<String> comboBatiment;
-    private  JFXComboBox<String> comboFournisseur;
-    private int rowsPerPage=3;
     @FXML
     private AnchorPane AnchorTable;
-    
-    ObservableList<Bande> data;
-    
-    
+    @FXML
+    private JFXButton informations;
+        
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        table=new TableView<>();
+    public void initialize(URL location, ResourceBundle resources) {          
         createTable();
-        data=FXCollections.observableArrayList(DbManagerNnane.selectBandes());
-        Pagination pagination = new Pagination((data.size() / rowsPerPage + 1), 0);
-        //pagination.setPageFactory(this::createPage);
-	
-
-        pagination.currentPageIndexProperty().addListener(
-                new ChangeListener<Number>(){
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println("pagination changed");
-                createPage(newValue.intValue());
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-        populateTableBande();
-        VBox v=new VBox();v.getChildren().addAll(table,pagination);
-        AnchorTable.getChildren().addAll(v);
         
-        
+        //populateTableBande();
+        //important d'ajouter le item là, même si tu ne sais pas d'où ça sort ...c'est l'ensemble (table+pagination)
+        AnchorTable.getChildren().addAll(item);
 
+        //menu contextuel
         ContextMenu cm = new ContextMenu();
         MenuItem mi1 = new MenuItem("menu");
         cm.getItems().add(mi1);
@@ -125,7 +80,10 @@ public class BandeViewController implements Initializable, IController {
    });
         
     }
-    
+    public void loadData()
+    {
+        data=FXCollections.observableArrayList(DbManagerNnane.selectBandes());
+    }
     
     public void createTable()
     {
@@ -157,18 +115,16 @@ public class BandeViewController implements Initializable, IController {
         
         table.getColumns().addAll(col_nom,col_achat,col_age,col_date,col_quantite,col_batiment,col_fournisseur,col_race);
     }
-    private void createPage(int pageIndex) {
-
-        table.setPrefWidth(800);
-        System.out.println("page index = "+pageIndex);
-        int fromIndex = (pageIndex) * rowsPerPage;
-        int toIndex = Math.min(fromIndex + rowsPerPage, data.size()-1);
-        //System.out.println("subdata from "+fromIndex+" to "+toIndex+" = "+data.subList(fromIndex, toIndex));
-        //table.getItems().clear();
-        if (fromIndex<=toIndex)table.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
-
-        //return new AnchorPane(table);
+    @FXML
+    public void onAjouterClicked(ActionEvent event)
+    {
+        
+        FormBande b=new FormBande(table.getSelectionModel().getSelectedItem());
+        b.show();
     }
+    
+    
+
 
     public void populateTableBande()
     {
@@ -206,32 +162,109 @@ public class BandeViewController implements Initializable, IController {
         System.err.println(nodeRoles.keySet());
         return nodeRoles;
     }    
-    
-    
-
 }
 
-class FormBande extends Form
+
+
+final class FormBande extends TabPane
 {
-    //voici un exemple création de formulaire
-
-    public FormBande() {
-        //on spécifie les différents champs
+    private final Bande bande;
+    public FormBande(Bande bande)
+    {
         super();
-        List<Node> liste=new ArrayList();
-        liste.add(new JFXTextField());
-        JFXComboBox fournisseur=new JFXComboBox();
-        fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
-        liste.add(fournisseur);
-        this.addFields(liste);
-    }    
-
-    @Override
-    public void onValidateClick() {
-        //on spécifie l'action à faire pour chaque bouton
-        System.out.println("appel de la bonne fonction");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.bande=bande;
+        this.getTabs().addAll(createInfosBase("informations de base"),createInfosMaladies("maladies et décès"),createInfosVente("vente"));
     }
     
+    public Tab createInfosBase(String titre)
+    {
+        VBox v=new VBox();
+        
+        JFXTextField qtedepart=new JFXTextField();
+        qtedepart.setPromptText("Quantité de depart");
+        qtedepart.setText(new Integer(this.bande.getQte()).toString());
+               
+        JFXTextField prix_dachat=new JFXTextField();
+        prix_dachat.setPromptText("prix d'achat");
+        prix_dachat.setText(new Double(this.bande.getPrix_achat()).toString());
+        
+        JFXTextField prixvente=new JFXTextField();
+        prixvente.setPromptText("prix de vente");
+        
+        JFXDatePicker dateachat=new JFXDatePicker();
+        dateachat.setPromptText("date d'achat");
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        //LocalDate localDate = LocalDate.parse(this.bande.getDateDemarrage(), formatter);
+        //dateachat.setValue(localDate);
+        
+        JFXComboBox<Batiment> batiment=new JFXComboBox<>();
+        batiment.setPromptText("batiment");
+        batiment.getItems().addAll(DbManagerNnane.selectBatiments());
+        batiment.getSelectionModel().select(DbManagerNnane.selectBatimentById(this.bande.getBat_id()));
+        
+        JFXComboBox<Fournisseur> fournisseur=new JFXComboBox<>();
+        fournisseur.setPromptText("fournisseur");
+        fournisseur.getItems().addAll(DbManagerNnane.selectFournisseurs());//(this.bande.getFourn_id()));
+        fournisseur.getSelectionModel().select(DbManagerNnane.selectFournisseurById(this.bande.getFourn_id()));
+        
+        JFXComboBox<Race> race=new JFXComboBox<>();
+        race.setPromptText("race");
+        //race.getItems().addAll(DbManagerNnane.selectRaces());
+        //race.getSelectionModel().select(DbManagerNnane.selectRaceById(this.bande.getRace_id()));
+        
+        JFXTextField qteStock=new JFXTextField();
+        qteStock.setPromptText("quantité en stock");
+        qteStock.setText(new Integer(this.bande.getQte()).toString());
+        
+        v.getChildren().addAll(qtedepart,prix_dachat,prixvente,dateachat,batiment,fournisseur,race,qteStock);
+        
+        Tab t =new Tab();
+        t.setGraphic(new Label(titre));
+        t.setContent(v);
+        return t;
+    }
+    
+    public Tab createInfosMaladies(String titre)
+    {
+        VBox v=new VBox();
+        //TODO
+        Tab t =new Tab();
+        t.setGraphic(new Label(titre));
+        t.setContent(v);
+        return t;
+    }
+    public Tab createInfosAutres(String titre)
+    {
+        VBox v=new VBox();
+        //TODO
+        Tab t =new Tab();
+        t.setGraphic(new Label(titre));
+        t.setContent(v);
+        return t;
+    }
+    
+    public Tab createInfosVente(String titre)
+    {
+        VBox v=new VBox();
+        //TODO
+        Tab t =new Tab();
+        t.setGraphic(new Label(titre));
+        t.setContent(v);
+        return t;
+    }
+    
+    public void show()
+    {
+        // Create the dialog Stage.
+        Stage dialogStage = new Stage();
+        //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
+        dialogStage.setTitle("Ajouter un nouveau stock");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(Projet.getMainStage());
+        Scene scene = new Scene(this,600,500);
+        dialogStage.setScene(scene);
 
+        // Show the dialog and wait until the user closes it
+        dialogStage.showAndWait();
+    }
 }
