@@ -18,9 +18,28 @@ pour la gestion des validator, on va laisser tomber mais utiliser les regex pour
 textField1To6.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")
 par exemple: adresse email valide
 
+reunion:
+
+ajouter l'affichage de la date du jour à l'acceuil pour prendre de la place
+
+dans le menu de collecte des oeufs, ajouter un bouton pour incubation qui donne des options à remplir concernant l'incubation
+
+dans les statistiques d'elevage, on peut ajouter un graphe avec le nombre d'oeufs collectés, cassés et vendus par période 
+
+ajouter une option "informations de la ferme" accessible dans le menu admninistration où on mentionnera les "races", "batiments" et autres choses nécessaires à l'utilisation
+
+ajouter un menu "calendrier" qui va contenir les actions prévues... il faudra une ségrégation des informations en fonction des groupes
+
+pas de bouton pour supprimer ou éditer une facture, pour le faire, il faut mentionner la facture qu'on veut annuler...pour des fins de contrôle
+
+preview sur les aliments, dans le stock des aliments un pane de preview apparaît pour donner les informations sur l'aliment.
+
+ajout de nouveaux elements dans la table aliment à partir de l'option stockaliment 
 
 
+ration: changer l'organisation (date-heure-bande-aliment-qte) affichage en fonction de l'unité mentionnée dans la table Aliment.
 
+dans le menu de paramètres, on ajoute une durée pour le stockage des informations, après cette durée, les informations sont stockées sur un fichier archive.
+(chercher comment archiver les données d'une application, sur quelle période et comment)
 
-
-
+calculer l'age des bandes automatiquement "x-mois"

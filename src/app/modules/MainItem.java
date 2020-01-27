@@ -90,7 +90,7 @@ public class MainItem extends Item {
                 HBox content=new HBox();//mouen change le hbox initial en vbox
                 Label label = new Label(menu.toString());
                 //essai de mettre un tree view
-                
+                System.out.println("TEST SUR LE MENU"+menu);
                 TreeItem<IItem> subrootItem = new TreeItem<>(menu);
                 
                 for(IOption option: menu.getOptionsList())

@@ -42,7 +42,7 @@ public abstract class Form extends Pane{
         VBox formBox=new VBox();
         HBox h=new HBox();
         System.out.println(path);
-        ImageView image=new ImageView(new Image(Projet.class.getResource(path).toString()));
+        ImageView image=new ImageView(new Image(Projet.class.getResource(path).toString(),30,30,false,false));
         formBox.getChildren().add(image);
         formBox.getChildren().add(content);
         //ajout des boutons

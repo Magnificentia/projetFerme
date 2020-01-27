@@ -118,38 +118,44 @@ public class Projet extends Application {
         //ParentTest root=new ParentTest();
         //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
         IOption test=new OptionItem("poulets","views/bonjour/Test.fxml");
-        IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
+        //IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
         //IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
-        IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
-        IOption bandeVaccine=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
+        //IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
+        IOption parametres=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
         IOption ration=new OptionItem("Ration","views/ration/rationView.fxml");
-        IOption incubation=new OptionItem("Incubation","views/incubation/incubationView.fxml");
-        IOption employes=new OptionItem("Employes","views/employes/employesView.fxml");
+        IOption employes=new OptionItem("utilisateurs","views/employes/employesView.fxml");
+        
+        IOption usersgroups=new OptionItem("Groupes","views/employes/employesView.fxml");
+        IOption calendrier=new OptionItem("Calendrier","views/employes/employesView.fxml");
+        IOption enregisterfacture=new OptionItem("Facture","views/incubation/incubationView.fxml");
+
         IOption bandes=new OptionItem("Bande","views/bande/bandeView.fxml");
         IOption vaccins=new OptionItem("Vaccin","views/vaccin/vaccinView.fxml");
         IOption stockAliment=new OptionItem("Stock Aliment","views/stockAliment/stockAlimentView.fxml");
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
-        IOption statsElevage=new OptionItem("Elevage","views/statselevage/statsElevageView.fxml");
-        //IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
+        IOption statsElevage=new OptionItem("Statitistiques","views/statselevage/statsElevageView.fxml");
+        IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
-        IOption venteOeuf=new OptionItem("Vente des Oeufs","views/venteOeuf/venteOeufView.fxml");
+        IOption catalogue=new OptionItem("Catalogue","views/venteOeuf/venteOeufView.fxml");
 
         
         List elevage=new ArrayList<>();//options menu elevage
         elevage.add(bandes);
         //elevage.add(option2);
         elevage.add(ration);
+        elevage.add(collecteoeuf);
         //elevage.add(incubation);  
         //elevage.add(statsElevage);
         
-        elevage.add(incubation);
+        //elevage.add(incubation);
                
 
         
         List magasin=new ArrayList<>();
-        magasin.add(aliment);
-        magasin.add(collecteoeuf);
+        //magasin.add(aliment);
+        magasin.add(vaccins);
+        
         magasin.add(stockAliment);
         
         List tiers=new ArrayList<>();//options menu vente
@@ -157,13 +163,10 @@ public class Projet extends Application {
         tiers.add(fournissseurs);
         tiers.add(client);
         
-        List sante=new ArrayList<>();//options menu veterinaire
-        sante.add(bandeVaccine);
-        sante.add(vaccins);
-        sante.add(test);
         
         List utilisateur=new ArrayList<>();
         utilisateur.add(employes);
+        utilisateur.add(usersgroups);
         
         
         List statistiques=new ArrayList<>();
@@ -171,31 +174,36 @@ public class Projet extends Application {
 
         
         List ventes=new ArrayList<>();
-        ventes.add(venteOeuf);
+        ventes.add(catalogue);
+        ventes.add(enregisterfacture);
         
         
         IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
         IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
 
-        //IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);
         IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/stats.png",statistiques);
 
-        IMenu santeMenu=new MenuItem("Santé","ressources/health.png",sante);
+        IMenu calendrierMenu=new MenuItem("Calendrier","ressources/health.png",calendrier,1);
+        IMenu parametresMenu=new MenuItem("paramètres","ressources/health.png",parametres,1);
         IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
         IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
         IMenu magasinMenu=new MenuItem("Magasin","ressources/entrepot.png",magasin);
 
+
         List menus=new ArrayList<>();
-        //menus.add(accueilMenu);
+        menus.add(accueilMenu);
+        menus.add(calendrierMenu);
         menus.add(elevageMenu);
         menus.add(venteMenu);
         menus.add(magasinMenu);
         menus.add(tiersMenu);
-        menus.add(santeMenu);
+        
         menus.add(statistiquesMenu);
         
         
         menus.add(utilisateurMenu);
+        menus.add(parametresMenu);
 
         MainItem main=new MainItem(menus);
         main.setHeader("views/globalview/header/header.fxml");

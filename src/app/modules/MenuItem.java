@@ -20,7 +20,7 @@ import javafx.scene.layout.Pane;
 public class MenuItem extends Item implements IMenu {
 
     private boolean visible=true;
-    private ArrayList<IOption> optionsList;
+    private ArrayList<IOption> optionsList=new ArrayList<>();
     private BorderPane options;
     private JFXTabPane tp=new JFXTabPane();
     private String iconPath;
