@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jfxtras.scene.control.agenda.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,6 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
@@ -34,6 +33,7 @@ public class Projet extends Application {
     private static Stage mainStage;
 
     public static Stage getMainStage() {
+        Agenda a=new Agenda();
         return mainStage;
     }
 
@@ -113,24 +113,16 @@ public class Projet extends Application {
             }
         });
         emp=employe;
-        Parent root = FXMLLoader.load(Projet.class.getResource("modules/views/globalview/main/sample.fxml"));
 
-        //ParentTest root=new ParentTest();
-        //IOption option=new OptionItem("oeufs","views/bonjour/Test.fxml");
-        IOption test=new OptionItem("poulets","views/bonjour/Test.fxml");
-        //IOption statsVente=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
-        //IOption statsElevage=new OptionItem("statistiques","views/goodnight/goodnight.fxml");
-        //IOption aliment=new OptionItem("Aliment","views/aliment/AlimentView.fxml");
-        //IOption parametres=new OptionItem("bande vaccine","views/bandevaccine/bandeVaccineView.fxml");
         IOption ration=new OptionItem("Ration","views/ration/rationView.fxml");
         IOption employes=new OptionItem("utilisateurs","views/employes/employesView.fxml");
         
         IOption usersgroups=new OptionItem("Groupes","views/employes/employesView.fxml");
         IOption calendrier=new OptionItem("Calendrier","views/employes/employesView.fxml");
-        IOption enregisterfacture=new OptionItem("Facture","views/incubation/incubationView.fxml");
-
+        IOption enregisterfacture=new OptionItem("Facture","views/facture/factureView.fxml");
+        
         IOption bandes=new OptionItem("Bande","views/bande/bandeView.fxml");
-        IOption vaccins=new OptionItem("Vaccin","views/vaccin/vaccinView.fxml");
+        IOption medicaments=new OptionItem("Medicaments","views/vaccin/vaccinView.fxml");
         IOption stockAliment=new OptionItem("Stock Aliment","views/stockAliment/stockAlimentView.fxml");
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
@@ -143,24 +135,16 @@ public class Projet extends Application {
         
         List elevage=new ArrayList<>();//options menu elevage
         elevage.add(bandes);
-        //elevage.add(option2);
+
         elevage.add(ration);
         elevage.add(collecteoeuf);
-        //elevage.add(incubation);  
-        //elevage.add(statsElevage);
-        
-        //elevage.add(incubation);
-               
-
-        
+   
         List magasin=new ArrayList<>();
-        //magasin.add(aliment);
-        magasin.add(vaccins);
+        magasin.add(medicaments);
         
         magasin.add(stockAliment);
         
         List tiers=new ArrayList<>();//options menu vente
-        //vente.add(statsVente);
         tiers.add(fournissseurs);
         tiers.add(client);
         

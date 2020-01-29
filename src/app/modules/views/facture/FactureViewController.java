@@ -1,70 +1,80 @@
-package app.modules.views.venteOeuf;
+package app.modules.views.facture;
 
 
 
+import app.modules.views.commande.*;
 import app.Projet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Medicament;
-import app.modules.model.VenteOeuf;
+import app.modules.model.Client;
 
 import app.modules.userType;
+import app.modules.views.BaseView;
 import java.io.IOException;
 
 import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //putain
-public class VenteOeufViewController implements Initializable, IController {
+public class FactureViewController extends BaseView<Client> implements Initializable, IController {
     
-    @FXML
-    private TableView<VenteOeuf> table;
-
-    @FXML
-    private TableColumn<?, ?> col_client;
-
-    @FXML
-    private TableColumn<?, ?> col_bande;
-
-    @FXML
-    private TableColumn<?, ?> col_date;
-
-    @FXML
-    private TableColumn<?, ?> col_quantite;
-
-    @FXML
-    private TableColumn<?, ?> col_prix;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        
-        col_bande.setCellValueFactory(new PropertyValueFactory<>("bande"));
-        col_client.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateVente"));
-        col_prix.setCellValueFactory(new PropertyValueFactory<>("total_prix"));
-        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
         populateTableVenteOeuf();
         table.setPrefWidth(800);
+    }
+    
+    public void loadData()
+    {
+        data=FXCollections.observableArrayList(DbManagerNnane.selectClients());
+    }
+    
+    public void createTable()
+    {
+        table.setPrefWidth(800);
+        
+        /*TableColumn<Bande,String> col_nom=new TableColumn<>("nom");
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
+        
+        TableColumn<Bande,String> col_achat=new TableColumn<>("prix d'achat");
+        col_achat.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
+        
+        TableColumn<Bande,Integer> col_age=new TableColumn<>("age");
+        col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        
+        TableColumn<Bande,String> col_date=new TableColumn<>("date");
+        col_date.setCellValueFactory(new PropertyValueFactory<>("dateDemarrage"));
+        
+        TableColumn<Bande,Integer> col_quantite=new TableColumn<>("quantité");
+        col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        
+        TableColumn<Bande,String> col_batiment=new TableColumn<>("batiment");
+        col_batiment.setCellValueFactory(new PropertyValueFactory<>("nomBatiment"));
+        
+        TableColumn<Bande,String> col_fournisseur=new TableColumn<>("fournisseur");
+        col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
+        
+        TableColumn<Bande,String> col_race=new TableColumn<>("race"); 
+        col_race.setCellValueFactory(new PropertyValueFactory<>("nomRace"));
+        
+        table.getColumns().addAll(col_nom,col_achat,col_age,col_date,col_quantite,col_batiment,col_fournisseur,col_race);*/
     }
 
     public void populateTableVenteOeuf()
     {
-        ObservableList<VenteOeuf> liste=FXCollections.observableArrayList(DbManagerNnane.selectVenteOeuf());
-        table.setItems(liste);
+        //ObservableList<VenteOeuf> liste=FXCollections.observableArrayList(DbManagerNnane.selectVenteOeuf());
+        //table.setItems(liste);
     }
     
     

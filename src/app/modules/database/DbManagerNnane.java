@@ -16,7 +16,7 @@ import app.modules.model.Fournisseur;
 import app.modules.model.Race;
 import app.modules.model.Ration;
 import app.modules.model.StockAliment;
-import app.modules.model.Vaccin;
+import app.modules.model.Medicament;
 import app.modules.model.VenteOeuf;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -145,16 +145,16 @@ public class DbManagerNnane {
     }
     
     
-    public static List<Vaccin> selectVaccins()
+    public static List<Medicament> selectVaccins()
     {
-        List<Vaccin> stockList = FXCollections.observableArrayList();
-        Vaccin bv;
+        List<Medicament> stockList = FXCollections.observableArrayList();
+        Medicament bv;
         try{
             Statement state=getConnection().createStatement();
             String query="select * from vaccin";//bandeview est une vue crée sur la table bande
             ResultSet result=state.executeQuery(query);
             while(result.next()){
-                    bv = new Vaccin(result.getInt("idvac"),result.getString("nomVac"),result.getString("periode"),result.getString("description"),result.getDouble("prix"));
+                    bv = new Medicament(result.getInt("idvac"),result.getString("nomVac"),result.getString("periode"),result.getString("description"),result.getDouble("prix"));
                     stockList.add(bv);
             }
             state.close();

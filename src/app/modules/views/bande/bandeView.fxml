@@ -29,12 +29,7 @@
                </children>
             </HBox>
             <AnchorPane fx:id="AnchorTable" />
-            <HBox prefHeight="42.0" prefWidth="992.0" spacing="50.0">
-               <children>
-                  <JFXButton onAction="#handleDelete" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
-               </children>
-            </HBox>
+            <HBox prefHeight="42.0" prefWidth="992.0" spacing="50.0" />
          </children>
       </VBox>
    </children>

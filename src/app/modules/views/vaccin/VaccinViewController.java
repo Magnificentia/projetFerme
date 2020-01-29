@@ -2,16 +2,13 @@ package app.modules.views.vaccin;
 
 
 
-import app.modules.views.aliment.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Bande;
-import app.modules.model.Vaccin;
+import app.modules.model.Medicament;
 
 import app.modules.userType;
 
@@ -31,7 +28,7 @@ public class VaccinViewController implements Initializable, IController {
     @FXML
     private TextField rechercher;
     @FXML
-    private TableView<Vaccin> table;
+    private TableView<Medicament> table;
 
     @FXML
     private TableColumn<?, ?> col_nom;
@@ -45,7 +42,7 @@ public class VaccinViewController implements Initializable, IController {
     @FXML
     private TableColumn<?, ?> col_prix;
     
-    private ObservableList<Vaccin> data;
+    private ObservableList<Medicament> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -68,7 +65,7 @@ public class VaccinViewController implements Initializable, IController {
 
         data=FXCollections.observableArrayList(DbManagerNnane.selectVaccins());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<Vaccin> filteredData = new FilteredList<>(data, p -> true);
+        FilteredList<Medicament> filteredData = new FilteredList<>(data, p -> true);
         
         // 2. Set the filter Predicate whenever the filter changes.
         rechercher.textProperty().
@@ -103,7 +100,7 @@ public class VaccinViewController implements Initializable, IController {
         });
         
         // 3. Wrap the FilteredList in a SortedList. 
-        SortedList<Vaccin> sortedData = new SortedList<>(filteredData);
+        SortedList<Medicament> sortedData = new SortedList<>(filteredData);
         
         // 4. Bind the SortedList comparator to the TableView comparator.
         sortedData.comparatorProperty().bind(table.comparatorProperty());
@@ -114,7 +111,7 @@ public class VaccinViewController implements Initializable, IController {
 
     public void populateTableVaccin()
     {
-        ObservableList<Vaccin> liste=FXCollections.observableArrayList(DbManagerNnane.selectVaccins());
+        ObservableList<Medicament> liste=FXCollections.observableArrayList(DbManagerNnane.selectVaccins());
         table.setItems(liste);
     }
 

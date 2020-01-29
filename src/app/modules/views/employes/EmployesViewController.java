@@ -5,13 +5,12 @@ package app.modules.views.employes;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.CollecteOeuf;
 import app.modules.model.Employes;
 
 import app.modules.userType;
+import app.modules.views.BaseView;
 
 import java.net.URL;
 import java.util.*;
@@ -20,46 +19,52 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 //putain
-public class EmployesViewController implements Initializable, IController {
+public class EmployesViewController extends BaseView<Employes> implements Initializable, IController {
 
-    @FXML
-    private TableView<Employes> table;
     
       @FXML
     private TextField recherche;
-
+      
     @FXML
-    private TableColumn<?, ?> col_nom;
+    private AnchorPane anchor;
 
-    @FXML
-    private TableColumn<?, ?> col_user;
-
-    @FXML
-    private TableColumn<?, ?> col_password;
-
-    @FXML
-    private TableColumn<?, ?> col_type;
-    
-    private ObservableList<Employes> data;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
-        col_password.setCellValueFactory(new PropertyValueFactory<>("login"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("typeEm"));
-        populateTableEmployes();
+        createTable();
         table.setPrefWidth(800);
-    
-    
+        System.out.println(anchor);
+        anchor.getChildren().add(item);
          this.Search();
         
+    }
+    
+    public void loadData()
+    {
+        data=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
+    }
+    
+    public void createTable()
+    {
+        table.setPrefWidth(800);
+        
+        TableColumn<Employes,String> col_nom=new TableColumn<>("nom");
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        
+        TableColumn<Employes,String> col_login=new TableColumn<>("login");
+        col_login.setCellValueFactory(new PropertyValueFactory<>("user"));
+        
+        TableColumn<Employes,Integer> col_pwd=new TableColumn<>("mot de passe");
+        col_pwd.setCellValueFactory(new PropertyValueFactory<>("password"));
+        
+        TableColumn<Employes,String> col_statut=new TableColumn<>("statut");
+        
+
+        table.getColumns().addAll(col_nom,col_login,col_pwd,col_statut);
     }
     
     @FXML
@@ -111,6 +116,7 @@ public class EmployesViewController implements Initializable, IController {
 
     public void populateTableEmployes()
     {
+        table.getItems().clear();
         ObservableList<Employes> liste=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
         table.setItems(liste);
     }

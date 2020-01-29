@@ -2,18 +2,15 @@ package app.modules.views.fournisseur;
 
 
 
-import app.modules.views.client.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManagerNnane;
-import app.modules.model.CollecteOeuf;
 import app.modules.model.Fournisseur;
-import app.modules.model.StockAliment;
 
 import app.modules.userType;
+import app.modules.views.BaseView;
 import com.jfoenix.controls.JFXButton;
 
 import java.net.URL;
@@ -22,57 +19,66 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 //putain
-public class FournisseurViewController implements Initializable, IController {
-    @FXML
-    private TableView<Fournisseur> table;
+public class FournisseurViewController extends BaseView<Fournisseur> implements Initializable, IController {
+
     
-     @FXML
+    @FXML
     private TextField rechercher;
-
+     
     @FXML
-    private TableColumn<?, ?> col_nom;
+    private AnchorPane anchor;
 
-    @FXML
-    private TableColumn<?, ?> col_adresse;
-
-    @FXML
-    private TableColumn<?, ?> col_tel;
-
-    @FXML
-    private TableColumn<?, ?> col_email;
-
-    @FXML
-    private TableColumn<?, ?> col_site;
-
-    @FXML
-    private TableColumn<?, ?> col_type;
-    
-    private ObservableList<Fournisseur> data;
 
     @FXML
     private JFXButton buttonSupprimer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {       
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomFourn"));
-        col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        col_site.setCellValueFactory(new PropertyValueFactory<>("siteweb"));
-        col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
-        col_type.setCellValueFactory(new PropertyValueFactory<>("typeFourn"));
-        populateTableFournisseur();
+        createTable();
+
+        anchor.getChildren().add(item);
         table.setPrefWidth(800);
         System.out.println("FOURNISSEUR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         
         
          this.Search();
         
+    }
+    
+    public void loadData()
+    {
+        data=FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs());
+    }
+    
+    public void createTable()
+    {
+        table.setPrefWidth(800);
+        
+        TableColumn<Fournisseur,String> col_nom=new TableColumn<>("designation");
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomFourn"));
+        
+        TableColumn<Fournisseur,String> col_adresse=new TableColumn<>("adresse");
+        col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        
+        TableColumn<Fournisseur,Integer> col_mail=new TableColumn<>("e-mail");
+        col_mail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        
+        TableColumn<Fournisseur,Integer> col_siteweb=new TableColumn<>("siteweb");
+        col_siteweb.setCellValueFactory(new PropertyValueFactory<>("siteweb"));
+        
+        
+        TableColumn<Fournisseur,Integer> col_tel=new TableColumn<>("telephone");
+        col_tel.setCellValueFactory(new PropertyValueFactory<>("telephone"));//voir comment ajouter une liste de numeros
+        
+        TableColumn<Fournisseur,String> col_type=new TableColumn<>("type de fournisseur");
+        
+
+        table.getColumns().addAll(col_nom,col_adresse,col_mail,col_siteweb,col_tel,col_type);
     }
     
     @FXML

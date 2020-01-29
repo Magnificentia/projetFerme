@@ -30,6 +30,11 @@ public class Bande {
     public Bande(int idBande) {
         this.idBande = idBande;
     }
+    
+    public Bande(String nomBande)
+    {
+        this.nomBande=nomBande;
+    }
 
     public int getBat_id() {
         return bat_id;

@@ -9,21 +9,18 @@ package app.modules.model;
  *
  * @author _Nprime496_
  */
-public class Vaccin {
-    private int idVac;
+public class Medicament {
+    private int idMed;
     private String nomVac;
     private String periode;
-    private int qteVac;
+    private int qte;
     private int qtePoule;
     private String description;
     private double prix;
 
-
-
-
     
-    public Vaccin(int idVac, String nomVac, String date, String description, double prix) {
-        this.idVac = idVac;
+    public Medicament(int idVac, String nomVac, String date, String description, double prix) {
+        this.idMed = idVac;
         this.nomVac = nomVac;
         this.periode = date;
         this.description = description;
@@ -41,11 +38,11 @@ public class Vaccin {
 
     
     public int getIdVac() {
-        return idVac;
+        return idMed;
     }
 
     public void setIdVac(int idVac) {
-        this.idVac = idVac;
+        this.idMed = idVac;
     }
 
     public String getNomVac() {
@@ -65,11 +62,11 @@ public class Vaccin {
     }
 
     public int getQteVac() {
-        return qteVac;
+        return qte;
     }
 
     public void setQteVac(int qteVac) {
-        this.qteVac = qteVac;
+        this.qte = qteVac;
     }
 
     public int getQtePoule() {

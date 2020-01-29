@@ -31,12 +31,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -166,14 +169,18 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
 
 
 
-final class FormBande extends TabPane
+final class FormBande extends VBox
 {
+    private TabPane t;
     private final Bande bande;
     public FormBande(Bande bande)
     {
         super();
+        t=new TabPane();
+        this.getChildren().addAll(t,new JFXButton("valider"));
+        
         this.bande=bande;
-        this.getTabs().addAll(createInfosBase("informations de base"),createInfosMaladies("maladies et décès"),createInfosVente("vente"));
+        t.getTabs().addAll(createInfosBase("informations de base"),createInfosMaladies("maladies et décès"),createInfosVente("vente"));
     }
     
     public Tab createInfosBase(String titre)
@@ -228,8 +235,34 @@ final class FormBande extends TabPane
     {
         VBox v=new VBox();
         //TODO
+        TableView tableMaladie=new TableView<>();
+        
+        TableColumn<Bande,String> col_nombre=new TableColumn<>("nomre de malades");
+        col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
+        
+        TableColumn<Bande,String> col_maladie=new TableColumn<>("maladie");
+        col_maladie.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
+        col_maladie.setCellFactory(ComboBoxTableCell.forTableColumn("test","test1"));
+        
+        
+        tableMaladie.getColumns().addAll(col_nombre,col_maladie);
+        tableMaladie.getItems().add(new Bande("bonjour"));
+        
+        
+        TableView tableDeces=new TableView<>();
+        
+        TableColumn<Bande,String> col_nombreDeces=new TableColumn<>("nomre de deces");
+        col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
+        
+        TableColumn<Bande,String> col_cause=new TableColumn<>("cause");
+        col_maladie.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
+        
+        tableDeces.getColumns().addAll(col_nombreDeces,col_cause);
+        
         Tab t =new Tab();
         t.setGraphic(new Label(titre));
+        v.getChildren().addAll(tableMaladie,tableDeces);
+        
         t.setContent(v);
         return t;
     }
@@ -247,6 +280,9 @@ final class FormBande extends TabPane
     {
         VBox v=new VBox();
         //TODO
+        
+        
+        
         Tab t =new Tab();
         t.setGraphic(new Label(titre));
         t.setContent(v);
