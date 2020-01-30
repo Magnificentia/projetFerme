@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Employes;
 
 import app.modules.userType;
@@ -45,7 +45,7 @@ public class EmployesViewController extends BaseView<Employes> implements Initia
     
     public void loadData()
     {
-        data=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
+        data=FXCollections.observableArrayList(DbManager.selectEmployes());
     }
     
     public void createTable()
@@ -70,7 +70,7 @@ public class EmployesViewController extends BaseView<Employes> implements Initia
     @FXML
     void Search() {
 
-        data=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
+        data=FXCollections.observableArrayList(DbManager.selectEmployes());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Employes> filteredData = new FilteredList<>(data, p -> true);
         
@@ -117,7 +117,7 @@ public class EmployesViewController extends BaseView<Employes> implements Initia
     public void populateTableEmployes()
     {
         table.getItems().clear();
-        ObservableList<Employes> liste=FXCollections.observableArrayList(DbManagerNnane.selectEmployes());
+        ObservableList<Employes> liste=FXCollections.observableArrayList(DbManager.selectEmployes());
         table.setItems(liste);
     }
 

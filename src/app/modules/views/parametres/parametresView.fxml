@@ -12,7 +12,7 @@
          <children>
             <JFXButton fx:id="imagechooser" prefHeight="117.0" prefWidth="439.0" text=".">
                <graphic>
-                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="446.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </JFXButton>
             <JFXTextField labelFloat="true" promptText="nom de la ferme" />

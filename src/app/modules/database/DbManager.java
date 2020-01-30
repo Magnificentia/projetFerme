@@ -6,6 +6,7 @@
 package app.modules.database;
 
 import app.modules.model.Aliment;
+import app.modules.model.Appointment;
 import app.modules.model.Bande;
 import app.modules.model.BandeVaccine;
 import app.modules.model.Batiment;
@@ -23,18 +24,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
+import jfxtras.scene.control.agenda.Agenda;
 
 /**
  *
  * @author _Nprime496_
  */
-public class DbManagerNnane {
+public class DbManager {
    
     private static Connection connection;
     
@@ -145,7 +148,7 @@ public class DbManagerNnane {
     }
     
     
-    public static List<Medicament> selectVaccins()
+    public static List<Medicament> selectMedicaments()
     {
         List<Medicament> stockList = FXCollections.observableArrayList();
         Medicament bv;
@@ -510,7 +513,7 @@ public class DbManagerNnane {
             
         } catch (SQLException ex) {
             System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
-            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return false;
@@ -532,7 +535,7 @@ public class DbManagerNnane {
             
         } catch (SQLException ex) {
             System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
-            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return false;
@@ -552,11 +555,27 @@ public class DbManagerNnane {
             
         } catch (SQLException ex) {
             System.out.println("sorry mon vieux "+ex.getLocalizedMessage());    
-            Logger.getLogger(DbManagerNnane.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return false;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static int addNewAppointment(Agenda.AppointmentImplLocal newAppointment) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void deleteAppointment(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void updateAppointment(Appointment selectedAppointment) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static List<Appointment> getAppointments(LocalDateTime startLocalDateTime, LocalDateTime endLocalDateTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

@@ -6,7 +6,7 @@
 package app.modules.views.stockAliment.options;
 
 import app.Projet;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Aliment;
 import app.modules.model.Batiment;
 import app.modules.model.Fournisseur;
@@ -81,7 +81,7 @@ public class addStockAlimentOptionscontroller implements Initializable{
             return;
         }
 
-        boolean flag =DbManagerNnane.saveStockAliment(new StockAliment(new Integer(qte.getText()),date.getValue().toString(),aliment.getSelectionModel().getSelectedItem().getIdali(),fournisseur.getSelectionModel().getSelectedItem().getIdfourn()));
+        boolean flag =DbManager.saveStockAliment(new StockAliment(new Integer(qte.getText()),date.getValue().toString(),aliment.getSelectionModel().getSelectedItem().getIdali(),fournisseur.getSelectionModel().getSelectedItem().getIdfourn()));
         if (!flag) {
             Projet.infoBox("Please enter correct name or information", null, "Failed");
         } else {
@@ -91,9 +91,9 @@ public class addStockAlimentOptionscontroller implements Initializable{
     
     public void initialize()
     {
-        race.setItems(FXCollections.observableArrayList(DbManagerNnane.selectRaces()));
-        fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
-        batiment.setItems(FXCollections.observableArrayList(DbManagerNnane.selectBatiments()));
+        race.setItems(FXCollections.observableArrayList(DbManager.selectRaces()));
+        fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectFournisseurs()));
+        batiment.setItems(FXCollections.observableArrayList(DbManager.selectBatiments()));
         //choixtype.setValue(t.get(0));
         
     }

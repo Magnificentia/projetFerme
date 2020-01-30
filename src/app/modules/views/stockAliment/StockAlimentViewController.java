@@ -9,12 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Aliment;
+import app.modules.model.Fournisseur;
 import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
+import app.modules.views.BaseView;
 import app.modules.views.bonjour.Utilisateur;
 import java.io.IOException;
 
@@ -37,48 +39,54 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //putain
-public class StockAlimentViewController implements Initializable, IController {
+public class StockAlimentViewController extends BaseView<StockAliment> implements Initializable, IController {
 
     @FXML
     private TextField recherche;
-    @FXML
-    private TableView<StockAliment> table;
-
-    @FXML
-    private TableColumn<?, ?> col_nom;
-
-    @FXML
-    private TableColumn<?, ?> col_qte;
-
-    @FXML
-    private TableColumn<?, ?> col_date;
-
-    @FXML
-    private TableColumn<?, ?> col_aliment;
-
-    @FXML
-    private TableColumn<?, ?> col_fournisseur;
     
+
     
-    private ObservableList<StockAliment> data;
+    @FXML
+    private AnchorPane anchor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomStock"));
-        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
-        col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
-        col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        createTable();
+        anchor.getChildren().add(item);
         this.Search();
         populateTableRation();
         table.setPrefWidth(800);
     }
+    public void loadData()
+    {
+        data=FXCollections.observableArrayList(DbManager.selectStockAliment());
+    }
+    
+    public void createTable()
+    {
+        table.setPrefWidth(800);
+        
+        TableColumn<StockAliment,String> col_nom=new TableColumn<>("designation");
+        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomStock"));
+        
+        TableColumn<StockAliment,String> col_aliment=new TableColumn<>("aliment");
+        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
+        
+        TableColumn<StockAliment,Integer> col_qte=new TableColumn<>("quantité");
+        col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));//voir comment ajouter une liste de numeros
+        
+        TableColumn<StockAliment,Integer> col_date=new TableColumn<>("date d'arrivage");
+        col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
+        
+        TableColumn<StockAliment,Integer> col_fourn=new TableColumn<>("fournisseur");
+        col_fourn.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
+
+        table.getColumns().addAll(col_nom,col_aliment,col_date,col_fourn,col_qte);
+    }
     
     public void populateTableRation()
     {
-        ObservableList<StockAliment> liste=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
+        ObservableList<StockAliment> liste=FXCollections.observableArrayList(DbManager.selectStockAliment());
         table.setItems(liste);
     }
     
@@ -92,7 +100,7 @@ public class StockAlimentViewController implements Initializable, IController {
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
-                DbManagerNnane.suppStockAliment(mat);
+                DbManager.suppStockAliment(mat);
                 populateTableRation();
             }
             return;
@@ -102,7 +110,7 @@ public class StockAlimentViewController implements Initializable, IController {
         @FXML
     void Search() {
 
-        data=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
+        data=FXCollections.observableArrayList(DbManager.selectStockAliment());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<StockAliment> filteredData = new FilteredList<>(data, p -> true);
         

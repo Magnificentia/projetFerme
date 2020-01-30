@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Bande;
 import app.modules.model.Batiment;
 import app.modules.model.Fournisseur;
@@ -85,7 +85,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
     }
     public void loadData()
     {
-        data=FXCollections.observableArrayList(DbManagerNnane.selectBandes());
+        data=FXCollections.observableArrayList(DbManager.selectBandes());
     }
     
     public void createTable()
@@ -132,7 +132,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
     public void populateTableBande()
     {
         table.getItems().clear();//importaant sinon les changements ne vont pas être éffectués lorsqu'on fait de simples modificatioobs
-        data=FXCollections.observableArrayList(DbManagerNnane.selectBandes());
+        data=FXCollections.observableArrayList(DbManager.selectBandes());
         table.setItems(data);
     }
 
@@ -146,7 +146,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
-                DbManagerNnane.suppBande(mat);
+                DbManager.suppBande(mat);
                 populateTableBande();
             }
             return;
@@ -206,13 +206,13 @@ final class FormBande extends VBox
         
         JFXComboBox<Batiment> batiment=new JFXComboBox<>();
         batiment.setPromptText("batiment");
-        batiment.getItems().addAll(DbManagerNnane.selectBatiments());
-        batiment.getSelectionModel().select(DbManagerNnane.selectBatimentById(this.bande.getBat_id()));
+        batiment.getItems().addAll(DbManager.selectBatiments());
+        batiment.getSelectionModel().select(DbManager.selectBatimentById(this.bande.getBat_id()));
         
         JFXComboBox<Fournisseur> fournisseur=new JFXComboBox<>();
         fournisseur.setPromptText("fournisseur");
-        fournisseur.getItems().addAll(DbManagerNnane.selectFournisseurs());//(this.bande.getFourn_id()));
-        fournisseur.getSelectionModel().select(DbManagerNnane.selectFournisseurById(this.bande.getFourn_id()));
+        fournisseur.getItems().addAll(DbManager.selectFournisseurs());//(this.bande.getFourn_id()));
+        fournisseur.getSelectionModel().select(DbManager.selectFournisseurById(this.bande.getFourn_id()));
         
         JFXComboBox<Race> race=new JFXComboBox<>();
         race.setPromptText("race");

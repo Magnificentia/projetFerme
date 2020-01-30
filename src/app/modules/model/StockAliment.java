@@ -5,7 +5,7 @@
  */
 package app.modules.model;
 
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.views.bonjour.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

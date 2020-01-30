@@ -2,188 +2,193 @@ package app.modules.views.taches;
 
 
 
-import app.modules.views.stockAliment.*;
-import app.Projet;
-import app.modules.views.ration.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
-import app.modules.model.Aliment;
-import app.modules.model.Ration;
-import app.modules.model.StockAliment;
+import app.modules.database.DbManager;
+import app.modules.model.Appointment;
 
 import app.modules.userType;
-import app.modules.views.bonjour.Utilisateur;
-import java.io.IOException;
 
 import java.net.URL;
-import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
+import jfxtras.scene.control.CalendarPicker;
+import jfxtras.scene.control.LocalTimeTextField;
+import jfxtras.scene.control.agenda.Agenda;
 //putain
 public class TaskViewController implements Initializable, IController {
 
-    @FXML
-    private TextField recherche;
-    @FXML
-    private TableView<StockAliment> table;
 
     @FXML
-    private TableColumn<?, ?> col_nom;
+    private Agenda agenda;
+    @FXML
+    private CalendarPicker calendar;
+    @FXML
+    private LocalTimeTextField startTime;
+    @FXML
+    private LocalTimeTextField endTime;
+    @FXML
+    private TextArea description;
+
+    private Appointment selectedAppointment;
+
 
     @FXML
-    private TableColumn<?, ?> col_qte;
+    void addAppointment(ActionEvent event) {
+
+
+        int id;
+
+        Date selected = calendar.getCalendar().getTime();
+        LocalDate date = selected.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        Agenda.AppointmentImplLocal newAppointment = new Appointment()
+                .withStartLocalDateTime(startTime.getLocalTime().atDate(date))
+                .withEndLocalDateTime(endTime.getLocalTime().atDate(date))
+                .withDescription(description.getText())
+                .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
+
+        id = DbManager.addNewAppointment(newAppointment);
+
+        Appointment a = (Appointment)newAppointment;
+        a.setId(id);
+
+        agenda.appointments().add(a);
+        agenda.refresh();
+
+        updateAppointment();
+
+    }
 
     @FXML
-    private TableColumn<?, ?> col_date;
+    void deleteAppointment(ActionEvent event) {
+
+        System.out.println(selectedAppointment.getId());
+        DbManager.deleteAppointment(selectedAppointment.getId());
+        updateAgenda();
+        agenda.refresh();
+
+    }
 
     @FXML
-    private TableColumn<?, ?> col_aliment;
+    void updateAppointment(ActionEvent event) {
+        Date selected;
+        if( calendar.getCalendar()==null){
+            selected = Date.from(selectedAppointment.getStartLocalDateTime().toLocalDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-    @FXML
-    private TableColumn<?, ?> col_fournisseur;
-    
-    
-    private ObservableList<StockAliment> data;
+        }else {
+            selected = calendar.getCalendar().getTime();
+        }
+        LocalDate date = selected.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        selectedAppointment.setStartLocalDateTime(startTime.getLocalTime().atDate(date));
+        selectedAppointment.setEndLocalDateTime(endTime.getLocalTime().atDate(date));
+        selectedAppointment.setDescription(description.getText());
+        DbManager.updateAppointment(selectedAppointment);
+        updateAgenda();
+        agenda.refresh();
 
+
+
+    }
+
+
+    private void updateAppointment() {
+
+
+
+    }
+
+    private void updateAgenda(){;
+        agenda.localDateTimeRangeCallbackProperty().set(param -> {
+
+
+            List<Appointment> list = DbManager.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime());
+            agenda.appointments().clear();
+            agenda.appointments().addAll(list);
+                    return null;
+                }
+
+        );
+
+
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        
-        col_nom.setCellValueFactory(new PropertyValueFactory<>("nomStock"));
-        col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
-        col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
-        col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
-        col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
-        this.Search();
-        populateTableRation();
-        table.setPrefWidth(800);
-    }
-    
-    public void populateTableRation()
-    {
-        ObservableList<StockAliment> liste=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
-        table.setItems(liste);
-    }
-    
-    @FXML
-    public void handleDelete(ActionEvent event) throws SQLException {
-
-        StockAliment mat=table.getSelectionModel().getSelectedItem();
-
-        if (mat!=null) {
-            if(Projet.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
-                "voulez-vous supprimer cet utilisateur?"))
-            {
-                System.out.println("suppression");
-                DbManagerNnane.suppStockAliment(mat);
-                populateTableRation();
-            }
-            return;
-        }
-    }
-    
-        @FXML
-    void Search() {
-
-        data=FXCollections.observableArrayList(DbManagerNnane.selectStockAliment());
-        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-        FilteredList<StockAliment> filteredData = new FilteredList<>(data, p -> true);
-        
-        // 2. Set the filter Predicate whenever the filter changes.
-        recherche.textProperty().
-        addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(utilisateur -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-                
-                if (utilisateur.getNomAli().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                } else if (utilisateur.getNomFournisseur().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                }
-                else if (utilisateur.getNomStock().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                }
-                else if (Integer.toString(utilisateur.getQte()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                }
-                
-                return false; // Does not match.
-            });
-        });
-        
-        // 3. Wrap the FilteredList in a SortedList. 
-        SortedList<StockAliment> sortedData = new SortedList<>(filteredData);
-        
-        // 4. Bind the SortedList comparator to the TableView comparator.
-        sortedData.comparatorProperty().bind(table.comparatorProperty());
-        
-        // 5. Add sorted (and filtered) data to the table.
-        table.setItems(sortedData);
-    }
-    
-    @FXML
-    public void showAddStockAlimentrWindow(ActionEvent event) {
         try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("options/addStockAlimentOptions.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
-            dialogStage.setTitle("Ajouter un nouveau stock");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Projet.getMainStage());
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-            populateTableRation();
-
-            //
-        } catch (IOException e) {
+            //updateAgenda();
+        }catch (Exception e){
             e.printStackTrace();
+
         }
+
+        agenda.setAllowDragging(true);
+        agenda.setAllowResize(true);
+        agenda.newAppointmentCallbackProperty().set((localDateTimeRange) -> {
+            Agenda.AppointmentImplLocal appointmentImplLocal = new Appointment()
+                    .withStartLocalDateTime(localDateTimeRange.getStartLocalDateTime())
+                    .withEndLocalDateTime(localDateTimeRange.getEndLocalDateTime())
+                    .withAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
+
+
+            int id = DbManager.addNewAppointment(appointmentImplLocal);
+
+            Appointment a = (Appointment)appointmentImplLocal;
+            a.setId(id);
+
+            return a;
+
+        });
+
+
+        calendar.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+
+            Date cal = calendar.getCalendar().getTime();
+            LocalDate ld = cal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            LocalTime lt = LocalTime.NOON;
+
+            agenda.setDisplayedLocalDateTime(LocalDateTime.of(ld, lt));
+
+            updateAgenda();
+
+
+        });
+
+        agenda.appointmentChangedCallbackProperty().set(param ->{
+
+
+                    DbManager.updateAppointment((Appointment)param);
+                    return null;
+                }
+        );
+
+        agenda.actionCallbackProperty().set(param ->
+                {
+                    selectedAppointment = (Appointment)param;
+                    startTime.setLocalTime(selectedAppointment.getStartLocalDateTime().toLocalTime());
+                    endTime.setLocalTime(selectedAppointment.getEndLocalDateTime().toLocalTime());
+                    description.setText(selectedAppointment.getDescription());
+                    return null;
+                }
+        );
+
     }
-    
+
+
 
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
         Map nodeRoles=new HashMap<Node,List<userType>>();
-        table.setEditable(false);
-        List<userType> liste=new ArrayList<>();
-        //liste.add(userType._ADMIN_);
-        liste.add(userType._SELLER_);
-        nodeRoles.put((Node)table, liste);
-        System.err.println(nodeRoles.get(table));
-        System.err.println(nodeRoles);
-        System.err.println(nodeRoles.keySet());
+
         return nodeRoles;
     }
 }

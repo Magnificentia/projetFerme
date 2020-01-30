@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Ration;
 
 import app.modules.userType;
@@ -74,7 +74,7 @@ public class RationViewController implements Initializable, IController {
     @FXML
     void Search() {
 
-        data=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        data=FXCollections.observableArrayList(DbManager.selectRations());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Ration> filteredData = new FilteredList<>(data, p -> true);
         
@@ -126,7 +126,7 @@ public class RationViewController implements Initializable, IController {
 
     public void populateTableRation()
     {
-        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManagerNnane.selectRations());
+        ObservableList<Ration> liste=FXCollections.observableArrayList(DbManager.selectRations());
         table.setItems(liste);
     }
 
@@ -167,7 +167,7 @@ class FormRation extends Form
         List<Node> liste=new ArrayList();
         liste.add(new JFXTextField());
         JFXComboBox fournisseur=new JFXComboBox();
-        fournisseur.setItems(FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs()));
+        fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectFournisseurs()));
         liste.add(fournisseur);
         this.addFields(liste);
     }    

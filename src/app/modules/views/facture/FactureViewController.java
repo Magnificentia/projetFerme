@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Client;
 
 import app.modules.userType;
@@ -37,7 +37,7 @@ public class FactureViewController extends BaseView<Client> implements Initializ
     
     public void loadData()
     {
-        data=FXCollections.observableArrayList(DbManagerNnane.selectClients());
+        data=FXCollections.observableArrayList(DbManager.selectClients());
     }
     
     public void createTable()

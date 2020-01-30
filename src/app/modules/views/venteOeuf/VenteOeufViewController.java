@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Medicament;
 import app.modules.model.VenteOeuf;
 
@@ -63,7 +63,7 @@ public class VenteOeufViewController implements Initializable, IController {
 
     public void populateTableVenteOeuf()
     {
-        ObservableList<VenteOeuf> liste=FXCollections.observableArrayList(DbManagerNnane.selectVenteOeuf());
+        ObservableList<VenteOeuf> liste=FXCollections.observableArrayList(DbManager.selectVenteOeuf());
         table.setItems(liste);
     }
     

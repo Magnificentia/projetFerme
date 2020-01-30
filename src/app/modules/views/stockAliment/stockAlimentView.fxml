@@ -3,8 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -34,21 +32,8 @@
                   </HBox>
                </children>
             </HBox>
-            <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
-              <columns>
-                <TableColumn fx:id="col_nom" prefWidth="129.0" text="stock" />
-                <TableColumn fx:id="col_qte" prefWidth="169.0" text="qte" />
-                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="177.0" text="dateArrivage" />
-                  <TableColumn fx:id="col_aliment" prefWidth="155.0" text="aliment" />
-                  <TableColumn fx:id="col_fournisseur" prefWidth="188.0" text="fournisseur" />
-              </columns>
-            </TableView>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
-               <children>
-                  <JFXButton onAction="#handleDelete" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
-               </children>
-            </HBox>
+            <AnchorPane fx:id="anchor" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" />
          </children>
       </VBox>
    </children>

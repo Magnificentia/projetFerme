@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.CollecteOeuf;
 
 import app.modules.userType;
@@ -46,7 +46,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     
     public void loadData()
     {
-        data=FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs());
+        data=FXCollections.observableArrayList(DbManager.selectCollecteOeufs());
     }
     
     public void createTable()
@@ -71,7 +71,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     @FXML
     void Search() {
 
-        data=FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs());
+        data=FXCollections.observableArrayList(DbManager.selectCollecteOeufs());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<CollecteOeuf> filteredData = new FilteredList<>(data, p -> true);
         
@@ -116,7 +116,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
 
     public void populateTableCollecteOeuf()
     {
-        ObservableList<CollecteOeuf> liste=FXCollections.observableArrayList(DbManagerNnane.selectCollecteOeufs());
+        ObservableList<CollecteOeuf> liste=FXCollections.observableArrayList(DbManager.selectCollecteOeufs());
         table.setItems(liste);
     }
 

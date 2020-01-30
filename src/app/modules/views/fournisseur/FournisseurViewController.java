@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.model.Fournisseur;
 
 import app.modules.userType;
@@ -52,7 +52,7 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
     
     public void loadData()
     {
-        data=FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs());
+        data=FXCollections.observableArrayList(DbManager.selectFournisseurs());
     }
     
     public void createTable()
@@ -84,7 +84,7 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
     @FXML
     void Search() {
 
-        data=FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs());
+        data=FXCollections.observableArrayList(DbManager.selectFournisseurs());
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Fournisseur> filteredData = new FilteredList<>(data, p -> true);
         
@@ -129,7 +129,7 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
 
     public void populateTableFournisseur()
     {
-        ObservableList<Fournisseur> liste=FXCollections.observableArrayList(DbManagerNnane.selectFournisseurs());
+        ObservableList<Fournisseur> liste=FXCollections.observableArrayList(DbManager.selectFournisseurs());
         table.setItems(liste);
     }
 

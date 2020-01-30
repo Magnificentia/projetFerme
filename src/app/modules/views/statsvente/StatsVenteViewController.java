@@ -2,7 +2,7 @@ package app.modules.views.statsvente;
 
 
 import app.modules.IController;
-import app.modules.database.DbManagerNnane;
+import app.modules.database.DbManager;
 import app.modules.userType;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class StatsVenteViewController implements Initializable,IController {
     
     private List<XYChart.Data> getHistChart()
     {
-        List<Pair<String,Integer>> l=DbManagerNnane.getStatsBandedate();
+        List<Pair<String,Integer>> l=DbManager.getStatsBandedate();
         List<XYChart.Data> lr=new ArrayList<>();
         for(Pair<String,Integer> p:l)
         {
@@ -74,7 +74,7 @@ public class StatsVenteViewController implements Initializable,IController {
     
     private List<PieChart.Data> getListChart()
     {
-        List<Pair<String,Integer>> l=DbManagerNnane.getBar();
+        List<Pair<String,Integer>> l=DbManager.getBar();
         List<PieChart.Data> lr=new ArrayList<>();
         for(Pair<String,Integer> p:l)
         {

@@ -6,13 +6,10 @@ Aussi, il faut se renseigner sur comment faire le slide avec le CSS.
 
 En outre, la gestion des droits des utilisateurs est un problème fondamental puisque l'administrateur doit pouvoir les changer à sa guise
 
-
-
-
 L'application a besoin de retouches côté design mais les fonctionnalités seront le premier axe à couvrir.
 
-
 pour les animations, le slide de Mouen feront l'affaire. on va les utiliser pour faire des notifications
+edit: finalement on dirait qu'il n'y aura pas de slide
 
 pour la gestion des validator, on va laisser tomber mais utiliser les regex pour la validation des formulaires.
 textField1To6.getText().matches("[1-5](\\.[0-9]{1,2}){0,1}|6(\\.0{1,2}){0,1}")
@@ -21,8 +18,10 @@ par exemple: adresse email valide
 reunion:
 
 ajouter l'affichage de la date du jour à l'acceuil pour prendre de la place
+edit: oui important ;)
 
 dans le menu de collecte des oeufs, ajouter un bouton pour incubation qui donne des options à remplir concernant l'incubation
+edit: plutôt dans les informations, on notera le nombre d'oeufs en incubation
 
 dans les statistiques d'elevage, on peut ajouter un graphe avec le nombre d'oeufs collectés, cassés et vendus par période 
 
@@ -36,10 +35,11 @@ preview sur les aliments, dans le stock des aliments un pane de preview apparaît
 
 ajout de nouveaux elements dans la table aliment à partir de l'option stockaliment 
 
-
 ration: changer l'organisation (date-heure-bande-aliment-qte) affichage en fonction de l'unité mentionnée dans la table Aliment.
 
 dans le menu de paramètres, on ajoute une durée pour le stockage des informations, après cette durée, les informations sont stockées sur un fichier archive.
 (chercher comment archiver les données d'une application, sur quelle période et comment)
 
 calculer l'age des bandes automatiquement "x-mois"
+
+utiliser le catalogue comme accueil pour les vendeurs

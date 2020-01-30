@@ -118,11 +118,11 @@ public class Projet extends Application {
         IOption employes=new OptionItem("utilisateurs","views/employes/employesView.fxml");
         
         IOption usersgroups=new OptionItem("Groupes","views/employes/employesView.fxml");
-        IOption calendrier=new OptionItem("Calendrier","views/employes/employesView.fxml");
+        IOption calendrier=new OptionItem("Calendrier","views/taches/taskView.fxml");
         IOption enregisterfacture=new OptionItem("Facture","views/facture/factureView.fxml");
         
         IOption bandes=new OptionItem("Bande","views/bande/bandeView.fxml");
-        IOption medicaments=new OptionItem("Medicaments","views/vaccin/vaccinView.fxml");
+        IOption medicaments=new OptionItem("Medicaments","views/medicaments/medicView.fxml");
         IOption stockAliment=new OptionItem("Stock Aliment","views/stockAliment/stockAlimentView.fxml");
         IOption fournissseurs=new OptionItem("Fournisseur","views/fournisseur/fournisseurView.fxml");
         IOption collecteoeuf=new OptionItem("Collecte Oeuf","views/collecteoeuf/collecteOeufView.fxml");
