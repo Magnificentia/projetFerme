@@ -129,7 +129,7 @@ public class Projet extends Application {
         IOption statsElevage=new OptionItem("Statitistiques","views/statselevage/statsElevageView.fxml");
         IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
-        IOption catalogue=new OptionItem("Catalogue","views/venteOeuf/venteOeufView.fxml");
+        IOption catalogue=new OptionItem("Catalogue","views/catalogue/catalogueView.fxml");
         IOption commande=new OptionItem("commande","views/commande/commandeView.fxml");
         IOption parametres=new OptionItem("commande","views/parametres/parametresView.fxml");
         

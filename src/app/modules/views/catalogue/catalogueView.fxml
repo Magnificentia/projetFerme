@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="596.0" prefWidth="825.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.catalogue.CatalogueViewController">
+   <children>
+      <JFXMasonryPane prefHeight="596.0" prefWidth="964.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="197.0" prefWidth="430.0" style="-fx-background-color: blue;">
+               <children>
+                  <Label contentDisplay="CENTER" layoutX="70.0" layoutY="71.0" prefHeight="106.0" prefWidth="291.0" text="NOMBRE D' OEUFS EN STOCK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="370.0" style="-fx-background-color: yellow;">
+               <children>
+                  <Label layoutX="96.0" layoutY="110.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="318.0" prefWidth="795.0" style="-fx-background-color: violet;">
+               <children>
+                  <Label layoutX="226.0" layoutY="125.0" prefHeight="138.0" prefWidth="421.0" text="details sur les bandes à vendre" />
+               </children>
+            </AnchorPane>
+         </children>
+      </JFXMasonryPane>
+   </children>
+</AnchorPane>

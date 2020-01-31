@@ -12,7 +12,7 @@ package app.modules.model;
 public class CollecteOeuf {
     private int idCollect;
     private int qte;
-    private String dateCollect;
+    private String dateCollecte;
     private int incubation;
     private int bande_id;
     private double prix_alveole;
@@ -25,7 +25,7 @@ public class CollecteOeuf {
     public CollecteOeuf(int idCollect, int qte, String dateCollect, int incubation, int bande_id, double prix_alveole, int qteCasse, int typeOeuf, String nomBande, String nomTypeOeuf) {
         this.idCollect = idCollect;
         this.qte = qte;
-        this.dateCollect = dateCollect;
+        this.dateCollecte = dateCollect;
         this.incubation = incubation;
         this.bande_id = bande_id;
         this.prix_alveole = prix_alveole;
@@ -54,11 +54,11 @@ public class CollecteOeuf {
     }
 
     public String getDateCollect() {
-        return dateCollect;
+        return dateCollecte;
     }
 
     public void setDateCollect(String dateCollect) {
-        this.dateCollect = dateCollect;
+        this.dateCollecte = dateCollect;
     }
 
     public int getIncubation() {

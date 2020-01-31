@@ -3,21 +3,15 @@ package app.modules.views.stockAliment;
 
 
 import app.Projet;
-import app.modules.views.ration.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.layout.VBox;
 import app.modules.IController;
 import app.modules.database.DbManager;
-import app.modules.model.Aliment;
-import app.modules.model.Fournisseur;
-import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
-import app.modules.views.bonjour.Utilisateur;
 import java.io.IOException;
 
 import java.net.URL;
@@ -32,7 +26,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;

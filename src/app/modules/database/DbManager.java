@@ -82,6 +82,7 @@ public class DbManager {
             while(result.next()){
                     bande = new Bande(result.getString("nomBande"),result.getInt("idbande"),result.getInt("qte"),result.getInt("age"),result.getInt("race_id"),result.getDouble("prix_achat"),result.getString("dateDemarrage"),result.getInt("fourn_id"),result.getString("nom"),result.getString("nomFourn"),result.getString("nomBat"),result.getInt("bat_id"));
                     stockList.add(bande);
+                    System.out.println(bande.getDateDemarrage());
             }
             state.close();
         }catch (SQLException ex){
@@ -90,6 +91,20 @@ public class DbManager {
         return stockList;
     }
     
+    public static boolean updateBande(Bande bande)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            String query="update bande set qte="+bande.getQte()+",race_id="+bande.getRace_id()+",prix_achat= "+bande.getPrix_achat()+",prix_vente="+bande.getPrix_vente()+",datedemarrage=\""+bande.getDateDemarrage()+"\",fourn_id="+bande.getFourn_id()+" where idbande="+bande.getIdBande();//bandeview est une vue crée sur la table bande
+            System.out.println(query);
+            int result=state.executeUpdate(query);
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
     public static List<Aliment> selectAliments()
     {
         List<Aliment> stockList = FXCollections.observableArrayList();
@@ -234,12 +249,15 @@ public class DbManager {
         List<CollecteOeuf> stockList = FXCollections.observableArrayList();
         CollecteOeuf col;
         try{
+            System.out.println("loading collecte oeuf");
             Statement state=getConnection().createStatement();
             String query="select * from collecteoeufview";//bandeview est une vue crée sur la table bande
             ResultSet result=state.executeQuery(query);
             while(result.next()){
                     col = new CollecteOeuf(result.getInt("idcollect"),result.getInt("qte"),result.getString("datecollect"),result.getInt("incubation"),result.getInt("bande_id"),result.getDouble("prix_alveole"),result.getInt("qtecasse"),result.getInt("typeoeuf_id"),result.getString("nomBande"),result.getString("nomTf"));
                     stockList.add(col);
+                    
+                    System.out.println(col.getDateCollect());
             }
             state.close();
         }catch (SQLException ex){

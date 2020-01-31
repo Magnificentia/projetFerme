@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
  * @author _Nprime496_
  */
 public class BaseView<T> {
-    protected int rowsPerPage=3;
+    protected int rowsPerPage=10;
     protected ObservableList<T> data;
     protected TableView<T> table=new TableView<>();
     private Pagination pagination;
@@ -26,6 +26,7 @@ public class BaseView<T> {
     public BaseView()
     {
         loadData();
+        createPage(0);
         pagination= new Pagination((data.size() / rowsPerPage + 1), 0);
         //pagination.setPageFactory(this::createPage);
         //table.selectionModelProperty().addListener((oldvalue,value,newvalue)->{if(newvalue!=null){ informations.setDisable(false);}else{informations.setDisable(true);}});
@@ -45,7 +46,12 @@ public class BaseView<T> {
         throw new UnsupportedOperationException("Not supported yet.");
         //nothing to do
     }
-    protected void createPage(int pageIndex) {
+    protected void updateData()
+    {
+        loadData();
+        createPage(pagination.getCurrentPageIndex());
+    }
+    protected final void createPage(int pageIndex) {
 
         System.out.println("page index = "+pageIndex);
         int fromIndex = (pageIndex) * rowsPerPage;

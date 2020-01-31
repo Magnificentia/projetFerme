@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
@@ -28,17 +30,25 @@ public class MainItem extends Item {
     public static double _HEADER_HEIGHT_=30;
     
     private GridPane gridpane;
+    
+    private static ImageView logo;
 
 
     public MainItem(String name,List menus)
     {
         super(name);
         
+        logo=new ImageView();
+        logo.setFitHeight(50);
+        logo.setFitWidth(50);
+        VBox v=new VBox();
+        
         gridpane=new GridPane();//pour la mise en page
         gridpane.getColumnConstraints().add(new ColumnConstraints(150));//specifie la longueur (horizontalement) de l'espace pour menus et icone
         gridpane.getRowConstraints().add(new RowConstraints(80));//specifie la largeur (verticalement) de l'espace pour le header
         
-        gridpane.add(new Label("zone qui va contenir l'icone de l'utilisateur"), 0, 0);
+        v.getChildren().addAll(logo,new Label("slogan"));
+        gridpane.add(v, 0, 0);
         gridpane.add(new Label("icone et label"), 1, 0);
         
         view=new AnchorPane();        
@@ -46,6 +56,12 @@ public class MainItem extends Item {
         this.reload();
         loadMenus(menus);
     }
+    
+    public static void setLogo(Image image)
+    {
+        logo.setImage(image);
+    }
+    
     public void reload()
     {
         //j'ai enlevé le header pour changer le design

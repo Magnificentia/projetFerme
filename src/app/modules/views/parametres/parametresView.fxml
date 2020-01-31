@@ -21,7 +21,7 @@
             <JFXTextField promptText="siteweb" />
             <JFXTextField promptText="ville" />
             <JFXTextField promptText="adresse" />
-            <JFXButton prefHeight="25.0" prefWidth="107.0" text="save" />
+            <JFXButton fx:id="save" prefHeight="25.0" prefWidth="107.0" text="save" />
          </children>
       </VBox>
    </children>

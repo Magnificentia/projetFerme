@@ -54,7 +54,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
         table.setPrefWidth(800);
         
         TableColumn<CollecteOeuf,String> col_date=new TableColumn<>("date");
-        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("dateCollecte"));
         
         TableColumn<CollecteOeuf,String> col_heure=new TableColumn<>("heure");
         col_date.setCellValueFactory(new PropertyValueFactory<>("heure"));

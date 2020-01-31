@@ -11,12 +11,14 @@ package app.modules.model;
  */
 public class Bande {
     
+    public static String DEFAULT_DATE="2020-01-01";
     //attributs de la table
     private int idBande;
     private int qte;
     private int age;
     private int race_id;
     private double prix_achat;
+    private double prix_vente;
     private String dateDemarrage;
     private int fourn_id;
     private int bat_id;
@@ -27,6 +29,7 @@ public class Bande {
     private String nomFournisseur;
     private String nomBatiment;
 
+    
     public Bande(int idBande) {
         this.idBande = idBande;
     }
@@ -34,6 +37,10 @@ public class Bande {
     public Bande(String nomBande)
     {
         this.nomBande=nomBande;
+    }
+
+    public Bande() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getBat_id() {
@@ -59,6 +66,7 @@ public class Bande {
         this.nomFournisseur = nomFournisseur;
         this.nomBatiment = nomBatiment;
         this.bat_id=batid;
+        this.dateDemarrage=dateDemarrage;
     }
 
     public Bande(int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, int bat_id) {
@@ -128,7 +136,7 @@ public class Bande {
 
 
     public String getDateDemarrage() {
-        return dateDemarrage;
+        return dateDemarrage!=null?dateDemarrage:DEFAULT_DATE;
     }
 
     public void setDateDemarrage(String dateDemarrage) {
@@ -155,6 +163,15 @@ public class Bande {
         return nomFournisseur;
     }
 
+    public double getPrix_vente() {
+        return prix_vente;
+    }
+
+    public void setPrix_vente(double prix_vente) {
+        this.prix_vente = prix_vente;
+    }
+    
+
     public void setNomFournisseur(String nomFournisseur) {
         this.nomFournisseur = nomFournisseur;
     }
@@ -166,6 +183,7 @@ public class Bande {
     public void setNomBatiment(String nomBatiment) {
         this.nomBatiment = nomBatiment;
     }
+    
     
     
     

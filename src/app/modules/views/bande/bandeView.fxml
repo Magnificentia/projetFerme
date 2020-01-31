@@ -18,8 +18,8 @@
             </HBox>
             <HBox prefHeight="26.0" prefWidth="992.0" spacing="100.0">
                <children>
-                  <JFXButton prefHeight="25.0" prefWidth="143.0" text="ajouter une bande" />
-                  <JFXButton fx:id="informations" onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="270.0" text="informations" />
+                  <JFXButton onAction="#onAjouterClicked" prefHeight="25.0" prefWidth="143.0" text="ajouter une bande" />
+                  <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="270.0" text="informations" />
                   <HBox prefHeight="31.0" prefWidth="385.0">
                      <children>
                         <TextField prefHeight="31.0" prefWidth="235.0" />

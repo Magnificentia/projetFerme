@@ -119,17 +119,25 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         table.getColumns().addAll(col_nom,col_achat,col_age,col_date,col_quantite,col_batiment,col_fournisseur,col_race);
     }
     @FXML
-    public void onAjouterClicked(ActionEvent event)
+    public void onInformationsClicked(ActionEvent event)
     {
         
-        FormBande b=new FormBande(table.getSelectionModel().getSelectedItem());
+        InformationsBande b=new InformationsBande(table.getSelectionModel().getSelectedItem());
         b.show();
+        updateData();
     }
     
+        @FXML
+    public void onAjouterClicked(ActionEvent event)
+    {
+        InformationsBande b=new InformationsBande(null);
+        b.show();
+        updateData();
+    }
     
 
 
-    public void populateTableBande()
+    public void updateTableBande()
     {
         table.getItems().clear();//importaant sinon les changements ne vont pas être éffectués lorsqu'on fait de simples modificatioobs
         data=FXCollections.observableArrayList(DbManager.selectBandes());
@@ -147,7 +155,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
             {
                 System.out.println("suppression");
                 DbManager.suppBande(mat);
-                populateTableBande();
+                //populateTableBande();
             }
             return;
         }
@@ -169,31 +177,61 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
 
 
 
-final class FormBande extends VBox
+final class InformationsBande extends VBox
 {
     private TabPane t;
-    private final Bande bande;
-    public FormBande(Bande bande)
+    private Bande bande;
+    
+    /*formulaire*/
+    JFXTextField qtedepart;
+    JFXTextField prix_dachat;
+    JFXComboBox<Batiment> batiment;
+    JFXComboBox<Fournisseur> fournisseur;
+    JFXComboBox<Race> race;
+    
+    
+    
+    public InformationsBande(Bande bande)
     {
         super();
         t=new TabPane();
-        this.getChildren().addAll(t,new JFXButton("valider"));
-        
         this.bande=bande;
+        JFXButton val=new JFXButton("valider");
+        this.getChildren().addAll(t,val);
         t.getTabs().addAll(createInfosBase("informations de base"),createInfosMaladies("maladies et décès"),createInfosVente("vente"));
+        val.setOnAction(e->{
+          //informations
+          boolean update=true;
+          if(this.bande==null)
+          {
+              update=true;
+              this.bande=new Bande();
+          }   
+          this.bande.setBat_id(batiment.getSelectionModel().getSelectedItem().getIdbat());
+          this.bande.setFourn_id(fournisseur.getSelectionModel().getSelectedItem().getIdfourn());
+          this.bande.setRace_id(race.getSelectionModel().getSelectedItem().getIdrace());
+          this.bande.setPrix_achat(new Double(prix_dachat.getText()));
+          System.out.println(qtedepart);
+          this.bande.setQte(new Integer(qtedepart.getText()));
+          if(update && DbManager.updateBande(this.bande))
+                System.out.println("update réussi");
+          else
+              DbManager.saveBande(this.bande);        
+          //maladies et dece
+          //vente
+        });  
     }
     
     public Tab createInfosBase(String titre)
     {
         VBox v=new VBox();
         
-        JFXTextField qtedepart=new JFXTextField();
+        qtedepart=new JFXTextField();
         qtedepart.setPromptText("Quantité de depart");
-        qtedepart.setText(new Integer(this.bande.getQte()).toString());
                
-        JFXTextField prix_dachat=new JFXTextField();
+        prix_dachat=new JFXTextField();
         prix_dachat.setPromptText("prix d'achat");
-        prix_dachat.setText(new Double(this.bande.getPrix_achat()).toString());
+        
         
         JFXTextField prixvente=new JFXTextField();
         prixvente.setPromptText("prix de vente");
@@ -204,24 +242,34 @@ final class FormBande extends VBox
         //LocalDate localDate = LocalDate.parse(this.bande.getDateDemarrage(), formatter);
         //dateachat.setValue(localDate);
         
-        JFXComboBox<Batiment> batiment=new JFXComboBox<>();
+        batiment=new JFXComboBox<>();
         batiment.setPromptText("batiment");
         batiment.getItems().addAll(DbManager.selectBatiments());
-        batiment.getSelectionModel().select(DbManager.selectBatimentById(this.bande.getBat_id()));
         
-        JFXComboBox<Fournisseur> fournisseur=new JFXComboBox<>();
+        
+        fournisseur=new JFXComboBox<>();
         fournisseur.setPromptText("fournisseur");
         fournisseur.getItems().addAll(DbManager.selectFournisseurs());//(this.bande.getFourn_id()));
-        fournisseur.getSelectionModel().select(DbManager.selectFournisseurById(this.bande.getFourn_id()));
         
-        JFXComboBox<Race> race=new JFXComboBox<>();
+        
+        race=new JFXComboBox<>();
         race.setPromptText("race");
-        //race.getItems().addAll(DbManagerNnane.selectRaces());
+        race.getItems().addAll(DbManager.selectRaces());
         //race.getSelectionModel().select(DbManagerNnane.selectRaceById(this.bande.getRace_id()));
         
         JFXTextField qteStock=new JFXTextField();
         qteStock.setPromptText("quantité en stock");
-        qteStock.setText(new Integer(this.bande.getQte()).toString());
+        
+        //populating
+        if(this.bande!=null)
+        {
+            System.out.println("populating bandes infos!");
+            qtedepart.setText(new Integer(this.bande.getQte()).toString());
+            batiment.getSelectionModel().select(DbManager.selectBatimentById(this.bande.getBat_id()));
+            prix_dachat.setText(new Double(this.bande.getPrix_achat()).toString());
+            fournisseur.getSelectionModel().select(DbManager.selectFournisseurById(this.bande.getFourn_id()));
+            qteStock.setText(new Integer(this.bande.getQte()).toString());
+        }
         
         v.getChildren().addAll(qtedepart,prix_dachat,prixvente,dateachat,batiment,fournisseur,race,qteStock);
         
@@ -237,7 +285,7 @@ final class FormBande extends VBox
         //TODO
         TableView tableMaladie=new TableView<>();
         
-        TableColumn<Bande,String> col_nombre=new TableColumn<>("nomre de malades");
+        TableColumn<Bande,String> col_nombre=new TableColumn<>("nombre de malades");
         col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
         
         TableColumn<Bande,String> col_maladie=new TableColumn<>("maladie");
@@ -251,7 +299,7 @@ final class FormBande extends VBox
         
         TableView tableDeces=new TableView<>();
         
-        TableColumn<Bande,String> col_nombreDeces=new TableColumn<>("nomre de deces");
+        TableColumn<Bande,String> col_nombreDeces=new TableColumn<>("nombre de deces");
         col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
         
         TableColumn<Bande,String> col_cause=new TableColumn<>("cause");

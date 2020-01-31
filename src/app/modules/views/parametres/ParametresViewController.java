@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
+import app.modules.MainItem;
 
 import app.modules.userType;
 import com.jfoenix.controls.JFXButton;
@@ -30,6 +31,9 @@ public class ParametresViewController implements Initializable, IController {
     private JFXButton imagechooser;
     @FXML
     private ImageView image;
+    
+    @FXML
+    private JFXButton save;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,16 +54,25 @@ public class ParametresViewController implements Initializable, IController {
             File file = fileChooser.showOpenDialog(null);
                        
             try {
-                BufferedImage bufferedImage = ImageIO.read(file);
+                if (file!=null) 
+                {BufferedImage bufferedImage = ImageIO.read(file);
                 Image im = SwingFXUtils.toFXImage(bufferedImage, null);
-                image.setImage(im);
+                image.setImage(im);}
             } catch (IOException | IllegalArgumentException ex) {
+                //System.out.println("exception");
                 Logger.getLogger(ParametresViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
  
         }
     }   
     );   
+        
+    save.setOnAction(event->
+    {
+        Image im=image.getImage();
+        if(im!=null)MainItem.setLogo(im);
+    });
+    
     }
     
     
