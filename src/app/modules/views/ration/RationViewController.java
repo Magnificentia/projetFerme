@@ -167,6 +167,8 @@ public class RationViewController implements Initializable, IController {
                 }
                 else
                 {
+                    System.out.println("data="+data+"choicebande="+choice_Bande);
+                    
                   if(data.get(i).getNomBande().equals(choice_Bande.getValue().getNomBande()) && data.get(i).getNomAli().equals(choice_aliment.getValue().getNomAli()) )
                    {
                        i++;
