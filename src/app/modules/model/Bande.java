@@ -51,7 +51,14 @@ public class Bande {
         this.bat_id = bat_id;
     }
     
+    public String toString()
+    {
+      return this.nomBande;
     
+    }
+            
+            
+            
 
     public Bande(String nomBande,int idBande, int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, String nomRace, String nomFournisseur, String nomBatiment,int batid) {
         this.nomBande=nomBande;
