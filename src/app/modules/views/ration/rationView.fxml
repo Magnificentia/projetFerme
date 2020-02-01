@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,44 +12,73 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="536.0" prefWidth="1028.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.ration.RationViewController">
+<AnchorPane prefHeight="706.0" prefWidth="1231.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.ration.RationViewController">
    <children>
-      <VBox prefHeight="536.0" prefWidth="797.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <VBox prefHeight="527.0" prefWidth="1028.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="39.0" prefWidth="1231.0">
                <children>
                   <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
+            <HBox prefHeight="48.0" prefWidth="1231.0" spacing="75.0">
                <children>
-                  <JFXButton onAction="#showAddRationWindow" prefHeight="31.0" prefWidth="156.0" text="Enregistrer une nouvelle ration" />
-                  <HBox prefHeight="50.0" prefWidth="348.0">
+                  <ComboBox fx:id="choice_Bande" onAction="#OnClickChoisirBande" prefHeight="31.0" prefWidth="208.0">
+                     <HBox.margin>
+                        <Insets left="45.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="choice_aliment" onAction="#OnClickChoisirAliment" prefHeight="31.0" prefWidth="222.0" />
+                  <HBox prefHeight="52.0" prefWidth="353.0">
                      <children>
-                        <TextField fx:id="recherche" />
-                        <JFXButton>
+                        <TextField fx:id="recherche" onAction="#Search" prefHeight="31.0" prefWidth="251.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="31.0" prefWidth="106.0" text="Rechercher">
                            <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
+                              <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="11.142857551574707" />
                            </graphic>
-                        </JFXButton>
+                        </Label>
                      </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="60.0" />
+                     </HBox.margin>
                   </HBox>
                </children>
             </HBox>
-            <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
-              <columns>
-                <TableColumn fx:id="col_nom" prefWidth="129.0" text="nomration" />
-                <TableColumn fx:id="col_bande" prefWidth="169.0" text="bande" />
-                  <TableColumn fx:id="col_aliment" minWidth="0.0" prefWidth="177.0" text="aliment" />
-                  <TableColumn fx:id="col_date" prefWidth="155.0" text="date" />
-                  <TableColumn fx:id="col_quantite" prefWidth="188.0" text="quantite" />
-                  <TableColumn fx:id="col_eau" prefWidth="164.0" text="eau" />
-              </columns>
-            </TableView>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+            <HBox prefHeight="71.0" prefWidth="1231.0">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="158.0" text="supprimer" />
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
+                  <JFXButton onAction="#showAddRationWindow" prefHeight="58.0" prefWidth="179.0" text="Ajouter">
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin></JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="507.0" prefWidth="1231.0">
+               <children>
+                  <TableView fx:id="table" prefHeight="510.0" prefWidth="1234.0">
+                    <columns>
+                      <TableColumn fx:id="col_bande" prefWidth="181.0" text="bande" />
+                        <TableColumn fx:id="col_aliment" minWidth="0.0" prefWidth="233.0" text="aliment" />
+                        <TableColumn fx:id="col_date" prefWidth="261.0" text="date" />
+                        <TableColumn fx:id="col_quantite" prefWidth="271.0" text="quantite" />
+                        <TableColumn fx:id="col_eau" prefWidth="213.0" text="eau" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox prefHeight="134.0" prefWidth="1155.0" spacing="80.0">
+               <children>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="supprimer">
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin></JFXButton>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="éditer" />
                </children>
             </HBox>
          </children>
