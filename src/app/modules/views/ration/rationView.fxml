@@ -5,6 +5,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -12,74 +13,97 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1231.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.ration.RationViewController">
+<AnchorPane prefHeight="768.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.ration.RationViewController">
    <children>
-      <VBox prefHeight="527.0" prefWidth="1028.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <VBox layoutY="1.0" prefHeight="768.0" prefWidth="1290.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <HBox prefHeight="39.0" prefWidth="1231.0">
+            <HBox prefHeight="39.0" prefWidth="1231.0" styleClass="hBox">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
-               </children>
-            </HBox>
-            <HBox prefHeight="48.0" prefWidth="1231.0" spacing="75.0">
-               <children>
-                  <ComboBox fx:id="choice_Bande" onAction="#OnClickChoisirBande" prefHeight="31.0" prefWidth="208.0">
+                  <Label prefHeight="45.0" prefWidth="151.0" styleClass="LabelRation" text="Ration">
                      <HBox.margin>
-                        <Insets left="45.0" />
-                     </HBox.margin>
-                  </ComboBox>
-                  <ComboBox fx:id="choice_aliment" onAction="#OnClickChoisirAliment" prefHeight="31.0" prefWidth="222.0" />
-                  <HBox prefHeight="52.0" prefWidth="353.0">
-                     <children>
-                        <TextField fx:id="recherche" onAction="#Search" prefHeight="31.0" prefWidth="251.0">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </TextField>
-                        <Label prefHeight="31.0" prefWidth="106.0" text="Rechercher">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="11.142857551574707" />
-                           </graphic>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="30.0" left="60.0" />
-                     </HBox.margin>
-                  </HBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="71.0" prefWidth="1231.0">
-               <children>
-                  <JFXButton onAction="#showAddRationWindow" prefHeight="58.0" prefWidth="179.0" text="Ajouter">
-                     <HBox.margin>
-                        <Insets left="65.0" />
-                     </HBox.margin></JFXButton>
+                        <Insets left="29.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
-                  <Insets />
+                  <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="507.0" prefWidth="1231.0">
+            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="1231.0" styleClass="hBox">
                <children>
-                  <TableView fx:id="table" prefHeight="510.0" prefWidth="1234.0">
+                  <JFXButton onAction="#showAddRationWindow" prefHeight="33.0" prefWidth="179.0" text="+Ajouter">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin></JFXButton>
+                  <ComboBox fx:id="choice_Bande" onAction="#OnClickChoisirBande" prefHeight="31.0" prefWidth="208.0">
+                     <HBox.margin>
+                        <Insets left="29.0" right="75.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="choice_aliment" onAction="#OnClickChoisirAliment" prefHeight="31.0" prefWidth="222.0">
+                     <HBox.margin>
+                        <Insets right="125.0" />
+                     </HBox.margin></ComboBox>
+                  <TextField fx:id="recherche" onAction="#Search" prefHeight="31.0" prefWidth="251.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="31.0" prefWidth="106.0" text="Rechercher">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="11.142857551574707" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefHeight="0.0" prefWidth="1238.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="TOP_CENTER" prefHeight="518.0" prefWidth="1199.0" styleClass="hBox">
+               <children>
+                  <TableView fx:id="table" prefHeight="518.0" prefWidth="1240.0">
                     <columns>
                       <TableColumn fx:id="col_bande" prefWidth="181.0" text="bande" />
                         <TableColumn fx:id="col_aliment" minWidth="0.0" prefWidth="233.0" text="aliment" />
                         <TableColumn fx:id="col_date" prefWidth="261.0" text="date" />
-                        <TableColumn fx:id="col_quantite" prefWidth="271.0" text="quantite" />
-                        <TableColumn fx:id="col_eau" prefWidth="213.0" text="eau" />
+                        <TableColumn fx:id="col_quantite" prefWidth="269.0" text="quantite" />
+                        <TableColumn fx:id="col_eau" prefWidth="235.0" text="eau" />
                     </columns>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
                   </TableView>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="134.0" prefWidth="1155.0" spacing="80.0">
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="52.0" prefWidth="1231.0" spacing="80.0" styleClass="hBox">
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" ripplerFill="BLACK" text="Supprimer">
                      <HBox.margin>
-                        <Insets left="65.0" />
+                        <Insets bottom="10.0" left="29.0" top="10.0" />
                      </HBox.margin></JFXButton>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="éditer" />
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin></JFXButton>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
