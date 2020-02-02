@@ -24,8 +24,14 @@ public class Employes {
         this.typeEm = typeEm;
     }
     
+    public Employes( String nom, String user, String login, String typeEm) {
+        this.nom = nom;
+        this.user = user;
+        this.login = login;
+        this.typeEm = typeEm;
+    }
     
-
+    
     public int getIdEm() {
         return idEm;
     }

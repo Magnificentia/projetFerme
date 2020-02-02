@@ -28,6 +28,7 @@ public class BaseView<T> {
         loadData();
         createPage(0);
         pagination= new Pagination((data.size() / rowsPerPage + 1), 0);
+        
         //pagination.setPageFactory(this::createPage);
         //table.selectionModelProperty().addListener((oldvalue,value,newvalue)->{if(newvalue!=null){ informations.setDisable(false);}else{informations.setDisable(true);}});
         pagination.currentPageIndexProperty().addListener(
@@ -48,15 +49,20 @@ public class BaseView<T> {
     }
     protected void updateData()
     {
+        pagination.setPageCount((data.size() / rowsPerPage + 1));
+        System.out.println("size before"+data.size());
         loadData();
+        System.out.println("size after"+data.size());
+        //this.table.getItems().clear();
+        this.table.setItems(data);
         createPage(pagination.getCurrentPageIndex());
     }
     protected final void createPage(int pageIndex) {
 
         System.out.println("page index = "+pageIndex);
         int fromIndex = (pageIndex) * rowsPerPage;
-        int toIndex = Math.min(fromIndex + rowsPerPage, data.size()-1);
-        //System.out.println("subdata from "+fromIndex+" to "+toIndex+" = "+data.subList(fromIndex, toIndex));
+        int toIndex = Math.min(fromIndex + rowsPerPage, data.size());
+        System.out.println("subdata from "+fromIndex+" to "+toIndex+" = "+data.subList(fromIndex, toIndex));
         //table.getItems().clear();
         if (fromIndex<=toIndex)table.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
 

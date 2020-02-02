@@ -8,9 +8,13 @@ import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManager;
 import app.modules.model.Client;
+import app.modules.model.Fournisseur;
+import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
+import app.modules.views.Form;
+import com.jfoenix.controls.JFXTextField;
 
 
 
@@ -37,6 +41,7 @@ public class ClientViewController extends BaseView<Client> implements Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        createTable();
         anchor.getChildren().add(item);
         
         populateTableClient();
@@ -47,6 +52,14 @@ public class ClientViewController extends BaseView<Client> implements Initializa
         
     }
 
+    @FXML
+    public void onAjouterClicked(ActionEvent event)
+    {
+        FormClient b=new FormClient();
+        b.show();
+        System.out.println("updating clients' list");
+        updateData();
+    }
     public void loadData()
     {
         data=FXCollections.observableArrayList(DbManager.selectClients());
@@ -130,19 +143,65 @@ public class ClientViewController extends BaseView<Client> implements Initializa
         // 5. Add sorted (and filtered) data to the table.
         table.setItems(sortedData);
     }
-
-    
-    
-     private void btnYes_clicked()
-    {
-        
-    }
-           
-    
-     
-    private void btnNo_clicked()
-    {
-        
-    }
     
 }
+
+
+class FormClient extends Form
+{
+    //private final JFXDatePicker date;
+    private final JFXTextField designation;
+    private final JFXTextField adresse;
+    //private final JFXTextField siteweb;
+    //private final JFXTextField quantite;
+    private final JFXTextField telephone;
+    //private final JFXTextField email;
+    //private final JFXComboBox<Aliment> aliment;
+    //private final JFXComboBox<Fournisseur> fournisseur;
+    
+    public FormClient()
+    {
+        designation=new JFXTextField();
+        designation.setPromptText("designation");
+        
+        adresse=new JFXTextField();
+        adresse.setPromptText("adresse");
+        
+        
+        telephone=new JFXTextField();
+        telephone.setPromptText("telephone");
+   
+        List a=new ArrayList();
+        a.add(designation);
+        a.add(adresse);
+
+        a.add(telephone);
+        addFields(a);
+    }
+    
+    private void populate(StockAliment stock)
+    {
+        designation.setText(stock.getNomStock());
+        //quantite.setText(new Double(stock.getQte()).toString());
+        //date.setText(stock.getDateArrivage());
+        //fournisseur.getSelectionModel().select(new Fournisseur(this.stock.getFourn_id()));
+        //aliment.getSelectionModel().select(new Aliment(this.stock.getAli_id()));
+    }
+    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("validate clicked");
+   
+            System.out.println("client");
+            String designation=this.designation.getText();
+            String adresse=this.adresse.getText();
+            int tel=new Integer(this.telephone.getText());
+
+            Client client=new Client(adresse,tel,designation);//(designation,adresse,tel,email,siteweb,1);
+            //StockAliment stock=new StockAliment(qte,Bande.DEFAULT_DATE,idaliment,idfournisseur);
+            //save stock
+            if(DbManager.saveClient(client))
+                System.out.println("client saved");
+        }
+    }

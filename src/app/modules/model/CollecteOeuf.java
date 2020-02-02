@@ -35,6 +35,16 @@ public class CollecteOeuf {
         this.nomTypeOeuf = nomTypeOeuf;
     }
     
+    public CollecteOeuf(int qte, String dateCollect, int incubation, int bande_id, double prix_alveole, int qteCasse, int typeOeuf) {
+        this.qte = qte;
+        this.dateCollecte = dateCollect;
+        this.incubation = incubation;
+        this.bande_id = bande_id;
+        this.prix_alveole = prix_alveole;
+        this.qteCasse = qteCasse;
+        this.typeOeuf = typeOeuf;
+    }
+    
     
 
     public int getIdCollect() {

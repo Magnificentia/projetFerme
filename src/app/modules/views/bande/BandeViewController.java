@@ -124,6 +124,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         
         InformationsBande b=new InformationsBande(table.getSelectionModel().getSelectedItem());
         b.show();
+        System.out.println("updating...");
         updateData();
     }
     

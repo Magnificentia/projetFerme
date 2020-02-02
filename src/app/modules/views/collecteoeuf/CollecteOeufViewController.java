@@ -7,10 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManager;
+import app.modules.model.Bande;
 import app.modules.model.CollecteOeuf;
+import app.modules.model.Employes;
+import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
+import app.modules.views.Form;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
 import java.util.*;
@@ -18,6 +25,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -66,6 +74,13 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
         col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
 
         table.getColumns().addAll(col_date,col_heure,col_bande,col_qte);
+    }
+    @FXML
+    public void onAjouterClicked(ActionEvent event)
+    {
+        FormCollecte b=new FormCollecte();
+        b.show();
+        updateData();
     }
     
     @FXML
@@ -135,3 +150,67 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     }
 
 }
+
+
+class FormCollecte extends Form
+{
+    //private final JFXDatePicker date;
+    //private final JFXTextField designation;
+    private final JFXTextField quantite;
+    private final JFXDatePicker datecollect;
+    private final JFXComboBox<Bande>  bande;
+    private final JFXTextField qteCasse;
+    
+
+    public FormCollecte()
+    {
+        quantite=new JFXTextField();
+        quantite.setPromptText("designation");
+        
+        qteCasse=new JFXTextField();
+        qteCasse.setPromptText("nombre cassés");
+        
+        datecollect=new JFXDatePicker();
+        datecollect.setPromptText("mail");
+        
+        bande=new JFXComboBox<>();
+        bande.setItems(FXCollections.observableArrayList(DbManager.selectBandes()));
+        //siteweb.setPromptText("siteweb");
+        
+   
+        List a=new ArrayList();
+        a.add(quantite);
+        a.add(datecollect);
+        a.add(bande);
+        a.add(qteCasse);
+
+        addFields(a);
+    }
+    
+    private void populate(StockAliment stock)
+    {
+        //designation.setText(stock.getNomStock());
+        //quantite.setText(new Double(stock.getQte()).toString());
+        //date.setText(stock.getDateArrivage());
+        //fournisseur.getSelectionModel().select(new Fournisseur(this.stock.getFourn_id()));
+        //aliment.getSelectionModel().select(new Aliment(this.stock.getAli_id()));
+    }
+    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("validate clicked");
+   
+            System.out.println("collecte oeuf");
+            int qte=new Integer(this.quantite.getText());
+            int idbande=this.bande.getSelectionModel().getSelectedItem().getIdBande();
+            int qtecasse= new Integer(this.qteCasse.getText());
+            //String typeEmp=this.typeEmp.getSelectionModel().getSelectedItem();
+
+
+            CollecteOeuf col=new CollecteOeuf(qte,Bande.DEFAULT_DATE, 0, idbande, 0, qtecasse, 1);
+            //save stock
+            if(DbManager.saveCollecte(col))
+                System.out.println("fournisseur saved");
+        }
+    }

@@ -8,10 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManager;
+import app.modules.model.Bande;
 import app.modules.model.Medicament;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
+import app.modules.views.Form;
+import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
 import java.util.*;
@@ -19,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -120,6 +124,15 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
         table.setItems(sortedData);
     }
 
+    @FXML
+    public void onAjouterclicked(ActionEvent event)
+    {
+        FormMedicament form=new FormMedicament(null);
+        form.show();
+        updateData();
+    }
+    
+
     public void populateTableVaccin()
     {
         ObservableList<Medicament> liste=FXCollections.observableArrayList(DbManager.selectMedicaments());
@@ -138,5 +151,71 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
         System.err.println(nodeRoles);
         System.err.println(nodeRoles.keySet());
         return nodeRoles;
+    }
+}
+
+
+class FormMedicament extends Form
+{
+    private Medicament medic;
+    private final JFXTextField description;
+    private final JFXTextField designation;
+    private final JFXTextField prix;
+    private final JFXTextField duree;
+    
+    public FormMedicament(Medicament medic)
+    {
+        this.medic=medic;
+        
+        designation=new JFXTextField();
+        designation.setPromptText("designation");
+        
+        prix=new JFXTextField();
+        prix.setPromptText("prix");
+        
+        duree=new JFXTextField();
+        duree.setPromptText("duree");
+        
+        description=new JFXTextField();
+        description.setPromptText("description");
+        
+        List a=new ArrayList();
+        a.add(designation);
+        a.add(prix);
+        a.add(duree);
+        a.add(description);
+        addFields(a);
+        if(medic!=null)
+        {
+            populate(medic);
+        }
+    }
+    
+    private void populate(Medicament medic)
+    {
+        //assez inutile
+        designation.setText(medic.getDescription());
+        prix.setText(new Double(medic.getPrix()).toString());
+        duree.setText(medic.getPeriode());
+        description.setText(medic.getDescription());
+    }
+    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("validate clicked");
+      
+        String designation=this.designation.getText();
+        double duree=new Double(this.duree.getText());
+        double prix=new Double(this.prix.getText());
+        String description=this.description.getText();
+        //save medic
+        this.medic=new Medicament(designation,Bande.DEFAULT_DATE,description,prix);
+        System.out.println("save medicament");
+        if(DbManager.saveMedicaments(medic))
+            System.out.println("enregistrement réussi");
+
+        //this.medic.setDescription(description);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -21,6 +21,7 @@ import app.modules.model.Medicament;
 import app.modules.model.VenteOeuf;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -182,7 +183,25 @@ public class DbManager {
         return stockList;
     }
     
-    
+    public static boolean saveMedicaments(Medicament medic)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into vaccin(nomvac,qtevac,periode,description,prix,qtepoule) values (?,?,?,?,?,0)");//bandeview est une vue crée sur la table bande
+            query.setString(1,medic.getNomVac());
+            query.setInt(2,medic.getQteVac());
+            query.setDate(3,null);
+            query.setDate(4, null);
+            query.setDouble(5, medic.getPrix());
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
     public static List<StockAliment> selectStockAliment()
     {
         List<StockAliment> stockList = FXCollections.observableArrayList();
@@ -222,6 +241,26 @@ public class DbManager {
         return stockList;
     }
     
+    public static boolean saveFournisseur(Fournisseur fourn)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into fournisseur(nomfourn,adresse,tel,email,siteweb,typefourn) values (?,?,?,?,?,?)");//bandeview est une vue crée sur la table bande
+            query.setString(1,fourn.getNomFourn());
+            query.setString(2,fourn.getAdresse());
+            query.setInt(3,fourn.getTel());
+            query.setString(4,fourn.getEmail());
+            query.setString(5, fourn.getSiteweb());
+            query.setInt(6, fourn.getTypeFourn());
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
     public static Fournisseur selectFournisseurById(int id)
     {
         List<Fournisseur> stockList = FXCollections.observableArrayList();
@@ -264,6 +303,26 @@ public class DbManager {
             ex.printStackTrace();
         }
         return stockList;
+    }
+    
+    public static boolean saveEmploye(Employes emp)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into employes(nom,user,login,typeem) values (?,?,?,?)");//bandeview est une vue crée sur la table bande
+            query.setString(1,emp.getNom());
+            query.setString(2,emp.getUser());
+            query.setString(3,emp.getLogin());
+            query.setString(4,emp.getTypeEm());
+            
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
     }
     
     public static List<Race> selectRaces()
@@ -318,6 +377,28 @@ public class DbManager {
         }
         return stockList;
     }
+    public static boolean saveCollecte(CollecteOeuf col)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into collecteoeuf(qte,datecollect,incubation,bande_id,prix_alveole,qtecasse,typeoeuf_id) values (?,?,?,?,?,?,?)");//bandeview est une vue crée sur la table bande
+            query.setInt(1,col.getQte());
+            query.setString(2,col.getDateCollect());
+            query.setInt(3,col.getIncubation());
+            query.setInt(4, col.getBande_id());
+            query.setDouble(5,col.getPrix_alveole());
+            query.setInt(6,col.getQteCasse());
+            query.setDouble(7,col.getTypeOeuf());
+            
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
     
     public static List<Client> selectClients()
     {
@@ -338,7 +419,24 @@ public class DbManager {
         }
         return stockList;
     }
-    
+    public static boolean saveClient(Client cl)
+    {
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into client(adresse,tel,nomclient) values (?,?,?)");//bandeview est une vue crée sur la table bande
+            query.setString(1,cl.getAdresse());
+            query.setInt(2,cl.getTel());
+            query.setString(3,cl.getNomClient());
+
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;
+    }
     public static boolean suppRation(Ration ration)
     {
         

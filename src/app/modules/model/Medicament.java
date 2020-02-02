@@ -19,8 +19,15 @@ public class Medicament {
     private double prix;
 
     
-    public Medicament(int idVac, String nomVac, String date, String description, double prix) {
-        this.idMed = idVac;
+    public Medicament( int idvac,String nomVac, String date, String description, double prix) {
+        this.idMed=idvac;
+        this.nomVac = nomVac;
+        this.periode = date;
+        this.description = description;
+        this.prix = prix;
+    }
+    
+    public Medicament( String nomVac, String date, String description, double prix) {
         this.nomVac = nomVac;
         this.periode = date;
         this.description = description;

@@ -8,10 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManager;
+import app.modules.model.Aliment;
+import app.modules.model.Bande;
+import app.modules.model.Fournisseur;
+import app.modules.model.Medicament;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
+import app.modules.views.Form;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 
 import java.net.URL;
@@ -173,6 +181,20 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
     }
     
 
+    @FXML
+    public void onAjouterclicked(ActionEvent event)
+    {
+        FormStockAliment form=new FormStockAliment(null);
+        form.show();
+        updateData();
+    }
+        public void updateTableBande()
+    {
+        table.getItems().clear();//importaant sinon les changements ne vont pas être éffectués lorsqu'on fait de simples modificatioobs
+        data=FXCollections.observableArrayList(DbManager.selectStockAliment());
+        table.setItems(data);
+    }
+    
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
         Map nodeRoles=new HashMap<Node,List<userType>>();
@@ -185,5 +207,75 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         System.err.println(nodeRoles);
         System.err.println(nodeRoles.keySet());
         return nodeRoles;
+    }
+}
+
+
+class FormStockAliment extends Form
+{
+    private StockAliment stock;
+    private final JFXDatePicker date;
+    private final JFXTextField designation;
+    private final JFXTextField quantite;
+    private final JFXComboBox<Aliment> aliment;
+    private final JFXComboBox<Fournisseur> fournisseur;
+    
+    public FormStockAliment(StockAliment stock)
+    {
+        this.stock=stock;
+        designation=new JFXTextField();
+        designation.setPromptText("designation");
+        
+        quantite=new JFXTextField();
+        quantite.setPromptText("quantite");
+        
+        aliment=new JFXComboBox<>();
+        aliment.setPromptText("aliment");
+        aliment.setItems(FXCollections.observableArrayList(DbManager.selectAliments()));
+        
+        fournisseur=new JFXComboBox<>();
+        fournisseur.setPromptText("fournisseur");
+        fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectFournisseurs()));
+        
+        date=new JFXDatePicker();
+        
+        List a=new ArrayList();
+        a.add(designation);
+        a.add(aliment);
+        a.add(quantite);
+        a.add(date);
+        a.add(fournisseur);
+        addFields(a);
+        if(stock!=null)
+        {
+            populate(stock);
+        }
+    }
+    
+    private void populate(StockAliment stock)
+    {
+        designation.setText(stock.getNomStock());
+        quantite.setText(new Double(stock.getQte()).toString());
+        //date.setText(stock.getDateArrivage());
+        fournisseur.getSelectionModel().select(new Fournisseur(this.stock.getFourn_id()));
+        aliment.getSelectionModel().select(new Aliment(this.stock.getAli_id()));
+    }
+    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("validate clicked");
+        if(this.stock==null)
+        {    
+            System.out.println("stockaliment");
+            String designation=this.designation.getText();
+            int idaliment=this.aliment.getSelectionModel().getSelectedItem().getIdali();
+            int idfournisseur=this.fournisseur.getSelectionModel().getSelectedItem().getIdfourn();
+            int qte=new Integer(this.quantite.getText());
+            StockAliment stock=new StockAliment(qte,Bande.DEFAULT_DATE,idaliment,idfournisseur);
+            //save stock
+            if(DbManager.saveStockAliment(stock))
+                System.out.println("stock saved");
+        }
     }
 }
