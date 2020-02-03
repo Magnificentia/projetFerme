@@ -26,6 +26,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -437,7 +439,7 @@ public class DbManager {
         }
         return false;
     }
-    public static boolean suppRation(Ration ration)
+    public static boolean deleteRation(Ration ration)
     {
         
         try{
@@ -452,7 +454,7 @@ public class DbManager {
     
 
     
-    public static boolean suppBande(Bande bande)
+    public static boolean deleteBande(Bande bande)
     {
         
         try{
@@ -465,7 +467,7 @@ public class DbManager {
         return false;    
     }
     
-    public static boolean suppAliment(Aliment aliment)
+    public static boolean deleteAliment(Aliment aliment)
     {
         
         try{
@@ -477,7 +479,7 @@ public class DbManager {
         }
         return false;    
     }
-    public static boolean suppStockAliment(StockAliment aliment)
+    public static boolean deleteStockAliment(StockAliment aliment)
     {
         
         try{
@@ -527,7 +529,7 @@ public class DbManager {
             ex.printStackTrace();
         }
         return stockList;  
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     public static List<Batiment> selectBatiments()
@@ -633,7 +635,7 @@ public class DbManager {
         }
         
         return false;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     
@@ -655,7 +657,7 @@ public class DbManager {
         }
         
         return false;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public static boolean saveVenteOeuf(VenteOeuf venteOeuf) {
@@ -675,23 +677,113 @@ public class DbManager {
         }
         
         return false;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public static int addNewAppointment(Agenda.AppointmentImplLocal newAppointment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            //Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into appointment(starttime,endtime,description) values (?,?,?)",
+                                      Statement.RETURN_GENERATED_KEYS);//bandeview est une vue crée sur la table bande
+            query.setString(1,newAppointment.getStartLocalDateTime().toString());
+            query.setString(2,newAppointment.getEndLocalDateTime().toString());
+            query.setString(3,newAppointment.getDescription());
+
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            
+            if (result == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = query.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    
+                    return generatedKeys.getInt(1);
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+            finally
+            {
+                query.close();
+            }
+            
+            
+            }catch (SQLException ex){
+                ex.printStackTrace();
+            }
+            finally
+        {
+            
+        }
+        
+        return 0;
+        
     }
 
     public static void deleteAppointment(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("delete from appointment where idappoint=?");//bandeview est une vue crée sur la table bande
+            query.setInt(1,id);
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        
     }
 
     public static void updateAppointment(Appointment selectedAppointment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("update appointment set starttime=?,endtime=?,description=? where idappoint=?");//bandeview est une vue crée sur la table bande
+            query.setString(1,selectedAppointment.getStartLocalDateTime().toString());
+            query.setString(2,selectedAppointment.getEndLocalDateTime().toString());
+            query.setString(3,selectedAppointment.getDescription());
+            query.setInt(4,selectedAppointment.getId());
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        
     }
 
     public static List<Appointment> getAppointments(LocalDateTime startLocalDateTime, LocalDateTime endLocalDateTime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List appointList=new ArrayList();
+        try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("select * FROM Appointment a where a.startTime between ? and ?");//bandeview est une vue crée sur la table bande
+
+            query.setString(1,startLocalDateTime.toString());
+            query.setString(2, endLocalDateTime.toString());
+            
+            System.out.println(query.toString());
+            ResultSet result=query.executeQuery();
+            while(result.next())
+            {
+                Appointment app=new Appointment(result.getInt("idappoint"),result.getString("description"));
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                LocalDateTime dateTime = LocalDateTime.parse(result.getString("starttime"), formatter);
+                app.withStartLocalDateTime(dateTime);
+                dateTime = LocalDateTime.parse(result.getString("endtime"), formatter);
+                app.withEndLocalDateTime(dateTime);
+                app.setSummary(result.getString("description"));
+                appointList.add(app);
+            }
+            
+            state.close();
+            return appointList;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return null;
+        
     }
 }
 

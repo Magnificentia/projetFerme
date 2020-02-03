@@ -47,6 +47,7 @@ public class TaskViewController implements Initializable, IController {
 
         int id;
 
+        System.out.println("calendar "+calendar.getCalendar());
         Date selected = calendar.getCalendar().getTime();
         LocalDate date = selected.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
@@ -71,11 +72,13 @@ public class TaskViewController implements Initializable, IController {
     @FXML
     void deleteAppointment(ActionEvent event) {
 
-        System.out.println(selectedAppointment.getId());
-        DbManager.deleteAppointment(selectedAppointment.getId());
-        updateAgenda();
-        agenda.refresh();
-
+        if(selectedAppointment!=null)
+        {
+            System.out.println(selectedAppointment.getId());
+            DbManager.deleteAppointment(selectedAppointment.getId());
+            updateAgenda();
+            agenda.refresh();
+        }
     }
 
     @FXML
@@ -102,15 +105,10 @@ public class TaskViewController implements Initializable, IController {
 
     private void updateAppointment() {
 
-
-
-    }
-
-    private void updateAgenda(){;
         agenda.localDateTimeRangeCallbackProperty().set(param -> {
-
-
+           
             List<Appointment> list = DbManager.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime());
+            System.out.println("after querying...");
             agenda.appointments().clear();
             agenda.appointments().addAll(list);
                     return null;
@@ -120,9 +118,47 @@ public class TaskViewController implements Initializable, IController {
 
 
     }
+
+    private void updateAgenda(){
+        System.out.println("actually updating agenda...");
+        agenda.localDateTimeRangeCallbackProperty().set(param -> {
+           
+            List<Appointment> list = DbManager.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime());
+            System.out.println("after ");
+            agenda.appointments().clear();
+            agenda.appointments().addAll(list);
+                    return null;
+                }
+
+        );
+
+
+    }
+    
+    public void updateTasks()
+    {
+            System.out.println("click event on calendar");
+            System.out.println(calendar.getCalendar());
+            try
+            {
+            Date cal = calendar.getCalendar().getTime();
+            LocalDate ld = cal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            LocalTime lt = LocalTime.NOON;
+
+            agenda.setDisplayedLocalDateTime(LocalDateTime.of(ld, lt));
+                System.out.println("almost updating agenda....");
+            updateAgenda();
+                }
+            catch(NullPointerException e)
+                {
+                    System.out.println("erreur  bizzare de null pointer sur le calendar");
+                }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        updateTasks();
         try {
             //updateAgenda();
         }catch (Exception e){
@@ -150,17 +186,7 @@ public class TaskViewController implements Initializable, IController {
 
 
         calendar.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-
-            Date cal = calendar.getCalendar().getTime();
-            LocalDate ld = cal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-            LocalTime lt = LocalTime.NOON;
-
-            agenda.setDisplayedLocalDateTime(LocalDateTime.of(ld, lt));
-
-            updateAgenda();
-
-
+            updateTasks();
         });
 
         agenda.appointmentChangedCallbackProperty().set(param ->{
@@ -179,6 +205,17 @@ public class TaskViewController implements Initializable, IController {
                     description.setText(selectedAppointment.getDescription());
                     return null;
                 }
+        );
+        
+        agenda.localDateTimeRangeCallbackProperty().set(param -> {
+           
+            List<Appointment> list = DbManager.getAppointments(param.getStartLocalDateTime(), param.getEndLocalDateTime());
+            System.out.println("after querying...");
+            agenda.appointments().clear();
+            agenda.appointments().addAll(list);
+                    return null;
+                }
+
         );
 
     }

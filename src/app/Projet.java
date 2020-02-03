@@ -33,7 +33,6 @@ public class Projet extends Application {
     private static Stage mainStage;
 
     public static Stage getMainStage() {
-        Agenda a=new Agenda();
         return mainStage;
     }
 
@@ -117,7 +116,7 @@ public class Projet extends Application {
         IOption ration=new OptionItem("Ration","views/ration/rationView.fxml");
         IOption employes=new OptionItem("utilisateurs","views/employes/employesView.fxml");
         
-        IOption usersgroups=new OptionItem("Groupes","views/employes/employesView.fxml");
+        IOption usersgroups=new OptionItem("Groupes","views/groupes/groupesView.fxml");
         IOption calendrier=new OptionItem("Calendrier","views/taches/taskView.fxml");
         IOption enregisterfacture=new OptionItem("Facture","views/facture/factureView.fxml");
         
@@ -202,6 +201,7 @@ public class Projet extends Application {
         //primaryStage.setMaxWidth(pref_width);
         mainStage.setMinWidth(pref_width);
         //primaryStage.setMaxHeight(pref_height);
+        mainStage.setResizable(true);
     }
     public static void main(String[] args) {
         

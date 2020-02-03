@@ -15,12 +15,21 @@ import jfxtras.scene.control.agenda.Agenda.AppointmentImplLocal;
 public class Appointment extends AppointmentImplLocal {
     
     private int id;
-    private Timestamp startTime;
-    private Timestamp endTime;
 
     String description;
 
+    public Appointment() {
+    }
 
+    
+    
+    public Appointment(int id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
+
+    
     public int getId() {
         return id;
     }
@@ -37,24 +46,6 @@ public class Appointment extends AppointmentImplLocal {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
-    public Timestamp getmyStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-
-    public Timestamp getmyEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
-    }
-
 
     
 }

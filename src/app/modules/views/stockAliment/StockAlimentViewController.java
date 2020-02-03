@@ -30,12 +30,17 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -57,6 +62,8 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         this.Search();
         populateTableRation();
         table.setPrefWidth(800);
+        
+
     }
     public void loadData()
     {
@@ -101,7 +108,7 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
-                DbManager.suppStockAliment(mat);
+                DbManager.deleteStockAliment(mat);
                 populateTableRation();
             }
             return;

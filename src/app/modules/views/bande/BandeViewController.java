@@ -64,24 +64,12 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         //populateTableBande();
         //important d'ajouter le item là, même si tu ne sais pas d'où ça sort ...c'est l'ensemble (table+pagination)
         AnchorTable.getChildren().addAll(item);
-
-        //menu contextuel
-        ContextMenu cm = new ContextMenu();
-        MenuItem mi1 = new MenuItem("menu");
-        cm.getItems().add(mi1);
-        MenuItem mi2 = new MenuItem("Menu 2");
-        cm.getItems().add(mi2);
-
-        table.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent t) {
-                if(t.getButton() == MouseButton.SECONDARY) {
-                    cm.show(table, t.getScreenX(), t.getScreenY());
-                }
-            }
-   });
         
+    }
+    
+    public void delete(Bande b)
+    {
+        DbManager.deleteBande(b);
     }
     public void loadData()
     {
@@ -155,7 +143,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
                 "voulez-vous supprimer cet utilisateur?"))
             {
                 System.out.println("suppression");
-                DbManager.suppBande(mat);
+                DbManager.deleteBande(mat);
                 //populateTableBande();
             }
             return;
@@ -215,14 +203,21 @@ final class InformationsBande extends VBox
           System.out.println(qtedepart);
           this.bande.setQte(new Integer(qtedepart.getText()));
           if(update && DbManager.updateBande(this.bande))
-                System.out.println("update réussi");
+          {
+              System.out.println("update bande réussi");
+          }       
           else
-              DbManager.saveBande(this.bande);        
+          {
+              System.out.println("bande saved");
+              DbManager.saveBande(this.bande); 
+          }
+                     
           //maladies et dece
           //vente
         });  
     }
     
+
     public Tab createInfosBase(String titre)
     {
         VBox v=new VBox();
@@ -275,6 +270,7 @@ final class InformationsBande extends VBox
         v.getChildren().addAll(qtedepart,prix_dachat,prixvente,dateachat,batiment,fournisseur,race,qteStock);
         
         Tab t =new Tab();
+        t.setClosable(false);
         t.setGraphic(new Label(titre));
         t.setContent(v);
         return t;
@@ -309,6 +305,7 @@ final class InformationsBande extends VBox
         tableDeces.getColumns().addAll(col_nombreDeces,col_cause);
         
         Tab t =new Tab();
+        t.setClosable(false);
         t.setGraphic(new Label(titre));
         v.getChildren().addAll(tableMaladie,tableDeces);
         
@@ -333,6 +330,7 @@ final class InformationsBande extends VBox
         
         
         Tab t =new Tab();
+        t.setClosable(false);
         t.setGraphic(new Label(titre));
         t.setContent(v);
         return t;
@@ -352,4 +350,6 @@ final class InformationsBande extends VBox
         // Show the dialog and wait until the user closes it
         dialogStage.showAndWait();
     }
+    
 }
+

@@ -5,12 +5,18 @@
  */
 package app.modules.views;
 
+import app.modules.database.DbManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 /**
@@ -40,8 +46,34 @@ public class BaseView<T> {
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
+        
+        
+                //menu contextuel
+        ContextMenu cm = new ContextMenu();
+        MenuItem mi1 = new MenuItem("supprimer");
+        mi1.setOnAction(event->{System.out.println("supp bande");delete(table.getSelectionModel().getSelectedItem());updateData();});
+        cm.getItems().add(mi1);
+        //MenuItem mi2 = new MenuItem("Menu 2");
+        //cm.getItems().add(mi2);
+
+        table.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent t) {
+                if(t.getButton() == MouseButton.SECONDARY) {
+                    cm.show(table, t.getScreenX(), t.getScreenY());
+                }
+            }
+   });
+        
         item=new VBox();item.getChildren().addAll(table,pagination);
     }
+    
+    public void delete(T object)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
     public void loadData()
     {
         throw new UnsupportedOperationException("Not supported yet.");
