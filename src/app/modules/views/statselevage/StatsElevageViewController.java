@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -115,12 +116,25 @@ public class StatsElevageViewController implements Initializable,IController {
         return null;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    @FXML
-    public void handleRefresh(ActionEvent event)
+
+    
+    public void refresh()
     {
         fournAchat.getData().clear();
         grah_qte_date.getData().clear();
         createPiechartAchatFournisseur();
         createLineChart();
+    }
+    
+    @Override
+    public void onShowDoController()
+    {
+        /*try {
+    TimeUnit.SECONDS.sleep((long) 1);
+} catch (InterruptedException ie) {
+    Thread.currentThread().interrupt();
+}*/
+        System.out.println("refresh");
+        refresh();
     }
 }

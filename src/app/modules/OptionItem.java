@@ -16,7 +16,8 @@ public class OptionItem extends Item implements IOption {
     private Parent item;
     private boolean visible=true;
     protected Map<Node, List<userType>> nodeRoles;
-
+    private FXMLLoader fxmlLoader;
+    
     public static String _DEFAULT_OPTION_NAME="defaultoption";
 
     public OptionItem()
@@ -31,8 +32,9 @@ public class OptionItem extends Item implements IOption {
         AnchorPane root= null;
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+            fxmlLoader = new FXMLLoader(getClass().getResource(path));
             root = (AnchorPane) (fxmlLoader.load());
+            
             System.err.println(((IController)fxmlLoader.getController()).getNodeRoles()+"");
             this.nodeRoles=((IController)fxmlLoader.getController()).getNodeRoles();
             this.item =root;
@@ -43,6 +45,12 @@ public class OptionItem extends Item implements IOption {
         //manageRoles();
     }
 
+    public void onShowDo()
+    {
+        //note pour le futur moi : ouais c'est une grosse tautologie mais je vois pas mieux et plus rapide pour le moment
+        ((IController)fxmlLoader.getController()).onShowDoController();
+        //NOTHING
+    }
 
     public OptionItem(String path)
     {
