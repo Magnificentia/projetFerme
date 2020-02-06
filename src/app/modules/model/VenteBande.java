@@ -18,8 +18,6 @@ public class VenteBande extends Vente{
         this.bande_id = bande_id;
     }
 
-
-
     public int getBande_id() {
         return bande_id;
     }
@@ -28,7 +26,4 @@ public class VenteBande extends Vente{
         this.bande_id = bande_id;
     }
 
-    
-    
-    
 }

@@ -5,16 +5,23 @@
  */
 package app.modules.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author _Nprime496_
  */
 public class Vente {
     
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+
     private int idVente;
     private int client_id;
 
-    private String dateVente;
+    private LocalDate dateVente=LocalDate.parse(Bande.DEFAULT_DATE, formatter);
     private double total_prix;
     private int qte;
     private int employe_id;
@@ -26,7 +33,7 @@ public class Vente {
     public Vente(int idVente, int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
         this.idVente = idVente;
         this.client_id = client_id;
-        this.dateVente = dateVente;
+        this.dateVente =LocalDate.parse(dateVente, formatter);
         this.total_prix = total_prix;
         this.qte = qte;
         this.employe_id = employe_id;
@@ -74,12 +81,12 @@ public class Vente {
     }
 
 
-    public String getDateVente() {
+    public LocalDate getDateVente() {
         return dateVente;
     }
 
     public void setDateVente(String dateVente) {
-        this.dateVente = dateVente;
+        this.dateVente =LocalDate.parse(dateVente, formatter);;
     }
 
     public double getTotal_prix() {

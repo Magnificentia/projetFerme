@@ -5,13 +5,16 @@
  */
 package app.modules.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author _Nprime496_
  */
 public class Bande {
     
-    public static String DEFAULT_DATE="2020-01-01";
+    public static String DEFAULT_DATE="2020-01-01 00:00:00";
     //attributs de la table
     private int idBande;
     private int qte;
@@ -19,7 +22,10 @@ public class Bande {
     private int race_id;
     private double prix_achat;
     private double prix_vente;
-    private String dateDemarrage;
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+    private LocalDate dateDemarrage=LocalDate.parse(Bande.DEFAULT_DATE, formatter);
     private int fourn_id;
     private int bat_id;
     
@@ -73,7 +79,9 @@ public class Bande {
         this.nomFournisseur = nomFournisseur;
         this.nomBatiment = nomBatiment;
         this.bat_id=batid;
-        this.dateDemarrage=dateDemarrage;
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDate d= LocalDate.parse(dateDemarrage, formatter);
+        this.dateDemarrage=d;
     }
 
     public Bande(int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, int bat_id) {
@@ -82,7 +90,9 @@ public class Bande {
         this.age = age;
         this.race_id = race_id;
         this.prix_achat = prix_achat;
-        this.dateDemarrage = dateDemarrage;
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDate d= LocalDate.parse(dateDemarrage, formatter);
+        this.dateDemarrage = d;
         this.fourn_id = fourn_id;
         this.bat_id = bat_id;
     }
@@ -116,13 +126,7 @@ public class Bande {
         this.qte = qte;
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public int getRace_id() {
         return race_id;
@@ -142,12 +146,12 @@ public class Bande {
 
 
 
-    public String getDateDemarrage() {
-        return dateDemarrage!=null?dateDemarrage:DEFAULT_DATE;
+    public LocalDate getDateDemarrage() {
+        return dateDemarrage;
     }
 
     public void setDateDemarrage(String dateDemarrage) {
-        this.dateDemarrage = dateDemarrage;
+        this.dateDemarrage = LocalDate.parse(dateDemarrage, formatter);
     }
 
     public int getFourn_id() {
@@ -190,8 +194,5 @@ public class Bande {
     public void setNomBatiment(String nomBatiment) {
         this.nomBatiment = nomBatiment;
     }
-    
-    
-    
-    
+ 
 }
