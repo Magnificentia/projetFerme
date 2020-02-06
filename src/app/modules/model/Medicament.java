@@ -5,6 +5,8 @@
  */
 package app.modules.model;
 
+import java.time.Period;
+
 /**
  *
  * @author _Nprime496_
@@ -12,27 +14,34 @@ package app.modules.model;
 public class Medicament {
     private int idMed;
     private String nomVac;
-    private String periode;
+    private Period periode;
     private int qte;
     private int qtePoule;
     private String description;
     private double prix;
 
     
-    public Medicament(int idVac, String nomVac, String date, String description, double prix) {
-        this.idMed = idVac;
+    public Medicament( int idvac,String nomVac, String date, String description, double prix) {
+        this.idMed=idvac;
         this.nomVac = nomVac;
-        this.periode = date;
+        this.periode = Period.parse("P"+date+"M");
+        this.description = description;
+        this.prix = prix;
+    }
+    
+    public Medicament( String nomVac, String date, String description, double prix) {
+        this.nomVac = nomVac;
+        this.periode = Period.parse("P"+date+"M");
         this.description = description;
         this.prix = prix;
     }
 
-    public String getPeriode() {
+    public Period getPeriode() {
         return periode;
     }
 
     public void setPeriode(String periode) {
-        this.periode = periode;
+        this.periode = Period.parse("P"+periode+"M");
     }
     
 
@@ -53,13 +62,6 @@ public class Medicament {
         this.nomVac = nomVac;
     }
 
-    public String getDate() {
-        return periode;
-    }
-
-    public void setDate(String date) {
-        this.periode = date;
-    }
 
     public int getQteVac() {
         return qte;
@@ -92,9 +94,5 @@ public class Medicament {
     public void setPrix(double prix) {
         this.prix = prix;
     }
-    
-    
-    
-    
-    
+            
 }

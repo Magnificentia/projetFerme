@@ -5,26 +5,33 @@
  */
 package app.modules.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author _Nprime496_
  */
 public class BandeVaccine {
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+    
     private int idvaccine;
     private int bande_id;
     private int vaccin_id;
-    private String dateVac;
+    private LocalDate dateVac=LocalDate.parse(Bande.DEFAULT_DATE, formatter);;
     
     private String nomBande;
     private String nomvac;
     private String nomVaccination;
 
-    public String getDateVac() {
+    public LocalDate getDateVac() {
         return dateVac;
     }
 
     public void setDateVac(String dateVac) {
-        this.dateVac = dateVac;
+        this.dateVac = LocalDate.parse(dateVac, formatter);;
     }
 
     public String getNomVaccination() {
@@ -39,7 +46,7 @@ public class BandeVaccine {
         this.idvaccine = idvaccine;
         this.bande_id = bande_id;
         this.vaccin_id = vaccin_id;
-        this.dateVac = datevac;
+        this.dateVac = LocalDate.parse(datevac, formatter);;
         this.nomBande = nomBande;
         this.nomvac = nomvac;
         this.nomVaccination = nomVaccinaton;
@@ -70,12 +77,12 @@ public class BandeVaccine {
         this.vaccin_id = vaccin_id;
     }
 
-    public String getDatevac() {
+    public LocalDate getDatevac() {
         return dateVac;
     }
 
     public void setDatevac(String datevac) {
-        this.dateVac = datevac;
+        this.dateVac =LocalDate.parse(datevac, formatter);;
     }
 
     public String getNomBande() {

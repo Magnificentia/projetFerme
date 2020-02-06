@@ -5,14 +5,21 @@
  */
 package app.modules.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author _Nprime496_
  */
 public class CollecteOeuf {
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    
+    
     private int idCollect;
     private int qte;
-    private String dateCollecte;
+    private LocalDate dateCollecte=LocalDate.parse(Bande.DEFAULT_DATE, formatter);
     private int incubation;
     private int bande_id;
     private double prix_alveole;
@@ -25,7 +32,7 @@ public class CollecteOeuf {
     public CollecteOeuf(int idCollect, int qte, String dateCollect, int incubation, int bande_id, double prix_alveole, int qteCasse, int typeOeuf, String nomBande, String nomTypeOeuf) {
         this.idCollect = idCollect;
         this.qte = qte;
-        this.dateCollecte = dateCollect;
+        this.dateCollecte = LocalDate.parse(dateCollect, formatter);
         this.incubation = incubation;
         this.bande_id = bande_id;
         this.prix_alveole = prix_alveole;
@@ -33,6 +40,16 @@ public class CollecteOeuf {
         this.typeOeuf = typeOeuf;
         this.nomBande = nomBande;
         this.nomTypeOeuf = nomTypeOeuf;
+    }
+    
+    public CollecteOeuf(int qte, String dateCollect, int incubation, int bande_id, double prix_alveole, int qteCasse, int typeOeuf) {
+        this.qte = qte;
+        this.dateCollecte = LocalDate.parse(dateCollect, formatter);
+        this.incubation = incubation;
+        this.bande_id = bande_id;
+        this.prix_alveole = prix_alveole;
+        this.qteCasse = qteCasse;
+        this.typeOeuf = typeOeuf;
     }
     
     
@@ -53,12 +70,12 @@ public class CollecteOeuf {
         this.qte = qte;
     }
 
-    public String getDateCollect() {
+    public LocalDate getDateCollect() {
         return dateCollecte;
     }
 
     public void setDateCollect(String dateCollect) {
-        this.dateCollecte = dateCollect;
+        this.dateCollecte = LocalDate.parse(dateCollect, formatter);
     }
 
     public int getIncubation() {

@@ -47,3 +47,7 @@ utiliser le catalogue comme accueil pour les vendeurs
 fusionner client, fournissseur et consultants dans la même table...avec eventuellement des pop-ups descriptifs differents.
 
 fusionner les stocks pour avoir un seul menu
+
+ajouter des boutons dans les configs pour les cas où il y a plusieurs numéros, adresses etc
+
+utiliser l'élement de texte bizarre des Label pour donner du style aux slogans

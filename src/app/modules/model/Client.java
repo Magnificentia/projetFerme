@@ -22,6 +22,11 @@ public class Client {
         this.nomClient = nomClient;
     }
     
+    public Client(String adresse, int tel, String nomClient) {
+        this.adresse = adresse;
+        this.tel = tel;
+        this.nomClient = nomClient;
+    }
     
 
     public int getIdClient() {

@@ -7,4 +7,8 @@ import java.util.Map;
 
 public interface IController {
     public Map<Node, List<userType>> getNodeRoles();
+    default public void onShowDoController()
+    {
+        //NOTHING
+    };
 }

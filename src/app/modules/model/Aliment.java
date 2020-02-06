@@ -22,6 +22,10 @@ public class Aliment {
         this.prix = prix;
     }
 
+    public Aliment(int ali_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     public int getIdali() {

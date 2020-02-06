@@ -24,29 +24,21 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="1250.0" styleClass="hBoxNormal">
+
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="200.0">
                <children>
-                  <JFXButton fx:id="recherche" onAction="#showAddVenteOeufWindow" prefHeight="31.0" prefWidth="258.0" text="Ajouter un nouvel utilisateur">
-                     <HBox.margin>
-                        <Insets left="25.0" />
-                     </HBox.margin>
-                  </JFXButton>
-                  <TextField prefHeight="31.0" prefWidth="277.0">
-                     <HBox.margin>
-                        <Insets left="545.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Label text="Label">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
-                     </graphic>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets right="25.0" />
-                     </HBox.margin>
-                  </Label>
+                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" text="Ajouter une nouvelle commande" />
+                  <HBox prefHeight="50.0" prefWidth="348.0">
+                     <children>
+                        <TextField />
+                        <JFXButton>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+
                </children>
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />

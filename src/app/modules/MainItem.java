@@ -164,7 +164,9 @@ public class MainItem extends Item {
         {
             System.out.println("click on "+newValue.getValue());
             view.getChildren().clear();
+            
             view.getChildren().add(newValue.getValue().getItem());
+            newValue.getValue().onShowDo();
         }
         
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

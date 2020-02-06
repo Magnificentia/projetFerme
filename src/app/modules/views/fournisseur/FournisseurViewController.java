@@ -8,10 +8,13 @@ import javafx.scene.Node;
 import app.modules.IController;
 import app.modules.database.DbManager;
 import app.modules.model.Fournisseur;
+import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
+import app.modules.views.Form;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
 import java.util.*;
@@ -19,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,6 +53,18 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
          this.Search();
         
     }
+    
+    public void onAjouterClicked(ActionEvent event)
+    {
+        FormFournisseur b=new FormFournisseur();
+        b.show();
+        updateData();
+    }
+    
+
+
+
+
     
     public void loadData()
     {
@@ -151,3 +167,72 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
     
     
 }
+
+
+class FormFournisseur extends Form
+{
+    //private final JFXDatePicker date;
+    private final JFXTextField designation;
+    private final JFXTextField adresse;
+    private final JFXTextField siteweb;
+    //private final JFXTextField quantite;
+    private final JFXTextField telephone;
+    private final JFXTextField email;
+    //private final JFXComboBox<Aliment> aliment;
+    //private final JFXComboBox<Fournisseur> fournisseur;
+    
+    public FormFournisseur()
+    {
+        designation=new JFXTextField();
+        designation.setPromptText("designation");
+        
+        adresse=new JFXTextField();
+        adresse.setPromptText("adresse");
+        
+        email=new JFXTextField();
+        email.setPromptText("mail");
+        
+        siteweb=new JFXTextField();
+        siteweb.setPromptText("siteweb");
+        
+        
+        telephone=new JFXTextField();
+        telephone.setPromptText("telephone");
+   
+        List a=new ArrayList();
+        a.add(designation);
+        a.add(adresse);
+        a.add(email);
+        a.add(siteweb);
+        a.add(telephone);
+        addFields(a);
+    }
+    
+    private void populate(StockAliment stock)
+    {
+        designation.setText(stock.getNomStock());
+        //quantite.setText(new Double(stock.getQte()).toString());
+        //date.setText(stock.getDateArrivage());
+        //fournisseur.getSelectionModel().select(new Fournisseur(this.stock.getFourn_id()));
+        //aliment.getSelectionModel().select(new Aliment(this.stock.getAli_id()));
+    }
+    
+
+    @Override
+    public void onValidateClick() {
+        System.out.println("validate clicked");
+   
+            System.out.println("fournisseur");
+            String designation=this.designation.getText();
+            String adresse=this.adresse.getText();
+            String email=this.email.getText();
+            String siteweb=this.siteweb.getText();
+            int tel=new Integer(this.telephone.getText());
+
+            Fournisseur fourn=new Fournisseur(designation,adresse,tel,email,siteweb,1);
+            //StockAliment stock=new StockAliment(qte,Bande.DEFAULT_DATE,idaliment,idfournisseur);
+            //save stock
+            if(DbManager.saveFournisseur(fourn))
+                System.out.println("fournisseur saved");
+        }
+    }

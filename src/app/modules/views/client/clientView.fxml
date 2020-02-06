@@ -17,13 +17,13 @@
                   <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="600.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="300.0">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="285.0" text="Ajouter un nouveau client" />
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
                         <TextField fx:id="recherche" />
-                        <JFXButton>
+                        <JFXButton text="Button">
                            <graphic>
                               <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
                            </graphic>

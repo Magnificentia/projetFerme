@@ -91,31 +91,4 @@ public class CommandeViewController extends BaseView<Client> implements Initiali
         return nodeRoles;
     }
     
-    
-    @FXML
-    public void showAddVenteOeufWindow(ActionEvent event) {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("options/venteOeufOptionsView.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
-            dialogStage.setTitle("Ajouter une nouvelle vente");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Projet.getMainStage());
-            Scene scene = new Scene(page,600,500);
-            dialogStage.setScene(scene);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-            populateTableVenteOeuf();
-
-            //
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

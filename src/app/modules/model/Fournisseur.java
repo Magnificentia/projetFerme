@@ -30,6 +30,21 @@ public class Fournisseur {
         this.typeFourn = typeFourn;
     }
 
+        public Fournisseur( String nomFourn, String adresse, int tel, String email, String siteweb, int typeFourn) 
+        {
+        this.nomFourn = nomFourn;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.email = email;
+        this.siteweb = siteweb;
+        this.typeFourn = typeFourn;
+    }
+
+    public Fournisseur(int fourn_id) {
+        this.idfourn=fourn_id;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     public int getIdfourn() {
