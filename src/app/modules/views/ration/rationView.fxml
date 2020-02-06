@@ -17,7 +17,7 @@
    <children>
       <VBox layoutY="1.0" prefHeight="768.0" prefWidth="1290.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <HBox prefHeight="39.0" prefWidth="1231.0" styleClass="hBox">
+            <HBox prefHeight="39.0" prefWidth="1231.0" styleClass="hBoxNormal">
                <children>
                   <Label prefHeight="45.0" prefWidth="151.0" styleClass="LabelRation" text="Ration">
                      <HBox.margin>
@@ -28,7 +28,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="1231.0" styleClass="hBox">
+            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="1231.0" styleClass="hBoxNormal">
                <children>
                   <JFXButton onAction="#showAddRationWindow" prefHeight="33.0" prefWidth="179.0" text="+Ajouter">
                      <HBox.margin>
@@ -66,9 +66,9 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="TOP_CENTER" prefHeight="518.0" prefWidth="1199.0" styleClass="hBox">
+            <HBox alignment="TOP_CENTER" prefHeight="518.0" prefWidth="1199.0" styleClass="hBoxTable">
                <children>
-                  <TableView fx:id="table" prefHeight="518.0" prefWidth="1240.0">
+                  <TableView fx:id="table" prefHeight="518.0" prefWidth="1240.0" styleClass="hBoxTable">
                     <columns>
                       <TableColumn fx:id="col_bande" prefWidth="181.0" text="bande" />
                         <TableColumn fx:id="col_aliment" minWidth="0.0" prefWidth="233.0" text="aliment" />
@@ -90,9 +90,9 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox prefHeight="52.0" prefWidth="1231.0" spacing="80.0" styleClass="hBox">
+            <HBox prefHeight="52.0" prefWidth="1231.0" spacing="80.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" ripplerFill="BLACK" text="Supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" ripplerFill="#434141" text="Supprimer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="29.0" top="10.0" />
                      </HBox.margin></JFXButton>

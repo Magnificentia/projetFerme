@@ -128,6 +128,8 @@ public class MainItem extends Item {
         }
         System.out.println("rootItem="+rootItem.getChildren());
         menus=new JFXTreeView(rootItem);
+         menus.setPrefHeight(1500);
+         menus.setPrefWidth(1500);
         menus.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handle((TreeItem<IItem>)newValue)
         );
