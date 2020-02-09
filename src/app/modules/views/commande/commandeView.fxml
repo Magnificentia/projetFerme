@@ -18,24 +18,33 @@
          <children>
             <HBox prefHeight="29.0" prefWidth="1250.0" styleClass="hBoxNormal">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
+                  <Label prefHeight="21.0" prefWidth="151.0" styleClass="LabelRation" text="Commande">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
 
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" text="Ajouter une nouvelle commande" />
+                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" text="Ajouter une nouvelle commande">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin></JFXButton>
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
                         <TextField />
-                        <JFXButton>
+                        <Label text="Rechercher">
                            <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
+                              <FontAwesomeIconView glyphName="SEARCH" />
                            </graphic>
-                        </JFXButton>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
 

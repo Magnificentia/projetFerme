@@ -2,38 +2,77 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="536.0" prefWidth="1028.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.stockAliment.StockAlimentViewController">
+<AnchorPane prefHeight="768.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.stockAliment.StockAlimentViewController">
    <children>
-      <VBox prefHeight="536.0" prefWidth="797.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <VBox prefHeight="768.0" prefWidth="1290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
+                  <Label prefHeight="43.0" prefWidth="216.0" styleClass="LabelRation" text="StockAliment">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin></Label>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="300.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#onAjouterclicked" prefHeight="31.0" prefWidth="330.0" text="Ajouter un nouveau stock" />
-                  <HBox prefHeight="50.0" prefWidth="348.0">
-                     <children>
-                        <TextField fx:id="recherche" />
-                        <JFXButton>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" text="rechercher" />
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </HBox>
+                  <JFXButton onAction="#onAjouterclicked" prefHeight="31.0" prefWidth="208.0" text="Ajouter un nouveau stock">
+                     <HBox.margin>
+                        <Insets left="29.0" right="450.0" />
+                     </HBox.margin></JFXButton>
+                  <TextField fx:id="recherche" prefHeight="31.0" prefWidth="279.0" />
+                  <Label text="Rechercher">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" />
+                     </graphic>
+                  </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
-            <AnchorPane fx:id="anchor" />
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" />
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox fx:id="anchor" alignment="TOP_CENTER" prefHeight="580.0" prefWidth="1200.0" style="-fx-background-color: #F8F8FF;">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="80.0" styleClass="hBoxNormal">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+               <children>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Supprimer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children></HBox>
          </children>
       </VBox>
    </children>

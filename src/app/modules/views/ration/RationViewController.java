@@ -16,6 +16,7 @@ import app.modules.model.Ration;
 import app.modules.userType;
 import app.modules.views.Form;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
@@ -27,6 +28,8 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -36,6 +39,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 //putain
 public class RationViewController implements Initializable, IController {
     
@@ -279,10 +283,62 @@ class FormRation extends Form
         //on spécifie les différents champs
         super();
         List<Node> liste=new ArrayList();
-        liste.add(new JFXTextField());
-        JFXComboBox fournisseur=new JFXComboBox();
-        fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectFournisseurs()));
-        liste.add(fournisseur);
+        //liste.add(new JFXTextField());
+        
+        
+        ComboBox fournisseur=new ComboBox();
+        fournisseur.setPromptText("Choisir Bande");
+        HBox hfournisseur=new HBox();
+        hfournisseur.getChildren().add(fournisseur);
+        hfournisseur.setPrefWidth(739);
+        hfournisseur.setPrefHeight(75);
+        hfournisseur.setAlignment(Pos.CENTER);
+        hfournisseur.setStyle("-fx-background-color:#f8f8ff");
+        fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectBandes()));
+        
+        ComboBox aliment=new ComboBox();
+        aliment.setPromptText("Choisir Aliment");
+        HBox hali=new HBox();
+        hali.getChildren().add(aliment);
+        hali.setPrefWidth(739);
+        hali.setPrefHeight(75);
+        hali.setAlignment(Pos.CENTER);
+        hali.setStyle("-fx-background-color:#f8f8ff");
+        aliment.setItems(FXCollections.observableArrayList(DbManager.selectAliments()));
+        
+        JFXDatePicker date=new JFXDatePicker();
+        date.setPromptText("Choisir date");
+        HBox hdate=new HBox();
+        hdate.getChildren().add(date);
+        hdate.setPrefWidth(739);
+        hdate.setPrefHeight(75);
+        hdate.setAlignment(Pos.CENTER);
+        hdate.setStyle("-fx-background-color:#f8f8ff");
+        
+        JFXTextField Quantite=new JFXTextField();
+        Quantite.setPromptText("Choisir Quantite");
+        HBox hq=new HBox();
+        hq.getChildren().add(Quantite);
+        hq.setPrefWidth(739);
+        hq.setPrefHeight(75);
+        hq.setAlignment(Pos.CENTER);
+        hq.setStyle("-fx-background-color:#f8f8ff");
+        
+        JFXTextField QuantiteEau=new JFXTextField();
+        QuantiteEau.setPromptText("Choisir quantite eau");
+        HBox hqeau=new HBox();
+        hqeau.getChildren().add(QuantiteEau);
+        hqeau.setPrefWidth(739);
+        hqeau.setPrefHeight(85);
+        hqeau.setAlignment(Pos.CENTER);
+        hqeau.setStyle("-fx-background-color:#f8f8ff");
+        
+        liste.add(hfournisseur);
+        liste.add(hali);
+        liste.add(hdate);
+        liste.add(hq);
+        liste.add(hqeau);
+        //liste.setMargin(hqeau,new Insets(0,0,10,0));
         this.addFields(liste);
     }    
 

@@ -24,7 +24,7 @@
                      <children>
                         <ImageView fx:id="ImageViewPoussin" fitHeight="110.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ressources/chicken.png" />
+                              <Image url="@../../ressources/PouletVert.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -34,11 +34,11 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="757.0">
                      <children>
-                        <Label prefHeight="53.0" prefWidth="211.0" styleClass="label-farm" text="Vollaile">
+                        <Label prefHeight="53.0" prefWidth="118.0" styleClass="label-farm" text="Vollaile">
                            <font>
                               <Font size="36.0" />
                            </font></Label>
-                        <Label prefHeight="60.0" prefWidth="97.0" style="-fx-font-size: 50; -fx-font-weight: #FFD700;" styleClass="label-manager" text="d'or" textFill="#e9ed05" />
+                        <Label prefHeight="60.0" prefWidth="97.0" style="-fx-font-size: 50; -fx-font-weight: #FFD700;" styleClass="label-manager" text="d'or" textFill="#2aa15b" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="45.0" />
@@ -57,13 +57,13 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="757.0" spacing="10.0">
                      <children>
-                        <ImageView fitHeight="55.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="45.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../ressources/icons8-utilisateur-masculin-240.png" />
                            </image></ImageView>
-                        <JFXTextField fx:id="textFieldUserName" focusColor="#f2d415" labelFloat="true" onAction="#NameTextField" prefHeight="31.0" prefWidth="252.0" promptText="Enter your name" styleClass="textField">
+                        <JFXTextField fx:id="textFieldUserName" focusColor="#2aa15b" labelFloat="true" onAction="#NameTextField" prefHeight="31.0" prefWidth="252.0" promptText="Enter your name" styleClass="textField">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -76,19 +76,21 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="636.0" />
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="636.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="757.0" spacing="10.0">
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../ressources/Cadenas.png" />
                            </image></ImageView>
-                        <JFXPasswordField id="t" fx:id="textFieldPassword" labelFloat="true" prefHeight="25.0" prefWidth="240.0" promptText="Enter your password" style="-fx-font-size: 16;" />
+                        <JFXPasswordField id="t" fx:id="textFieldPassword" focusColor="#2aa15b" labelFloat="true" prefHeight="31.0" prefWidth="252.0" promptText="Enter your password" style="-fx-font-size: 16;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="612.0" spacing="75.0">
                      <children>
-                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Login" />
+                        <JFXButton fx:id="buttonLogin" onAction="#buttonLoginOnClick" prefHeight="51.0" prefWidth="105.0" text="Login">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin></JFXButton>
                         <JFXButton fx:id="buttonCancel" onAction="#buttonCancelOnClick" prefHeight="51.0" prefWidth="105.0" text="Cancel">
                            <HBox.margin>
                               <Insets left="25.0" />

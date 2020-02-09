@@ -23,10 +23,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 //putain
 public class MedicViewController extends BaseView<Medicament> implements Initializable, IController {
     
@@ -34,7 +37,7 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
     private TextField rechercher;
     
     @FXML
-    private AnchorPane anchor;
+    private HBox anchor;//Mouen a change ca en HBOX et a changer ces caracteristiques directement dans le fichier FXML
    
 
     @Override
@@ -60,18 +63,20 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
         
         TableColumn<Medicament,String> col_nom=new TableColumn<>("designation");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomFourn"));
+        col_nom.setPrefWidth(250);
         
         TableColumn<Medicament,String> col_prix=new TableColumn<>("prix");
         col_prix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        col_prix.setPrefWidth(250);
         
         TableColumn<Medicament,Integer> col_duree=new TableColumn<>("durée");
         col_duree.setCellValueFactory(new PropertyValueFactory<>("periode"));
-        
+        col_duree.setPrefWidth(250);
         
         
         TableColumn<Medicament,Integer> col_desc=new TableColumn<>("description");
         col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));//voir comment ajouter une liste de numeros
-        
+        col_desc.setPrefWidth(430);
 
         table.getColumns().addAll(col_nom,col_prix,col_duree,col_desc);
     }
@@ -161,21 +166,47 @@ class FormMedicament extends Form
         
         designation=new JFXTextField();
         designation.setPromptText("designation");
+        HBox hdesignation=new HBox();
+        hdesignation.getChildren().add(designation);
+        hdesignation.setPrefWidth(739);
+        hdesignation.setPrefHeight(75);
+        hdesignation.setAlignment(Pos.CENTER);
+        hdesignation.setStyle("-fx-background-color:#f8f8ff");
         
         prix=new JFXTextField();
         prix.setPromptText("prix");
+        HBox hprix=new HBox();
+        hprix.getChildren().add(prix);
+        hprix.setPrefWidth(739);
+        hprix.setPrefHeight(75);
+        hprix.setAlignment(Pos.CENTER);
+        hprix.setStyle("-fx-background-color:#f8f8ff");
         
         duree=new JFXTextField();
         duree.setPromptText("duree");
+        HBox hduree=new HBox();
+        hduree.getChildren().add(duree);
+        hduree.setPrefWidth(739);
+        hduree.setPrefHeight(75);
+        hduree.setAlignment(Pos.CENTER);
+        hduree.setStyle("-fx-background-color:#f8f8ff");
         
         description=new JFXTextField();
         description.setPromptText("description");
+        HBox hdescription=new HBox();
+        hdescription.getChildren().add(description);
+        hdescription.setPrefWidth(739);
+        hdescription.setPrefHeight(195);
+        hdescription.setAlignment(Pos.TOP_CENTER);
+        hdescription.setStyle("-fx-background-color:#f8f8ff");
+        hdescription.setMargin(description,new Insets(20,0,0,0));
         
         List a=new ArrayList();
-        a.add(designation);
-        a.add(prix);
-        a.add(duree);
-        a.add(description);
+        a.add(hdesignation);
+        a.add(hprix);
+        a.add(hduree);
+        a.add(hdescription);
+        //a.setMargin(hdescription,new Insets(30,0,0,0));
         addFields(a);
         if(medic!=null)
         {

@@ -26,10 +26,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 //putain
 public class ClientViewController extends BaseView<Client> implements Initializable, IController {
    
@@ -37,7 +40,7 @@ public class ClientViewController extends BaseView<Client> implements Initializa
     private TextField recherche;
 
     @FXML
-    private AnchorPane anchor;
+    private HBox anchor; // mouen a change ca en hbox et les caracteristiques sont dans le fichier fxml de la vue
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -67,16 +70,19 @@ public class ClientViewController extends BaseView<Client> implements Initializa
     
     public void createTable()
     {
-        table.setPrefWidth(800);
+        //table.setPrefWidth(800);
         
         TableColumn<Client,String> col_nom=new TableColumn<>("nom");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+        col_nom.setPrefWidth(400);
         
         TableColumn<Client,String> col_adresse=new TableColumn<>("adresse");
         col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col_adresse.setPrefWidth(400);
         
         TableColumn<Client,Integer> col_tel=new TableColumn<>("tel");
         col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        col_tel.setPrefWidth(380);
         
         
         table.getColumns().addAll(col_nom,col_adresse,col_tel);
@@ -163,19 +169,38 @@ class FormClient extends Form
     {
         designation=new JFXTextField();
         designation.setPromptText("designation");
+        HBox hdesignation=new HBox();
+        hdesignation.getChildren().add(designation);
+        hdesignation.setPrefWidth(739);
+        hdesignation.setPrefHeight(75);
+        hdesignation.setAlignment(Pos.CENTER);
+        hdesignation.setStyle("-fx-background-color:#f8f8ff");
+        //hdescription.setMargin(description,new Insets(20,0,0,0));
         
         adresse=new JFXTextField();
         adresse.setPromptText("adresse");
-        
+        HBox hadresse=new HBox();
+        hadresse.getChildren().add(adresse);
+        hadresse.setPrefWidth(739);
+        hadresse.setPrefHeight(75);
+        hadresse.setAlignment(Pos.CENTER);
+        hadresse.setStyle("-fx-background-color:#f8f8ff");
         
         telephone=new JFXTextField();
         telephone.setPromptText("telephone");
+        HBox htelephone=new HBox();
+        htelephone.getChildren().add(telephone);
+        htelephone.setPrefWidth(739);
+        htelephone.setPrefHeight(255);
+        htelephone.setAlignment(Pos.TOP_CENTER);
+        htelephone.setStyle("-fx-background-color:#f8f8ff");
+        htelephone.setMargin(telephone,new Insets(20,0,0,0));
    
         List a=new ArrayList();
-        a.add(designation);
-        a.add(adresse);
+        a.add(hdesignation);
+        a.add(hadresse);
 
-        a.add(telephone);
+        a.add(htelephone);
         addFields(a);
     }
     

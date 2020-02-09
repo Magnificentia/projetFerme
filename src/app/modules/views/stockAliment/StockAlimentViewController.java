@@ -32,8 +32,11 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
@@ -42,6 +45,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //putain
@@ -53,7 +57,7 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
 
     
     @FXML
-    private AnchorPane anchor;
+    private HBox anchor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -61,7 +65,7 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         anchor.getChildren().add(item);
         this.Search();
         populateTableRation();
-        table.setPrefWidth(800);
+        //table.setPrefWidth(800);
         
 
     }
@@ -76,18 +80,23 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         
         TableColumn<StockAliment,String> col_nom=new TableColumn<>("designation");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomStock"));
+        col_nom.setPrefWidth(180);
         
         TableColumn<StockAliment,String> col_aliment=new TableColumn<>("aliment");
         col_aliment.setCellValueFactory(new PropertyValueFactory<>("nomAli"));
+        col_aliment.setPrefWidth(233);
         
         TableColumn<StockAliment,Integer> col_qte=new TableColumn<>("quantité");
         col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));//voir comment ajouter une liste de numeros
+        col_qte.setPrefWidth(237);
         
         TableColumn<StockAliment,Integer> col_date=new TableColumn<>("date d'arrivage");
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateArrivage"));
+        col_date.setPrefWidth(303);
         
         TableColumn<StockAliment,Integer> col_fourn=new TableColumn<>("fournisseur");
         col_fourn.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
+        col_fourn.setPrefWidth(226);
 
         table.getColumns().addAll(col_nom,col_aliment,col_date,col_fourn,col_qte);
     }
@@ -224,34 +233,68 @@ class FormStockAliment extends Form
     private final JFXDatePicker date;
     private final JFXTextField designation;
     private final JFXTextField quantite;
-    private final JFXComboBox<Aliment> aliment;
-    private final JFXComboBox<Fournisseur> fournisseur;
+    private final ComboBox<Aliment> aliment;
+    private final ComboBox<Fournisseur> fournisseur;
     
     public FormStockAliment(StockAliment stock)
     {
         this.stock=stock;
         designation=new JFXTextField();
         designation.setPromptText("designation");
+        HBox hdesignation=new HBox();
+        hdesignation.getChildren().add(designation);
+        hdesignation.setPrefWidth(739);
+        hdesignation.setPrefHeight(75);
+        hdesignation.setAlignment(Pos.CENTER);
+        hdesignation.setStyle("-fx-background-color:#f8f8ff");
         
         quantite=new JFXTextField();
         quantite.setPromptText("quantite");
+        HBox hquantite=new HBox();
+        hquantite.getChildren().add(quantite);
+        hquantite.setPrefWidth(739);
+        hquantite.setPrefHeight(115);
+        hquantite.setAlignment(Pos.TOP_CENTER);
+        hquantite.setStyle("-fx-background-color:#f8f8ff");
+        hquantite.setMargin(quantite,new Insets(20,0,0,0));
         
-        aliment=new JFXComboBox<>();
+        
+        aliment=new ComboBox<>();
         aliment.setPromptText("aliment");
         aliment.setItems(FXCollections.observableArrayList(DbManager.selectAliments()));
+        HBox haliment=new HBox();
+        haliment.getChildren().add(aliment);
+        haliment.setPrefWidth(739);
+        haliment.setPrefHeight(75);
+        haliment.setAlignment(Pos.CENTER);
+        haliment.setStyle("-fx-background-color:#f8f8ff");
         
-        fournisseur=new JFXComboBox<>();
+        fournisseur=new ComboBox<>();
         fournisseur.setPromptText("fournisseur");
         fournisseur.setItems(FXCollections.observableArrayList(DbManager.selectFournisseurs()));
+        HBox hfournisseur=new HBox();
+        hfournisseur.getChildren().add(fournisseur);
+        hfournisseur.setPrefWidth(739);
+        hfournisseur.setPrefHeight(75);
+        hfournisseur.setAlignment(Pos.CENTER);
+        hfournisseur.setStyle("-fx-background-color:#f8f8ff");
         
         date=new JFXDatePicker();
+        date.setPromptText("date");
+        HBox hdate=new HBox();
+        hdate.getChildren().add(date);
+        hdate.setPrefWidth(739);
+        hdate.setPrefHeight(75);
+        hdate.setAlignment(Pos.CENTER);
+        hdate.setStyle("-fx-background-color:#f8f8ff");
         
         List a=new ArrayList();
-        a.add(designation);
-        a.add(aliment);
-        a.add(quantite);
-        a.add(date);
-        a.add(fournisseur);
+        a.add(hdesignation);
+        a.add(haliment);
+        a.add(hdate);
+        a.add(hfournisseur);
+        a.add(hquantite);
+        
         addFields(a);
         if(stock!=null)
         {

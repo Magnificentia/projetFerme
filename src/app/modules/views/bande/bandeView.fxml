@@ -1,35 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="608.0" prefWidth="1032.0" style="-fx-background-image: fournisseur.png;" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.bande.BandeViewController">
+<AnchorPane prefHeight="768.0" prefWidth="1290.0" style="-fx-background-image: fournisseur.png;" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.bande.BandeViewController">
    <children>
-      <VBox prefHeight="536.0" prefWidth="797.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0">
+      <VBox layoutX="-1.0" layoutY="1.0" prefHeight="768.0" prefWidth="1290.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <children>
-            <HBox prefHeight="41.0" prefWidth="992.0">
+            <HBox prefHeight="41.0" prefWidth="992.0" styleClass="hBoxNormal">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" text="Users" />
+                  <Label prefHeight="41.0" prefWidth="145.0" styleClass="LabelRation" text="Bande">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin></Label>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
-            <HBox prefHeight="26.0" prefWidth="992.0" spacing="100.0">
+            <HBox prefHeight="26.0" prefWidth="992.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#onAjouterClicked" prefHeight="25.0" prefWidth="143.0" text="ajouter une bande" />
-                  <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="270.0" text="informations" />
-                  <HBox prefHeight="31.0" prefWidth="385.0">
-                     <children>
-                        <TextField prefHeight="31.0" prefWidth="235.0" />
-                        <Label prefHeight="36.0" prefWidth="114.0" text="Rechercher" />
-                     </children>
-                  </HBox>
+                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="246.0" text="Ajouter une bande">
+                     <HBox.margin>
+                        <Insets left="29.0" right="125.0" />
+                     </HBox.margin></JFXButton>
+                  <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="237.0" text="informations" />
+                  <TextField prefHeight="31.0" prefWidth="235.0">
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="36.0" prefWidth="108.0" text="Rechercher">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" />
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
-            <AnchorPane fx:id="AnchorTable" />
-            <HBox prefHeight="42.0" prefWidth="992.0" spacing="50.0" />
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox fx:id="AnchorTable" alignment="TOP_CENTER" prefHeight="580.0" prefWidth="1200.0" style="-fx-background-color: #F8F8FF;">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="57.0" prefWidth="1210.0" spacing="80.0" styleClass="hBoxNormal">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+               <children>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Supprimer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children></HBox>
          </children>
       </VBox>
    </children>

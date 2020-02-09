@@ -21,6 +21,7 @@ import app.modules.views.BaseView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
@@ -29,6 +30,8 @@ import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -44,6 +47,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -53,7 +57,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
 
 
     @FXML
-    private AnchorPane AnchorTable;
+    private HBox AnchorTable;//Mouen a change ça en hbox et a dans le fxml de bande lui a donne des styles directement;
     @FXML
     private JFXButton informations;
         
@@ -64,6 +68,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         //populateTableBande();
         //important d'ajouter le item là, même si tu ne sais pas d'où ça sort ...c'est l'ensemble (table+pagination)
         AnchorTable.getChildren().addAll(item);
+      
         
     }
     
@@ -78,33 +83,43 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
     
     public void createTable()
     {
-        table.setPrefWidth(800);
+        
         
         TableColumn<Bande,String> col_nom=new TableColumn<>("nom");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
+        col_nom.setPrefWidth(177);
+   
         
         TableColumn<Bande,String> col_achat=new TableColumn<>("prix d'achat");
         col_achat.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
+        col_achat.setPrefWidth(100);
         
         TableColumn<Bande,Integer> col_age=new TableColumn<>("age");
         col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        col_age.setPrefWidth(100);
         
         TableColumn<Bande,String> col_date=new TableColumn<>("date");
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateDemarrage"));
+        col_date.setPrefWidth(150);
         
         TableColumn<Bande,Integer> col_quantite=new TableColumn<>("quantité");
         col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        col_quantite.setPrefWidth(100);
         
         TableColumn<Bande,String> col_batiment=new TableColumn<>("batiment");
         col_batiment.setCellValueFactory(new PropertyValueFactory<>("nomBatiment"));
+        col_batiment.setPrefWidth(200);
         
         TableColumn<Bande,String> col_fournisseur=new TableColumn<>("fournisseur");
         col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
+        col_fournisseur.setPrefWidth(200);
         
         TableColumn<Bande,String> col_race=new TableColumn<>("race"); 
         col_race.setCellValueFactory(new PropertyValueFactory<>("nomRace"));
+        col_race.setPrefWidth(150);
         
         table.getColumns().addAll(col_nom,col_achat,col_age,col_date,col_quantite,col_batiment,col_fournisseur,col_race);
+        
     }
     @FXML
     public void onInformationsClicked(ActionEvent event)
@@ -168,25 +183,42 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
 
 final class InformationsBande extends VBox
 {
-    private TabPane t;
+    private JFXTabPane t;
     private Bande bande;
     
     /*formulaire*/
     JFXTextField qtedepart;
     JFXTextField prix_dachat;
-    JFXComboBox<Batiment> batiment;
-    JFXComboBox<Fournisseur> fournisseur;
-    JFXComboBox<Race> race;
+    ComboBox<Batiment> batiment;
+    ComboBox<Fournisseur> fournisseur;
+    ComboBox<Race> race;
     
     
     
     public InformationsBande(Bande bande)
     {
         super();
-        t=new TabPane();
+        t=new JFXTabPane();
         this.bande=bande;
         JFXButton val=new JFXButton("valider");
-        this.getChildren().addAll(t,val);
+        val.setPrefWidth(107);
+        val.setPrefHeight(51);
+        
+        JFXButton ann=new JFXButton("annuler");
+        ann.setPrefWidth(107);
+        ann.setPrefHeight(51);
+        
+        HBox hbuttonVal=new HBox();
+        
+        hbuttonVal.getChildren().addAll(val,ann);
+        hbuttonVal.setSpacing(65);
+        hbuttonVal.setAlignment(Pos.CENTER);
+        hbuttonVal.setStyle("-fx-background-color:#f8f8ff");
+        hbuttonVal.setPrefHeight(600);
+        
+        
+        this.getChildren().addAll(t,hbuttonVal);
+        this.setMargin( hbuttonVal, new Insets(10,20, 10, 20));
         t.getTabs().addAll(createInfosBase("informations de base"),createInfosMaladies("maladies et décès"),createInfosVente("vente"));
         val.setOnAction(e->{
           //informations
@@ -224,37 +256,76 @@ final class InformationsBande extends VBox
         
         qtedepart=new JFXTextField();
         qtedepart.setPromptText("Quantité de depart");
+        HBox hq=new HBox();
+        hq.getChildren().add(qtedepart);
+        hq.setAlignment(Pos.CENTER);
+        hq.setStyle("-fx-background-color:#f8f8ff");
+        hq.setPrefHeight(120);
                
         prix_dachat=new JFXTextField();
         prix_dachat.setPromptText("prix d'achat");
+        HBox ha=new HBox();
+        ha.getChildren().add(prix_dachat);
+        ha.setAlignment(Pos.CENTER);
+        ha.setStyle("-fx-background-color:#f8f8ff");
+        ha.setPrefHeight(120);
         
         
         JFXTextField prixvente=new JFXTextField();
         prixvente.setPromptText("prix de vente");
+        HBox hP=new HBox();
+        hP.getChildren().add(prixvente);
+        hP.setAlignment(Pos.CENTER);
+        hP.setStyle("-fx-background-color:#f8f8ff");
+        hP.setPrefHeight(120);
         
         JFXDatePicker dateachat=new JFXDatePicker();
         dateachat.setPromptText("date d'achat");
+        HBox hdate=new HBox();
+        hdate.getChildren().add(dateachat);
+        hdate.setAlignment(Pos.CENTER);
+        hdate.setStyle("-fx-background-color:#f8f8ff");
+        hdate.setPrefHeight(120);
         //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         //LocalDate localDate = LocalDate.parse(this.bande.getDateDemarrage(), formatter);
         //dateachat.setValue(localDate);
         
-        batiment=new JFXComboBox<>();
+        batiment=new ComboBox<>();
         batiment.setPromptText("batiment");
         batiment.getItems().addAll(DbManager.selectBatiments());
+        HBox hbat=new HBox();
+        hbat.getChildren().add(batiment);
+        hbat.setAlignment(Pos.CENTER);
+        hbat.setStyle("-fx-background-color:#f8f8ff");
+        hbat.setPrefHeight(120);
         
         
-        fournisseur=new JFXComboBox<>();
+        fournisseur=new ComboBox<>();
         fournisseur.setPromptText("fournisseur");
         fournisseur.getItems().addAll(DbManager.selectFournisseurs());//(this.bande.getFourn_id()));
+        HBox hfour=new HBox();
+        hfour.getChildren().add(fournisseur);
+        hfour.setAlignment(Pos.CENTER);
+        hfour.setStyle("-fx-background-color:#f8f8ff");
+        hfour.setPrefHeight(120);
         
-        
-        race=new JFXComboBox<>();
+        race=new ComboBox<>();
         race.setPromptText("race");
         race.getItems().addAll(DbManager.selectRaces());
+        HBox hrace=new HBox();
+        hrace.getChildren().add(race);
+        hrace.setAlignment(Pos.CENTER);
+        hrace.setStyle("-fx-background-color:#f8f8ff");
+        hrace.setPrefHeight(120);
         //race.getSelectionModel().select(DbManagerNnane.selectRaceById(this.bande.getRace_id()));
         
         JFXTextField qteStock=new JFXTextField();
         qteStock.setPromptText("quantité en stock");
+        HBox hqteStock=new HBox();
+        hqteStock.getChildren().add(qteStock);
+        hqteStock.setAlignment(Pos.CENTER);
+        hqteStock.setStyle("-fx-background-color:#f8f8ff");
+        hqteStock.setPrefHeight(120);
         
         //populating
         if(this.bande!=null)
@@ -266,8 +337,21 @@ final class InformationsBande extends VBox
             fournisseur.getSelectionModel().select(DbManager.selectFournisseurById(this.bande.getFourn_id()));
             qteStock.setText(new Integer(this.bande.getQte()).toString());
         }
+                
         
-        v.getChildren().addAll(qtedepart,prix_dachat,prixvente,dateachat,batiment,fournisseur,race,qteStock);
+        v.setStyle("-fx-background-color:#e3e9ee");
+        v.getChildren().addAll(hq,ha,hP,hdate,hbat,hfour,hrace,hqteStock);
+        v.setMargin(hq,new Insets(10,20,0,20));
+         v.setMargin(ha, new Insets(0, 20, 0, 20) );
+         v.setMargin(hP, new Insets(0, 20, 0, 20) );
+         v.setMargin(hdate, new Insets(0, 20, 0, 20) );
+         v.setMargin(hbat, new Insets(0, 20, 0, 20) );
+         v.setMargin(hfour, new Insets(0, 20, 0, 20) );
+         v.setMargin(hrace, new Insets(0, 20, 0, 20) );
+         v.setMargin(hqteStock, new Insets(0, 20, 0, 20) );
+         
+        //v.setSpacing(25);
+        //v.setStyle("-fx-alignment:center");
         
         Tab t =new Tab();
         t.setClosable(false);
@@ -281,13 +365,16 @@ final class InformationsBande extends VBox
         VBox v=new VBox();
         //TODO
         TableView tableMaladie=new TableView<>();
+        //tableMaladie.setPrefWidth(150);
         
         TableColumn<Bande,String> col_nombre=new TableColumn<>("nombre de malades");
         col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
+        col_nombre.setPrefWidth(350);
         
         TableColumn<Bande,String> col_maladie=new TableColumn<>("maladie");
         col_maladie.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
         col_maladie.setCellFactory(ComboBoxTableCell.forTableColumn("test","test1"));
+        col_maladie.setPrefWidth(366);
         
         
         tableMaladie.getColumns().addAll(col_nombre,col_maladie);
@@ -295,19 +382,35 @@ final class InformationsBande extends VBox
         
         
         TableView tableDeces=new TableView<>();
+        //tableDeces.setPrefWidth(150);
         
         TableColumn<Bande,String> col_nombreDeces=new TableColumn<>("nombre de deces");
         col_nombre.setCellValueFactory(new PropertyValueFactory<>("maladie"));
+        col_nombreDeces.setPrefWidth(350);
         
         TableColumn<Bande,String> col_cause=new TableColumn<>("cause");
         col_maladie.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
+        col_cause.setPrefWidth(367);
         
         tableDeces.getColumns().addAll(col_nombreDeces,col_cause);
         
         Tab t =new Tab();
         t.setClosable(false);
         t.setGraphic(new Label(titre));
-        v.getChildren().addAll(tableMaladie,tableDeces);
+        
+        HBox htabMaladie =new HBox();
+        HBox htableDeces=new HBox();
+        
+        htabMaladie.getChildren().add(tableMaladie);
+        //htabMaladie.setStyle("-fx-background:#f8f8ff");
+        htableDeces.getChildren().add(tableDeces);
+        //htableDeces.setStyle("-fx-background:#f8f8ff");
+        
+        htabMaladie.setMargin(tableMaladie, new Insets(10, 20, 10, 20) );
+        htableDeces.setMargin(tableDeces, new Insets(10, 20, 10, 20) );
+        v.getChildren().addAll(htabMaladie,htableDeces);
+        v.setSpacing(2);
+        
         
         t.setContent(v);
         return t;
@@ -326,9 +429,6 @@ final class InformationsBande extends VBox
     {
         VBox v=new VBox();
         //TODO
-        
-        
-        
         Tab t =new Tab();
         t.setClosable(false);
         t.setGraphic(new Label(titre));
@@ -344,7 +444,8 @@ final class InformationsBande extends VBox
         dialogStage.setTitle("Ajouter un nouveau stock");
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(Projet.getMainStage());
-        Scene scene = new Scene(this,600,500);
+        Scene scene = new Scene(this,757,707);
+        scene.getStylesheets().add("app/modules/views/global.css");
         dialogStage.setScene(scene);
 
         // Show the dialog and wait until the user closes it

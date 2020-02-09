@@ -28,7 +28,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="1231.0" styleClass="hBoxNormal">
+            <HBox prefHeight="47.0" prefWidth="1231.0" spacing="20.0" styleClass="hBoxNormal">
                <children>
                   <JFXButton onAction="#showAddRationWindow" prefHeight="33.0" prefWidth="179.0" text="+Ajouter">
                      <HBox.margin>
@@ -36,24 +36,24 @@
                      </HBox.margin></JFXButton>
                   <ComboBox fx:id="choice_Bande" onAction="#OnClickChoisirBande" prefHeight="31.0" prefWidth="208.0">
                      <HBox.margin>
-                        <Insets left="29.0" right="75.0" />
+                        <Insets left="29.0" />
                      </HBox.margin>
                   </ComboBox>
                   <ComboBox fx:id="choice_aliment" onAction="#OnClickChoisirAliment" prefHeight="31.0" prefWidth="222.0">
                      <HBox.margin>
-                        <Insets right="125.0" />
+                        <Insets />
                      </HBox.margin></ComboBox>
                   <TextField fx:id="recherche" onAction="#Search" prefHeight="31.0" prefWidth="251.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <Label prefHeight="31.0" prefWidth="106.0" text="Rechercher">
+                  <Label prefHeight="31.0" prefWidth="91.0" text="Rechercher">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" wrappingWidth="11.142857551574707" />
                      </graphic>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="10.0" right="15.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -72,9 +72,9 @@
                     <columns>
                       <TableColumn fx:id="col_bande" prefWidth="181.0" text="bande" />
                         <TableColumn fx:id="col_aliment" minWidth="0.0" prefWidth="233.0" text="aliment" />
-                        <TableColumn fx:id="col_date" prefWidth="261.0" text="date" />
-                        <TableColumn fx:id="col_quantite" prefWidth="269.0" text="quantite" />
-                        <TableColumn fx:id="col_eau" prefWidth="235.0" text="eau" />
+                        <TableColumn fx:id="col_date" prefWidth="303.0" text="date" />
+                        <TableColumn fx:id="col_quantite" minWidth="0.0" prefWidth="237.0" text="quantite" />
+                        <TableColumn fx:id="col_eau" prefWidth="226.0" text="eau" />
                     </columns>
                      <HBox.margin>
                         <Insets top="5.0" />

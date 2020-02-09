@@ -23,10 +23,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 //putain
 public class FournisseurViewController extends BaseView<Fournisseur> implements Initializable, IController {
 
@@ -35,7 +38,7 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
     private TextField rechercher;
      
     @FXML
-    private AnchorPane anchor;
+    private HBox anchor;//mouen a change ca en hbox et a gerer ces caracteristiques dans un fichier fxml
 
 
     @FXML
@@ -46,7 +49,7 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
         createTable();
 
         anchor.getChildren().add(item);
-        table.setPrefWidth(800);
+       // table.setPrefWidth(800);
         System.out.println("FOURNISSEUR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         
         
@@ -73,25 +76,31 @@ public class FournisseurViewController extends BaseView<Fournisseur> implements 
     
     public void createTable()
     {
-        table.setPrefWidth(800);
+        //table.setPrefWidth(800);
         
         TableColumn<Fournisseur,String> col_nom=new TableColumn<>("designation");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomFourn"));
+        col_nom.setPrefWidth(200);
         
         TableColumn<Fournisseur,String> col_adresse=new TableColumn<>("adresse");
         col_adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        col_adresse.setPrefWidth(150);
         
         TableColumn<Fournisseur,Integer> col_mail=new TableColumn<>("e-mail");
         col_mail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        col_mail.setPrefWidth(240);
         
         TableColumn<Fournisseur,Integer> col_siteweb=new TableColumn<>("siteweb");
         col_siteweb.setCellValueFactory(new PropertyValueFactory<>("siteweb"));
+        col_siteweb.setPrefWidth(250);
         
         
         TableColumn<Fournisseur,Integer> col_tel=new TableColumn<>("telephone");
         col_tel.setCellValueFactory(new PropertyValueFactory<>("telephone"));//voir comment ajouter une liste de numeros
+        col_tel.setPrefWidth(140);
         
         TableColumn<Fournisseur,String> col_type=new TableColumn<>("type de fournisseur");
+        col_type.setPrefWidth(200);
         
 
         table.getColumns().addAll(col_nom,col_adresse,col_mail,col_siteweb,col_tel,col_type);
@@ -185,26 +194,58 @@ class FormFournisseur extends Form
     {
         designation=new JFXTextField();
         designation.setPromptText("designation");
+        HBox hdesignation=new HBox();
+        hdesignation.getChildren().add(designation);
+        hdesignation.setPrefWidth(739);
+        hdesignation.setPrefHeight(75);
+        hdesignation.setAlignment(Pos.CENTER);
+        hdesignation.setStyle("-fx-background-color:#f8f8ff");
+        //hdescription.setMargin(description,new Insets(20,0,0,0));
         
         adresse=new JFXTextField();
         adresse.setPromptText("adresse");
+        HBox hadresse=new HBox();
+        hadresse.getChildren().add(adresse);
+        hadresse.setPrefWidth(739);
+        hadresse.setPrefHeight(75);
+        hadresse.setAlignment(Pos.CENTER);
+        hadresse.setStyle("-fx-background-color:#f8f8ff");
         
         email=new JFXTextField();
         email.setPromptText("mail");
+        HBox hemail=new HBox();
+        hemail.getChildren().add(email);
+        hemail.setPrefWidth(739);
+        hemail.setPrefHeight(75);
+        hemail.setAlignment(Pos.CENTER);
+        hemail.setStyle("-fx-background-color:#f8f8ff");
         
         siteweb=new JFXTextField();
         siteweb.setPromptText("siteweb");
+        HBox hsiteweb=new HBox();
+        hsiteweb.getChildren().add(siteweb);
+        hsiteweb.setPrefWidth(739);
+        hsiteweb.setPrefHeight(75);
+        hsiteweb.setAlignment(Pos.CENTER);
+        hsiteweb.setStyle("-fx-background-color:#f8f8ff");
         
         
         telephone=new JFXTextField();
         telephone.setPromptText("telephone");
+        HBox htelephone=new HBox();
+        htelephone.getChildren().add(telephone);
+        htelephone.setPrefWidth(739);
+        htelephone.setPrefHeight(115);
+        htelephone.setAlignment(Pos.TOP_CENTER);
+        htelephone.setStyle("-fx-background-color:#f8f8ff");
+        htelephone.setMargin(telephone,new Insets(20,0,0,0));
    
         List a=new ArrayList();
-        a.add(designation);
-        a.add(adresse);
-        a.add(email);
-        a.add(siteweb);
-        a.add(telephone);
+        a.add(hdesignation);
+        a.add(hadresse);
+        a.add(hemail);
+        a.add(hsiteweb);
+        a.add(htelephone);
         addFields(a);
     }
     

@@ -15,6 +15,9 @@ import java.util.List;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
@@ -37,26 +40,48 @@ public class MainItem extends Item {
     public MainItem(String name,List menus)
     {
         super(name);
-        
-        logo=new ImageView();
-        logo.setFitHeight(50);
-        logo.setFitWidth(50);
-        VBox v=new VBox();
+       
         
         gridpane=new GridPane();//pour la mise en page
-        gridpane.getColumnConstraints().add(new ColumnConstraints(150));//specifie la longueur (horizontalement) de l'espace pour menus et icone
-        gridpane.getRowConstraints().add(new RowConstraints(80));//specifie la largeur (verticalement) de l'espace pour le header
+        gridpane.getColumnConstraints().add(new ColumnConstraints(200));//specifie la longueur (horizontalement) de l'espace pour menus et icone
+        gridpane.getRowConstraints().add(new RowConstraints(55));//specifie la largeur (verticalement) de l'espace pour le header
         
-        v.getChildren().addAll(logo,new Label("slogan"));
-        gridpane.add(v, 0, 0);
-        gridpane.add(new Label("icone et label"), 1, 0);
+        createHeader();
         
         view=new AnchorPane();        
         
         this.reload();
         loadMenus(menus);
     }
-    
+    public void createHeader()
+    {
+         
+        logo=new ImageView("app/modules/ressources/MenuEnBlanc.png");
+        logo.setFitHeight(20);
+        logo.setFitWidth(20);
+        Label Lmenu=new Label("Menu");
+        Lmenu.setTextFill(Color.web("#F8F8FF"));
+        Lmenu.setStyle("-fx-font-size: 25px");
+        
+        
+        
+        HBox h=new HBox();
+        
+        h.getChildren().addAll(Lmenu,logo);
+        h.setSpacing(95);
+        h.setMargin(Lmenu,new Insets(10,0,0,10));
+        h.setMargin(logo,new Insets(16,10,0,0));
+        h.setStyle("-fx-background-color:#2aa15b");
+       
+        gridpane.add(h, 0, 0);
+        
+        HBox h2=new HBox();
+        h2.getChildren().addAll(new Label("icone et label"));
+        h2.setStyle("-fx-background-color:#2aa15b");
+        
+        gridpane.add(h2, 1, 0);
+        
+    }
     public static void setLogo(Image image)
     {
         logo.setImage(image);

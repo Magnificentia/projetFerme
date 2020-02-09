@@ -10,6 +10,8 @@ import app.modules.MainItem;
 import com.jfoenix.controls.JFXButton;
 import java.util.List;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -38,17 +40,49 @@ public abstract class Form extends Pane{
         super();
         validate=new JFXButton("valider");
         cancel=new JFXButton("annuler");
+        
+        validate.setPrefWidth(107);
+        validate.setPrefHeight(51);
+        
+        cancel.setPrefWidth(107);
+        cancel.setPrefHeight(51);
+        
         content=new VBox();
+        content.setStyle("-fx-background-color:#f8f8ff");
         VBox formBox=new VBox();
-        HBox h=new HBox();
+        /*formBox.setPrefHeight(705);
+        formBox.setPrefHeight(757);
+        */
+        
+        //ajout image et configuration hbox
         System.out.println(path);
         ImageView image=new ImageView(new Image(Projet.class.getResource(path).toString(),30,30,false,false));
-        formBox.getChildren().add(image);
-        formBox.getChildren().add(content);
-        //ajout des boutons
+        HBox himage=new HBox();
+        himage.getChildren().add(image);
+        himage.setPrefWidth(739);
+        himage.setPrefHeight(145);
+        himage.setAlignment(Pos.CENTER);
+        himage.setStyle("-fx-background-color:#f8f8ff");
+        
+        //ajout des boutons et configuration hbox
+        HBox h=new HBox();
         h.getChildren().add(validate);
         h.getChildren().add(cancel);
+        h.setSpacing(65);
+        h.setPrefWidth(739);
+        h.setPrefHeight(75);
+        h.setAlignment(Pos.CENTER);
+        h.setStyle("-fx-background-color:#f8f8ff");
+        
+        formBox.getChildren().add(himage);
+        formBox.getChildren().add(content);
         formBox.getChildren().add(h);
+        //formBox.setSpacing(15);
+        formBox.setMargin( h, new Insets(10,10, 10, 10));
+        formBox.setMargin( content, new Insets(0,10, 5, 10));
+        formBox.setMargin( himage, new Insets(10,10, 0, 10));
+        formBox.setAlignment(Pos.CENTER);
+        
         
         this.validate.setOnAction(event->{onValidateClick();});
         this.cancel.setOnAction(event->{onCancelClick();});
@@ -86,7 +120,8 @@ public abstract class Form extends Pane{
         dialogStage.setTitle("Ajouter un nouveau stock");
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(Projet.getMainStage());
-        Scene scene = new Scene(this,600,500);
+        Scene scene = new Scene(this,757,682);
+        scene.getStylesheets().add("app/modules/views/global.css");;
         dialogStage.setScene(scene);
 
         // Show the dialog and wait until the user closes it
