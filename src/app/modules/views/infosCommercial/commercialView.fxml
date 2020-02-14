@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="596.0" prefWidth="825.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.infosCommercial.CommercialViewController">
+   <children>
+      <JFXMasonryPane prefHeight="596.0" prefWidth="964.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="197.0" prefWidth="430.0" style="-fx-background-color: blue;">
+               <children>
+                  <Label contentDisplay="CENTER" layoutX="70.0" layoutY="71.0" prefHeight="106.0" prefWidth="291.0" text="NOMBRE D' OEUFS EN STOCK" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="370.0" style="-fx-background-color: yellow;">
+               <children>
+                  <Label layoutX="96.0" layoutY="110.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="318.0" prefWidth="795.0" style="-fx-background-color: violet;">
+               <children>
+                  <Label layoutX="226.0" layoutY="125.0" prefHeight="138.0" prefWidth="421.0" />
+                  <HBox layoutX="33.0" layoutY="108.0" prefHeight="370.0" prefWidth="820.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox prefHeight="370.0" prefWidth="504.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #748498;">
+                                 <children>
+                                    <Label layoutX="101.0" layoutY="35.0" prefHeight="75.0" prefWidth="119.0" text="NOMBRE DE POULETS" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #2254;">
+                                 <children>
+                                    <Label layoutX="94.0" layoutY="14.0" prefHeight="96.0" prefWidth="235.0" text="NOMBRE DE POUSSINS" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <Label prefHeight="17.0" prefWidth="349.0" text="l' interface ci doit servir d' accueil pour les vendeurs" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </JFXMasonryPane>
+   </children>
+</AnchorPane>

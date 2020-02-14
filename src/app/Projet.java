@@ -131,14 +131,18 @@ public class Projet extends Application {
         IOption catalogue=new OptionItem("Catalogue","views/catalogue/catalogueView.fxml");
         IOption commande=new OptionItem("commande","views/commande/commandeView.fxml");
         IOption parametres=new OptionItem("commande","views/parametres/parametresView.fxml");
+        IOption infoselevage=new OptionItem("infos elevage","views/infosElevage/eleveurView.fxml");
+        IOption infoscommercial=new OptionItem("commande","views/infosCommercial/commercialView.fxml");
         
         List elevage=new ArrayList<>();//options menu elevage
+        elevage.add(infoselevage);
         elevage.add(bandes);
 
         elevage.add(ration);
         elevage.add(collecteoeuf);
    
         List magasin=new ArrayList<>();
+        magasin.add(infoscommercial);
         magasin.add(medicaments);
         
         magasin.add(stockAliment);

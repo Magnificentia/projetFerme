@@ -56,7 +56,7 @@ public class MainItem extends Item {
     public void createHeader()
     {
          
-        logo=new ImageView("app/modules/ressources/MenuEnBlanc.png");
+        logo=new ImageView(getClass().getResource("ressources/MenuEnBlanc.png").toString());
         logo.setFitHeight(20);
         logo.setFitWidth(20);
         Label Lmenu=new Label("Menu");
