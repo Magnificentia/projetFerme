@@ -32,21 +32,17 @@
                <children>
                   <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" text="Ajouter une nouvelle commande">
                      <HBox.margin>
-                        <Insets left="29.0" />
+                        <Insets left="29.0" right="350.0" />
                      </HBox.margin></JFXButton>
-                  <HBox prefHeight="50.0" prefWidth="348.0">
-                     <children>
-                        <TextField />
-                        <Label text="Rechercher">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="SEARCH" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <TextField prefHeight="31.0" prefWidth="287.0" />
+                  <Label text="Rechercher">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
 
                </children>
                <VBox.margin>

@@ -24,6 +24,18 @@
     -fx-font-size:25px;
     -fx-font-weight:bold;
 }
+.LabelCatalogueTitre
+{
+    -fx-text-fill: white;
+    -fx-font-size:25px;
+    -fx-font-weight:bold; 
+}
+.LabelCatalogue
+{
+ -fx-text-fill: white;
+    -fx-font-size:16px;
+    -fx-font-weight:bold;   
+}
 
 /*********************
       *tableView
@@ -173,6 +185,13 @@
 {
     -fx-pref-width:252;
     -fx-pref-height: 32;
+    -jfx-label-float:true;
+    -jfx-focus-color:#2aa15b;
+}
+/******DatePicker*******/
+.jfx-date-picker{
+    
+    -jfx-default-color:white;
 }
 
 /******TABPANE*********/

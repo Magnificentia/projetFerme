@@ -4,49 +4,141 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="666.0" prefWidth="797.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.commande.CommandeViewController">
+<AnchorPane prefHeight="768.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.commande.CommandeViewController">
    <children>
-      <VBox layoutX="139.0" prefHeight="486.0" prefWidth="495.0" spacing="20.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="10.0">
+      <VBox prefHeight="768.0" prefWidth="1290.0">
          <children>
-            <JFXTextField labelFloat="true" promptText="nom du client" />
-            <JFXTextField labelFloat="true" />
-            <JFXDatePicker overLay="true" promptText="date" />
-            <HBox prefHeight="45.0" prefWidth="495.0" spacing="40.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <CheckBox mnemonicParsing="false" text="paiement electronique" />
-                  <CheckBox mnemonicParsing="false" text="cash" />
+                  <Label prefHeight="21.0" prefWidth="147.0" styleClass="LabelRation" text="Factures">
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="768.0" prefWidth="1290.0">
+               <children>
+                  <VBox prefHeight="732.0" prefWidth="743.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="679.0" spacing="150.0" styleClass="hBoxNormal">
+                           <children>
+                              <JFXButton text="ajouter un produit">
+                                 <HBox.margin>
+                                    <Insets left="25.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton text="supprimer produit" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="25.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="647.0" prefWidth="675.0" style="-fx-background-color: #f8f8ff;">
+                           <children>
+                              <TableView prefHeight="664.0" prefWidth="675.0" styleClass="n,n">
+                                <columns>
+                                  <TableColumn prefWidth="222.0" text="produit" />
+                                  <TableColumn prefWidth="427.0" text="quantite" />
+                                </columns>
+                                 <HBox.margin>
+                                    <Insets left="25.0" right="25.0" />
+                                 </HBox.margin>
+                              </TableView>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="25.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="685.0" prefWidth="27.0" />
+                  <VBox prefHeight="732.0" prefWidth="602.0" style="-fx-background-color: #f8f8ff;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0">
+                           <children>
+                              <JFXTextField promptText="Nom du client" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="65.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0">
+                           <children>
+                              <JFXTextField labelFloat="true" prefWidth="278.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0">
+                           <children>
+                              <JFXDatePicker defaultColor="GHOSTWHITE" overLay="true" promptText="Date " />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="575.0" spacing="15.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Paiement electronique" />
+                              <CheckBox mnemonicParsing="false" text="Cash" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="97.0" prefWidth="575.0">
+                           <children>
+                              <JFXTextField labelFloat="true" promptText="Numero de validation transaction" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="193.0" prefWidth="575.0">
+                           <children>
+                              <JFXTextArea focusColor="#2aa15b" labelFloat="true" prefHeight="193.0" prefWidth="262.0" promptText="Description" style="-fx-background-color: #e3e9ee;" styleClass="hBoxNormal">
+                                 <HBox.margin>
+                                    <Insets left="45.0" right="45.0" />
+                                 </HBox.margin>
+                              </JFXTextArea>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                  </VBox>
                </children>
             </HBox>
-            <VBox prefHeight="48.0" prefWidth="676.0">
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="657.0" spacing="135.0" styleClass="hBoxNormal">
                <children>
-                  <JFXTextField labelFloat="true" promptText="numero de validation transaction" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="200.0">
-                     <children>
-                        <JFXButton text="ajouter un produit" />
-                        <JFXButton text="supprimer produit" />
-                     </children>
-                  </HBox>
+                  <JFXButton prefHeight="63.0" prefWidth="158.0" text=" valider">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="25.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton prefHeight="63.0" prefWidth="158.0" text="imprimer">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
+                  </JFXButton>
                </children>
-            </VBox>
-            <TableView prefHeight="200.0" prefWidth="200.0">
-              <columns>
-                <TableColumn prefWidth="222.0" text="produit" />
-                <TableColumn prefWidth="453.0" text="quantite" />
-              </columns>
-            </TableView>
-            <JFXTextArea labelFloat="true" prefHeight="53.0" prefWidth="676.0" promptText="description" />
-            <HBox prefHeight="44.0" prefWidth="495.0" spacing="300.0">
-               <children>
-                  <JFXButton text=" valider" />
-                  <JFXButton text="imprimer" />
-               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>

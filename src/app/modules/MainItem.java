@@ -79,7 +79,7 @@ public class MainItem extends Item {
         h2.getChildren().addAll(new Label("icone et label"));
         h2.setStyle("-fx-background-color:#2aa15b");
         
-        gridpane.add(h2, 1, 0);
+        //gridpane.add(h2, 1, 0);
         
     }
     public static void setLogo(Image image)
