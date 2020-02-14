@@ -154,15 +154,22 @@
 }
 
 .tree-cell:selected {
-    -fx-background-color: #94ffd9;
+    /*-fx-background-color: #94ffd9;*/
     -fx-font-weight: bold ;
     -fx-text-fill:#2aa15b; 
     /*-fx-underline: true;*/
 }
-.tree-cell:expanded,.tree-cell > .sub_tree_item{
-    -fx-background-color: #94ffd9;   
+.tree-cell:expanded,.tree-cell > .sub-tree-item{
+    -fx-background-color: #94ffd9; 
+    /*-fx-font-weight: bold ;
+    -fx-text-fill:#2aa15b;*/
 }
-
+.tree-cell > .sub-tree-item:selected{
+    -fx-font-weight: bold ;
+    -fx-text-fill:#2aa15b;
+    /*-fx-font-weight: bold ;
+    -fx-text-fill:#2aa15b;*/
+}
 .tree-disclosure-node {
     -fx-padding: 17 5 0 5;
     -fx-translate-x: 165;

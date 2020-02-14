@@ -167,7 +167,7 @@ public class Projet extends Application {
         ventes.add(commande);
         
         
-        IMenu elevageMenu=new MenuItem("Elevage","app/modules/ressources/elevage.png",elevage);//liste des menus
+        IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
         IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
 
         IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil,1);

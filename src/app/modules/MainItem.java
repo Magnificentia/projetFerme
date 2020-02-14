@@ -1,6 +1,7 @@
 package app.modules;
 
 
+import app.Projet;
 import com.jfoenix.controls.JFXTreeView;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -12,9 +13,11 @@ import javafx.scene.layout.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -132,7 +135,11 @@ public class MainItem extends Item {
                 Label label = new Label(menu.toString());
                 //essai de mettre un tree view
                 System.out.println("TEST SUR LE MENU"+menu);
-                TreeItem<IItem> subrootItem = new TreeItem<>(menu);
+                System.out.println("LE PATH "+menu.getIconPath());
+                ImageView imageView=new ImageView(MainItem.class.getResource(menu.getIconPath()).toString());
+                imageView.setFitHeight(30);
+                imageView.setFitWidth(30);
+                TreeItem<IItem> subrootItem = new TreeItem<>(menu,imageView);
                 
                 for(IOption option: menu.getOptionsList())
                 {
@@ -155,6 +162,52 @@ public class MainItem extends Item {
         menus=new JFXTreeView(rootItem);
          menus.setPrefHeight(1500);
          menus.setPrefWidth(1500);
+         
+         //////////////////////////////////
+         
+           /*  menus.setCellFactory(tv -> new TreeCell<IItem>() {
+        @Override
+        public void updateItem(IItem item, boolean empty) {
+            super.updateItem(item, empty);
+            setDisclosureNode(null);
+
+            if (empty) {
+                setText("");
+                setGraphic(null);
+            } else {
+                setText(item.toString()); // appropriate text for item
+                setOnMouseClicked(event -> {
+                    if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                        TreeItem<IItem> ti = treeItemProperty().get();
+                        ti.expandedProperty().set(true);
+                    }
+                    event.consume();
+                });
+
+                if (item.getIv() != null) {
+                    setGraphic(item.getIv());
+                } else {
+
+                }
+            }
+        }
+    });
+         
+         */
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         //////
         menus.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handle((TreeItem<IItem>)newValue)
         );
