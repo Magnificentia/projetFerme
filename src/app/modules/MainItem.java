@@ -46,7 +46,7 @@ public class MainItem extends Item {
        
         
         gridpane=new GridPane();//pour la mise en page
-        gridpane.getColumnConstraints().add(new ColumnConstraints(200));//specifie la longueur (horizontalement) de l'espace pour menus et icone
+        gridpane.getColumnConstraints().add(new ColumnConstraints(210));//specifie la longueur (horizontalement) de l'espace pour menus et icone
         gridpane.getRowConstraints().add(new RowConstraints(55));//specifie la largeur (verticalement) de l'espace pour le header
         
         createHeader();

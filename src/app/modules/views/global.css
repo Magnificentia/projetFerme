@@ -134,8 +134,9 @@
 *********************/
 
 .tree-view{
+        -fx-font-size:16px;
 	-fx-background-color:#F8F8FF;
-        -fx-pref-width:450;
+        -fx-pref-width:1600;
         -fx-padding: 5 5 5 5;
         /*-fx-border-width:15;*/
 }
