@@ -137,8 +137,8 @@ public class MainItem extends Item {
                 System.out.println("TEST SUR LE MENU"+menu);
                 System.out.println("LE PATH "+menu.getIconPath());
                 ImageView imageView=new ImageView(MainItem.class.getResource(menu.getIconPath()).toString());
-                imageView.setFitHeight(30);
-                imageView.setFitWidth(30);
+                imageView.setFitHeight(25);
+                imageView.setFitWidth(25);
                 TreeItem<IItem> subrootItem = new TreeItem<>(menu,imageView);
                 
                 for(IOption option: menu.getOptionsList())

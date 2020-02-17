@@ -30,7 +30,7 @@
             </HBox>
             <HBox prefHeight="47.0" prefWidth="1231.0" spacing="20.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#showAddRationWindow" prefHeight="33.0" prefWidth="179.0" text="+Ajouter">
+                  <JFXButton onAction="#showAddRationWindow" prefHeight="33.0" prefWidth="179.0" styleClass="j-button" text="Ajouter">
                      <HBox.margin>
                         <Insets left="29.0" />
                      </HBox.margin></JFXButton>
@@ -92,11 +92,11 @@
             </Separator>
             <HBox prefHeight="52.0" prefWidth="1231.0" spacing="80.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" ripplerFill="#434141" text="Supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" ripplerFill="#434141" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="29.0" top="10.0" />
                      </HBox.margin></JFXButton>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Editer">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin></JFXButton>

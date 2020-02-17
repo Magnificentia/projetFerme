@@ -30,7 +30,7 @@
 
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" text="Ajouter une nouvelle commande">
+                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" styleClass="j-button" text="Ajouter une nouvelle commande">
                      <HBox.margin>
                         <Insets left="29.0" right="350.0" />
                      </HBox.margin></JFXButton>
@@ -80,11 +80,11 @@
             </Separator>
             <HBox prefHeight="43.0" prefWidth="1250.0" spacing="50.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="158.0" text="supprimer">
+                  <JFXButton prefHeight="31.0" prefWidth="158.0" styleClass="j-button" text="supprimer">
                      <HBox.margin>
                         <Insets left="29.0" />
                      </HBox.margin></JFXButton>
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" text="éditer" />
+                  <JFXButton prefHeight="31.0" prefWidth="183.0" styleClass="j-button" text="éditer" />
                </children>
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />

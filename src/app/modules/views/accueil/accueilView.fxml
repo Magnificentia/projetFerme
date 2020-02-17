@@ -1,18 +1,322 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.accueil.AccueilViewController">
+<AnchorPane prefHeight="730.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.catalogue.CatalogueViewController">
    <children>
-      <JFXMasonryPane prefHeight="635.0" prefWidth="1304.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="768.0" prefWidth="1290.0">
          <children>
-            <JFXButton prefHeight="155.0" prefWidth="446.0" style="-fx-background-color: blue;" />
-            <JFXButton prefHeight="305.0" prefWidth="812.0" style="-fx-background-color: yellow;" />
-            <JFXButton prefHeight="357.0" prefWidth="406.0" style="-fx-background-color: red;" text="user" />
-            <JFXButton prefHeight="155.0" prefWidth="813.0" style="-fx-background-color: green;" />
+            <HBox prefHeight="81.0" prefWidth="1240.0" styleClass="hBoxNormal">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelRation" text="Accueil">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_LEFT" prefHeight="220.0" prefWidth="1240.0" spacing="50.0" style="-fx-background-color: #f8f8ff;">
+               <children>
+                  <VBox prefHeight="194.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right, #FFA500,#f13501);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="29.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="83.0" style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: white;" styleClass="LabelCatalogueTitre" text="Ventes">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="76.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="25.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/ventes.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="41.0" prefWidth="310.0">
+                           <children>
+                              <Label prefHeight="36.0" prefWidth="91.0" styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="43.0" prefWidth="310.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="393.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to left ,#006fff,#8A2BE2);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="110.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="83.0" styleClass="LabelCatalogueTitre" text="Oeufs">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="87.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="25.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/oeuf.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="41.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="43.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="393.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right,#FFD700, #FF7F50);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" right="25.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="85.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="105.0" styleClass="LabelCatalogueTitre" text="Aliment">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="76.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="25.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/orange.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="43.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="43.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="224.0" prefWidth="1240.0" spacing="50.0" style="-fx-background-color: #f8f8ff;">
+               <children>
+                  <VBox prefHeight="393.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to left,#CD5C5C,#FF69B4);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="29.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="LabelCatalogueTitre">
+                           <children>
+                              <Label prefHeight="55.0" prefWidth="186.0" styleClass="LabelCatalogueTitre" text="Bande Nourris">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="96.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/poule.png" />
+                                 </image>
+                              </ImageView>
+                           </children></HBox>
+                        <HBox prefHeight="41.0" prefWidth="310.0" styleClass="LabelCatalogue">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
+                        <HBox prefHeight="41.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="393.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right,#ADFF2F,#20B2AA);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="75.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="146.0" styleClass="LabelCatalogueTitre" text="Poussin">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="95.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="25.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/chicks.png" />
+                                 </image>
+                              </ImageView>
+                           </children></HBox>
+                        <HBox prefHeight="40.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></HBox>
+                        <HBox prefHeight="31.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="43.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right, #FF1493,#BA55D3);">
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="85.0" styleClass="LabelCatalogueTitre">
+                           <children>
+                              <Label prefHeight="54.0" prefWidth="72.0" styleClass="LabelCatalogueTitre" text="Staff">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets right="25.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../../ressources/fermier.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="43.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></HBox>
+                        <HBox prefHeight="13.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="81.0" prefWidth="1240.0" styleClass="hBoxNormal">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelRation" text="Redirection">
+                     <HBox.margin>
+                        <Insets left="29.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="283.0" prefWidth="1290.0" style="-fx-background-color: #f8f8ff;">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
          </children>
-      </JFXMasonryPane>
+      </VBox>
    </children>
 </AnchorPane>

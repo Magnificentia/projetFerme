@@ -27,7 +27,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#onAjouterclicked" prefHeight="31.0" prefWidth="208.0" text="Ajouter un nouveau stock">
+                  <JFXButton onAction="#onAjouterclicked" prefHeight="31.0" prefWidth="208.0" styleClass="j-button" text="Ajouter un nouveau stock">
                      <HBox.margin>
                         <Insets left="29.0" right="450.0" />
                      </HBox.margin></JFXButton>
@@ -62,12 +62,12 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Editer">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>

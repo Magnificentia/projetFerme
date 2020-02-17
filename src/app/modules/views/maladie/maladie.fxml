@@ -21,7 +21,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="350.0">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="361.0" text="Ajouter un nouvel utilisateur" />
+                  <JFXButton prefHeight="31.0" prefWidth="361.0" styleClass="j-button" text="Ajouter un nouvel utilisateur" />
                   <HBox prefHeight="50.0" prefWidth="348.0">
                      <children>
                         <TextField prefHeight="31.0" prefWidth="181.0">
@@ -46,7 +46,7 @@
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <JFXButton fx:id="buttonSupprimer" onAction="#ButtonSupprimerOnClick" prefHeight="31.0" prefWidth="158.0" text="supprimer" />
+                  <JFXButton fx:id="buttonSupprimer" onAction="#ButtonSupprimerOnClick" prefHeight="31.0" prefWidth="158.0" styleClass="j-button" text="supprimer" />
                </children>
             </HBox>
          </children>

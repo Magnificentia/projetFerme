@@ -27,7 +27,7 @@
             </HBox>
             <HBox prefHeight="27.0" prefWidth="770.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="253.0" text="Ajouter un nouveau fournisseur">
+                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="253.0" styleClass="j-button" text="Ajouter un nouveau fournisseur">
                      <HBox.margin>
                         <Insets left="29.0" />
                      </HBox.margin></JFXButton>
@@ -68,12 +68,12 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="151.0" text="Supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="151.0" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="49.0" prefWidth="151.0" text="Editer">
+                  <JFXButton prefHeight="49.0" prefWidth="151.0" styleClass="j-button" text="Editer">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>

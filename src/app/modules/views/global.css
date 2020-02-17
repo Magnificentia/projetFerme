@@ -88,7 +88,12 @@
     -fx-border-width:0.0;
 }
 /********button********/
-.jfx-button{
+.button{
+    -fx-font-weight:bold;
+    -fx-background-color:#f8f8ff;
+    
+}
+.j-button{
     -fx-background-color:#2aa15b;
     -fx-border-width:5;
     -fx-text-fill:white;
@@ -155,7 +160,7 @@
 }
 
 .tree-cell:selected {
-    /*-fx-background-color: #94ffd9;*/
+    -fx-background-color: #94ffd9;
     -fx-font-weight: bold ;
     -fx-text-fill:#2aa15b; 
     /*-fx-underline: true;*/

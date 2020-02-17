@@ -27,11 +27,11 @@
             </HBox>
             <HBox prefHeight="26.0" prefWidth="992.0" styleClass="hBoxNormal">
                <children>
-                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="246.0" text="Ajouter une bande">
+                  <JFXButton onAction="#onAjouterClicked" prefHeight="31.0" prefWidth="246.0" styleClass="j-button" text="Ajouter une bande">
                      <HBox.margin>
                         <Insets left="29.0" right="125.0" />
                      </HBox.margin></JFXButton>
-                  <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="237.0" text="informations" />
+                  <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="237.0" styleClass="j-button" text="informations" />
                   <TextField prefHeight="31.0" prefWidth="235.0">
                      <HBox.margin>
                         <Insets left="200.0" />
@@ -73,12 +73,12 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Supprimer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
                         <Insets bottom="10.0" left="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton prefHeight="49.0" prefWidth="158.0" text="Editer">
+                  <JFXButton prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Editer">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
