@@ -138,15 +138,15 @@ public class MainItem extends Item {
             {
                 HBox content=new HBox();//mouen change le hbox initial en vbox
 
-                content.setAlignment(Pos.CENTER);
+                content.setAlignment(Pos.CENTER_LEFT);
 
                 // Set padding on the left side to avoid overlapping the TitlePane's expand arrow
                 // We will also pad the right side
-                content.setPadding(new Insets(0, 10, 0, 35));
+                content.setPadding(new Insets(0, 10, 0, 5));
 
                 // Now, since the TitlePane's graphic node generally has a fixed size, we need to bind our
                 // content pane's width to match the width of the TitledPane. This will account for resizing as well
-                //content.minWidthProperty().bind(titledPane.widthProperty());
+                
 
                 // Create a Region to act as a separator for the title and button
                 //HBox region = new HBox();
@@ -161,6 +161,7 @@ public class MainItem extends Item {
                         imageView,
                         new Label(menu.toString())
                 );
+                content.setSpacing(20);
                 
 
                 //essai de mettre un tree view
@@ -206,6 +207,7 @@ public class MainItem extends Item {
                     System.out.println("new titledpane");
                     TitledPane a=new TitledPane();
                     a.setGraphic(content);
+                    content.minWidthProperty().bind(a.widthProperty());
                     a.setContent(subrootItem);
                     rootItem.getChildren().add(a);
                 }
