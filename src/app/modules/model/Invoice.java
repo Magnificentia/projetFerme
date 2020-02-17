@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.modules;
+package app.modules.model;
 
 /**
  *
- * @author HP
+ * @author _Nprime496_
  */
-class UIUtils {
+public class Invoice {
     
 }
