@@ -130,6 +130,7 @@ public class MainItem extends Item {
     }
     private void displayMenus()
     {
+        menus=new HBox();
         //creation du treeview
         VBox rootItem=new VBox();
         for(IMenu menu: menusList) {
@@ -180,6 +181,7 @@ public class MainItem extends Item {
                     //autrement dit, menu pur ou menu ayant un seul element
                     System.out.println("new button");
                     JFXButton b=new JFXButton();
+                    b.prefWidthProperty().bind(this.menus.widthProperty());
                     b.setGraphic(content);
                     rootItem.getChildren().add(b);
                     b.setOnAction(e->
@@ -195,6 +197,7 @@ public class MainItem extends Item {
                     for(IOption option: menu.getOptionsList())
                     {
                         JFXButton b=new JFXButton(option.toString());
+                        b.prefWidthProperty().bind(this.menus.widthProperty());
                         subrootItem.getChildren().add(b);
                         b.setOnAction(e->
                         {
@@ -217,7 +220,7 @@ public class MainItem extends Item {
         }
         System.out.println("rootItem="+rootItem.getChildren());
         //menus=new JFXTreeView(rootItem);
-        menus=new HBox();
+        
         menus.getChildren().add(rootItem);
         menus.setPrefHeight(1500);
         menus.setPrefWidth(1500);
