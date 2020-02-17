@@ -162,7 +162,15 @@ public class MainItem extends Item {
         menus=new JFXTreeView(rootItem);
          menus.setPrefHeight(1500);
          menus.setPrefWidth(1500);
-         
+         /*
+        menus.setOnMouseClicked(event -> {
+           if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+               TreeItem<IItem> ti = menus.getSelectionModel().;
+               ti.expandedProperty().set(true);
+           }
+           event.consume();
+       });
+         */
          //////////////////////////////////
          
            /*  menus.setCellFactory(tv -> new TreeCell<IItem>() {

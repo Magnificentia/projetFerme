@@ -6,6 +6,17 @@
 package app.modules.views;
 
 import app.modules.database.DbManager;
+import app.modules.model.Invoice;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfDictionary;
+import com.itextpdf.text.pdf.PdfName;
+import static com.itextpdf.text.pdf.PdfName.DEST;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,6 +29,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import static javafx.scene.text.FontPosture.REGULAR;
+import javafx.scene.text.TextAlignment;
 
 /**
  *
@@ -100,5 +113,24 @@ public class BaseView<T> {
 
         //return new AnchorPane(table);
     }
+    
+    
+    public void createPdf(Invoice invoice) throws FileNotFoundException, DocumentException {
+
+            // 1. Create document
+        Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+
+        // 2. Create PdfWriter
+        PdfWriter.getInstance(document, new FileOutputStream("result.pdf"));
+
+        // 3. Open document
+        document.open();
+
+        // 4. Add content
+        document.add(new Paragraph("Create Pdf Document with iText in Java"));
+
+        // 5. Close document
+        document.close();
+  }
     
 }
