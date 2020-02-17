@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-
+import java.lang.NoSuchMethodException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MenuItem extends Item implements IMenu {
 
     private boolean visible=true;
     private ArrayList<IOption> optionsList=new ArrayList<>();
-    private BorderPane options;
+    //private BorderPane options;
     private JFXTabPane tp=new JFXTabPane();
     private String iconPath;
 
@@ -31,21 +31,22 @@ public class MenuItem extends Item implements IMenu {
     public MenuItem(String name,String iconPath,List options)
     {
         super(name);
-        this.options=new BorderPane();
+        //this.options=new BorderPane();
         tp.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        this.options.setCenter(tp);
+        //this.options.setCenter(tp);
         optionsList=(ArrayList<IOption>)options;
-        this.options.setId("options");
+        //this.options.setId("options");
         this.iconPath=iconPath;
         loadMenus(optionsList);
     }
-    public MenuItem(String name,String iconPath,IOption option,int a)
+    public MenuItem(String name,String iconPath,IOption option)
     {
         super(name);
-        this.options=new BorderPane();
+        //this.options=new BorderPane();
         tp.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        this.options.setCenter(option.getItem());
-        this.options.setId("options");
+        //this.options.setCenter(option.getItem());
+        //this.options.setId("options");
+        optionsList.add(option);
         this.iconPath=iconPath;
     }
     
@@ -107,8 +108,10 @@ public class MenuItem extends Item implements IMenu {
     }
 
     @Override
-    public Parent getItem() {
-        return this.options;
+    public Parent getItem(){
+        //Exception NoSuchMethodException;
+        return (Parent)this.optionsList.get(0);
+        //return this.options;
     }
 
     @Override

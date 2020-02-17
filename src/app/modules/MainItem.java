@@ -2,6 +2,7 @@ package app.modules;
 
 
 import app.Projet;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeView;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -13,6 +14,10 @@ import javafx.scene.layout.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
@@ -27,7 +32,7 @@ public class MainItem extends Item {
     private Parent header=new HBox();
     private Parent footer=new HBox();
 
-    private JFXTreeView menus;
+    private HBox menus;
     private Pane container;
     private Pane view;
 
@@ -126,100 +131,97 @@ public class MainItem extends Item {
     private void displayMenus()
     {
         //creation du treeview
-        TreeItem<IItem> rootItem=new TreeItem<IItem>(new MenuItem(menusList));
+        VBox rootItem=new VBox();
         for(IMenu menu: menusList) {
             //this.menus.setRotateGraphic(true);
             if(menu.isVisible())
             {
                 HBox content=new HBox();//mouen change le hbox initial en vbox
-                Label label = new Label(menu.toString());
-                //essai de mettre un tree view
-                System.out.println("TEST SUR LE MENU"+menu);
-                System.out.println("LE PATH "+menu.getIconPath());
+
+                content.setAlignment(Pos.CENTER);
+
+                // Set padding on the left side to avoid overlapping the TitlePane's expand arrow
+                // We will also pad the right side
+                content.setPadding(new Insets(0, 10, 0, 35));
+
+                // Now, since the TitlePane's graphic node generally has a fixed size, we need to bind our
+                // content pane's width to match the width of the TitledPane. This will account for resizing as well
+                //content.minWidthProperty().bind(titledPane.widthProperty());
+
+                // Create a Region to act as a separator for the title and button
+                //HBox region = new HBox();
+                //region.setMaxWidth(Double.MAX_VALUE);
+                //HBox.setHgrow(region, Priority.ALWAYS);
+
                 ImageView imageView=new ImageView(MainItem.class.getResource(menu.getIconPath()).toString());
                 imageView.setFitHeight(30);
                 imageView.setFitWidth(30);
-                TreeItem<IItem> subrootItem = new TreeItem<>(menu,imageView);
+                // Add our nodes to the contentPane
+                content.getChildren().addAll(
+                        imageView,
+                        new Label(menu.toString())
+                );
                 
-                for(IOption option: menu.getOptionsList())
-                {
-                    //Hyperlink op=new Hyperlink(option.toString());
-                    TreeItem<IItem> item = new TreeItem<>(option);
-                    subrootItem.getChildren().add(item);
-                }
-                if(subrootItem.getChildren().size()==1)
-                {
-                    rootItem.getChildren().add(subrootItem.getChildren().get(0));
-                }
-                else
-                {
-                    rootItem.getChildren().add(subrootItem);
-                }
 
+                //essai de mettre un tree view
+                System.out.println("TEST SUR LE MENU"+menu);
+                System.out.println("LE PATH "+menu.getIconPath());
+
+                //Parent subrootItem;//= new TreeItem<>(menu,imageView);
+                VBox subrootItem=new VBox();
+                VBox v=new VBox();
+                System.out.println(menu.getOptionsList());
+
+                if(menu.getOptionsList().size()<=1)
+                {
+                    //autrement dit, menu pur ou menu ayant un seul element
+                    System.out.println("new button");
+                    JFXButton b=new JFXButton();
+                    b.setGraphic(content);
+                    rootItem.getChildren().add(b);
+                    b.setOnAction(e->
+                        {
+                            System.out.println("click");
+                            view.getChildren().clear();
+                            view.getChildren().add(menu.getOptionsList().get(0).getItem());
+                            menu.getOptionsList().get(0).onShowDo();
+
+                        });
+                }
+                else{
+                    for(IOption option: menu.getOptionsList())
+                    {
+                        JFXButton b=new JFXButton(option.toString());
+                        subrootItem.getChildren().add(b);
+                        b.setOnAction(e->
+                        {
+                            System.out.println("click");
+                            view.getChildren().clear();
+                            view.getChildren().add(option.getItem());
+                            option.onShowDo();
+
+                        });
+                    }
+
+                    System.out.println("new titledpane");
+                    TitledPane a=new TitledPane();
+                    a.setGraphic(content);
+                    a.setContent(subrootItem);
+                    rootItem.getChildren().add(a);
+                }
             }
         }
         System.out.println("rootItem="+rootItem.getChildren());
-        menus=new JFXTreeView(rootItem);
-         menus.setPrefHeight(1500);
-         menus.setPrefWidth(1500);
-         /*
-        menus.setOnMouseClicked(event -> {
-           if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
-               TreeItem<IItem> ti = menus.getSelectionModel().;
-               ti.expandedProperty().set(true);
-           }
-           event.consume();
-       });
-         */
-         //////////////////////////////////
-         
-           /*  menus.setCellFactory(tv -> new TreeCell<IItem>() {
-        @Override
-        public void updateItem(IItem item, boolean empty) {
-            super.updateItem(item, empty);
-            setDisclosureNode(null);
-
-            if (empty) {
-                setText("");
-                setGraphic(null);
-            } else {
-                setText(item.toString()); // appropriate text for item
-                setOnMouseClicked(event -> {
-                    if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
-                        TreeItem<IItem> ti = treeItemProperty().get();
-                        ti.expandedProperty().set(true);
-                    }
-                    event.consume();
-                });
-
-                if (item.getIv() != null) {
-                    setGraphic(item.getIv());
-                } else {
-
-                }
-            }
-        }
-    });
-         
-         */
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         //////
-        menus.getSelectionModel().selectedItemProperty().addListener(
+        //menus=new JFXTreeView(rootItem);
+        menus=new HBox();
+        menus.getChildren().add(rootItem);
+        menus.setPrefHeight(1500);
+        menus.setPrefWidth(1500);
+        (rootItem).prefWidthProperty().bind(this.menus.widthProperty());
+        /*menus.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handle((TreeItem<IItem>)newValue)
-        );
-        menus.setShowRoot(false);
+        );*/
+        //menus.setShowRoot(false);
 
         gridpane.add(menus, 0, 1);
         gridpane.add(view,1,1);
@@ -243,18 +245,5 @@ public class MainItem extends Item {
         return false;
     }
 
-    private void handle(TreeItem<IItem> newValue) {
-        
-        System.out.println(newValue.getChildren());
-        if(newValue.getChildren().size()==0)//si l'élement n'a pas de sous element alors c'est une option
-        {
-            System.out.println("click on "+newValue.getValue());
-            view.getChildren().clear();
-            
-            view.getChildren().add(newValue.getValue().getItem());
-            newValue.getValue().onShowDo();
-        }
-        
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }
