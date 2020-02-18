@@ -43,9 +43,13 @@ public abstract class Form extends Pane{
         
         validate.setPrefWidth(107);
         validate.setPrefHeight(51);
+        validate.setStyle("-fx-background:#2aa15b");
+        validate.setStyle("-fx-text-fill:white");
         
         cancel.setPrefWidth(107);
         cancel.setPrefHeight(51);
+        cancel.setStyle("-fx-background:#2aa15b");
+        cancel.setStyle("-fx-text-fill:white");
         
         content=new VBox();
         content.setStyle("-fx-background-color:#f8f8ff");

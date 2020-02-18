@@ -26,10 +26,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 //putain
 public class CollecteOeufViewController extends BaseView<CollecteOeuf> implements Initializable, IController {
 
@@ -39,13 +42,13 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     private TextField recherche;
     
     @FXML
-    private AnchorPane anchor;
+    private HBox AnchorTable;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
        createTable();
-       anchor.getChildren().add(item);
+       AnchorTable.getChildren().add(item);
         
        table.setPrefWidth(800);
        this.Search();
@@ -59,20 +62,25 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     
     public void createTable()
     {
-        table.setPrefWidth(800);
+       // table.setPrefWidth(800);
         
         TableColumn<CollecteOeuf,String> col_date=new TableColumn<>("date");
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateCollecte"));
+        col_date.setPrefWidth(320);
         
         TableColumn<CollecteOeuf,String> col_heure=new TableColumn<>("heure");
         col_date.setCellValueFactory(new PropertyValueFactory<>("heure"));
+        col_heure.setPrefWidth(220);
         
         TableColumn<CollecteOeuf,Integer> col_bande=new TableColumn<>("bande");
         col_bande.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
+        col_bande.setPrefWidth(320);
+        
         
         TableColumn<CollecteOeuf,String> col_qte=new TableColumn<>("quantité");
         col_qte.setCellValueFactory(new PropertyValueFactory<>("qte"));
-
+        col_qte.setPrefWidth(320);
+        
         table.getColumns().addAll(col_date,col_heure,col_bande,col_qte);
     }
     @FXML
@@ -158,31 +166,58 @@ class FormCollecte extends Form
     //private final JFXTextField designation;
     private final JFXTextField quantite;
     private final JFXDatePicker datecollect;
-    private final JFXComboBox<Bande>  bande;
+    private final ComboBox<Bande>  bande;
     private final JFXTextField qteCasse;
     
 
     public FormCollecte()
     {
         quantite=new JFXTextField();
-        quantite.setPromptText("designation");
+        quantite.setPromptText("quantite");
+        HBox hquantite=new HBox();
+        hquantite.getChildren().add(quantite);
+        hquantite.setPrefWidth(739);
+        hquantite.setPrefHeight(75);
+        hquantite.setAlignment(Pos.CENTER);
+        hquantite.setStyle("-fx-background-color:#f8f8ff");
+        
         
         qteCasse=new JFXTextField();
         qteCasse.setPromptText("nombre cassés");
+        HBox hqteCasse=new HBox();
+        hqteCasse.getChildren().add(qteCasse);
+        hqteCasse.setPrefWidth(739);
+        hqteCasse.setPrefHeight(75);
+        hqteCasse.setAlignment(Pos.CENTER);
+        hqteCasse.setStyle("-fx-background-color:#f8f8ff");
         
         datecollect=new JFXDatePicker();
-        datecollect.setPromptText("mail");
+        datecollect.setPromptText("Choisir date");
+        HBox hdatecollect=new HBox();
+        hdatecollect.getChildren().add(datecollect);
+        hdatecollect.setPrefWidth(739);
+        hdatecollect.setPrefHeight(75);
+        hdatecollect.setAlignment(Pos.CENTER);
+        hdatecollect.setStyle("-fx-background-color:#f8f8ff");
         
-        bande=new JFXComboBox<>();
+        
+        bande=new ComboBox<>();
+        bande.setPromptText("Choisir Bande");
+        HBox hbande=new HBox();
+        hbande.getChildren().add(bande);
+        hbande.setPrefWidth(739);
+        hbande.setPrefHeight(75);
+        hbande.setAlignment(Pos.CENTER);
+        hbande.setStyle("-fx-background-color:#f8f8ff");
         bande.setItems(FXCollections.observableArrayList(DbManager.selectBandes()));
         //siteweb.setPromptText("siteweb");
         
    
         List a=new ArrayList();
-        a.add(quantite);
-        a.add(datecollect);
-        a.add(bande);
-        a.add(qteCasse);
+        a.add(hquantite);
+        a.add(hdatecollect);
+        a.add(hbande);
+        a.add(hqteCasse);
 
         addFields(a);
     }

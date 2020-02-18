@@ -181,11 +181,24 @@ public class MainItem extends Item {
                     //autrement dit, menu pur ou menu ayant un seul element
                     System.out.println("new button");
                     JFXButton b=new JFXButton();
+                    b.setPrefHeight(55);
+                    b.getStyleClass().add("buttonMenu");
+                    //b.setStyle("-fx-padding:0 5 0 5");
+                    
                     b.prefWidthProperty().bind(this.menus.widthProperty());
                     b.setGraphic(content);
-                    rootItem.getChildren().add(b);
+                    HBox h=new HBox();
+                    h.getChildren().add(b);
+                    h.setMargin(b,new Insets(5,5,1,5));
+                    h.setStyle("-fx-background-color:#f8f8ff");
+                    h.setPrefHeight(55);
+                    h.prefWidthProperty().bind(this.menus.widthProperty());
+                    rootItem.getChildren().add(h);
                     b.setOnAction(e->
                         {
+                            
+                            //b.setStyle("-fx-text-fill:#94ffd9");
+                            //b.setStyle("-fx-background-color:#94ffd9");
                             System.out.println("click");
                             view.getChildren().clear();
                             view.getChildren().add(menu.getOptionsList().get(0).getItem());
@@ -197,16 +210,23 @@ public class MainItem extends Item {
                     for(IOption option: menu.getOptionsList())
                     {
                         JFXButton b=new JFXButton(option.toString());
+                        b.setPrefHeight(55);
                         b.prefWidthProperty().bind(this.menus.widthProperty());
+                        b.getStyleClass().add("SubbuttonMenu");
+                        subrootItem.setStyle("-fx-background-color:#94ffd9");
+                        subrootItem.setSpacing(10);
                         subrootItem.getChildren().add(b);
                         b.setOnAction(e->
                         {
+                            
+                           b.getStyleClass().add(".SubbuttonMenu:selected");
                             System.out.println("click");
                             view.getChildren().clear();
                             view.getChildren().add(option.getItem());
                             option.onShowDo();
 
                         });
+                        b.getStyleClass().add("SubbuttonMenu");
                     }
 
                     System.out.println("new titledpane");

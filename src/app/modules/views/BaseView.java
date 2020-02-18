@@ -7,14 +7,14 @@ package app.modules.views;
 
 import app.modules.database.DbManager;
 import app.modules.model.Invoice;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfDictionary;
-import com.itextpdf.text.pdf.PdfName;
-import static com.itextpdf.text.pdf.PdfName.DEST;
-import com.itextpdf.text.pdf.PdfWriter;
+//import com.itextpdf.text.Document;
+//import com.itextpdf.text.DocumentException;
+//import com.itextpdf.text.PageSize;
+//import com.itextpdf.text.Paragraph;
+//import com.itextpdf.text.pdf.PdfDictionary;
+//import com.itextpdf.text.pdf.PdfName;
+//import static com.itextpdf.text.pdf.PdfName.DEST;
+//import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javafx.beans.value.ChangeListener;
@@ -114,7 +114,7 @@ public class BaseView<T> {
         //return new AnchorPane(table);
     }
     
-    
+    /*
     public void createPdf(Invoice invoice) throws FileNotFoundException, DocumentException {
 
             // 1. Create document
@@ -131,6 +131,6 @@ public class BaseView<T> {
 
         // 5. Close document
         document.close();
-  }
+  }*/
     
 }
