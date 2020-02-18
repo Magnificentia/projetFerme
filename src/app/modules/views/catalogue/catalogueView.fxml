@@ -2,6 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -31,7 +35,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_LEFT" prefHeight="220.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;">
+            <HBox alignment="CENTER_LEFT" prefHeight="220.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;" stylesheets="@../cssForCatalogue.css">
                <children>
                   <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
                      <graphic>
@@ -170,7 +174,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="224.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;">
+            <HBox prefHeight="224.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;" stylesheets="@../cssForCatalogue.css">
                <children>
                   <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
                      <graphic>
