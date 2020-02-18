@@ -137,7 +137,6 @@ public class Projet extends Application {
         List elevage=new ArrayList<>();//options menu elevage
         elevage.add(infoselevage);
         elevage.add(bandes);
-
         elevage.add(ration);
         elevage.add(collecteoeuf);
    
@@ -154,7 +153,7 @@ public class Projet extends Application {
         
         List utilisateur=new ArrayList<>();
         utilisateur.add(employes);
-        utilisateur.add(usersgroups);
+        //utilisateur.add(usersgroups);
         
         
         List statistiques=new ArrayList<>();

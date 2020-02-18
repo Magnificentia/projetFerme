@@ -51,3 +51,6 @@ fusionner les stocks pour avoir un seul menu
 ajouter des boutons dans les configs pour les cas où il y a plusieurs numéros, adresses etc
 
 utiliser l'élement de texte bizarre des Label pour donner du style aux slogans
+
+
+pour eviter le scrolling du menu on peut donner une couleur de fond au HBOX du menu.

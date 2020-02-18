@@ -85,36 +85,36 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
     {
         
         
-        TableColumn<Bande,String> col_nom=new TableColumn<>("nom");
+        TableColumn<Bande,String> col_nom=new TableColumn<>("DESIGNATION");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
         col_nom.setPrefWidth(177);
    
         
-        TableColumn<Bande,String> col_achat=new TableColumn<>("prix d'achat");
+        TableColumn<Bande,String> col_achat=new TableColumn<>("PRIX D'ACHAT");
         col_achat.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
         col_achat.setPrefWidth(100);
         
-        TableColumn<Bande,Integer> col_age=new TableColumn<>("age");
+        TableColumn<Bande,Integer> col_age=new TableColumn<>("AGE");
         col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
         col_age.setPrefWidth(100);
         
-        TableColumn<Bande,String> col_date=new TableColumn<>("date");
+        TableColumn<Bande,String> col_date=new TableColumn<>("DATE DE DEMARRAGE");
         col_date.setCellValueFactory(new PropertyValueFactory<>("dateDemarrage"));
         col_date.setPrefWidth(150);
         
-        TableColumn<Bande,Integer> col_quantite=new TableColumn<>("quantité");
+        TableColumn<Bande,Integer> col_quantite=new TableColumn<>("QUANTITE");
         col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
         col_quantite.setPrefWidth(100);
         
-        TableColumn<Bande,String> col_batiment=new TableColumn<>("batiment");
+        TableColumn<Bande,String> col_batiment=new TableColumn<>("BATIMENT");
         col_batiment.setCellValueFactory(new PropertyValueFactory<>("nomBatiment"));
         col_batiment.setPrefWidth(200);
         
-        TableColumn<Bande,String> col_fournisseur=new TableColumn<>("fournisseur");
+        TableColumn<Bande,String> col_fournisseur=new TableColumn<>("FOURNISSEUR");
         col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
         col_fournisseur.setPrefWidth(200);
         
-        TableColumn<Bande,String> col_race=new TableColumn<>("race"); 
+        TableColumn<Bande,String> col_race=new TableColumn<>("RACE"); 
         col_race.setCellValueFactory(new PropertyValueFactory<>("nomRace"));
         col_race.setPrefWidth(150);
         
@@ -335,6 +335,7 @@ final class InformationsBande extends VBox
             batiment.getSelectionModel().select(DbManager.selectBatimentById(this.bande.getBat_id()));
             prix_dachat.setText(new Double(this.bande.getPrix_achat()).toString());
             fournisseur.getSelectionModel().select(DbManager.selectFournisseurById(this.bande.getFourn_id()));
+            race.getSelectionModel().select(DbManager.selectRaceById(this.bande.getRace_id()));
             qteStock.setText(new Integer(this.bande.getQte()).toString());
         }
                 
@@ -342,13 +343,13 @@ final class InformationsBande extends VBox
         v.setStyle("-fx-background-color:#e3e9ee");
         v.getChildren().addAll(hq,ha,hP,hdate,hbat,hfour,hrace,hqteStock);
         v.setMargin(hq,new Insets(10,20,0,20));
-         v.setMargin(ha, new Insets(0, 20, 0, 20) );
-         v.setMargin(hP, new Insets(0, 20, 0, 20) );
-         v.setMargin(hdate, new Insets(0, 20, 0, 20) );
-         v.setMargin(hbat, new Insets(0, 20, 0, 20) );
-         v.setMargin(hfour, new Insets(0, 20, 0, 20) );
-         v.setMargin(hrace, new Insets(0, 20, 0, 20) );
-         v.setMargin(hqteStock, new Insets(0, 20, 0, 20) );
+        v.setMargin(ha, new Insets(0, 20, 0, 20) );
+        v.setMargin(hP, new Insets(0, 20, 0, 20) );
+        v.setMargin(hdate, new Insets(0, 20, 0, 20) );
+        v.setMargin(hbat, new Insets(0, 20, 0, 20) );
+        v.setMargin(hfour, new Insets(0, 20, 0, 20) );
+        v.setMargin(hrace, new Insets(0, 20, 0, 20) );
+        v.setMargin(hqteStock, new Insets(0, 20, 0, 20) );
          
         //v.setSpacing(25);
         //v.setStyle("-fx-alignment:center");

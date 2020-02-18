@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
  * @author _Nprime496_
  */
 public class Bande {
+    private String denomination="BANDE";
     
     public static String DEFAULT_DATE="2020-01-01 00:00:00";
     //attributs de la table
@@ -67,7 +68,7 @@ public class Bande {
             
 
     public Bande(String nomBande,int idBande, int qte, int age, int race_id, double prix_achat, String dateDemarrage, int fourn_id, String nomRace, String nomFournisseur, String nomBatiment,int batid) {
-        this.nomBande=nomBande;
+        this.nomBande=denomination+"-"+String.format("%05d",idBande);
         this.idBande = idBande;
         this.qte = qte;
         this.age = age;
