@@ -201,11 +201,13 @@ final class InformationsBande extends VBox
         t=new JFXTabPane();
         this.bande=bande;
         JFXButton val=new JFXButton("valider");
+        val.setStyle("-fx-background-color:#2aa15b");
         val.setPrefWidth(107);
         val.setPrefHeight(51);
         
         JFXButton ann=new JFXButton("annuler");
         ann.setPrefWidth(107);
+        ann.setStyle("-fx-background-color:#2aa15b");
         ann.setPrefHeight(51);
         
         HBox hbuttonVal=new HBox();
