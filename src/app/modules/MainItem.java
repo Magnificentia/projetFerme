@@ -183,8 +183,6 @@ public class MainItem extends Item {
                     JFXButton b=new JFXButton();
                     b.setPrefHeight(55);
                     b.getStyleClass().add("buttonMenu");
-                    //b.setStyle("-fx-padding:0 5 0 5");
-                    
                     b.prefWidthProperty().bind(this.menus.widthProperty());
                     b.setGraphic(content);
                     HBox h=new HBox();
@@ -196,7 +194,8 @@ public class MainItem extends Item {
                     rootItem.getChildren().add(h);
                     b.setOnAction(e->
                         {
-                            
+                            b.getStyleClass().removeAll("buttonMenu");
+                            b.getStyleClass().add("buttonMenu");
                             //b.setStyle("-fx-text-fill:#94ffd9");
                             //b.setStyle("-fx-background-color:#94ffd9");
                             System.out.println("click");
@@ -212,21 +211,21 @@ public class MainItem extends Item {
                         JFXButton b=new JFXButton(option.toString());
                         b.setPrefHeight(55);
                         b.prefWidthProperty().bind(this.menus.widthProperty());
-                        b.getStyleClass().add("SubbuttonMenu");
+                       // b.getStyleClass().add("SubbuttonMenu");
                         subrootItem.setStyle("-fx-background-color:#94ffd9");
                         subrootItem.setSpacing(10);
                         subrootItem.getChildren().add(b);
                         b.setOnAction(e->
                         {
                             
-                           b.getStyleClass().add(".SubbuttonMenu:selected");
+                          
                             System.out.println("click");
                             view.getChildren().clear();
                             view.getChildren().add(option.getItem());
                             option.onShowDo();
 
                         });
-                        b.getStyleClass().add("SubbuttonMenu");
+                        //b.getStyleClass().add("SubbuttonMenu");
                     }
 
                     System.out.println("new titledpane");

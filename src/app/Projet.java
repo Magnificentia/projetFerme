@@ -166,17 +166,17 @@ public class Projet extends Application {
         ventes.add(commande);
         
         
-        IMenu elevageMenu=new MenuItem("Elevage","ressources/elevage.png",elevage);//liste des menus
-        IMenu tiersMenu=new MenuItem("Tiers","ressources/fournisseur.png",tiers);
+        IMenu elevageMenu=new MenuItem("Elevage","ressources/EleveurView.png",elevage);//liste des menus
+        IMenu tiersMenu=new MenuItem("Tiers","ressources/FournisseurCasque.png",tiers);
 
-        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/home.png",accueil);
-        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/stats.png",statistiques);
+        IMenu accueilMenu=new MenuItem("Accueil" ,"ressources/homehouse.png",accueil);
+        IMenu statistiquesMenu=new MenuItem("Statistiques","ressources/StatsVente.png",statistiques);
 
-        IMenu calendrierMenu=new MenuItem("Calendrier","ressources/health.png",calendrier);
-        IMenu parametresMenu=new MenuItem("paramètres","ressources/health.png",parametres);
-        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/icons8-utilisateur-masculin-240.png",utilisateur);
-        IMenu venteMenu=new MenuItem("Vente","ressources/panier.png",ventes);
-        IMenu magasinMenu=new MenuItem("Magasin","ressources/entrepot.png",magasin);
+        IMenu calendrierMenu=new MenuItem("Calendrier","ressources/CalendrierNew.png",calendrier);
+        IMenu parametresMenu=new MenuItem("paramètres","ressources/ParamètresBold.png",parametres);
+        IMenu utilisateurMenu=new MenuItem("Utilisateur","ressources/userCadreCarre.png",utilisateur);
+        IMenu venteMenu=new MenuItem("Vente","ressources/ventesMenu.png",ventes);
+        IMenu magasinMenu=new MenuItem("Magasin","ressources/MagasinNoir.png",magasin);
 
 
         List menus=new ArrayList<>();

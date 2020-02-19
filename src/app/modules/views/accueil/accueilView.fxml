@@ -31,7 +31,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_LEFT" prefHeight="403.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;">
+            <HBox alignment="CENTER_LEFT" prefHeight="403.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;" stylesheets="@../cssForCatalogue.css">
                <children>
                   <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
                      <graphic>
@@ -170,7 +170,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="296.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;">
+            <HBox prefHeight="296.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;" stylesheets="@../cssForCatalogue.css">
                <children>
                   <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
                      <graphic>

@@ -2,26 +2,51 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="740.0" prefWidth="797.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.parametres.ParametresViewController">
+<AnchorPane prefHeight="768.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.parametres.ParametresViewController">
    <children>
-      <VBox layoutX="167.0" layoutY="8.0" prefHeight="389.0" prefWidth="430.0" spacing="40.0">
+      <VBox layoutX="171.0" layoutY="8.0" prefHeight="763.0" prefWidth="852.0" spacing="40.0" style="-fx-background-color: #f8f8ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="imagechooser" prefHeight="117.0" prefWidth="439.0" text=".">
+            <JFXButton fx:id="imagechooser" prefHeight="160.0" prefWidth="389.0" text=".">
                <graphic>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="446.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
+               <VBox.margin>
+                  <Insets left="200.0" top="50.0" />
+               </VBox.margin>
             </JFXButton>
-            <JFXTextField labelFloat="true" promptText="nom de la ferme" />
-            <JFXTextField promptText="slogan (optionel)" />
-            <JFXTextField promptText="numero de telephone" />
-            <JFXTextField promptText="siteweb" />
-            <JFXTextField promptText="ville" />
-            <JFXTextField promptText="adresse" />
-            <JFXButton fx:id="save" prefHeight="25.0" prefWidth="107.0" styleClass="j-button" text="save" />
+            <JFXTextField labelFloat="true" promptText="nom de la ferme">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXTextField labelFloat="true" promptText="slogan (optionel)">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXTextField labelFloat="true" promptText="numero de telephone">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXTextField labelFloat="true" promptText="siteweb">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXTextField labelFloat="true" promptText="ville">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXTextField labelFloat="true" promptText="adresse">
+               <VBox.margin>
+                  <Insets left="200.0" right="700.0" />
+               </VBox.margin></JFXTextField>
+            <JFXButton fx:id="save" prefHeight="25.0" prefWidth="107.0" styleClass="j-button" text="save">
+               <VBox.margin>
+                  <Insets left="200.0" />
+               </VBox.margin></JFXButton>
          </children>
       </VBox>
    </children>
