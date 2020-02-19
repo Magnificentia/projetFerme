@@ -19,7 +19,6 @@ import app.modules.userType;
 import app.modules.views.BaseView;
 //import app.modules.views.bonjour.Formulaire;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
@@ -29,24 +28,17 @@ import java.sql.SQLException;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -89,7 +81,6 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomBande"));
         col_nom.setPrefWidth(177);
    
-        
         TableColumn<Bande,String> col_achat=new TableColumn<>("PRIX D'ACHAT");
         col_achat.setCellValueFactory(new PropertyValueFactory<>("prix_achat"));
         col_achat.setPrefWidth(100);
@@ -454,6 +445,5 @@ final class InformationsBande extends VBox
         // Show the dialog and wait until the user closes it
         dialogStage.showAndWait();
     }
-    
 }
 
