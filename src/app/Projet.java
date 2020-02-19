@@ -129,9 +129,9 @@ public class Projet extends Application {
         IOption accueil=new OptionItem("Accueil","views/accueil/accueilView.fxml");
         IOption client=new OptionItem("Client","views/client/clientView.fxml");
         IOption catalogue=new OptionItem("Catalogue","views/catalogue/catalogueView.fxml");
-        IOption commande=new OptionItem("commandefdfasfasdfsad","views/commande/commandeView.fxml");
+        IOption commande=new OptionItem("Commandes","views/commande/commandeView.fxml");
         IOption parametres=new OptionItem("Parametres","views/parametres/parametresView.fxml");
-        IOption infoselevage=new OptionItem("infos elevage","views/infosElevage/eleveurView.fxml");
+        IOption infoselevage=new OptionItem("Infos elevage","views/infosElevage/eleveurView.fxml");
         IOption infoscommercial=new OptionItem("Infos commercial","views/infosCommercial/commercialView.fxml");
         
         List elevage=new ArrayList<>();//options menu elevage

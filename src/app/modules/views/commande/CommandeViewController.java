@@ -39,6 +39,16 @@ public class CommandeViewController extends BaseView<Client> implements Initiali
         data=FXCollections.observableArrayList(DbManager.selectClients());
     }
     
+    @FXML
+    void onAjouterClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onInformationsClicked(ActionEvent event) {
+
+    }
+    
     public void createTable()
     {
         table.setPrefWidth(800);
