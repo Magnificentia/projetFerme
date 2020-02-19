@@ -1,96 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1289.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.commande.CommandeViewController">
    <children>
-      <VBox prefHeight="536.0" prefWidth="797.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+     <VBox prefHeight="768.0" prefWidth="1290.0">
          <children>
-            <HBox prefHeight="29.0" prefWidth="1250.0" styleClass="hBoxNormal">
+            <HBox prefHeight="81.0" prefWidth="1240.0" styleClass="hBoxNormal">
                <children>
-                  <Label prefHeight="21.0" prefWidth="151.0" styleClass="LabelRation" text="Commande">
+                  <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelRation" text="Commande">
                      <HBox.margin>
                         <Insets left="29.0" />
-                     </HBox.margin></Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </VBox.margin>
-            </HBox>
-
-            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hBoxNormal">
-               <children>
-                  <JFXButton fx:id="recherche" prefHeight="27.0" prefWidth="309.0" styleClass="j-button" text="Ajouter une nouvelle commande">
-                     <HBox.margin>
-                        <Insets left="29.0" right="350.0" />
-                     </HBox.margin></JFXButton>
-                  <TextField prefHeight="31.0" prefWidth="287.0" />
-                  <Label text="Rechercher">
-                     <graphic>
-                        <FontAwesomeIconView glyphName="SEARCH" />
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-
-               </children>
-               <VBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </VBox.margin>
-            </HBox>
-            <Separator prefHeight="0.0" prefWidth="1250.0">
-               <padding>
-                  <Insets left="25.0" right="25.0" />
-               </padding>
-            </Separator>
-            <HBox prefHeight="50.0" prefWidth="348.0" styleClass="hBoxTable">
-               <children>
-                  <TableView fx:id="table" prefHeight="536.0" prefWidth="475.0">
-                    <columns>
-                      <TableColumn fx:id="col_client" prefWidth="249.0" text="client" />
-                      <TableColumn fx:id="col_bande" prefWidth="190.0" text="bande" />
-                        <TableColumn fx:id="col_date" prefWidth="251.0" text="date" />
-                        <TableColumn fx:id="col_quantite" minWidth="0.0" prefWidth="294.0" text="quantite" />
-                        <TableColumn fx:id="col_prix" maxWidth="534.0" minWidth="0.0" prefWidth="196.0" text="prix" />
-                    </columns>
-                     <HBox.margin>
-                        <Insets left="29.0" />
-                     </HBox.margin>
-                  </TableView>
                </children>
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
             <Separator prefWidth="200.0">
-               <padding>
+               <VBox.margin>
                   <Insets left="25.0" right="25.0" />
-               </padding>
+               </VBox.margin>
             </Separator>
-            <HBox prefHeight="43.0" prefWidth="1250.0" spacing="50.0" styleClass="hBoxNormal">
+            <HBox alignment="CENTER_LEFT" prefHeight="220.0" prefWidth="1240.0" spacing="62.0" style="-fx-background-color: #f8f8ff;" stylesheets="@../cssForCatalogue.css">
                <children>
-                  <JFXButton prefHeight="31.0" prefWidth="158.0" styleClass="j-button" text="supprimer">
+                  <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
+                     <graphic>
+                        <VBox prefHeight="175.0" prefWidth="315.0" style="-fx-background-color: linear-gradient(to right,#ADFF2F,#20B2AA);">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="LabelCatalogueTitre">
+                                 <children>
+                                    <Label prefHeight="55.0" prefWidth="186.0" styleClass="LabelCatalogueTitre" text="Poussin">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ImageView fitHeight="96.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="15.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@../../ressources/chicks.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="41.0" prefWidth="310.0" styleClass="LabelCatalogue">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="41.0" prefWidth="310.0">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </graphic>
                      <HBox.margin>
                         <Insets left="29.0" />
-                     </HBox.margin></JFXButton>
-                  <JFXButton prefHeight="31.0" prefWidth="183.0" styleClass="j-button" text="éditer" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
+                     <graphic>
+                        <VBox prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: linear-gradient(to right, #FFA500,#f13501);">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="85.0">
+                                 <children>
+                                    <Label prefHeight="64.0" prefWidth="105.0" styleClass="LabelCatalogueTitre" text="Ventes">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ImageView fitHeight="76.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="25.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@../../ressources/ventes.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="43.0" prefWidth="310.0">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="43.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton contentDisplay="CENTER" prefHeight="183.0" prefWidth="330.0" text=" ">
+                     <graphic>
+                        <VBox prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: linear-gradient(to left ,#006fff,#8A2BE2);">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="110.0">
+                                 <children>
+                                    <Label prefHeight="64.0" prefWidth="83.0" styleClass="LabelCatalogueTitre" text="Oeufs">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ImageView fitHeight="87.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets right="25.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@../../ressources/oeuf.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="41.0" prefWidth="310.0">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Ce mois :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="43.0" prefWidth="310.0">
+                                 <children>
+                                    <Label styleClass="LabelCatalogue" text="Aujourd'hui :">
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </JFXButton>
                </children>
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-         </children>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="510.0" prefWidth="1240.0" style="-fx-background-color: #f8f8ff;">
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+               <children>
+                  <VBox prefHeight="480.0" prefWidth="594.0">
+                     <children>
+                        <LineChart fx:id="grah_qte_date" prefHeight="465.0" prefWidth="603.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="29.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="480.0" prefWidth="580.0">
+                     <children>
+                        <PieChart fx:id="fournAchat" prefHeight="469.0" prefWidth="576.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="25.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>   
       </VBox>
    </children>
 </AnchorPane>
