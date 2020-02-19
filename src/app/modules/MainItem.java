@@ -239,6 +239,7 @@ public class MainItem extends Item {
         }
         System.out.println("rootItem="+rootItem.getChildren());
         //menus=new JFXTreeView(rootItem);
+       
         
         menus.getChildren().add(rootItem);
         menus.setPrefHeight(1500);
