@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="81.0" prefWidth="1240.0" styleClass="hBoxNormal">
                <children>
-                  <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelRation" text="Commande">
+                  <Label prefHeight="39.0" prefWidth="212.0" styleClass="LabelRation" text="Infos Commercial">
                      <HBox.margin>
                         <Insets left="29.0" />
                      </HBox.margin>
