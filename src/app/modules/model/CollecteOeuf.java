@@ -29,16 +29,15 @@ public class CollecteOeuf {
     private String nomBande;
     private String nomTypeOeuf;
 
-    public CollecteOeuf(int idCollect, int qte, String dateCollect, int incubation, int bande_id, double prix_alveole, int qteCasse, int typeOeuf, String nomBande, String nomTypeOeuf) {
+    public CollecteOeuf(int idCollect, int qte, String dateCollect, int incubation, int bande_id, int qteCasse, int typeOeuf, String nomTypeOeuf) {
         this.idCollect = idCollect;
         this.qte = qte;
         this.dateCollecte = LocalDate.parse(dateCollect, formatter);
         this.incubation = incubation;
         this.bande_id = bande_id;
-        this.prix_alveole = prix_alveole;
         this.qteCasse = qteCasse;
         this.typeOeuf = typeOeuf;
-        this.nomBande = nomBande;
+        this.nomBande = Bande.getNameFromId(bande_id);
         this.nomTypeOeuf = nomTypeOeuf;
     }
     

@@ -292,10 +292,10 @@ public class DbManager {
         try{
             System.out.println("loading collecte oeuf");
             Statement state=getConnection().createStatement();
-            String query="select * from collecteoeufview";//bandeview est une vue crée sur la table bande
+            String query="select * from collecteoeuf join typeoeuf on typeoeuf.idtypeoeuf=collecteoeuf.typeoeuf_id;";//bandeview est une vue crée sur la table bande
             ResultSet result=state.executeQuery(query);
             while(result.next()){
-                    col = new CollecteOeuf(result.getInt("idcollect"),result.getInt("qte"),result.getString("datecollect"),result.getInt("incubation"),result.getInt("bande_id"),result.getDouble("prix_alveole"),result.getInt("qtecasse"),result.getInt("typeoeuf_id"),result.getString("nomBande"),result.getString("nomTf"));
+                    col = new CollecteOeuf(result.getInt("idcollect"),result.getInt("qte"),result.getString("datecollect"),result.getInt("incubation"),result.getInt("bande_id"),result.getInt("qtecasse"),result.getInt("typeoeuf_id"),result.getString("nomTf"));
                     stockList.add(col);
                     
                     System.out.println(col.getDateCollect());
@@ -383,14 +383,14 @@ public class DbManager {
     {
         try{
             Statement state=getConnection().createStatement();
-            PreparedStatement query=getConnection().prepareStatement("insert into collecteoeuf(qte,datecollect,incubation,bande_id,prix_alveole,qtecasse,typeoeuf_id) values (?,?,?,?,?,?,?)");//bandeview est une vue crée sur la table bande
+            PreparedStatement query=getConnection().prepareStatement("insert into collecteoeuf(qte,datecollect,incubation,bande_id,qtecasse,typeoeuf_id) values (?,?,?,?,?,?)");//bandeview est une vue crée sur la table bande
             query.setInt(1,col.getQte());
             query.setString(2,col.getDateCollect().toString());
             query.setInt(3,col.getIncubation());
             query.setInt(4, col.getBande_id());
-            query.setDouble(5,col.getPrix_alveole());
-            query.setInt(6,col.getQteCasse());
-            query.setDouble(7,col.getTypeOeuf());
+            //query.setDouble(5,col.getPrix_alveole());
+            query.setInt(5,col.getQteCasse());
+            query.setDouble(6,col.getTypeOeuf());
             
             System.out.println(query.toString());
             int result=query.executeUpdate();

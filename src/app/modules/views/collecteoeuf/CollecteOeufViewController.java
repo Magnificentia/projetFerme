@@ -58,6 +58,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     public void loadData()
     {
         data=FXCollections.observableArrayList(DbManager.selectCollecteOeufs());
+        System.out.println("COLLECTE OEUFS - "+data);
     }
     
     public void createTable()

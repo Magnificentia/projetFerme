@@ -107,22 +107,6 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         table.setItems(liste);
     }
     
-    @FXML
-    public void handleDelete(ActionEvent event) throws SQLException {
-
-        StockAliment mat=table.getSelectionModel().getSelectedItem();
-
-        if (mat!=null) {
-            if(Projet.showAlert(Alert.AlertType.CONFIRMATION, null, "Form Error!",
-                "voulez-vous supprimer cet utilisateur?"))
-            {
-                System.out.println("suppression");
-                DbManager.deleteStockAliment(mat);
-                populateTableRation();
-            }
-            return;
-        }
-    }
     
         @FXML
     void Search() {
@@ -169,33 +153,7 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         table.setItems(sortedData);
     }
     
-    @FXML
-    public void showAddStockAlimentrWindow(ActionEvent event) {
-        try {
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("options/addStockAlimentOptions.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
 
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            //dialogStage.getIcons().add(new Image("file:resources/images/icon2.jpg"));
-            dialogStage.setTitle("Ajouter un nouveau stock");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(Projet.getMainStage());
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
-
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
-            populateTableRation();
-
-            //
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
 
     @FXML
     public void onAjouterclicked(ActionEvent event)
@@ -204,12 +162,7 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
         form.show();
         updateData();
     }
-        public void updateTableBande()
-    {
-        table.getItems().clear();//importaant sinon les changements ne vont pas être éffectués lorsqu'on fait de simples modificatioobs
-        data=FXCollections.observableArrayList(DbManager.selectStockAliment());
-        table.setItems(data);
-    }
+
     
     @Override
     public Map<Node,List<userType>> getNodeRoles() {
