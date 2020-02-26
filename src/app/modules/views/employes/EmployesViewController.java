@@ -28,15 +28,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 //putain
 public class EmployesViewController extends BaseView<Employes> implements Initializable, IController {
 
     
       @FXML
-    private TextField recherche;
+    private TextField rechercher;
       
     @FXML
-    private AnchorPane anchor;
+    private HBox anchor;
 
 
     @Override
@@ -67,15 +68,20 @@ public class EmployesViewController extends BaseView<Employes> implements Initia
         
         TableColumn<Employes,String> col_nom=new TableColumn<>("nom");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        col_nom.setPrefWidth(300);
         
         TableColumn<Employes,String> col_login=new TableColumn<>("login");
         col_login.setCellValueFactory(new PropertyValueFactory<>("user"));
-        
+                 col_login.setPrefWidth(250);
+
         TableColumn<Employes,Integer> col_pwd=new TableColumn<>("mot de passe");
         col_pwd.setCellValueFactory(new PropertyValueFactory<>("password"));
+                col_pwd.setPrefWidth(300);
+
         
         TableColumn<Employes,String> col_statut=new TableColumn<>("statut");
-        
+                col_statut.setPrefWidth(325);
+
 
         table.getColumns().addAll(col_nom,col_login,col_pwd,col_statut);
     }
@@ -88,7 +94,7 @@ public class EmployesViewController extends BaseView<Employes> implements Initia
         FilteredList<Employes> filteredData = new FilteredList<>(data, p -> true);
         
         // 2. Set the filter Predicate whenever the filter changes.
-        recherche.textProperty().
+        rechercher.textProperty().
         addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(emp -> {
                 // If filter text is empty, display all persons.
