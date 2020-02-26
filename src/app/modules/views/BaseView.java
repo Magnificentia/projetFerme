@@ -54,7 +54,7 @@ public class BaseView<T> {
                 new ChangeListener<Number>(){
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println("pagination changed");
+                //System.out.println("pagination changed");
                 createPage(newValue.intValue());
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
@@ -64,7 +64,7 @@ public class BaseView<T> {
                 //menu contextuel
         ContextMenu cm = new ContextMenu();
         MenuItem mi1 = new MenuItem("supprimer");
-        mi1.setOnAction(event->{System.out.println("supp bande");delete(table.getSelectionModel().getSelectedItem());updateData();});
+        mi1.setOnAction(event->{delete(table.getSelectionModel().getSelectedItem());updateData();});
         cm.getItems().add(mi1);
         //MenuItem mi2 = new MenuItem("Menu 2");
         //cm.getItems().add(mi2);
@@ -95,19 +95,19 @@ public class BaseView<T> {
     protected void updateData()
     {
         pagination.setPageCount((data.size() / rowsPerPage + 1));
-        System.out.println("size before"+data.size());
+        //System.out.println("size before"+data.size());
         loadData();
-        System.out.println("size after"+data.size());
+        //System.out.println("size after"+data.size());
         //this.table.getItems().clear();
         this.table.setItems(data);
         createPage(pagination.getCurrentPageIndex());
     }
     protected final void createPage(int pageIndex) {
 
-        System.out.println("page index = "+pageIndex);
+        //System.out.println("page index = "+pageIndex);
         int fromIndex = (pageIndex) * rowsPerPage;
         int toIndex = Math.min(fromIndex + rowsPerPage, data.size());
-        System.out.println("subdata from "+fromIndex+" to "+toIndex+" = "+data.subList(fromIndex, toIndex));
+        //System.out.println("subdata from "+fromIndex+" to "+toIndex+" = "+data.subList(fromIndex, toIndex));
         //table.getItems().clear();
         if (fromIndex<=toIndex)table.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
 

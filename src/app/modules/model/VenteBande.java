@@ -17,6 +17,17 @@ public class VenteBande extends Vente{
         super(idVente, client_id, dateVente, total_prix, qte, employe_id, nomEmploye, nomClient);
         this.bande_id = bande_id;
     }
+    
+    public VenteBande(int bande_id, int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
+        super(client_id, dateVente, total_prix, qte, employe_id, nomEmploye, nomClient);
+        this.bande_id = bande_id;
+    }
+    
+    public VenteBande(int bande_id, int client_id, String dateVente, double total_prix, int qte, int employe_id) {
+        super(client_id, dateVente, total_prix, qte, employe_id);
+        this.bande_id = bande_id;
+    }
+
 
     public int getBande_id() {
         return bande_id;

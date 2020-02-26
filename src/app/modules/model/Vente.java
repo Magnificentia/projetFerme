@@ -21,6 +21,7 @@ public class Vente {
     private int idVente;
     private int client_id;
 
+
     private LocalDate dateVente=LocalDate.parse(Bande.DEFAULT_DATE, formatter);
     private double total_prix;
     private int qte;
@@ -30,8 +31,9 @@ public class Vente {
     private String nomEmploye;
     private String nomClient;
 
-    public Vente(int idVente, int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
+    public Vente(int idVente,int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
         this.idVente = idVente;
+
         this.client_id = client_id;
         this.dateVente =LocalDate.parse(dateVente, formatter);
         this.total_prix = total_prix;
@@ -42,7 +44,40 @@ public class Vente {
     }
     
     
+        public Vente(int idVente, int client_id, String dateVente, double total_prix, int qte, int employe_id) {
+        this.idVente = idVente;
 
+        this.client_id = client_id;
+        this.dateVente =LocalDate.parse(dateVente, formatter);
+        this.total_prix = total_prix;
+        this.qte = qte;
+        this.employe_id = employe_id;
+
+    }
+    
+    public Vente( int client_id, String dateVente, double total_prix, int qte, int employe_id) {
+
+
+        this.client_id = client_id;
+        this.dateVente =LocalDate.parse(dateVente, formatter);
+        this.total_prix = total_prix;
+        this.qte = qte;
+        this.employe_id = employe_id;
+
+    }
+
+    public Vente(int client_id, String dateVente, double total_prix, int qte, int employe_id, String nomEmploye, String nomClient) {
+
+
+        this.client_id = client_id;
+        this.dateVente =LocalDate.parse(dateVente, formatter);
+        this.total_prix = total_prix;
+        this.qte = qte;
+        this.employe_id = employe_id;
+        this.nomEmploye = nomEmploye;
+        this.nomClient = nomClient;
+    }
+    
     public String getNomEmploye() {
         return nomEmploye;
     }

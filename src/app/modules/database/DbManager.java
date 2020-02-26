@@ -18,6 +18,8 @@ import app.modules.model.Race;
 import app.modules.model.Ration;
 import app.modules.model.StockAliment;
 import app.modules.model.Medicament;
+import app.modules.model.Vente;
+import app.modules.model.VenteBande;
 import app.modules.model.VenteOeuf;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -554,20 +556,18 @@ public class DbManager {
     
     public static Batiment selectBatimentById(int id)
     {
-        List<Batiment> stockList = FXCollections.observableArrayList();
-        
-        Batiment emp=null;
+        Batiment bat=null;
         try{
             Statement state=getConnection().createStatement();
             String query="select * from batiment where idbat="+id;//bandeview est une vue crée sur la table bande
             ResultSet result=state.executeQuery(query);
             result.next();
-            emp = new Batiment(result.getInt("idbat"),result.getDouble("surface"),result.getString("nombat"));
+            bat = new Batiment(result.getInt("idbat"),result.getDouble("surface"),result.getString("nombat"));
             state.close();
         }catch (SQLException ex){
             ex.printStackTrace();
         }
-        return emp;
+        return bat;
     }
     
     
@@ -585,6 +585,26 @@ public class DbManager {
                     stockList.add(emp);
             }
             state.close();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return stockList;
+    }
+    
+    public static List<VenteBande> selectVentesBande()
+    {
+        List<VenteBande> stockList = FXCollections.observableArrayList();
+        
+        VenteBande emp;
+        try{
+            try (Statement state = getConnection().createStatement()) {
+                String query="select bande_id,idvente,client_id,nomclient,datevente,total_prix,qte,employe_id,nom from vendu join client on vendu.client_id=client.idclient join employes on employes.idem=vendu.employe_id;";//bandeview est une vue crée sur la table bande
+                ResultSet result=state.executeQuery(query);
+                while(result.next()){
+                    emp = new VenteBande(result.getInt("bande_id"),result.getInt("idvente"),result.getInt("client_id"), result.getString("datevente"), result.getDouble("total_prix"), result.getInt("qte"),result.getInt("employe_id"), result.getString("nom"), result.getString("nomclient"));
+                    stockList.add(emp);
+                }
+            } //bandeview est une vue crée sur la table bande
         }catch (SQLException ex){
             ex.printStackTrace();
         }
@@ -784,6 +804,28 @@ public class DbManager {
         }
         return null;
         
+    }
+
+    public static boolean saveVenteBande(VenteBande col) {
+                try{
+            Statement state=getConnection().createStatement();
+            PreparedStatement query=getConnection().prepareStatement("insert into vendu(client_id,bande_id,datevente,total_prix,qte,employe_id) values (?,?,?,?,?,?)");//bandeview est une vue crée sur la table bande
+            query.setInt(1,col.getClient_id());
+            query.setInt(2,col.getBande_id());
+            query.setString(3,col.getDateVente().toString());
+            query.setDouble(4, col.getTotal_prix());
+            //query.setDouble(5,col.getPrix_alveole());
+            query.setInt(5,col.getQte());
+            query.setInt(6,col.getEmploye_id());
+            
+            System.out.println(query.toString());
+            int result=query.executeUpdate();
+            state.close();
+            return result==1;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return false;//To change body of generated methods, choose Tools | Templates.
     }
 }
 

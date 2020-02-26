@@ -165,21 +165,16 @@ public class MainItem extends Item {
                 );
                 content.setSpacing(20);
 
-                
-
-                //essai de mettre un tree view
-                System.out.println("TEST SUR LE MENU"+menu);
-                System.out.println("LE PATH "+menu.getIconPath());
 
                 //Parent subrootItem;//= new TreeItem<>(menu,imageView);
                 VBox subrootItem=new VBox();
                 VBox v=new VBox();
-                System.out.println(menu.getOptionsList());
+
 
                 if(menu.getOptionsList().size()<=1)
                 {
                     //autrement dit, menu pur ou menu ayant un seul element
-                    System.out.println("new button");
+
                     JFXButton b=new JFXButton();
                     b.setPrefHeight(55);
                     b.getStyleClass().add("buttonMenu");
@@ -198,7 +193,6 @@ public class MainItem extends Item {
                             b.getStyleClass().add("buttonMenu");
                             //b.setStyle("-fx-text-fill:#94ffd9");
                             //b.setStyle("-fx-background-color:#94ffd9");
-                            System.out.println("click");
                             view.getChildren().clear();
                             view.getChildren().add(menu.getOptionsList().get(0).getItem());
                             menu.getOptionsList().get(0).onShowDo();
@@ -217,9 +211,6 @@ public class MainItem extends Item {
                         subrootItem.getChildren().add(b);
                         b.setOnAction(e->
                         {
-                            
-                          
-                            System.out.println("click");
                             view.getChildren().clear();
                             view.getChildren().add(option.getItem());
                             option.onShowDo();
@@ -227,8 +218,6 @@ public class MainItem extends Item {
                         });
                         //b.getStyleClass().add("SubbuttonMenu");
                     }
-
-                    System.out.println("new titledpane");
                     TitledPane a=new TitledPane();
                     a.setGraphic(content);
                     content.minWidthProperty().bind(a.widthProperty());
@@ -237,7 +226,6 @@ public class MainItem extends Item {
                 }
             }
         }
-        System.out.println("rootItem="+rootItem.getChildren());
         //menus=new JFXTreeView(rootItem);
        
         
@@ -252,7 +240,7 @@ public class MainItem extends Item {
 
         gridpane.add(menus, 0, 1);
         gridpane.add(view,1,1);
-        System.out.println(menus.getChildrenUnmodifiable());
+        //System.out.println(menus.getChildrenUnmodifiable());
 
     }
     private void loadMenus(List menus)
@@ -263,7 +251,7 @@ public class MainItem extends Item {
 
     @Override
     public Parent getItem() {
-        System.out.println("container"+container.getChildren());
+        //System.out.println("container"+container.getChildren());
         return this.container;
     }
 

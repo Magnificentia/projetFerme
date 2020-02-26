@@ -9,13 +9,11 @@ import app.modules.IController;
 import app.modules.database.DbManager;
 import app.modules.model.Bande;
 import app.modules.model.CollecteOeuf;
-import app.modules.model.Employes;
 import app.modules.model.StockAliment;
 
 import app.modules.userType;
 import app.modules.views.BaseView;
 import app.modules.views.Form;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
@@ -31,7 +29,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 //putain
 public class CollecteOeufViewController extends BaseView<CollecteOeuf> implements Initializable, IController {
@@ -48,6 +45,7 @@ public class CollecteOeufViewController extends BaseView<CollecteOeuf> implement
     public void initialize(URL location, ResourceBundle resources) {
 
        createTable();
+       // System.out.println('');
        AnchorTable.getChildren().add(item);
         
        table.setPrefWidth(800);

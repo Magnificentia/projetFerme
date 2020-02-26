@@ -58,7 +58,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox fx:id="AnchorTable" alignment="TOP_CENTER" prefHeight="580.0" prefWidth="1200.0" style="-fx-background-color: #F8F8FF;">
+            <HBox fx:id="hbox" alignment="TOP_CENTER" prefHeight="580.0" prefWidth="1200.0" style="-fx-background-color: #F8F8FF;">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
