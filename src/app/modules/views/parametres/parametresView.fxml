@@ -3,49 +3,69 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1290.0" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.modules.views.parametres.ParametresViewController">
    <children>
-      <VBox layoutX="171.0" layoutY="8.0" prefHeight="763.0" prefWidth="852.0" spacing="40.0" style="-fx-background-color: #f8f8ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="171.0" layoutY="8.0" prefHeight="763.0" prefWidth="852.0" style="-fx-background-color: #f8f8ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="0.0">
          <children>
+             <HBox prefHeight="81.0" prefWidth="1240.0" styleClass="hBoxNormal">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="158.0" styleClass="LabelRation" text="Paramètres">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="25.0" right="25.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Separator>
             <JFXButton fx:id="imagechooser" prefHeight="160.0" prefWidth="389.0" text=".">
                <graphic>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="446.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
                <VBox.margin>
-                  <Insets left="200.0" top="50.0" />
+                  <Insets bottom="25.0" left="350.0" right="100.0" top="50.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXTextField labelFloat="true" promptText="nom de la ferme">
+            <JFXTextField labelFloat="true" promptText="Changer le nom de la ferme">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="slogan (optionel)">
+            <JFXTextField labelFloat="true" promptText="Changer le slogan (optionel)">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="numero de telephone">
+            <JFXTextField labelFloat="true" promptText="Changer le numero de telephone">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="siteweb">
+            <JFXTextField labelFloat="true" promptText="Changer le siteweb">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="ville">
+            <JFXTextField labelFloat="true" promptText="Changer  la ville">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXTextField labelFloat="true" promptText="adresse">
+            <JFXTextField labelFloat="true" promptText="Changer l'adresse">
                <VBox.margin>
-                  <Insets left="200.0" right="700.0" />
+                  <Insets bottom="25.0" left="350.0" right="450.0" />
                </VBox.margin></JFXTextField>
-            <JFXButton fx:id="save" prefHeight="25.0" prefWidth="107.0" styleClass="j-button" text="save">
+            <JFXButton fx:id="save" prefHeight="42.0" prefWidth="122.0" styleClass="j-button" text="save">
                <VBox.margin>
-                  <Insets left="200.0" />
+                  <Insets left="350.0" right="450.0" top="30.0" />
                </VBox.margin></JFXButton>
          </children>
       </VBox>

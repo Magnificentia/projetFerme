@@ -302,7 +302,7 @@
 {
      -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
      -fx-shape: "M 0 0 L 10 5 L 0 10 L 0 8 L 8 5 L 0 2 Z";
-     -fx-translate-x: 165;
+     -fx-translate-x: 180;
      
      
 }
@@ -363,3 +363,23 @@ buttonMenu:selected
     -fx-padding:0 5 0 5;
     -fx-pref-height:55;
 }*/
+/**********Calendar***************/
+
+/*.date-picker .month-year-pane{
+     -fx-background-color: aqua;
+     -fx-padding: 5 5 5 5;
+}
+.date-picker .day-name-cell{
+   -fx-background-color: black;
+   -fx-text-fill:aqua;
+
+}*/
+
+.time-slot {
+	-fx-background-color: #94ffd9;/*black, white ;*/
+	-fx-background-insets: 0, 1 1 0 0 ;
+}
+
+.time-slot:selected {
+	-fx-background-color: honeydew ;
+}

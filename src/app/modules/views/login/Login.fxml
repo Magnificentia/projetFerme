@@ -59,9 +59,9 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="60.0" prefWidth="757.0" spacing="10.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="42.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ressources/icons8-utilisateur-masculin-240.png" />
+                              <Image url="@../../ressources/UtilisateurVert.png" />
                            </image></ImageView>
                         <JFXTextField fx:id="textFieldUserName" focusColor="#2aa15b" labelFloat="true" onAction="#NameTextField" prefHeight="31.0" prefWidth="252.0" promptText="Enter your name" styleClass="textField">
                            <opaqueInsets>
@@ -76,11 +76,11 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="757.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="757.0" spacing="7.0">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="51.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../ressources/Cadenas.png" />
+                              <Image url="@../../ressources/cadenasVert.png" />
                            </image></ImageView>
                         <JFXPasswordField id="t" fx:id="textFieldPassword" focusColor="#2aa15b" labelFloat="true" prefHeight="31.0" prefWidth="252.0" promptText="Enter your password" style="-fx-font-size: 16;" />
                      </children>

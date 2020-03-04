@@ -26,13 +26,14 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 public class MainItem extends Item {
     private ArrayList<IMenu> menusList;
     private Parent header=new HBox();
     private Parent footer=new HBox();
 
-    private HBox menus;
+    private VBox menus;
     private Pane container;
     private Pane view;
 
@@ -43,15 +44,20 @@ public class MainItem extends Item {
     private GridPane gridpane;
     
     private static ImageView logo;
+    private static Text InfoUser;
+    private static String InfoUserString;
 
 
     public MainItem(String name,List menus)
     {
         super(name);
        
-        
+        this.menus=new VBox();
+        InfoUserString=new String("Mouen Doumbe");
+        InfoUser=new Text();
+        DisplayInfoUser();
         gridpane=new GridPane();//pour la mise en page
-        gridpane.getColumnConstraints().add(new ColumnConstraints(210));//specifie la longueur (horizontalement) de l'espace pour menus et icone
+        gridpane.getColumnConstraints().add(new ColumnConstraints(230));//specifie la longueur (horizontalement) de l'espace pour menus et icone
         gridpane.getRowConstraints().add(new RowConstraints(55));//specifie la largeur (verticalement) de l'espace pour le header
         
         createHeader();
@@ -61,31 +67,56 @@ public class MainItem extends Item {
         this.reload();
         loadMenus(menus);
     }
+    
+    public void DisplayInfoUser()
+    {
+        HBox hImage=new HBox();
+        HBox hLabel=new HBox();
+        logo=new ImageView(getClass().getResource("ressources/InfoUser.png").toString());
+        logo.setFitHeight(130);
+        logo.setFitWidth(130);
+        InfoUser.setText(InfoUserString);
+        hImage.getChildren().add(logo);
+        hImage.setAlignment(Pos.CENTER);
+        hImage.setStyle("-fx-background-color:#f8f8ff");
+        
+        hLabel.getChildren().add(InfoUser);
+        hLabel.setAlignment(Pos.CENTER);
+        hLabel.setStyle("-fx-background-color:#f8f8ff");
+        
+       this.menus.getChildren().addAll(hImage,hLabel);
+       //this.menus.setStyle("-fx-padding:0 5 0 5");
+        
+    }
     public void createHeader()
     {
          
-        logo=new ImageView(getClass().getResource("ressources/MenuEnBlanc.png").toString());
-        logo.setFitHeight(20);
-        logo.setFitWidth(20);
-        Label Lmenu=new Label("Menu");
+       
+        Label Lmenu=new Label("VollaileD'Or");
         Lmenu.setTextFill(Color.web("#F8F8FF"));
+        Lmenu.setStyle("-fx-pref-height:45");
         Lmenu.setStyle("-fx-font-size: 25px");
+        //Lmenu.setStyle("-fx-font-weight:bold");
         
         
         
         HBox h=new HBox();
         
-        h.getChildren().addAll(Lmenu,logo);
+        h.getChildren().addAll(Lmenu);
         h.setSpacing(95);
         h.setMargin(Lmenu,new Insets(10,0,0,10));
-        h.setMargin(logo,new Insets(16,10,0,0));
+        
         h.setStyle("-fx-background-color:#2aa15b");
        
         gridpane.add(h, 0, 0);
         
-        HBox h2=new HBox();
-        h2.getChildren().addAll(new Label("icone et label"));
-        h2.setStyle("-fx-background-color:#2aa15b");
+        
+        //HBox h2=new HBox();
+        //h2.getChildren().addAll(new Label("icone et label"),logo);
+        //logo.setStyle("-fx-pref-height:100");
+        //h2.setMargin(logo,new Insets(16,10,0,0));
+        //h2.setPrefWidth(1350);
+        //h2.setStyle("-fx-background-color:#2aa15b");
         
         //gridpane.add(h2, 1, 0);
         
@@ -130,7 +161,7 @@ public class MainItem extends Item {
     }
     private void displayMenus()
     {
-        menus=new HBox();
+        
         //creation du treeview
         VBox rootItem=new VBox();
         for(IMenu menu: menusList) {

@@ -27,7 +27,7 @@ import javafx.stage.WindowEvent;
 
 public class Projet extends Application {
     public userType typeUser=userType._ADMIN_;
-    public  static double pref_width=1500;
+    public  static double pref_width=1540;
     public  static double pref_height=900;
     
     private static Stage mainStage;
