@@ -46,14 +46,17 @@ public class MainItem extends Item {
     private static ImageView logo;
     private static Text InfoUser;
     private static String InfoUserString;
+    private static String TypeUser;
 
 
     public MainItem(String name,List menus)
     {
         super(name);
        
+        
         this.menus=new VBox();
         InfoUserString=new String("Mouen Doumbe");
+        TypeUser=new String("Admin");
         InfoUser=new Text();
         DisplayInfoUser();
         gridpane=new GridPane();//pour la mise en page
@@ -72,16 +75,22 @@ public class MainItem extends Item {
     {
         HBox hImage=new HBox();
         HBox hLabel=new HBox();
-        logo=new ImageView(getClass().getResource("ressources/InfoUser.png").toString());
-        logo.setFitHeight(130);
-        logo.setFitWidth(130);
-        InfoUser.setText(InfoUserString);
+        logo=new ImageView(getClass().getResource("ressources/InfoUser.png").toString()); // ou IconInfoUser.png;
+        logo.setFitHeight(110);
+        logo.setFitWidth(110);
+        InfoUser.setText(InfoUserString+"\n\t"+TypeUser);
+        InfoUser.setStyle("-fx-font-size:45px");
+        InfoUser.setStyle("-fx-font-weight:bold");
+        //InfoUser.setStyle("-fx-text-fill: #2aa15b");
+
+                                                    //#2aa15b
         hImage.getChildren().add(logo);
         hImage.setAlignment(Pos.CENTER);
         hImage.setStyle("-fx-background-color:#f8f8ff");
         
         hLabel.getChildren().add(InfoUser);
         hLabel.setAlignment(Pos.CENTER);
+        hLabel.setMargin(InfoUser, new Insets(5,0,10,0));
         hLabel.setStyle("-fx-background-color:#f8f8ff");
         
        this.menus.getChildren().addAll(hImage,hLabel);
@@ -92,7 +101,7 @@ public class MainItem extends Item {
     {
          
        
-        Label Lmenu=new Label("VollaileD'Or");
+        Label Lmenu=new Label("VollaileD'or");
         Lmenu.setTextFill(Color.web("#F8F8FF"));
         Lmenu.setStyle("-fx-pref-height:45");
         Lmenu.setStyle("-fx-font-size: 25px");
@@ -207,7 +216,8 @@ public class MainItem extends Item {
                     //autrement dit, menu pur ou menu ayant un seul element
 
                     JFXButton b=new JFXButton();
-                    b.setPrefHeight(55);
+                    //b.setPrefHeight(55);
+                    b.setMinHeight(55);
                     b.getStyleClass().add("buttonMenu");
                     b.prefWidthProperty().bind(this.menus.widthProperty());
                     b.setGraphic(content);
