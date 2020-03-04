@@ -136,6 +136,14 @@
 
 }
 
+#supprimer{
+    -fx-background-color:#f71900;
+    /*-fx-border-width:5;*/
+    -fx-text-fill:white;
+     -fx-font-weight:bold;
+
+}
+
 /********ComboBox*******/
 .combo-box-base{
     -fx-background-color: #e3e9ee;

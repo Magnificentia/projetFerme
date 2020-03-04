@@ -63,19 +63,19 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox prefHeight="137.0" prefWidth="1093.0" spacing="80.0" styleClass="hBoxNormal">
+            <HBox alignment="TOP_RIGHT" prefHeight="137.0" prefWidth="1093.0" spacing="80.0" styleClass="hBoxNormal">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
                <children>
-                  <JFXButton prefHeight="49.0" prefWidth="151.0" styleClass="j-button" text="Supprimer">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="25.0" top="10.0" />
-                     </HBox.margin>
-                  </JFXButton>
                   <JFXButton prefHeight="49.0" prefWidth="151.0" styleClass="j-button" text="Editer">
                      <HBox.margin>
                         <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="supprimer" prefHeight="49.0" prefWidth="151.0" styleClass="j-button" text="Supprimer">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
                </children></HBox>

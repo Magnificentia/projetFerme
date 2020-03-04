@@ -53,10 +53,12 @@ public class MainItem extends Item {
         super(name);
        
         this.menus=new VBox();
+        //this.menus.prefHeightProperty().bind(Projet.getMainStage().heightProperty());
         InfoUserString=new String("Mouen Doumbe");
         InfoUser=new Text();
         DisplayInfoUser();
         gridpane=new GridPane();//pour la mise en page
+        gridpane.prefHeightProperty().bind(Projet.getMainStage().heightProperty());
         gridpane.getColumnConstraints().add(new ColumnConstraints(230));//specifie la longueur (horizontalement) de l'espace pour menus et icone
         gridpane.getRowConstraints().add(new RowConstraints(55));//specifie la largeur (verticalement) de l'espace pour le header
         

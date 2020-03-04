@@ -46,7 +46,7 @@
                                     <Insets left="25.0" />
                                  </HBox.margin>
                               </JFXButton>
-                              <JFXButton styleClass="j-button" text="supprimer produit" />
+                              <JFXButton fx:id="supprimer" styleClass="j-button" text="supprimer produit" />
                            </children>
                            <VBox.margin>
                               <Insets left="25.0" />
