@@ -25,10 +25,13 @@ import java.net.URL;
 import java.util.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,6 +40,9 @@ public class CommandeViewController extends BaseView<Vente> implements Initializ
     
     @FXML
     private HBox hbox;
+    
+    @FXML
+    private TextField recherche;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,6 +58,52 @@ public class CommandeViewController extends BaseView<Vente> implements Initializ
         data=FXCollections.observableArrayList(DbManager.selectVentesBande());
     }
 
+    /*@FXML il y a pas commande dans DbManager
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManager.sel);
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<CollecteOeuf> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(collecte -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (collecte.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (collecte.getNomTypeOeuf().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (Integer.toString(collecte.getIncubation()).toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if (Integer.toString(collecte.getQte()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<CollecteOeuf> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
+   */
 
     @FXML
     void onInformationsClicked(ActionEvent event) {
@@ -64,24 +116,28 @@ public class CommandeViewController extends BaseView<Vente> implements Initializ
         
         TableColumn<Vente,String> col_nom=new TableColumn<>("id");
         col_nom.setCellValueFactory(new PropertyValueFactory<>("nomVente"));
+        col_nom.setPrefWidth(250);
         
         TableColumn<Vente,String> col_achat=new TableColumn<>("client");
         col_achat.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
+        col_achat.setPrefWidth(250);
         
         TableColumn<Vente,Integer> col_age=new TableColumn<>("date");
         col_age.setCellValueFactory(new PropertyValueFactory<>("dateVente"));
+        col_age.setPrefWidth(250);
         
         TableColumn<Vente,Integer> col_quantite=new TableColumn<>("quantité");
         col_quantite.setCellValueFactory(new PropertyValueFactory<>("qte"));
+        col_quantite.setPrefWidth(250);
         
         TableColumn<Vente,String> col_date=new TableColumn<>("total");
         col_date.setCellValueFactory(new PropertyValueFactory<>("total_prix"));
-        
+        col_date.setPrefWidth(250);
 
         
         TableColumn<Vente,String> col_batiment=new TableColumn<>("employe");
         col_batiment.setCellValueFactory(new PropertyValueFactory<>("employe_id"));
-        
+        col_batiment.setPrefWidth(250);
         //TableColumn<Vente,String> col_fournisseur=new TableColumn<>("fournisseur");
         //col_fournisseur.setCellValueFactory(new PropertyValueFactory<>("nomFournisseur"));
         

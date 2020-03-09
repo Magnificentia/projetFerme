@@ -262,6 +262,7 @@ public class MainItem extends Item {
                         //b.getStyleClass().add("SubbuttonMenu");
                     }
                     TitledPane a=new TitledPane();
+                    a.setExpanded(false);
                     a.setGraphic(content);
                     content.minWidthProperty().bind(a.widthProperty());
                     a.setContent(subrootItem);

@@ -32,7 +32,7 @@
                         <Insets left="29.0" right="125.0" />
                      </HBox.margin></JFXButton>
                   <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="237.0" styleClass="j-button" text="informations" />
-                  <TextField prefHeight="31.0" prefWidth="289.0">
+                  <TextField fx:id="recherche" prefHeight="31.0" prefWidth="289.0">
                      <HBox.margin>
                         <Insets left="200.0" />
                      </HBox.margin>
