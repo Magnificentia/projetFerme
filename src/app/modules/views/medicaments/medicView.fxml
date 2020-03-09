@@ -29,15 +29,15 @@
                <children>
                   <JFXButton onAction="#onAjouterclicked" prefHeight="31.0" prefWidth="274.0" styleClass="j-button" text="Ajouter un nouveau medicament">
                      <HBox.margin>
-                        <Insets left="29.0" right="450.0" />
+                        <Insets left="29.0" right="500.0" />
                      </HBox.margin></JFXButton>
-                  <TextField fx:id="rechercher" prefHeight="31.0" prefWidth="254.0" />
+                  <TextField fx:id="recherche" prefHeight="31.0" prefWidth="311.0" />
                   <Label text="Rechercher">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" />
                      </graphic>
                      <HBox.margin>
-                        <Insets left="10.0" right="25.0" />
+                        <Insets left="5.0" right="29.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -60,7 +60,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="TOP_RIGHT" prefHeight="87.0" prefWidth="1290.0" spacing="80.0" styleClass="hBoxNormal">
+            <HBox alignment="TOP_RIGHT" prefHeight="87.0" prefWidth="1290.0" spacing="45.0" styleClass="hBoxNormal">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -72,13 +72,10 @@
                   </JFXButton>
                   <JFXButton fx:id="supprimer" prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="25.0" top="10.0" />
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-               </children>
-               <padding>
-                  <Insets right="28.0" />
-               </padding></HBox>
+               </children></HBox>
          </children>
       </VBox>
    </children>

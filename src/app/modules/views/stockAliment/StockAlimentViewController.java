@@ -63,8 +63,9 @@ public class StockAlimentViewController extends BaseView<StockAliment> implement
     public void initialize(URL location, ResourceBundle resources) {
         createTable();
         anchor.getChildren().add(item);
-        this.Search();
+        
         populateTableRation();
+        this.Search();
         //table.setPrefWidth(800);
         
 

@@ -34,7 +34,7 @@ import javafx.scene.layout.HBox;
 public class MedicViewController extends BaseView<Medicament> implements Initializable, IController {
     
     @FXML
-    private TextField rechercher;
+    private TextField recherche;
     
     @FXML
     private HBox anchor;//Mouen a change ca en HBOX et a changer ces caracteristiques directement dans le fichier FXML
@@ -76,7 +76,7 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
         
         TableColumn<Medicament,Integer> col_desc=new TableColumn<>("description");
         col_desc.setCellValueFactory(new PropertyValueFactory<>("description"));//voir comment ajouter une liste de numeros
-        col_desc.setPrefWidth(430);
+        col_desc.setPrefWidth(428);
 
         table.getColumns().addAll(col_nom,col_prix,col_duree,col_desc);
     }
@@ -88,9 +88,9 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
         FilteredList<Medicament> filteredData = new FilteredList<>(data, p -> true);
         
         // 2. Set the filter Predicate whenever the filter changes.
-        rechercher.textProperty().
+        recherche.textProperty().
         addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(vacc -> {
+            filteredData.setPredicate(medic -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -99,15 +99,11 @@ public class MedicViewController extends BaseView<Medicament> implements Initial
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (vacc.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                if (medic.getDescription().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
                 } 
-                else if (Integer.toString((int) vacc.getPrix()).toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches last name.
-                }
                 
-
-                return false; // Does not match.
+               return false; // Does not match.
             });
         });
         

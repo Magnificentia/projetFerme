@@ -32,20 +32,17 @@
                         <Insets left="29.0" right="125.0" />
                      </HBox.margin></JFXButton>
                   <JFXButton fx:id="informations" onAction="#onInformationsClicked" prefHeight="31.0" prefWidth="237.0" styleClass="j-button" text="informations" />
-                  <TextField prefHeight="31.0" prefWidth="235.0">
+                  <TextField fx:id="recherche" prefHeight="31.0" prefWidth="295.0">
                      <HBox.margin>
                         <Insets left="200.0" />
                      </HBox.margin>
                   </TextField>
-                  <Label prefHeight="36.0" prefWidth="108.0" text="Rechercher">
+                  <Label prefHeight="36.0" prefWidth="94.0" text="Rechercher">
                      <graphic>
                         <FontAwesomeIconView glyphName="SEARCH" />
                      </graphic>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                      <HBox.margin>
-                        <Insets right="25.0" />
+                        <Insets left="5.0" right="29.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -68,7 +65,7 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="1210.0" spacing="80.0" styleClass="hBoxNormal">
+            <HBox alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="1210.0" spacing="45.0" styleClass="hBoxNormal">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -78,9 +75,9 @@
                         <Insets bottom="10.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="supprimer" prefHeight="49.0" prefWidth="158.0" styleClass="j-button" text="Supprimer">
+                  <JFXButton fx:id="supprimer" prefHeight="31.0" prefWidth="157.0" styleClass="j-button" text="Supprimer">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="25.0" top="10.0" />
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                      </HBox.margin>
                   </JFXButton>
                </children>

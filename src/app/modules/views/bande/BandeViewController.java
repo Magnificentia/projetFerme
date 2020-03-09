@@ -11,6 +11,7 @@ import app.modules.IController;
 import app.modules.database.DbManager;
 import app.modules.model.Bande;
 import app.modules.model.Batiment;
+import app.modules.model.CollecteOeuf;
 import app.modules.model.Fournisseur;
 import app.modules.model.Race;
 
@@ -27,6 +28,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -37,6 +40,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -52,6 +56,10 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
     private HBox AnchorTable;//Mouen a change ça en hbox et a dans le fxml de bande lui a donne des styles directement;
     @FXML
     private JFXButton informations;
+    
+     @FXML
+    private TextField recherche;
+    
         
     @Override
     public void initialize(URL location, ResourceBundle resources) {          
@@ -60,6 +68,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         //populateTableBande();
         //important d'ajouter le item là, même si tu ne sais pas d'où ça sort ...c'est l'ensemble (table+pagination)
         AnchorTable.getChildren().addAll(item);
+        this.Search();
       
         
     }
@@ -107,7 +116,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         
         TableColumn<Bande,String> col_race=new TableColumn<>("RACE"); 
         col_race.setCellValueFactory(new PropertyValueFactory<>("nomRace"));
-        col_race.setPrefWidth(150);
+        col_race.setPrefWidth(160);
         
         table.getColumns().addAll(col_nom,col_achat,col_age,col_date,col_quantite,col_batiment,col_fournisseur,col_race);
         
@@ -130,6 +139,51 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
         updateData();
     }
     
+    @FXML
+    void Search() {
+
+        data=FXCollections.observableArrayList(DbManager.selectBandes());
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Bande> filteredData = new FilteredList<>(data, p -> true);
+        
+        // 2. Set the filter Predicate whenever the filter changes.
+        recherche.textProperty().
+        addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(bande-> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (bande.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (bande.getNomFournisseur().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+                else if (bande.getNomBatiment().toLowerCase().contains(lowerCaseFilter))
+                {
+                    return true;
+                }
+                else if ((bande.getNomRace()).toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                }
+
+                return false; // Does not match.
+            });
+        });
+        
+        // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Bande> sortedData = new SortedList<>(filteredData);
+        
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        
+        // 5. Add sorted (and filtered) data to the table.
+        table.setItems(sortedData);
+    }
 
 
     public void updateTableBande()
