@@ -158,7 +158,7 @@ public class BandeViewController extends BaseView<Bande> implements Initializabl
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
                 
-                if (bande.getNomBande().toLowerCase().contains(lowerCaseFilter)) {
+                if (Bande.getNameFromId(bande.getIdBande()).toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
                 } else if (bande.getNomFournisseur().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.

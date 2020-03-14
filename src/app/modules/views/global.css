@@ -103,6 +103,8 @@
     -fx-background-color: #94ffd9;
     
 }
+
+
 .table-row-cell:selected
 {
     -fx-background-color: #94ffd9;
@@ -390,4 +392,10 @@ buttonMenu:selected
 
 .time-slot:selected {
 	-fx-background-color: honeydew ;
+}
+/*******textField***********/
+
+
+.text-field:focused{
+    -fx-faint-focus-color: #2aa15b;
 }
